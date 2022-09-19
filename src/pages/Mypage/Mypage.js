@@ -1,45 +1,60 @@
 import React from "react";
 import "./Mypage.scss";
-import MypageGrayBox from "./MypageGrayBox/MypageGrayBox";
-import MypageMyPlan from "./MypageMyPlan/MypageMyPlan";
-import MypagePoint from "./MypagePoint/MypagePoint";
-import MypageProfile from "./MypageProfile/MypageProfile";
-import MypageSnb from "./MypageSnb/MypageSnb";
+import GrayBox from "./GrayBox/GrayBox";
+import MyPlan from "./MyPlan/MyPlan";
+import PointBox from "./PointBox/PointBox";
+import Profile from "./Profile/Profile";
+import Snb from "./Snb/Snb";
+import ServiceList from "./ServiceList/ServiceList";
+import bookMarkIcon from "../../assets/images/bookmark-icon.png";
+import reviewIcon from "../../assets/images/review-icon.png";
+import couponIcon from "../../assets/images/coupon-icon.png";
 
 function Mypage() {
+  const serviceBtns1 = [
+    "결항안내",
+    "렌터카 예약안내",
+    "렌터카 보험안내",
+    "렌터카 인수반납",
+    "숙박 이용안내",
+    "취소/환불 안내",
+  ];
+
+  const serviceBtns2 = [
+    "자주 찾는 질문",
+    "1:1문의",
+    "수정제안 내역",
+    "결제수단관리",
+  ];
+
+  const GrayBoxContent = [
+    {
+      iconUrl: bookMarkIcon,
+      content: "북마크",
+    },
+    {
+      iconUrl: reviewIcon,
+      content: "이용후기",
+    },
+    {
+      iconUrl: couponIcon,
+      content: "보유쿠폰",
+    },
+  ];
+
   return (
     <div className="mypage-container">
-      <MypageSnb />
-      <div className="mypage-content todo">
-        <MypageProfile />
-        <MypagePoint />
-        <MypageGrayBox />
+      <Snb />
+      <div className="mypage-content">
+        <Profile />
+        <PointBox />
+        <GrayBox GrayBoxContent={GrayBoxContent} />
         <p className="mypage-content-title">나의 여행일정</p>
-        <MypageMyPlan />
+        <MyPlan />
         <p className="mypage-content-title">서비스 이용안내</p>
-        <div className="mypage-service-wrap">
-          <ul className="service-list">
-            <li>
-              <button>결항안내</button>
-            </li>
-            <li>
-              <button>렌터카 예약안내</button>
-            </li>
-            <li>
-              <button>렌터카 보험안내</button>
-            </li>
-            <li>
-              <button>렌터카 인수반납</button>
-            </li>
-            <li>
-              <button>숙박 이용안내</button>
-            </li>
-            <li>
-              <button>취소/환불 안내</button>
-            </li>
-          </ul>
-        </div>
+        <ServiceList content={"guide"} btns={serviceBtns1} btnwidth={"33.3%"} />
         <p className="mypage-content-title">고객센터</p>
+        <ServiceList content={"center"} btns={serviceBtns2} btnwidth={"25%"} />
       </div>
     </div>
   );

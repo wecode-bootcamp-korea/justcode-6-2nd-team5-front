@@ -1,6 +1,6 @@
-import "./MypageMyPlan.scss";
+import "./MyPlan.scss";
 
-function MypageMyPlan() {
+function MyPlan() {
   return (
     <div className="mypage-myplan-wrap">
       <div className="content">
@@ -23,4 +23,4 @@ function MypageMyPlan() {
   );
 }
 
-export default MypageMyPlan;
+export default MyPlan;

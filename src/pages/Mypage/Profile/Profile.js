@@ -1,6 +1,6 @@
-import "./MypageProfile.scss";
+import "./Profile.scss";
 
-function MypageProfile() {
+function Profile() {
   return (
     <div className="mypage-profile-wrap">
       <div className="profile-img"></div>
@@ -19,4 +19,4 @@ function MypageProfile() {
   );
 }
 
-export default MypageProfile;
+export default Profile;

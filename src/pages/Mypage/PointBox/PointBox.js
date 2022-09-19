@@ -1,8 +1,8 @@
-import "./MypagePoint.scss";
+import "./PointBox.scss";
 
-function MypagePoint() {
+function PointBox() {
   return (
-    <div className="mypage-point-wrap">
+    <div className="mypage-point-box-wrap">
       <div className="point-list">
         <p>
           <span>충전포인트</span>
@@ -31,4 +31,4 @@ function MypagePoint() {
   );
 }
 
-export default MypagePoint;
+export default PointBox;

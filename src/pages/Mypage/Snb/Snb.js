@@ -1,6 +1,6 @@
-import "./MypageSnb.scss";
+import "./Snb.scss";
 
-function MypageSnb() {
+function Snb() {
   // 사이드 메뉴 목록
   const snbList = [
     {
@@ -69,4 +69,4 @@ function MypageSnb() {
   );
 }
 
-export default MypageSnb;
+export default Snb;
