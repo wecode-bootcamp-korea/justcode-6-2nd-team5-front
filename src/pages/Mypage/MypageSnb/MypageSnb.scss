@@ -1,0 +1,36 @@
+.mypage-snb-wrap {
+  --font-size-title: 20px;
+  --font-weight-title: 700;
+
+  --font-size-subtitle: 18px;
+  --font-weight-subtitle: 600;
+
+  width: 20%;
+  margin: 0px 5%;
+}
+
+.mypage-snb-title {
+  font-size: 28px;
+  font-weight: var(--font-weight-title);
+  padding: 0 24px;
+}
+
+.mypage-snb-list {
+  margin-top: 50px;
+
+  .title {
+    display: flex;
+    font-size: var(--font-size-title);
+    font-weight: var(--font-weight-title);
+    background-color: var(--color-white-gray);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 20px;
+  }
+  .subtitle {
+    display: flex;
+    font-size: var(--font-size-subtitle);
+    font-weight: var(--font-weight-subtitle);
+    padding: 20px 20px;
+  }
+}

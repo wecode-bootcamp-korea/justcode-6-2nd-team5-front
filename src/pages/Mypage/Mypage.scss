@@ -1,0 +1,55 @@
+.mypage-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+
+  --border-color: #abccff;
+  --color-blue: #63a1ff;
+  --color-soft-blue: #85b5ff;
+  --color-bright-blue: #569aff;
+  --color-white-gray: #f8f8f8;
+  --color-gray: #aeaeae;
+  --color-white-opacity07: rgba(255, 255, 255, 0.7);
+
+  --font-size-small: 15px;
+  --font-size-middle: 18px;
+  --font-size-big: 23px;
+
+  width: 80%;
+  min-width: 1400px; //최소 너비 지정
+  max-width: 1800px; //최대 너비 지정
+  margin: 0 5%;
+
+  .mypage-content {
+    width: 80%;
+  }
+}
+
+.mypage-content-title {
+  font-size: var(--font-size-big);
+  font-weight: bold;
+  margin-top: 40px;
+}
+
+.mypage-service-wrap {
+  .service-list {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    // margin-left: auto;
+    // margin-right: auto;
+
+    button {
+      min-width: 420px;
+      padding: 15px;
+      margin: 5px;
+      font-size: var(--font-size-small);
+      font-weight: bold;
+      background-color: #fff;
+      border: 1px solid rgb(217, 217, 217);
+      border-radius: 8px;
+    }
+  }
+}
