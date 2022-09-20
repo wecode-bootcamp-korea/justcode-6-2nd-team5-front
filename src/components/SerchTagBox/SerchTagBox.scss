@@ -6,26 +6,25 @@
   border-radius: 20px;
   background-color: #fff;
 
-  --slide-btn-size: 30px; // next, prev 버튼 size
+  --slide-btn-size: 40px; // next, prev 버튼 size
 
   .title {
-    width: 6%;
-    min-width: 130px; // 글씨 줄바꿈 방지
+    min-width: fit-content; // 글씨 줄바꿈 방지
     font-size: 28px;
     font-weight: bold;
-    margin-right: 10px;
+    margin-right: 50px;
   }
 
   .tag-list-wrap {
     display: flex; // button 들이 삐져나와 줄바꿈하는 것을 막음
     margin-left: 40px;
-    margin-right: 30px;
+    margin-right: 40px;
     overflow: hidden; // list-wrap 에서 넘어가는 button 은 숨김
 
     .tag-list {
       margin-left: 0px;
       display: flex;
-      transition: all 0.4s ease-in-out; // 자연스러운 슬라이드
+      transition: all 0.15s ease-in-out; // 자연스러운 슬라이드
 
       .tag-off,
       .tag-on {
@@ -50,6 +49,7 @@
         border: 1px solid var(--color-bright-blue);
 
         span {
+          // tag 선택시 나타나는 체크 기호
           font-size: 35px;
           font-weight: 900;
           margin-right: 10px;
@@ -77,6 +77,6 @@
   }
 
   .prev-btn {
-    left: 170px;
+    left: 180px; // title 길이가 바뀔 때마다 바꿔줘야 함  (title width + 70px)
   }
 }

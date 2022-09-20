@@ -4,17 +4,23 @@ import "./SerchTagBox.scss";
 function SerchTagBox() {
   // 버튼 슬라이드
   const [tagListSlide, setTagListSlide] = useState(0);
-  // 사용자의 페이지 너비와 버튼 슬라이드의 움직임값은 반비례 관계
-  const pageWidth = document.documentElement.scrollWidth;
-  const slideCondition = 1000000 / pageWidth;
+  const [slideCondition, setSlideCondition] = useState(1000000);
 
   // next 버튼이 눌렸을 때 (3번만 동작하도록 함)
   const nextSlide = () => {
-    if (tagListSlide > -slideCondition) setTagListSlide((prev) => prev - 300);
+    // tag-list 의 너비값을 추출 하여 할당
+    const tagListWidth =
+      document.documentElement.getElementsByClassName("tag-list")[0]
+        .offsetWidth;
+
+    // next 버튼의 렌더링 조건 설정 (tag-list 의 너비와 버튼 슬라이드의 최대움직임값은 반비례 관계)
+    setSlideCondition(1500000 / tagListWidth);
+
+    if (tagListSlide > -slideCondition) setTagListSlide((prev) => prev - 200);
   };
   // prev 버튼이 눌렸을 때 (next 버튼이 한번이라도 눌렸을 때만 동작하도록 함)
   const prevSlide = () => {
-    if (tagListSlide < 0) setTagListSlide((prev) => prev + 300);
+    if (tagListSlide < 0) setTagListSlide((prev) => prev + 200);
   };
 
   // 선택된 태그 state value
@@ -70,7 +76,6 @@ function SerchTagBox() {
 
   // 태그 선택/선택해제 함수
   const tagSelect = (e) => {
-    console.log(e.target.id);
     const tagId = e.target.id;
 
     if (tagId === "0") setIsOnTag0((prev) => !prev);
@@ -87,8 +92,8 @@ function SerchTagBox() {
   return (
     <div className="rentcar-stb-wrap">
       <div className="title">빠른 검색</div>
-      {/* prev 버튼은 next 버튼이 한번이라도 눌렸을 때만 렌더링 되도록 함 */}
-      {tagListSlide !== 0 && (
+      {/* prev 버튼은 tag list의 위치가 초기 위치보다 클 때만 렌더링 되도록 함 */}
+      {tagListSlide < 0 && (
         <div className="prev-btn" onClick={prevSlide}>
           &lt;
         </div>
