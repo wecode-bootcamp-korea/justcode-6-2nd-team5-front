@@ -38,7 +38,6 @@ function Lodging() {
               <div className="lodge-info-wrapper">
                 <span>{data.title}</span>
                 <span>{data.tag}</span>
-
                 <span>{data.location}</span>
               </div>
             </div>
