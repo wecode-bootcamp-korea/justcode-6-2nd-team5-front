@@ -58,8 +58,13 @@ function Snb() {
     targetClassName = "active";
   };
 
+  const nothing = () => {
+    // 아무 동작 안 하는 함수
+  };
+
   const snbSlideOn = (e) => {
     const sndId = e.target.id;
+    console.log(sndId);
 
     sndId === "0"
       ? setIsSnbOpen0((prev) => !prev)
@@ -73,7 +78,7 @@ function Snb() {
       ? navigate("/")
       : sndId === "5"
       ? setIsSnbOpen5((prev) => !prev)
-      : e.preventDefalt();
+      : nothing();
   };
 
   return (
