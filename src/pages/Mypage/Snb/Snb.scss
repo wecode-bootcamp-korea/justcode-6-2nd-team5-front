@@ -33,6 +33,7 @@
       height: 70px;
       transition: height 0.35s linear;
       overflow: hidden;
+      cursor: pointer;
     }
 
     .snb-on {
@@ -43,10 +44,13 @@
       margin-top: 20px;
       transition: flex 0.35s linear;
       overflow: hidden;
+      cursor: pointer;
     }
   }
 
   .mypage-snb-list-dep2 {
+    cursor: auto;
+
     .subtitle {
       display: flex;
       font-size: var(--font-size-subtitle);
