@@ -63,7 +63,7 @@ const FooterTop = () => {
             </button>
           </div>
         </li>
-        <li>
+        <ul>
           <h5 className="phone-number">1544-0445 </h5>
           <p className="foot-text">
             <li>
@@ -75,7 +75,7 @@ const FooterTop = () => {
               <span> 12:00 ~ 13:00 </span>
             </li>
           </p>
-        </li>
+        </ul>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+
 import styled from "styled-components";
 import LogoSrc from "../assets/images/logo.png";
 import { BiSearch, BiLogIn } from "react-icons/bi";
@@ -23,7 +24,7 @@ const Nav = () => {
         <MenuTab>트립</MenuTab>
         <MenuTab>카페패스</MenuTab>
         <MenuTab>맛집</MenuTab>
-        <BiSearch color="blue" size="24px" />
+        <BiSearch className="search-icon" />
       </ul>
       <div className="info-box">
         <InfoTab>
@@ -41,17 +42,31 @@ const Nav = () => {
 
 const NavContainer = styled.div`
   display: flex;
+  justify-content: space-around;
   width: 100vw;
   padding-top: 35px;
   background-color: #f8f8f8;
 
   .logo-box {
-    width: 30%;
+    width: 100px;
     background: url(${LogoSrc}) no-repeat;
   }
 
   .menu-box {
     display: flex;
+    align-items: center;
+
+    .search-icon {
+      width: 70px;
+      border-left: 1.5px solid lightgray;
+      color: #202020;
+      font-size: 24px;
+    }
+  }
+
+  .info-box {
+    display: flex;
+    align-items: center;
   }
 `;
 
@@ -76,7 +91,7 @@ const InfoTab = styled.span`
   font-size: 1rem;
   cursor: pointer;
   &:hover {
-    color: #000000;
+    color: #202020;
   }
 `;
 
