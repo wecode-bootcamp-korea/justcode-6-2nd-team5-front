@@ -1,0 +1,46 @@
+.rentcar-stb-wrap {
+  display: flex;
+  align-items: center;
+  width: 80;
+  padding: 20px 30px;
+
+  --slide-btn-size: 30px;
+
+  .title {
+    width: 6%;
+    min-width: 100px;
+    font-size: 23px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  // transform: translate3d(이미지 너비px, 0px, 0px)
+  .tag-list {
+    display: flex;
+    overflow: hidden; // list 에서 넘어가는 tag는 숨김
+    transition: all 0.4s ease-in-out; // 자연스러운 슬라이드
+
+    button {
+      min-width: fit-content; // button 찌그러짐 막음
+      line-height: 100%;
+      color: gray;
+      font-size: var(--font-size-tag);
+      font-weight: bold;
+      margin-left: 20px;
+      padding: 8px 20px;
+      background-color: #fff;
+      border: 1px solid gray;
+      border-radius: 8px;
+    }
+  }
+
+  .slide-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--slide-btn-size); // 버튼 찌그러짐 막음
+    height: var(--slide-btn-size);
+    border-radius: var(--slide-btn-size);
+    border: 1px solid gray;
+    margin-left: auto;
+  }
+}
