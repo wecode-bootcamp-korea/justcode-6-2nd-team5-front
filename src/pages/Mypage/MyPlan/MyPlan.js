@@ -15,8 +15,8 @@ function MyPlan(props) {
                     <p>{plan.title}</p>
                     <a href="">지난 여행보기 &gt;</a>
                   </div>
-                  <div className="plan-detail">
-                    <div>
+                  <div className="plan-detail-wrap">
+                    <div className="plan-detail">
                       <div className="plus-btn">+</div>
                       <div className="text-wrap">
                         <p>이보다 저렴한 항공권은 못찾으실걸요?</p>

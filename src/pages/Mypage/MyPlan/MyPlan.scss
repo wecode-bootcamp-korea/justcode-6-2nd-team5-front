@@ -17,7 +17,7 @@
         }
       }
 
-      .plan-detail {
+      .plan-detail-wrap {
         display: flex;
         justify-content: center;
         height: 200px;
@@ -25,24 +25,28 @@
         padding: 20px;
         margin-top: 20px;
 
-        .plus-btn {
-          display: flex;
-          justify-content: center;
-          margin-top: 20px;
-        }
+        .plan-detail {
+          cursor: pointer;
 
-        .text-wrap {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          margin-top: 10px;
-          p {
-            color: gray;
-            margin-top: 10px;
+          .plus-btn {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
           }
 
-          span {
-            color: var(--color-bright-blue);
+          .text-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 10px;
+            p {
+              color: gray;
+              margin-top: 10px;
+            }
+
+            span {
+              color: var(--color-bright-blue);
+            }
           }
         }
       }
