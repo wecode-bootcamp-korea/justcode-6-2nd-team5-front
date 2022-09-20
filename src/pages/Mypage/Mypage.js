@@ -11,23 +11,6 @@ import reviewIcon from "../../assets/images/review-icon.png";
 import couponIcon from "../../assets/images/coupon-icon.png";
 
 function Mypage() {
-  // ServiceList Component Mockdata
-  const serviceBtns1 = [
-    "결항안내",
-    "렌터카 예약안내",
-    "렌터카 보험안내",
-    "렌터카 인수반납",
-    "숙박 이용안내",
-    "취소/환불 안내",
-  ];
-
-  const serviceBtns2 = [
-    "자주 찾는 질문",
-    "1:1문의",
-    "수정제안 내역",
-    "결제수단관리",
-  ];
-
   // GrayBox Component Mockdata
   const GrayBoxContent = [
     {
@@ -61,6 +44,23 @@ function Mypage() {
       title: "맛집",
       content: "",
     },
+  ];
+
+  // ServiceList Component Mockdata
+  const serviceBtns1 = [
+    "결항안내",
+    "렌터카 예약안내",
+    "렌터카 보험안내",
+    "렌터카 인수반납",
+    "숙박 이용안내",
+    "취소/환불 안내",
+  ];
+
+  const serviceBtns2 = [
+    "자주 찾는 질문",
+    "1:1문의",
+    "수정제안 내역",
+    "결제수단관리",
   ];
 
   return (
