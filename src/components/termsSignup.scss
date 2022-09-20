@@ -1,0 +1,107 @@
+.terms-signup {
+  width: 100%;
+  font-family: "Pretendard-Regular";
+
+  .container {
+    width: 25%;
+    margin: 0 auto;
+    padding-top: 64px;
+    font-weight: 600;
+
+    .terms-text {
+      padding-bottom: 35px;
+      font-size: 18px;
+      text-align: center;
+
+      .terms-conditions {
+        padding-bottom: 5px;
+        display: block;
+        font-size: 25px;
+      }
+    }
+
+    .terms-container {
+      border-radius: 8px;
+      border: 1px solid #eaeaea;
+      background-color: #eee;
+      padding-left: 20px;
+      padding-right: 20px;
+
+      .full-consent {
+        height: 50px;
+        margin-top: 7px;
+
+        #terms-chks {
+          width: 22px;
+          height: 25px;
+          position: relative;
+          top: 5.5px;
+        }
+
+        .terms-label {
+          font-weight: 600;
+          font-size: 18px;
+          margin-left: 5px;
+        }
+      }
+
+      .terms-essential {
+        height: 90px;
+        padding-top: 20px;
+        border-top: 1px dotted #b1b1b1;
+        border-bottom: 1px dotted #b1b1b1;
+
+        span {
+          color: #0055ff;
+        }
+
+        label {
+          color: #808080;
+        }
+
+        div {
+          padding-top: 20px;
+        }
+      }
+
+      .terms-select {
+        height: 60px;
+        padding-top: 20px;
+        color: #808080;
+      }
+
+      .terms-comment-first {
+        margin-bottom: 8px;
+        color: #808080;
+        font-size: 15px;
+      }
+
+      .terms-comment-second {
+        height: 55px;
+        color: #808080;
+        font-size: 15px;
+
+        .terms-span-comments {
+          padding-left: 19px;
+        }
+      }
+    }
+
+    .terms-action-btn {
+      width: 100%;
+      height: 4vh;
+      margin-top: 35px;
+      font-weight: 600;
+      font-size: 18px;
+      border-radius: 8px;
+      border: none;
+      color: #fff;
+      background: #b1b1b1;
+      cursor: pointer;
+    }
+    .terms-action-btn:hover {
+      color: white;
+      background-color: #569aff;
+    }
+  }
+}

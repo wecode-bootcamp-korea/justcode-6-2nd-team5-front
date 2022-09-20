@@ -1,0 +1,148 @@
+.signup {
+  width: 100%;
+
+  .signup-container {
+    width: 20%;
+    margin: 0 auto;
+    padding-top: 64px;
+    font-family: "Pretendard-Regular";
+
+    div {
+      margin-top: 5px;
+      margin-bottom: 25px;
+    }
+
+    span {
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .signup-title {
+      margin: 0 0 48px 0;
+      display: block;
+      font-family: "NanumSquareRound";
+      font-size: 30px;
+      font-weight: 600;
+      text-align: center;
+      line-height: 1.25;
+    }
+
+    .signup-label {
+      margin-bottom: 5px;
+      font-weight: 600;
+      font-size: 16px;
+      text-align: left;
+      display: block;
+      cursor: pointer;
+    }
+
+    .signup-input {
+      width: 97%;
+      height: 4vh;
+      padding-left: 8px;
+      border-width: 0;
+      font-size: 18px;
+      font-family: "Pretendard-Regular";
+      border: 1px solid #eaeaea;
+      border-radius: 4px;
+      display: block;
+    }
+
+    .id-input {
+      width: 70%;
+      height: 4vh;
+      padding-left: 8px;
+      border-width: 0;
+      font-size: 18px;
+      font-family: "Pretendard-Regular";
+      border: 1px solid #eaeaea;
+      border-radius: 4px;
+    }
+
+    .overlap-chk-btn {
+      width: 25%;
+      height: 4.3vh;
+      padding: 0 15px;
+      margin-left: 7px;
+      font-size: 18px;
+      font-family: "Pretendard-Regular";
+      color: #569aff;
+      border: 1.5px solid #569aff;
+      background-color: white;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .signup-bday {
+      margin-bottom: 5px;
+      display: block;
+    }
+
+    select {
+      width: 31%;
+      height: 4vh;
+      padding-left: 8px;
+      border-width: 0;
+      margin-right: 7.8px;
+      font-size: 16px;
+      font-family: "Pretendard-Regular";
+      border: 1px solid #eaeaea;
+      border-radius: 4px;
+    }
+
+    .form-radio-btn {
+      width: 48.1%;
+      height: 45px;
+      margin-left: 5.2px;
+      border: 1px solid #eaeaea;
+      border-radius: 4px;
+      display: inline-grid;
+    }
+    .form-radio-btn input[type="radio"] {
+      display: none;
+    }
+    .form-radio-btn label {
+      width: 100%;
+      display: block;
+      border-radius: 4px;
+      margin: 0 auto;
+      text-align: center;
+      font-weight: 600;
+      height: -webkit-fill-available;
+      line-height: 45px;
+    }
+
+    /* Checked */
+    .form-radio-btn input[type="radio"]:checked + label {
+      background: #e2f0fa;
+      color: #569aff;
+    }
+    /* Disabled */
+    .form-radio-btn input[type="radio"] + label {
+      background: #f9fafc;
+      color: #666;
+    }
+
+    /* Hover */
+    .form-radio-btn label:hover {
+      color: #666;
+    }
+
+    .signup-action-btn {
+      width: 100%;
+      height: 4vh;
+      font-weight: 600;
+      font-size: 18px;
+      border-radius: 8px;
+      border: none;
+      color: #fff;
+      background: #b1b1b1;
+      cursor: pointer;
+    }
+
+    .signup-action-btn:hover {
+      color: white;
+      background-color: #569aff;
+    }
+  }
+}

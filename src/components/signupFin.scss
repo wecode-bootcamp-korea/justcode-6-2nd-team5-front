@@ -1,0 +1,64 @@
+.signup-fin {
+  width: 100%;
+
+  .signup-fin-container {
+    width: 30%;
+    margin: 0 auto;
+    padding-top: 64px;
+    font-family: "Pretendard-Regular";
+    text-align: center;
+
+    .signup-title {
+      margin: 0 0 48px 0;
+      display: block;
+      font-family: "NanumSquareRound";
+      font-size: 30px;
+      font-weight: 600;
+
+      line-height: 1.25;
+    }
+
+    .signup-j-img {
+      width: 30%;
+    }
+
+    .signup-fin-bottom {
+      margin-top: 50px;
+      font-weight: 600;
+      font-size: 23px;
+    }
+
+    .signup-bottom-btn {
+      margin-top: 30px;
+
+      .home-btn-div,
+      .login-btn-div {
+        width: 35%;
+        height: 45px;
+        display: inline-grid;
+      }
+
+      .home-btn,
+      .login-btn {
+        font-weight: 600;
+        font-size: 17px;
+        font-family: "Pretendard-Regular";
+        border: none;
+        border-radius: 10px;
+        background: #e2f0fa;
+        color: #569aff;
+      }
+
+      .login-btn {
+        margin-left: 10px;
+      }
+
+      .login-btn:hover,
+      .home-btn:hover {
+        cursor: pointer;
+        color: white;
+        background-color: #569aff;
+      }
+    }
+  }
+}

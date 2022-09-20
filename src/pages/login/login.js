@@ -1,9 +1,13 @@
 import "./login.scss";
-import naverIcon from "../../assets/images/btnN.png";
-import kakaoIcon from "../../assets/images/btnK.png";
+import naverIcon from "../../assets/images/loginBtnN.png";
+import kakaoIcon from "../../assets/images/loginBtnK.png";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 // import loginBanner from "../../assets/images/loginBr.png";
 
 function Login() {
+  // const [tabButton, usetabButton] = useState < boolean > false;
+
   return (
     <div className="login">
       <div className="login-container">
