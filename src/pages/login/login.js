@@ -6,8 +6,6 @@ import { Link } from "react-router-dom";
 // import loginBanner from "../../assets/images/loginBr.png";
 
 function Login() {
-  // const [tabButton, usetabButton] = useState < boolean > false;
-
   return (
     <div className="login">
       <div className="login-container">
