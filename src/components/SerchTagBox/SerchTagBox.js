@@ -1,7 +1,9 @@
 import { useState } from "react";
 import "./SerchTagBox.scss";
 
-function SerchTagBox() {
+function SerchTagBox(props) {
+  const { title, tagList, tagSelect } = props;
+
   // 버튼 슬라이드
   const [tagListSlide, setTagListSlide] = useState(0);
   const [slideCondition, setSlideCondition] = useState(1000000);
@@ -23,75 +25,44 @@ function SerchTagBox() {
     if (tagListSlide < 0) setTagListSlide((prev) => prev + 200);
   };
 
-  // 선택된 태그 state value
-  const [isOnTag0, setIsOnTag0] = useState(false);
-  const [isOnTag1, setIsOnTag1] = useState(false);
-  const [isOnTag2, setIsOnTag2] = useState(false);
-  const [isOnTag3, setIsOnTag3] = useState(false);
-  const [isOnTag4, setIsOnTag4] = useState(false);
-  const [isOnTag5, setIsOnTag5] = useState(false);
-  const [isOnTag6, setIsOnTag6] = useState(false);
-  const [isOnTag7, setIsOnTag7] = useState(false);
-  const [isOnTag8, setIsOnTag8] = useState(false);
+  // ------------------ 이부분 수정하여 부모 컴포넌트에 선언 후 props로 넘겨 받기 ---------------------
 
-  // 태그 mockdata
-  const tagList = [
-    {
-      tagName: "캐스퍼",
-      disabled: isOnTag0,
-    },
-    {
-      tagName: "애견동반",
-      disabled: isOnTag1,
-    },
-    {
-      tagName: "낚시용품 가능",
-      disabled: isOnTag2,
-    },
-    {
-      tagName: "오픈카",
-      disabled: isOnTag3,
-    },
-    {
-      tagName: "주유비 SAVE, 전기차",
-      disabled: isOnTag4,
-    },
-    {
-      tagName: "ALL NEW 신차",
-      disabled: isOnTag5,
-    },
-    {
-      tagName: "전기충전",
-      disabled: isOnTag6,
-    },
-    {
-      tagName: "BMW",
-      disabled: isOnTag7,
-    },
-    {
-      tagName: "차박/캠핑카",
-      disabled: isOnTag8,
-    },
-  ];
+  // 넘겨줄 때 형태
+  // <SerchTagBox title={"빠른 검색"} tagList={tagList} tagSelect={tagSelect} />
 
-  // 태그 선택/선택해제 함수
-  const tagSelect = (e) => {
-    const tagId = e.target.id;
+  // 선택된 태그 state value (태그 개수만큼 선연)
+  // const [isOnTag0, setIsOnTag0] = useState(false);
+  // const [isOnTag1, setIsOnTag1] = useState(false);
+  // const [isOnTag2, setIsOnTag2] = useState(false);
 
-    if (tagId === "0") setIsOnTag0((prev) => !prev);
-    if (tagId === "1") setIsOnTag1((prev) => !prev);
-    if (tagId === "2") setIsOnTag2((prev) => !prev);
-    if (tagId === "3") setIsOnTag3((prev) => !prev);
-    if (tagId === "4") setIsOnTag4((prev) => !prev);
-    if (tagId === "5") setIsOnTag5((prev) => !prev);
-    if (tagId === "6") setIsOnTag6((prev) => !prev);
-    if (tagId === "7") setIsOnTag7((prev) => !prev);
-    if (tagId === "8") setIsOnTag8((prev) => !prev);
-  };
+  // 태그 mockdata (태그 개수만큼 선언)
+  // const tagList = [
+  //   {
+  //     tagName: "캐스퍼",
+  //     disabled: isOnTag0,
+  //   },
+  //   {
+  //     tagName: "애견동반",
+  //     disabled: isOnTag1,
+  //   },
+  //   {
+  //     tagName: "낚시용품 가능",
+  //     disabled: isOnTag2,
+  //   },
+  // ];
+
+  // 태그 선택/선택해제 함수 (태그 개수만큼 선언)
+  // const tagSelect = (e) => {
+  //   const tagId = e.target.id;
+
+  //   if (tagId === "0") setIsOnTag0((prev) => !prev);
+  //   if (tagId === "1") setIsOnTag1((prev) => !prev);
+  //   if (tagId === "2") setIsOnTag2((prev) => !prev);
+  // };
 
   return (
     <div className="rentcar-stb-wrap">
-      <div className="title">빠른 검색</div>
+      <div className="title">{title}</div>
       {/* prev 버튼은 tag list의 위치가 초기 위치보다 클 때만 렌더링 되도록 함 */}
       {tagListSlide < 0 && (
         <div className="prev-btn" onClick={prevSlide}>
