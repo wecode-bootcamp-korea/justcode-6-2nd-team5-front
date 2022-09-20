@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Nav from "./Nav";
 import FooterTop from "./FooterTop";
+import FooterBottom from "./FooterBottom";
 
 function Router() {
   return (
@@ -10,6 +11,7 @@ function Router() {
       <Nav />
       <Routes></Routes>
       <FooterTop />
+      <FooterBottom />
     </BrowserRouter>
   );
 }
