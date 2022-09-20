@@ -64,7 +64,6 @@ function Snb() {
 
   const snbSlideOn = (e) => {
     const sndId = e.target.id;
-    console.log(sndId);
 
     sndId === "0"
       ? setIsSnbOpen0((prev) => !prev)

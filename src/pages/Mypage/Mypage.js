@@ -11,6 +11,7 @@ import reviewIcon from "../../assets/images/review-icon.png";
 import couponIcon from "../../assets/images/coupon-icon.png";
 
 function Mypage() {
+  // ServiceList Component Mockdata
   const serviceBtns1 = [
     "결항안내",
     "렌터카 예약안내",
@@ -27,6 +28,7 @@ function Mypage() {
     "결제수단관리",
   ];
 
+  // GrayBox Component Mockdata
   const GrayBoxContent = [
     {
       iconUrl: bookMarkIcon,
@@ -42,6 +44,25 @@ function Mypage() {
     },
   ];
 
+  // Myplan Component Mockdata
+  const MyplanContent = [
+    {
+      id: 0,
+      title: "렌터카",
+      content: "",
+    },
+    {
+      id: 1,
+      title: "숙박",
+      content: "",
+    },
+    {
+      id: 2,
+      title: "맛집",
+      content: "",
+    },
+  ];
+
   return (
     <div className="mypage-container">
       <Snb />
@@ -50,7 +71,7 @@ function Mypage() {
         <PointBox />
         <GrayBox GrayBoxContent={GrayBoxContent} />
         <p className="mypage-content-title">나의 여행일정</p>
-        <MyPlan />
+        <MyPlan myPlan={MyplanContent} />
         <p className="mypage-content-title">서비스 이용안내</p>
         <ServiceList content={"guide"} btns={serviceBtns1} btnwidth={"33.3%"} />
         <p className="mypage-content-title">고객센터</p>
