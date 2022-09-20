@@ -33,6 +33,11 @@
       line-height: 1.25;
     }
 
+    .login-br {
+      width: 100%;
+      margin-top: 10px;
+    }
+
     .tab-type {
       position: relative;
       display: flex;
@@ -125,6 +130,7 @@
 
       .login-btn {
         margin: 20px 0 45px;
+        cursor: pointer;
 
         a {
           padding: 5px;

@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./login.scss";
 import naverIcon from "../../assets/images/btnN.png";
 import kakaoIcon from "../../assets/images/btnK.png";
-// import loginBanner from "../../assets/images/loginBr.png";
+import loginBanner from "../../assets/images/login-jeju-b.png";
 
 function Login() {
   const [userEmail, setUserEamil] = useState("");
@@ -50,9 +50,9 @@ function Login() {
             <br></br>
             제주패스로 시작하세요
           </p>
-          {/* <div className="login-br">
+          <div className="login-br">
             <img src={loginBanner} className="login-br"></img>
-          </div> */}
+          </div>
         </div>
         <div className="tab-type">
           <li>
@@ -120,4 +120,7 @@ function Login() {
     </div>
   );
 }
+
 export default Login;
+
+//출처 <a href="https://kr.freepik.com/free-vector/_27364076.htm#query=%EC%A0%9C%EC%A3%BC%20%EB%B2%A0%EB%84%88&position=12&from_view=search&track=ais">Freepik</a>
