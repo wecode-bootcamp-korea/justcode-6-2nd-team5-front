@@ -1,7 +1,9 @@
 import React from "react";
 
+import Lodging from "./components/Lodging";
+
 function App() {
-  return <div>main</div>;
+  return <Lodging />;
 }
 
 export default App;
