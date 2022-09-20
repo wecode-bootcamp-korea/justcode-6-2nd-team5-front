@@ -21,6 +21,10 @@
         border-radius: 8px;
         cursor: pointer;
       }
+
+      button:hover {
+        background-color: var(--color-white-gray);
+      }
     }
   }
 }
