@@ -27,17 +27,33 @@
       display: flex;
       transition: all 0.4s ease-in-out; // 자연스러운 슬라이드
 
-      button {
+      .tag-off,
+      .tag-on {
+        display: flex;
+        flex-direction: row;
         min-width: fit-content; // button 찌그러짐 막음
         line-height: 100%; // 글씨 세로 중앙 정렬
         color: gray;
         font-size: var(--font-size-tag);
         font-weight: bold;
-        margin-left: 10px;
-        padding: 8px 25px;
+        margin-left: 15px;
+        padding: 15px 25px;
         background-color: #fff;
         border: 1px solid var(--color-gray);
         border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .tag-on {
+        color: var(--color-bright-blue);
+        background-color: #f4f9ff;
+        border: 1px solid var(--color-bright-blue);
+
+        span {
+          font-size: 35px;
+          font-weight: 900;
+          margin-right: 10px;
+        }
       }
     }
   }
@@ -53,6 +69,7 @@
     font-weight: bold;
     border-radius: var(--slide-btn-size);
     border: 1px solid var(--color-gray);
+    cursor: pointer;
   }
 
   .next-btn {
