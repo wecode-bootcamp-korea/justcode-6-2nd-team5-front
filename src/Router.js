@@ -5,6 +5,7 @@ import Mypage from "./pages/Mypage/Mypage";
 import RentCar from "./pages/RentCar/RentCar";
 import Lodge from "./components/Lodge/Lodge";
 import Banner from "./components/Banner/Banner";
+import Car from "./components/Car/Car";
 
 function Router() {
   return (
@@ -14,6 +15,7 @@ function Router() {
         <Route path="/rentcar" element={<RentCar />} />
         <Route path="/Lodge" element={<Lodge />} />
         <Route path="/Banner" element={<Banner />} />
+        <Route path="/Car" element={<Car />} />
       </Routes>
     </BrowserRouter>
   );
