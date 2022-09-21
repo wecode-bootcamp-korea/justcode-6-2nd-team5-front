@@ -3,11 +3,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination } from "swiper";
 import { FaHotel } from "react-icons/fa";
 
-import "./Lodge.scss";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "../styles/common.scss";
+import "./Lodge.scss";
+import "../../styles/common.scss";
 
 SwiperCore.use([Navigation, Pagination]);
 

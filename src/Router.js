@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Mypage from "./pages/Mypage/Mypage";
 import RentCar from "./pages/RentCar/RentCar";
-import Lodge from "./components/Lodge";
+import Lodge from "./components/Lodge/Lodge";
 
 function Router() {
   return (
