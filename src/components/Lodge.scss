@@ -10,11 +10,13 @@
 
   p {
     padding: 0 5%;
+    line-height: 150%;
   }
 
   p:first-child {
     font-size: 1.4rem;
     font-weight: 700;
+    padding-top: 5%;
   }
 
   p:nth-child(n + 2) {
