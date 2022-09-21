@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./Restaurant.scss";
 
 function Restaurant() {
   const [data, setData] = useState([]);
