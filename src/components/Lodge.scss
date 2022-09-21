@@ -51,19 +51,21 @@
     border-top-left-radius: 30px;
     border-top-right-radius: 30px;
   }
-
-  span {
-    display: block;
-    padding: 1% 5%;
+  p {
+    padding: 0 5%;
   }
 
-  span:first-child {
+  p:first-child {
     font-size: 1.4rem;
     font-weight: 700;
-    padding-top: 5%;
   }
 
-  span:last-child {
+  p:nth-child(n + 2) {
+    font-size: 1.1rem;
+    color: #606060;
+  }
+
+  p:last-child {
     padding-bottom: 5%;
   }
 }

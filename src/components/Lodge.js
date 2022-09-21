@@ -36,9 +36,9 @@ function Lodge() {
                 <img src={data.img} alt="image" />
               </div>
               <div className="lodge-info-wrapper">
-                <span>{data.title}</span>
-                <span>{data.tag}</span>
-                <span>{data.location}</span>
+                <p>{data.title}</p>
+                <p>{data.tag}</p>
+                <p>{data.location}</p>
               </div>
             </div>
           </SwiperSlide>
