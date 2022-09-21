@@ -1,0 +1,82 @@
+.rentcar-stb-wrap {
+  position: relative; // next, prev 버튼 위치 고정을 위해
+  display: flex; // 가로정렬
+  align-items: center; // 세로 중앙 정렬
+  padding: 20px 40px;
+  border-radius: 20px;
+  background-color: #fff;
+
+  --slide-btn-size: 40px; // next, prev 버튼 size
+
+  .title {
+    min-width: fit-content; // 글씨 줄바꿈 방지
+    font-size: 28px;
+    font-weight: bold;
+    margin-right: 50px;
+  }
+
+  .tag-list-wrap {
+    display: flex; // button 들이 삐져나와 줄바꿈하는 것을 막음
+    margin-left: 40px;
+    margin-right: 40px;
+    overflow: hidden; // list-wrap 에서 넘어가는 button 은 숨김
+
+    .tag-list {
+      margin-left: 0px;
+      display: flex;
+      transition: all 0.15s ease-in-out; // 자연스러운 슬라이드
+
+      .tag-off,
+      .tag-on {
+        display: flex;
+        flex-direction: row;
+        min-width: fit-content; // button 찌그러짐 막음
+        line-height: 100%; // 글씨 세로 중앙 정렬
+        color: gray;
+        font-size: var(--font-size-tag);
+        font-weight: bold;
+        margin-left: 15px;
+        padding: 15px 25px;
+        background-color: #fff;
+        border: 1px solid var(--color-gray);
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      .tag-on {
+        color: var(--color-bright-blue);
+        background-color: #f4f9ff;
+        border: 1px solid var(--color-bright-blue);
+
+        span {
+          // tag 선택시 나타나는 체크 기호
+          font-size: 35px;
+          font-weight: 900;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+
+  .prev-btn,
+  .next-btn {
+    position: absolute; // 버튼 위치 고정
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--slide-btn-size); // 버튼 찌그러짐 막음
+    height: var(--slide-btn-size);
+    font-weight: bold;
+    border-radius: var(--slide-btn-size);
+    border: 1px solid var(--color-gray);
+    cursor: pointer;
+  }
+
+  .next-btn {
+    right: 25px;
+  }
+
+  .prev-btn {
+    left: 180px; // title 길이가 바뀔 때마다 바꿔줘야 함  (title width + 70px)
+  }
+}
