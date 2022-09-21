@@ -1,0 +1,28 @@
+.car-wrapper {
+  border: 0.5px solid gainsboro;
+  border-radius: 25px;
+
+  padding: 10%;
+
+  img {
+    width: 100%;
+  }
+
+  .car-info-wrapper {
+    p {
+      font-size: 1.4rem;
+      font-weight: 700;
+
+      span:not(:first-child) {
+        color: #63a1ff;
+        float: right;
+      }
+    }
+
+    .date {
+      font-size: 1.2rem;
+      color: gray;
+      margin-top: 2.5%;
+    }
+  }
+}

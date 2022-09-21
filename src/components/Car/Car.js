@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Pagination } from "swiper";
+import { FaCar } from "react-icons/fa";
 
+import "./Car.scss";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -20,7 +22,10 @@ function Car() {
 
   return (
     <div className="content-wrapper">
-      <h1 className="title">최저가 렌터카 추천</h1>
+      <h1 className="title">
+        최저가 렌터카 추천
+        <FaCar />
+      </h1>
       <Swiper
         spaceBetween={20}
         slidesPerView={3}
