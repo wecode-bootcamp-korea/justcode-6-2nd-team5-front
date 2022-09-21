@@ -1,45 +1,34 @@
 import React from "react";
 import { useNavigate, Link } from "react-router-dom";
 
-import FixNav from "../pages/FixNav";
-
 import styled from "styled-components";
-import LogoSrc from "../assets/images/logo.png";
 import { BiSearch, BiLogIn } from "react-icons/bi";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 
-const Nav = () => {
+const FixNav = () => {
   return (
-    <>
-      <NavContainer>
-        <div className="logo-box"></div>
-        <ul className="menu-box">
-          <MenuTab>
-            <Link to="/esg">ESG</Link>
-          </MenuTab>
-          <MenuTab>
-            <Link to="/rentcar">렌터카</Link>
-          </MenuTab>
-          <MenuTab>항공</MenuTab>
-          <MenuTab>숙박</MenuTab>
-          <MenuTab>트립</MenuTab>
-          <MenuTab>카페패스</MenuTab>
-          <MenuTab>맛집</MenuTab>
-          <BiSearch className="search-icon" />
-        </ul>
-        <div className="info-box">
-          <InfoTab>
-            <BiLogIn color="gray" />
-            로그인
-          </InfoTab>
-          <InfoTab>
-            <HiOutlineShoppingBag />
-            주문조회
-          </InfoTab>
-        </div>
-      </NavContainer>
-      <FixNav />
-    </>
+    <NavContainer>
+      <ul className="menu-box">
+        <MenuTab>ESG</MenuTab>
+        <MenuTab>렌터카</MenuTab>
+        <MenuTab>항공</MenuTab>
+        <MenuTab>숙박</MenuTab>
+        <MenuTab>트립</MenuTab>
+        <MenuTab>카페패스</MenuTab>
+        <MenuTab>맛집</MenuTab>
+        <BiSearch className="search-icon" />
+      </ul>
+      <div className="info-box">
+        <InfoTab>
+          <BiLogIn color="gray" />
+          로그인
+        </InfoTab>
+        <InfoTab>
+          <HiOutlineShoppingBag />
+          주문조회
+        </InfoTab>
+      </div>
+    </NavContainer>
   );
 };
 
@@ -49,11 +38,6 @@ const NavContainer = styled.div`
   width: 100vw;
   padding-top: 35px;
   background-color: #f8f8f8;
-
-  .logo-box {
-    width: 100px;
-    background: url(${LogoSrc}) no-repeat;
-  }
 
   .menu-box {
     display: flex;
@@ -98,4 +82,4 @@ const InfoTab = styled.span`
   }
 `;
 
-export default Nav;
+export default FixNav;

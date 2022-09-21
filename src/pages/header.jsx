@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Modal from "../components/Modal";
-import IconMenu from "../pages/IconMenu";
+import IconMenu from "./IconMenu";
 
 import { AiFillCar } from "react-icons/ai";
 import { FaPlaneDeparture } from "react-icons/fa";
