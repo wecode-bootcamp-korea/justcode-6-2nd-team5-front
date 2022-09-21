@@ -1,3 +1,7 @@
+body {
+  background-color: white;
+}
+
 .mypage-container {
   display: flex;
   justify-content: center;
@@ -7,7 +11,9 @@
   width: 80%;
   min-width: 1400px; //최소 너비 지정
   max-width: 1800px; //최대 너비 지정
-  margin: 0 5%;
+  margin: 0 auto;
+
+  background-color: #fff;
 
   .mypage-content {
     width: 80%;

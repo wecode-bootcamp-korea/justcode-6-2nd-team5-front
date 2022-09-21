@@ -17,38 +17,47 @@ function RentCar() {
   // 태그 mockdata
   const tagList = [
     {
+      id: 0,
       tagName: "캐스퍼",
       disabled: isOnTag0,
     },
     {
+      id: 1,
       tagName: "애견동반",
       disabled: isOnTag1,
     },
     {
+      id: 2,
       tagName: "낚시용품 가능",
       disabled: isOnTag2,
     },
     {
+      id: 3,
       tagName: "오픈카",
       disabled: isOnTag3,
     },
     {
+      id: 4,
       tagName: "주유비 SAVE, 전기차",
       disabled: isOnTag4,
     },
     {
+      id: 5,
       tagName: "ALL NEW 신차",
       disabled: isOnTag5,
     },
     {
+      id: 6,
       tagName: "전기충전",
       disabled: isOnTag6,
     },
     {
+      id: 7,
       tagName: "BMW",
       disabled: isOnTag7,
     },
     {
+      id: 8,
       tagName: "차박/캠핑카",
       disabled: isOnTag8,
     },

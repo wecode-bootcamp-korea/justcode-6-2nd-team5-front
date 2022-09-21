@@ -71,12 +71,12 @@ function SerchTagBox(props) {
       )}
       <div className="tag-list-wrap">
         <div className="tag-list" style={{ marginLeft: `${tagListSlide}px` }}>
-          {tagList.map((tagInfo, index) => {
+          {tagList.map((tagInfo) => {
             return (
               <button
                 className={tagInfo.disabled ? "tag-on" : "tag-off"}
-                key={index}
-                id={index}
+                key={tagInfo.id}
+                id={tagInfo.id}
                 onClick={tagSelect}
               >
                 {tagInfo.disabled && <span>✓</span>}#{tagInfo.tagName}
