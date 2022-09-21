@@ -1,9 +1,10 @@
 import React from "react";
-
-import Lodge from "./components/Lodge";
+import Router from "./Router";
+import "./styles/common.scss";
+import "./styles/reset.scss";
 
 function App() {
-  return <Lodge />;
+  return <Router />;
 }
 
 export default App;
