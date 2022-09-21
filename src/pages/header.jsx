@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Modal from "../components/Modal";
+import IconMenu from "../pages/IconMenu";
 
 import { AiFillCar } from "react-icons/ai";
 import { FaPlaneDeparture } from "react-icons/fa";
@@ -12,17 +13,30 @@ import { FaHotdog } from "react-icons/fa";
 const Header = () => {
   const [color, setColor] = useState(true);
   const [isOpen, setOpen] = useState(false);
-  const handleClick = () => {
-    setOpen((current) => !current);
+  const handleClick = (event) => {
+    setOpen(true);
+    console.log(isOpen);
+    console.log(event.target);
   };
+  const menuArr = [
+    { icon: <AiFillCar />, name: "렌터카검색" },
+    { icon: <FaPlaneDeparture />, name: "항공검색" },
+    { icon: <FaBed />, name: "숙박검색" },
+    { icon: <FaTicketAlt />, name: "트립검색" },
+    { icon: <FaCoffee />, name: "카페검색" },
+    { icon: <FaHotdog />, name: "맛집검색" },
+  ];
 
   return (
     <HeaderContainder>
       <BtnBox>
-        <IconBtn onClick={handleClick}>
+        {menuArr.map((menu, index) => {
+          return <IconMenu key={index} menu={menu} />;
+        })}
+
+        {/* <IconBtn onClick={handleClick}>
           <AiFillCar className="icon" />
           <span>렌터카검색</span>
-          <Modal isOpen={isOpen} />
         </IconBtn>
         <IconBtn>
           <FaPlaneDeparture className="icon" />
@@ -43,10 +57,10 @@ const Header = () => {
         <IconBtn>
           <FaHotdog className={`icon`} />
           <span>맛집검색</span>
-        </IconBtn>
+        </IconBtn> */}
       </BtnBox>
       <MenuBox>
-        <Menu border="2px solid #63a1ff">
+        <Menu border="1px solid #63a1ff">
           <h6>대여/반납일</h6>
           <p>대여/반납일을 선택해주세요.</p>
         </Menu>
@@ -64,6 +78,7 @@ const Header = () => {
         </Menu>
         <SearchBtn>검색</SearchBtn>
       </MenuBox>
+      {isOpen && <Modal setOpen={setOpen} onClose={() => setOpen(false)} />}
     </HeaderContainder>
   );
 };
@@ -80,7 +95,7 @@ const BtnBox = styled.div`
   justify-content: center;
 `;
 
-export const IconBtn = styled.button`
+export const IconBtn = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -92,12 +107,8 @@ export const IconBtn = styled.button`
   border-radius: 16px;
   border: none;
   color: #808080;
-  background-color: white;
+  background-color: #ffffff;
   font-weight: 600;
-
-  &:active {
-    background-color: #63a1ff;
-  }
 
   svg {
     margin-bottom: 10px;
