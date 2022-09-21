@@ -15,7 +15,7 @@ function Lodge() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("/data/lodge.json")
+    fetch("/data/lodgeInfo.json")
       .then((res) => res.json())
       .then((data) => {
         setData(data.lodgeInfo);
