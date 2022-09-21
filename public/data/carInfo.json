@@ -1,0 +1,46 @@
+{
+  "carInfo": [
+    {
+      "id": 1,
+      "img": "https://www.jejupass.com/resource/PC/images/rentcar/lowprice/04.png",
+      "title": "운전이 어렵다면 경차 추천",
+      "price": "11,000원~",
+      "date": "2022-09-21 수요일 인수"
+    },
+    {
+      "id": 2,
+      "img": "https://www.jejupass.com/resource/PC/images/rentcar/lowprice/04.png",
+      "title": "운전이 어렵다면 경차 추천",
+      "price": "11,000원~",
+      "date": "2022-09-21 수요일 인수"
+    },
+    {
+      "id": 3,
+      "img": "https://www.jejupass.com/resource/PC/images/rentcar/lowprice/04.png",
+      "title": "운전이 어렵다면 경차 추천",
+      "price": "11,000원~",
+      "date": "2022-09-21 수요일 인수"
+    },
+    {
+      "id": 4,
+      "img": "https://www.jejupass.com/resource/PC/images/rentcar/lowprice/04.png",
+      "title": "운전이 어렵다면 경차 추천",
+      "price": "11,000원~",
+      "date": "2022-09-21 수요일 인수"
+    },
+    {
+      "id": 5,
+      "img": "https://www.jejupass.com/resource/PC/images/rentcar/lowprice/04.png",
+      "title": "운전이 어렵다면 경차 추천",
+      "price": "11,000원~",
+      "date": "2022-09-21 수요일 인수"
+    },
+    {
+      "id": 6,
+      "img": "https://www.jejupass.com/resource/PC/images/rentcar/lowprice/04.png",
+      "title": "운전이 어렵다면 경차 추천",
+      "price": "11,000원~",
+      "date": "2022-09-21 수요일 인수"
+    }
+  ]
+}

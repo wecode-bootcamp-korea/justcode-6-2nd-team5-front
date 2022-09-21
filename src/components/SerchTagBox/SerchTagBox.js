@@ -39,15 +39,15 @@ function SerchTagBox(props) {
   // const tagList = [
   //   {
   //     tagName: "캐스퍼",
-  //     disabled: isOnTag0,
+  //     disabled: isOnTag0
   //   },
   //   {
   //     tagName: "애견동반",
-  //     disabled: isOnTag1,
+  //     disabled: isOnTag1
   //   },
   //   {
   //     tagName: "낚시용품 가능",
-  //     disabled: isOnTag2,
+  //     disabled: isOnTag2
   //   },
   // ];
 

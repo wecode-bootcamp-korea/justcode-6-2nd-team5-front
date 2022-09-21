@@ -1,0 +1,31 @@
+{
+  "bannerInfo": [
+    {
+      "id": 1,
+      "img": "https://static-file.jejupass.com/download/1029180?width=1136&height=480",
+      "info1": "2022년 9월 30일까지",
+      "info2": "항공·렌터가·숙박",
+      "info3": "릴레이 할인!",
+      "info4": "항공 구매 시 렌터가 20%",
+      "info5": "렌터카 구매시 숙박10% 할인"
+    },
+    {
+      "id": 2,
+      "img": "https://static-file.jejupass.com/download/1029197?width=1136&height=480",
+      "info1": "8월 16일 ~ 9월 30일 기간 한정",
+      "info2": "렌터카 예약하면",
+      "info3": "운전자보험 무료 가입!",
+      "info4": "낯선 곳 운전도 걱정마세요.",
+      "info5": "사고 시 최대 3천만원 보상"
+    },
+    {
+      "id": 3,
+      "img": "https://static-file.jejupass.com/download/1034558?width=1136&height=480",
+      "info1": "50만명이 선택한 카페 투어 필수템",
+      "info2": "인기 카페 200개",
+      "info3": "카페패스 하나로 즐기기",
+      "info4": "단돈 만원으로 3시간에 한번씩",
+      "info5": "음료를 무료로 교환해보세요."
+    }
+  ]
+}
