@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Pagination, Autoplay } from "swiper";
 
-// import "./Banner.scss";
+import "./Banner.scss";
 import "swiper/css";
 import "swiper/css/pagination";
 
