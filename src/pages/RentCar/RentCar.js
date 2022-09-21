@@ -80,16 +80,18 @@ function RentCar() {
 
   return (
     <div className="rentcar-container">
-      <div className="rentcar-top-content">
-        <SerchTagBox
-          title={"빠른 검색"}
-          tagList={tagList}
-          tagSelect={tagSelect}
-        />
-      </div>
-      <div className="rentcar-main-content">
-        <div className="rentcar-snb"></div>
-        <div className="rentcar-content"></div>
+      <div className="rentcar-content">
+        <div className="rentcar-top-content">
+          <SerchTagBox
+            title={"빠른 검색"}
+            tagList={tagList}
+            tagSelect={tagSelect}
+          />
+        </div>
+        <div className="rentcar-main-content">
+          <div className="rentcar-sfb-wrap"></div>
+          <div className="rentcar-list"></div>
+        </div>
       </div>
     </div>
   );
