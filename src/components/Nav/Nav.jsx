@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
-import FixNav from "../pages/FixNav";
+import FixNav from "./FixNav";
 
 import styled from "styled-components";
-import LogoSrc from "../assets/images/logo.png";
 import { BiSearch, BiLogIn } from "react-icons/bi";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 
 const Nav = () => {
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const updateScroll = () => {
+    setScrollPosition(window.scrollY || document.documentElement.scrollTop);
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", updateScroll);
+  });
+
   return (
     <>
       <NavContainer>
@@ -33,12 +40,12 @@ const Nav = () => {
             로그인
           </InfoTab>
           <InfoTab>
-            <HiOutlineShoppingBag />
+            <HiOutlineShoppingBag color="gray" />
             주문조회
           </InfoTab>
         </div>
       </NavContainer>
-      <FixNav />
+      {scrollPosition < 100 ? null : <FixNav />}
     </>
   );
 };
@@ -47,12 +54,11 @@ const NavContainer = styled.div`
   display: flex;
   justify-content: space-around;
   width: 100vw;
-  padding-top: 35px;
+  padding: 35px 0 20px 0;
   background-color: #f8f8f8;
 
   .logo-box {
     width: 100px;
-    background: url(${LogoSrc}) no-repeat;
   }
 
   .menu-box {
@@ -64,6 +70,9 @@ const NavContainer = styled.div`
       border-left: 1.5px solid lightgray;
       color: #202020;
       font-size: 24px;
+      &:hover {
+        color: #63a1ff;
+      }
     }
   }
 
@@ -73,8 +82,8 @@ const NavContainer = styled.div`
   }
 `;
 
-const MenuTab = styled.li`
-  padding: 16px;
+export const MenuTab = styled.li`
+  padding-right: 30px;
   font-family: "NanumSquareRound", sans-serif;
   font-weight: 800;
   font-size: 1.6rem;
@@ -85,7 +94,9 @@ const MenuTab = styled.li`
 `;
 
 const InfoTab = styled.span`
-  padding: 16px;
+  display: flex;
+  align-items: center;
+  padding: 12px 10px;
   font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
     Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic",
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
@@ -95,6 +106,11 @@ const InfoTab = styled.span`
   cursor: pointer;
   &:hover {
     color: #202020;
+  }
+
+  svg {
+    margin-right: 5px;
+    font-size: 24px;
   }
 `;
 

@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Modal from "../components/Modal";
+import Modal from "../components/Modal/Modal";
+
 import IconMenu from "./IconMenu";
+import SearchMenu from "./SearchMenu";
 
 import { AiFillCar } from "react-icons/ai";
 import { FaPlaneDeparture } from "react-icons/fa";
@@ -13,10 +15,8 @@ import { FaHotdog } from "react-icons/fa";
 const Header = () => {
   const [color, setColor] = useState(true);
   const [isOpen, setOpen] = useState(false);
-  const handleClick = (event) => {
+  const modalOpen = (event) => {
     setOpen(true);
-    console.log(isOpen);
-    console.log(event.target);
   };
   const menuArr = [
     { icon: <AiFillCar />, name: "렌터카검색" },
@@ -59,26 +59,8 @@ const Header = () => {
           <span>맛집검색</span>
         </IconBtn> */}
       </BtnBox>
-      <MenuBox>
-        <Menu border="1px solid #63a1ff">
-          <h6>대여/반납일</h6>
-          <p>대여/반납일을 선택해주세요.</p>
-        </Menu>
-        <Menu>
-          <h6>대여/반납 시간</h6>
-          <p>시간을 선택해주세요.</p>
-        </Menu>
-        <Menu>
-          <h6>차량조건</h6>
-          <p>조건을 선택해주세요.</p>
-        </Menu>
-        <Menu>
-          <h6>운전자조건</h6>
-          <p>운전자조건을 선택해주세요.</p>
-        </Menu>
-        <SearchBtn>검색</SearchBtn>
-      </MenuBox>
-      {isOpen && <Modal setOpen={setOpen} onClose={() => setOpen(false)} />}
+      <SearchMenu modalOpen={modalOpen} />
+      {isOpen && <Modal setOpen={setOpen} />}
     </HeaderContainder>
   );
 };
@@ -115,49 +97,6 @@ export const IconBtn = styled.div`
     color: #63a1ff;
     font-size: 30px;
   }
-`;
-
-const MenuBox = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-
-const Menu = styled.div`
-  margin: 10px;
-  border: ${(props) => props.border};
-  height: 95px;
-  padding: 25px 23px 16px 23px;
-  background-color: white;
-  border-radius: 16px;
-  box-shadow: 0 8px 16px 0 rgba(32, 32, 32, 0.08);
-
-  h6 {
-    padding-bottom: 10px;
-    color: #606060;
-    font-size: 15px;
-    font-weight: 500;
-  }
-
-  p {
-    color: #aeaeae;
-    font-size: 18px;
-    font-weight: 600;
-    cursor: pointer;
-  }
-`;
-
-const SearchBtn = styled.button`
-  margin: 10px;
-  width: 96px;
-  height: 96px;
-  border-radius: 16px;
-  border: none;
-  background-color: #63a1ff;
-  color: white;
-  font-size: 20px;
-  font-weight: 900;
-  box-shadow: 0 8px 16px 0 rgba(32, 32, 32, 0.08);
-  cursor: pointer;
 `;
 
 export default Header;

@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const IconMenu = ({ menu }) => {
+const IconMenu = ({ menu, ModalOpen }) => {
   const [color, setColor] = useState(true);
   console.log(menu);
   const onClick = () => {};
   return (
-    <MainIconBtn onClick={onClick}>
+    <MainIconBtn onClick={ModalOpen}>
       {menu.icon}
       {menu.name}
     </MainIconBtn>
   );
 };
 
-export const defaultIconBtn = styled.div`
+export const DefaultIconBtn = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,7 +31,7 @@ export const defaultIconBtn = styled.div`
   }
 `;
 
-const MainIconBtn = styled(defaultIconBtn)`
+const MainIconBtn = styled(DefaultIconBtn)`
   margin: 50px 10px;
   width: 90px;
   height: 90px;
