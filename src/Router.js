@@ -7,6 +7,7 @@ import Lodge from "./components/Lodge/Lodge";
 import Banner from "./components/Banner/Banner";
 import Car from "./components/Car/Car";
 import Restaurant from "./components/Restaurant/Restaurant";
+import Promotion from "./components/Promotion/Promotion";
 
 function Router() {
   return (
@@ -18,6 +19,7 @@ function Router() {
         <Route path="/Banner" element={<Banner />} />
         <Route path="/Car" element={<Car />} />
         <Route path="/Restaurant" element={<Restaurant />} />
+        <Route path="/Promotion" element={<Promotion />} />
       </Routes>
     </BrowserRouter>
   );
