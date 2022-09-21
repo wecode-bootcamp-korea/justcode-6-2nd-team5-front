@@ -61,7 +61,7 @@ function SerchTagBox(props) {
   // };
 
   return (
-    <div className="rentcar-stb-wrap">
+    <div className="rentcar-stb-wrap product-bar">
       <div className="title">{title}</div>
       {/* prev 버튼은 tag list의 위치가 초기 위치보다 클 때만 렌더링 되도록 함 */}
       {tagListSlide < 0 && (

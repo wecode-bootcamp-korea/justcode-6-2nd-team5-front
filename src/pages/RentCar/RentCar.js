@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SerchTagBox from "../../components/SerchTagBox/SerchTagBox";
+import SideFilterBar from "../../components/SideFilterBar/SideFilterBar";
 import "./RentCar.scss";
 
 function RentCar() {
@@ -89,7 +90,7 @@ function RentCar() {
           />
         </div>
         <div className="rentcar-main-content">
-          <div className="rentcar-sfb-wrap"></div>
+          <SideFilterBar />
           <div className="rentcar-list"></div>
         </div>
       </div>
