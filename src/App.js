@@ -1,9 +1,9 @@
 import React from "react";
 
-import Lodging from "./components/Lodging";
+import Lodge from "./components/Lodge";
 
 function App() {
-  return <Lodging />;
+  return <Lodge />;
 }
 
 export default App;

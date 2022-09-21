@@ -2,18 +2,18 @@ import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination } from "swiper";
 
-import "./Lodging.scss";
+import "./Lodge.scss";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 SwiperCore.use([Navigation, Pagination]);
 
-function Lodging() {
+function Lodge() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("/data/lodging.json")
+    fetch("/data/lodge.json")
       .then((res) => res.json())
       .then((data) => {
         setData(data.lodgeInfo);
@@ -48,4 +48,4 @@ function Lodging() {
   );
 }
 
-export default Lodging;
+export default Lodge;
