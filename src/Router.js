@@ -2,10 +2,10 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Login from "./pages/login/login";
-import TermsSignup from "./components/termsSignup";
+import TermsSignup from "./components/signup/termsSignup";
 import Signup from "./pages/signup/signup";
-import SignupFin from "./components/signupFin";
-import SignupModal from "./components/signupModal";
+import SignupFin from "./components/signup/signupFin";
+import SignupModal from "./components/signup/signupModal";
 
 function Router() {
   return (

@@ -1,6 +1,6 @@
 import "./signup.scss";
 import { useState } from "react";
-import SignupModal from "../../components/signupModal";
+import SignupModal from "../../components/signup/signupModal";
 
 function Signup() {
   const [modalOpen, setModalOpen] = useState(false);

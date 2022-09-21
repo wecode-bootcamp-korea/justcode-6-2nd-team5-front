@@ -1,5 +1,5 @@
 import "./signupFin.scss";
-import signupJeju from "../assets/images/signupJeju.png";
+import signupJeju from "../../assets/images/signupJeju.png";
 
 function SignupFin() {
   return (
