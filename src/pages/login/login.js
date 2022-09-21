@@ -16,29 +16,42 @@ function Login() {
   const userPasswordHandler = (e) => {
     const userPasswordValue = e.target.value;
     setUserPassword(userPasswordValue);
+    console.log(userPasswordValue);
   };
 
   const loginClick = () => {
-    fetch("http://localhost:8000/users/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: userEmail,
-        password: userPassword,
-      }),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        if (result.token) {
-          localStorage.setItem("token", result.token);
-          alert("로그인 성공");
-          window.location.replace("/");
-        } else {
-          alert("로그인 실패");
-        }
-      });
+    const regex =
+      /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+
+    console.log(regex.test(userPassword));
+    if (
+      userEmail.includes("@") &&
+      userPassword.length >= 8 &&
+      userPassword.length <= 16
+    ) {
+      fetch("http://localhost:8000/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: userEmail,
+          password: userPassword,
+        }),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          if (result.token) {
+            localStorage.setItem("token", result.token);
+            alert("로그인 성공");
+            window.location.replace("/");
+          } else {
+            alert("로그인 실패");
+          }
+        });
+    } else {
+      alert("이메일과 비밀번호를 찾을 수 없습니다.");
+    }
   };
 
   return (
@@ -56,7 +69,7 @@ function Login() {
         </div>
         <div className="tab-type">
           <li>
-            <a>회원</a>
+            <a className="tab-a-tag">회원</a>
           </li>
           <li>
             <a>비회원</a>
@@ -100,7 +113,14 @@ function Login() {
           <div className="login-btn">
             <a className="btn-aft">아이디 찾기</a>
             <a className="btn-aft">비밀번호 찾기</a>
-            <a className="btn-bef">회원가입</a>
+            <a
+              className="btn-bef"
+              //  onClick={() => {
+              //   navigate("/test");
+              // }}
+            >
+              회원가입
+            </a>
           </div>
           <div>
             <div className="tit-bef">
