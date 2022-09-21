@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination } from "swiper";
+import { FaHotel } from "react-icons/fa";
 
 import "./Lodge.scss";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "../styles/common.scss";
 
 SwiperCore.use([Navigation, Pagination]);
 
@@ -22,7 +24,9 @@ function Lodge() {
 
   return (
     <div className="content-wrapper">
-      <h1 className="title">제주다운 감성숙소 추천</h1>
+      <h1 className="title">
+        제주다운 감성숙소 추천 <FaHotel />
+      </h1>
       <Swiper
         spaceBetween={20}
         slidesPerView={3}
