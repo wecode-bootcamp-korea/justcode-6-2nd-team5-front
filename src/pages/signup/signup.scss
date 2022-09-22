@@ -70,7 +70,7 @@ html {
 
     .overlap-chk-btn {
       width: 25%;
-      height: 4.3vh;
+      height: 4.1vh;
       padding: 0 15px;
       margin-left: 7px;
       font-size: 18px;
@@ -80,6 +80,10 @@ html {
       background-color: white;
       border-radius: 4px;
       cursor: pointer;
+    }
+
+    .overlap-chk-btn:disabled {
+      background: linear-gradient(#c8d2ff, #ffdeec);
     }
 
     .email-valid-chk {

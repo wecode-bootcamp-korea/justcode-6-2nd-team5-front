@@ -14,6 +14,7 @@ function Signup() {
   const [gender, setGender] = useState("male");
   const [isValid, setIsValid] = useState(false);
   const [emailValid, setEmailValid] = useState(true);
+  const [emailBtnDisable, setEmailBtnDisable] = useState(false);
 
   const userSignupEmailHandler = (e) => {
     const emailValue = e.target.value;
@@ -69,10 +70,13 @@ function Signup() {
         } else {
           setEmailValid(true);
           alert("사용가능한 이메일 입니다.");
+          setEmailBtnDisable(true);
         }
       });
     }
   };
+
+  console.log(emailBtnDisable);
 
   const userSignUp = () => {
     email.includes("@") &&
@@ -84,8 +88,14 @@ function Signup() {
 
     if (password !== passwordChk) {
       alert("입력한 비밀번호가 다릅니다.");
+    } else if (email == "") {
+      alert("이메일을 입력해주세요.");
     } else if (passwordPattern.test(password) == false) {
       alert("비밀번호를 확인해주세요.");
+    } else if (name == "") {
+      alert("이름을 입력해주세요.");
+    } else if (birth == "") {
+      alert("생년월일을 입력해주세요.");
     } else if (phonePattern.test(phoneNumber) == false) {
       alert("전화번호를 확인해주세요.");
     } else if (birthattern.test(birth) == false) {
@@ -137,6 +147,7 @@ function Signup() {
               type="button"
               className="overlap-chk-btn"
               onClick={userEmailValidation}
+              disabled={emailBtnDisable}
             >
               확인
             </button>
