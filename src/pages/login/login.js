@@ -16,14 +16,12 @@ function Login() {
   const userPasswordHandler = (e) => {
     const userPasswordValue = e.target.value;
     setUserPassword(userPasswordValue);
-    console.log(userPasswordValue);
   };
 
   const loginClick = () => {
     const regex =
       /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
 
-    console.log(regex.test(userPassword));
     if (
       userEmail.includes("@") &&
       userPassword.length >= 8 &&
@@ -113,14 +111,7 @@ function Login() {
           <div className="login-btn">
             <a className="btn-aft">아이디 찾기</a>
             <a className="btn-aft">비밀번호 찾기</a>
-            <a
-              className="btn-bef"
-              //  onClick={() => {
-              //   navigate("/test");
-              // }}
-            >
-              회원가입
-            </a>
+            <a className="btn-bef">회원가입</a>
           </div>
           <div>
             <div className="tit-bef">
