@@ -8,7 +8,6 @@ import Login from "./pages/login/login";
 import TermsSignup from "./components/Signup/TermsSignup";
 import Signup from "./pages/Signup/Signup";
 import SignupFin from "./components/Signup/SignupFin";
-import SignupModal from "./components/Signup/SignupModal";
 
 function Router() {
   return (
@@ -20,7 +19,6 @@ function Router() {
         <Route path="/login" element={<Login />} />
         <Route path="/termsSignup" element={<TermsSignup />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/signupModal" element={<SignupModal />} />
         <Route path="/signupFin" element={<SignupFin />} />
       </Routes>
     </BrowserRouter>

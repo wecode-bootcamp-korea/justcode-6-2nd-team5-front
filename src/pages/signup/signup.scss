@@ -1,5 +1,10 @@
+html {
+  background-color: white;
+}
+
 .signup {
   width: 100%;
+  background-color: white;
 
   .signup-container {
     width: 20%;
@@ -34,6 +39,10 @@
       text-align: left;
       display: block;
       cursor: pointer;
+    }
+
+    input:focus {
+      background-color: #e2f0fa;
     }
 
     .signup-input {
@@ -73,21 +82,15 @@
       cursor: pointer;
     }
 
+    .email-valid-chk {
+      padding-top: 5px;
+      padding-left: 8px;
+      color: red;
+    }
+
     .signup-bday {
       margin-bottom: 5px;
       display: block;
-    }
-
-    select {
-      width: 31%;
-      height: 4vh;
-      padding-left: 8px;
-      border-width: 0;
-      margin-right: 7.8px;
-      font-size: 16px;
-      font-family: "Pretendard-Regular";
-      border: 1px solid #eaeaea;
-      border-radius: 4px;
     }
 
     .form-radio-btn {
@@ -110,6 +113,7 @@
       font-weight: 600;
       height: -webkit-fill-available;
       line-height: 45px;
+      cursor: pointer;
     }
 
     /* Checked */

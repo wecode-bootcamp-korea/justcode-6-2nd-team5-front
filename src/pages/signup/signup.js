@@ -1,22 +1,19 @@
 import "./Signup.scss";
 import { useState } from "react";
-import SignupModal from "../../components/Signup/SignupModal";
-import { navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [birth, setBirth] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [gender, setGender] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordChk, setPasswordChk] = useState("");
+  const [gender, setGender] = useState("male");
   const [isValid, setIsValid] = useState(false);
-
-  const [modalOpen, setModalOpen] = useState(false);
-  const showModal = () => {
-    setModalOpen(true);
-  };
+  const [emailValid, setEmailValid] = useState(true);
 
   const userSignupEmailHandler = (e) => {
     const emailValue = e.target.value;
@@ -38,6 +35,11 @@ function Signup() {
     setName(nameValue);
   };
 
+  const userSignupBirthHandler = (e) => {
+    const birthValue = e.target.value;
+    setBirth(birthValue);
+  };
+
   const userSignupPhoneNumberHandler = (e) => {
     const phoneNumberValue = e.target.value;
     setPhoneNumber(phoneNumberValue);
@@ -46,6 +48,31 @@ function Signup() {
   const passwordPattern =
     /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
   const phonePattern = /^010-?([0-9]{3,4})-?([0-9]{4})$/;
+  const birthattern =
+    /^(19[0-9][0-9]|20\d{2})(0[0-9]|1[0-2])(0[1-9]|[1-2][0-9]|3[0-1])$/;
+
+  const userEmailValidation = () => {
+    if (!(email.includes("@") && email.split(".").length - 1 >= 1)) {
+      alert("이메일 형식이 아닙니다.");
+    } else {
+      fetch("http://localhost:8000/users/email/" + email, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+        }),
+      }).then((res) => {
+        if (res.status === 400) {
+          setEmailValid(false);
+        } else {
+          setEmailValid(true);
+          alert("사용가능한 이메일 입니다.");
+        }
+      });
+    }
+  };
 
   const userSignUp = () => {
     email.includes("@") &&
@@ -61,8 +88,9 @@ function Signup() {
       alert("비밀번호를 확인해주세요.");
     } else if (phonePattern.test(phoneNumber) == false) {
       alert("전화번호를 확인해주세요.");
+    } else if (birthattern.test(birth) == false) {
+      alert("생년월일 8자리를 확인해주세요.");
     } else {
-      // api docs 확인 후 바꿔야함
       fetch("http://localhost:8000/users/signup", {
         method: "POST",
         headers: {
@@ -79,8 +107,8 @@ function Signup() {
       })
         .then((res) => res.json())
         .then((result) => {
-          if (result.message == "") {
-            // navigate("/login");
+          if (result.message == "회원가입 성공!") {
+            navigate("/signupFin");
           } else {
             alert("회원가입에 실패하였습니다.");
           }
@@ -108,11 +136,15 @@ function Signup() {
             <button
               type="button"
               className="overlap-chk-btn"
-              onClick={showModal}
+              onClick={userEmailValidation}
             >
               확인
             </button>
-            {modalOpen && <SignupModal setModalOpen={setModalOpen} />}
+            {emailValid ? (
+              ""
+            ) : (
+              <p className="email-valid-chk">중복된 이메일 입니다.</p>
+            )}
           </div>
           <div>
             <label htmlFor="signup-pw" className="signup-label">
@@ -120,6 +152,7 @@ function Signup() {
             </label>
             <input
               id="signup-pw"
+              type="password"
               placeholder="영문, 숫자, 특수문자 8 ~ 16자 이내"
               onChange={userSignupPasswordHandler}
               className="signup-input"
@@ -131,6 +164,7 @@ function Signup() {
             </label>
             <input
               id="signup-pw"
+              type="password"
               placeholder="확인을 위해 한번 더 입력해주세요."
               onChange={userSignupPasswordChkHandler}
               className="signup-input"
@@ -147,34 +181,15 @@ function Signup() {
             ></input>
           </div>
           <div className="signup-bday-container">
-            <span className="signup-bday">생년월일</span>
-            <select name="year">
-              <option value=""> 년 </option>
-              <option value="1995">1995</option>
-              <option value="1996">1996</option>
-              <option value="1997">1997</option>
-              <option value="1998">1998</option>
-              <option value="1999">1999</option>
-              <option value="2000">2000</option>
-            </select>
-            <select name="month">
-              <option value=""> 월 </option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-            </select>
-            <select name="day">
-              <option value=""> 일 </option>
-              <option value="11">11</option>
-              <option value="12">12</option>
-              <option value="13">13</option>
-              <option value="14">14</option>
-              <option value="15">15</option>
-              <option value="26">16</option>
-            </select>
+            <label htmlFor="birth" className="signup-label">
+              생년월일
+            </label>
+            <input
+              id="birth"
+              className="signup-input"
+              onChange={userSignupBirthHandler}
+              placeholder="생년월일은 8자리입니다."
+            ></input>
           </div>
           <div>
             <label htmlFor="signup-ph-n" className="signup-label">
@@ -211,7 +226,7 @@ function Signup() {
         </form>
         <div>
           <button className="signup-action-btn" onClick={userSignUp}>
-            확인
+            회원가입
           </button>
         </div>
       </div>
