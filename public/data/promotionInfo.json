@@ -1,0 +1,28 @@
+{
+  "promotionInfo": [
+    {
+      "id": 1,
+      "img": "https://static-file.jejupass.com/download/323487.webp?width=736&height=360"
+    },
+    {
+      "id": 2,
+      "img": "https://static-file.jejupass.com/download/120197.webp?width=736&height=360"
+    },
+    {
+      "id": 3,
+      "img": "https://static-file.jejupass.com/download/687857.webp?width=736&height=360"
+    },
+    {
+      "id": 4,
+      "img": "https://static-file.jejupass.com/download/845856.webp?width=736&height=360"
+    },
+    {
+      "id": 5,
+      "img": "https://static-file.jejupass.com/download/1048264?width=736&height=360"
+    },
+    {
+      "id": 6,
+      "img": "https://static-file.jejupass.com/download/1036193"
+    }
+  ]
+}
