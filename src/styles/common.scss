@@ -19,6 +19,11 @@
   --font-size-tag: 25px;
   --font-size-product-title: 28px;
   --font-size-product-content: 25px;
+  --font-size-product-small: 22px;
+
+  --icon-size-big: 24px;
+  --icon-size-small: 20px;
+  --icon-check-box: 32px;
 }
 
 .content-wrapper {
@@ -75,6 +80,7 @@
   padding: 20px 40px;
   border-radius: 20px;
   background-color: #fff;
+  margin-bottom: 20px;
 
   .title {
     display: flex;
@@ -84,5 +90,39 @@
     font-size: var(--font-size-product-title);
     font-weight: bold;
     margin-right: 50px;
+  }
+
+  .dep1 {
+    display: flex;
+    cursor: pointer;
+
+    .right-icon-off,
+    .right-icon-on {
+      width: var(--icon-size-big);
+      height: var(--icon-size-big);
+    }
+  }
+
+  .right-icon-off,
+  .right-icon-on {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    background-size: cover;
+  }
+
+  .dep2 {
+    margin-top: 30px;
+
+    li {
+      display: flex;
+      cursor: pointer;
+
+      span {
+        display: flex;
+        font-size: var(--font-size-product-content);
+        padding: 20px 0px;
+      }
+    }
   }
 }

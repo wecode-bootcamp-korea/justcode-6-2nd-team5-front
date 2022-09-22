@@ -1,26 +1,15 @@
+import { useEffect, useState } from "react";
 import "./SideFilterBar.scss";
 import SortOrderBar from "./SortOrderBar/SortOrderBar";
+import FilterBar from "./FilterBar/FilterBar";
 
-function SideFilterBar() {
-  // order type mockdata
-  const orderTypes = [
-    {
-      id: 0,
-      type: "가격순",
-    },
-    {
-      id: 1,
-      type: "예약순",
-    },
-    {
-      id: 2,
-      type: "리뷰평점순",
-    },
-  ];
+function SideFilterBar(props) {
+  const { orderTypes, filterTypes, filterSelect } = props;
 
   return (
     <div className="rentcar-sfb-wrap">
       <SortOrderBar orderTypes={orderTypes} />
+      <FilterBar filterTypes={filterTypes} filterSelect={filterSelect} />
     </div>
   );
 }

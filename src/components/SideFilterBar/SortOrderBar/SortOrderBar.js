@@ -1,11 +1,12 @@
 import { useState } from "react";
+import Dep1 from "../Dep1/Dep1";
 import "./SortOrderBar.scss";
 
 function SortOrderBar(props) {
   const { orderTypes } = props;
 
   // dep-1 check state value
-  const [isOndep1, setIsOndep1] = useState();
+  const [isOndep1, setIsOndep1] = useState(false);
 
   // dep-1 change disabled
   const onCheckDep1 = () => {
@@ -50,12 +51,9 @@ function SortOrderBar(props) {
 
   return (
     <div className="sob-wrap product-bar">
-      <div className="sob-dep1" onClick={onCheckDep1}>
-        <span className="title">정렬</span>
-        <div className={isOndep1 ? "right-icon-on" : "right-icon-off"}></div>
-      </div>
+      <Dep1 title={"정렬"} isOndep1={isOndep1} onCheckDep1={onCheckDep1} />
       {isOndep1 && (
-        <ul className="sob-dep2">
+        <ul className="dep2">
           {orderTypes.map((type) => {
             return (
               <li key={type.id} id={type.id} onClick={onCheckDep2}>

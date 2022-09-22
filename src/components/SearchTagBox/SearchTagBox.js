@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./SerchTagBox.scss";
+import "./SearchTagBox.scss";
 
-function SerchTagBox(props) {
+function SearchTagBox(props) {
   const { title, tagList, tagSelect } = props;
 
   // 버튼 슬라이드
@@ -95,4 +95,4 @@ function SerchTagBox(props) {
   );
 }
 
-export default SerchTagBox;
+export default SearchTagBox;

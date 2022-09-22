@@ -1,0 +1,24 @@
+{
+  "filterTypes": [
+    {
+      "id": 0,
+      "type": "금액",
+      "slideList": ["최소값", "최대값"]
+    },
+    {
+      "id": 1,
+      "type": "연식",
+      "checkList": ["content1", "content2"]
+    },
+    {
+      "id": 2,
+      "type": "옵션",
+      "checkList": ["content1", "content2"]
+    },
+    {
+      "id": 3,
+      "type": "누적예약",
+      "slideList": ["최소값", "최대값"]
+    }
+  ]
+}

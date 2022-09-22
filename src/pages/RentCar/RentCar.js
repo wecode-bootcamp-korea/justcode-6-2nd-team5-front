@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import SerchTagBox from "../../components/SerchTagBox/SerchTagBox";
+import React, { useEffect, useState } from "react";
+import SearchTagBox from "../../components/SearchTagBox/SearchTagBox";
 import SideFilterBar from "../../components/SideFilterBar/SideFilterBar";
 import "./RentCar.scss";
 
@@ -15,54 +15,35 @@ function RentCar() {
   const [isOnTag7, setIsOnTag7] = useState(false);
   const [isOnTag8, setIsOnTag8] = useState(false);
 
-  // 태그 mockdata
-  const tagList = [
-    {
-      id: 0,
-      tagName: "캐스퍼",
-      disabled: isOnTag0,
-    },
-    {
-      id: 1,
-      tagName: "애견동반",
-      disabled: isOnTag1,
-    },
-    {
-      id: 2,
-      tagName: "낚시용품 가능",
-      disabled: isOnTag2,
-    },
-    {
-      id: 3,
-      tagName: "오픈카",
-      disabled: isOnTag3,
-    },
-    {
-      id: 4,
-      tagName: "주유비 SAVE, 전기차",
-      disabled: isOnTag4,
-    },
-    {
-      id: 5,
-      tagName: "ALL NEW 신차",
-      disabled: isOnTag5,
-    },
-    {
-      id: 6,
-      tagName: "전기충전",
-      disabled: isOnTag6,
-    },
-    {
-      id: 7,
-      tagName: "BMW",
-      disabled: isOnTag7,
-    },
-    {
-      id: 8,
-      tagName: "차박/캠핑카",
-      disabled: isOnTag8,
-    },
+  // tad disabled state value list
+  const tagDisableds = [
+    isOnTag0,
+    isOnTag1,
+    isOnTag2,
+    isOnTag3,
+    isOnTag4,
+    isOnTag5,
+    isOnTag6,
+    isOnTag7,
+    isOnTag8,
   ];
+
+  // SearchTagBox props
+  const [tagList, setTagList] = useState([]);
+
+  // 태그 mockdata
+  useEffect(() => {
+    fetch("/data/rentcar/tagList.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setTagList(data.tagList);
+      });
+  }, []);
+
+  // 각 태그에 disabled 속성 할당
+  for (let i = 0; i < tagList.length; i++) {
+    tagList[i].disabled = tagDisableds[i];
+  }
 
   // 태그 선택/선택해제 함수
   const tagSelect = (e) => {
@@ -79,18 +60,70 @@ function RentCar() {
     if (tagId === "8") setIsOnTag8((prev) => !prev);
   };
 
+  // Side Filter Bar props
+
+  // order type mockdata
+  const [orderTypes, setOrderTypes] = useState([]);
+
+  useEffect(() => {
+    fetch("/data/rentcar/orderType.json")
+      .then((res) => res.json())
+      .then((data) => setOrderTypes(data.orderTypes));
+  }, []);
+
+  // filter type mockdata
+  // filter dep-2
+  const [isCheckFilter0, setIsCheckFilter0] = useState(false);
+  const [isCheckFilter1, setIsCheckFilter1] = useState(false);
+  const [isCheckFilter2, setIsCheckFilter2] = useState(false);
+  const [isCheckFilter3, setIsCheckFilter3] = useState(false);
+  const filterDep2Disableds = [
+    isCheckFilter0,
+    isCheckFilter1,
+    isCheckFilter2,
+    isCheckFilter3,
+  ];
+  const [filterTypes, setFilterTypes] = useState([]);
+
+  useEffect(() => {
+    fetch("/data/rentcar/filterType.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setFilterTypes(data.filterTypes);
+      });
+  }, []);
+
+  // 필터 dep-2 disabled 속성 할당
+  for (let i = 0; i < filterTypes.length; i++) {
+    filterTypes[i].disabled = filterDep2Disableds[i];
+  }
+
+  // filter dep-2 선택/선택해제 함수
+  const filterSelect = (e) => {
+    const tagId = e.target.id;
+
+    if (tagId === "0") setIsCheckFilter0(!isCheckFilter0);
+    if (tagId === "1") setIsCheckFilter1(!isCheckFilter1);
+    if (tagId === "2") setIsCheckFilter2(!isCheckFilter2);
+    if (tagId === "3") setIsCheckFilter3(!isCheckFilter3);
+  };
+
   return (
     <div className="rentcar-container">
       <div className="rentcar-content">
         <div className="rentcar-top-content">
-          <SerchTagBox
+          <SearchTagBox
             title={"빠른 검색"}
             tagList={tagList}
             tagSelect={tagSelect}
           />
         </div>
         <div className="rentcar-main-content">
-          <SideFilterBar />
+          <SideFilterBar
+            orderTypes={orderTypes}
+            filterTypes={filterTypes}
+            filterSelect={filterSelect}
+          />
           <div className="rentcar-list"></div>
         </div>
       </div>
