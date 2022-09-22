@@ -7,6 +7,7 @@ import FooterTop from "./components/Footer/FooterTop";
 import FooterBottom from "./components/Footer/FooterBottom";
 import Mypage from "./pages/Mypage/Mypage";
 import RentCar from "./pages/RentCar/RentCar";
+import Main from "./pages/Main/Main";
 
 function Router() {
   return (
@@ -16,6 +17,7 @@ function Router() {
       <Routes>
         <Route path="/mypage" element={<Mypage />} />
         <Route path="/rentcar" element={<RentCar />} />
+        <Route path="/main" element={<Main />} />
       </Routes>
       <FooterTop />
       <FooterBottom />

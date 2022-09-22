@@ -1,0 +1,40 @@
+{
+  "restaurantInfo": [
+    {
+      "id": 1,
+      "img": "https://static-file.jejupass.com/download/120247?width=400&height=300",
+      "title": "태성흑돈",
+      "location": "서귀포 중문"
+    },
+    {
+      "id": 2,
+      "img": "https://static-file.jejupass.com/download/120247?width=400&height=300",
+      "title": "태성흑돈",
+      "location": "서귀포 중문"
+    },
+    {
+      "id": 3,
+      "img": "https://static-file.jejupass.com/download/120247?width=400&height=300",
+      "title": "태성흑돈",
+      "location": "서귀포 중문"
+    },
+    {
+      "id": 4,
+      "img": "https://static-file.jejupass.com/download/120247?width=400&height=300",
+      "title": "태성흑돈",
+      "location": "서귀포 중문"
+    },
+    {
+      "id": 5,
+      "img": "https://static-file.jejupass.com/download/120247?width=400&height=300",
+      "title": "태성흑돈",
+      "location": "서귀포 중문"
+    },
+    {
+      "id": 6,
+      "img": "https://static-file.jejupass.com/download/120247?width=400&height=300",
+      "title": "태성흑돈",
+      "location": "서귀포 중문"
+    }
+  ]
+}
