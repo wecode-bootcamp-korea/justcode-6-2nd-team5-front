@@ -28,11 +28,15 @@ const SearchMenu = ({ modalOpen }) => {
 export const MenuBox = styled.div`
   display: flex;
   justify-content: center;
+
+  .border {
+    border: "1px solid #63a1ff";
+  }
 `;
 
 export const Menu = styled.div`
   margin: 10px;
-  border: ${(props) => props.border};
+  border: ${(props) => props.className === "border" && "1px solid #63a1ff"};
   height: 95px;
   padding: 25px 23px 16px 23px;
   background-color: white;

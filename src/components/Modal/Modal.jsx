@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
-import Header from "../../pages/Header";
-import Calender from "../Modal/Calender";
+import Date from "../Modal/Date";
+import Time from "../Modal/Time";
 
 import { MenuBox, Menu, SearchBtn } from "../../pages/SearchMenu";
 
@@ -14,7 +14,15 @@ import { FaTicketAlt } from "react-icons/fa";
 import { FaCoffee } from "react-icons/fa";
 import { FaHotdog } from "react-icons/fa";
 
-const Modal = ({ setOpen, onClose }) => {
+const Modal = ({ setOpen }) => {
+  const [condition, setCondition] = useState("time");
+
+  useEffect(() => {
+    const $body = document.querySelector("body");
+    $body.style.overflow = "hidden";
+    return () => ($body.style.overflow = "auto");
+  }, []);
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -33,30 +41,50 @@ const Modal = ({ setOpen, onClose }) => {
       <ModalWrap>
         <CloseButton onClick={handleClose}>✕</CloseButton>
         <Contents>
-          {menuArr.map((menu) => {
-            return <ModalIconBtn>{menu.icon}</ModalIconBtn>;
+          {menuArr.map((menu, index) => {
+            return <ModalIconBtn key={index}>{menu.icon}</ModalIconBtn>;
           })}
         </Contents>
         <MenuBox>
-          <Menu border="1px solid #63a1ff" fontSize>
+          <Menu
+            onClick={() => setCondition("date")}
+            className={condition === "date" && "border"}
+            fontSize
+          >
             <h6>인수/반납일</h6>
             <p>인수/반납일을 선택해주세요.</p>
           </Menu>
-          <Menu fontSize>
+          <Menu
+            onClick={() => {
+              setCondition("time");
+              console.log(condition);
+            }}
+            className={condition === "time" && "border"}
+            fontSize
+          >
             <h6>인수/반납 시간</h6>
             <p>시간을 선택해주세요.</p>
           </Menu>
-          <Menu fontSize>
+          <Menu
+            onClick={() => setCondition("car")}
+            className={condition === "car" && "border"}
+            fontSize
+          >
             <h6>차량조건</h6>
             <p>조건을 선택해주세요.</p>
           </Menu>
-          <Menu fontSize>
+          <Menu
+            onClick={() => setCondition("driver")}
+            className={condition === "driver" && "border"}
+            fontSize
+          >
             <h6>운전자조건</h6>
             <p>운전자조건을 선택해주세요.</p>
           </Menu>
           <SearchBtn fontSize>검색</SearchBtn>
         </MenuBox>
-        <Calender />
+        {condition === "date" && <Date />}
+        {condition == "time" && <Time />}
       </ModalWrap>
     </Overlay>
   );

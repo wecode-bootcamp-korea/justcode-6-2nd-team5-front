@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const IconMenu = ({ menu, ModalOpen }) => {
   const [color, setColor] = useState(true);
-  console.log(menu);
   const onClick = () => {};
   return (
     <MainIconBtn onClick={ModalOpen}>
