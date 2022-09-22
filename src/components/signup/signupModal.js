@@ -1,4 +1,4 @@
-import "./signupModal.scss";
+import "./SignupModal.scss";
 
 function SignupModal() {
   // 모달 끄기

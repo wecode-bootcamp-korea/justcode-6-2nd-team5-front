@@ -1,4 +1,4 @@
-import "./signupFin.scss";
+import "./SignupFin.scss";
 import signupJeju from "../../assets/images/signupJeju.png";
 
 function SignupFin() {

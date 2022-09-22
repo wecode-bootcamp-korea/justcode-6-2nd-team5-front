@@ -1,6 +1,6 @@
-import "./signup.scss";
+import "./Signup.scss";
 import { useState } from "react";
-import SignupModal from "../../components/signup/signupModal";
+import SignupModal from "../../components/Signup/SignupModal";
 import { navigate } from "react-router-dom";
 
 function Signup() {

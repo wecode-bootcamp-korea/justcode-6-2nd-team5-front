@@ -1,4 +1,4 @@
-import "./termsSignup.scss";
+import "./TermsSignup.scss";
 
 function TermsSignup() {
   return (
