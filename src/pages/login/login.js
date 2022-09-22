@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import "./login.scss";
 import naverIcon from "../../assets/images/loginBtnN.png";
 import kakaoIcon from "../../assets/images/loginBtnK.png";
@@ -6,6 +7,62 @@ import { Link } from "react-router-dom";
 // import loginBanner from "../../assets/images/loginBr.png";
 
 function Login() {
+=======
+import { useState } from "react";
+import "./login.scss";
+import naverIcon from "../../assets/images/btnN.png";
+import kakaoIcon from "../../assets/images/btnK.png";
+import loginBanner from "../../assets/images/login-jeju-b.png";
+
+function Login() {
+  const [userEmail, setUserEamil] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+
+  const userEmailHandler = (e) => {
+    const userEmailValue = e.target.value;
+    setUserEamil(userEmailValue);
+  };
+
+  const userPasswordHandler = (e) => {
+    const userPasswordValue = e.target.value;
+    setUserPassword(userPasswordValue);
+  };
+
+  const loginClick = () => {
+    const regex =
+      /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+
+    if (
+      userEmail.includes("@") &&
+      userPassword.length >= 8 &&
+      userPassword.length <= 16
+    ) {
+      fetch("http://localhost:8000/users/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: userEmail,
+          password: userPassword,
+        }),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          if (result.token) {
+            localStorage.setItem("token", result.token);
+            alert("로그인 성공");
+            window.location.replace("/");
+          } else {
+            alert("로그인 실패");
+          }
+        });
+    } else {
+      alert("이메일과 비밀번호를 찾을 수 없습니다.");
+    }
+  };
+
+>>>>>>> 9e51516475aeb80c632d1eef5486aa020d29d694
   return (
     <div className="login">
       <div className="login-container">
@@ -15,6 +72,7 @@ function Login() {
             <br></br>
             제주패스로 시작하세요
           </p>
+<<<<<<< HEAD
           {/* <div className="login-br">
             <img src={loginBanner} className="login-br"></img>
           </div> */}
@@ -22,6 +80,15 @@ function Login() {
         <div className="tab-type">
           <li>
             <a>회원</a>
+=======
+          <div className="login-br">
+            <img src={loginBanner} className="login-br"></img>
+          </div>
+        </div>
+        <div className="tab-type">
+          <li>
+            <a className="tab-a-tag">회원</a>
+>>>>>>> 9e51516475aeb80c632d1eef5486aa020d29d694
           </li>
           <li>
             <a>비회원</a>
@@ -31,11 +98,28 @@ function Login() {
           <form className="tab-form">
             <div className="tab-input">
               <label htmlFor="id">아이디(이메일)</label>
+<<<<<<< HEAD
               <input id="id" placeholder="E-mail을 입력해주세요."></input>
             </div>
             <div className="tab-input">
               <label htmlFor="pw">비밀번호</label>
               <input id="pw" placeholder="비밀번호를 입력해주세요."></input>
+=======
+              <input
+                id="id"
+                placeholder="E-mail을 입력해주세요."
+                onChange={userEmailHandler}
+              ></input>
+            </div>
+            <div className="tab-input">
+              <label htmlFor="pw">비밀번호</label>
+              <input
+                type="password"
+                id="pw"
+                placeholder="비밀번호를 입력해주세요."
+                onChange={userPasswordHandler}
+              ></input>
+>>>>>>> 9e51516475aeb80c632d1eef5486aa020d29d694
             </div>
           </form>
           <div className="login-chks">
@@ -49,7 +133,13 @@ function Login() {
             </span>
           </div>
           <div className="btn-area">
+<<<<<<< HEAD
             <button className="login-action-btn">로그인</button>
+=======
+            <button className="login-action-btn" onClick={loginClick}>
+              로그인
+            </button>
+>>>>>>> 9e51516475aeb80c632d1eef5486aa020d29d694
           </div>
           <div className="login-btn">
             <a className="btn-aft">아이디 찾기</a>
@@ -74,4 +164,11 @@ function Login() {
     </div>
   );
 }
+<<<<<<< HEAD
 export default Login;
+=======
+
+export default Login;
+
+//출처 <a href="https://kr.freepik.com/free-vector/_27364076.htm#query=%EC%A0%9C%EC%A3%BC%20%EB%B2%A0%EB%84%88&position=12&from_view=search&track=ais">Freepik</a>
+>>>>>>> 9e51516475aeb80c632d1eef5486aa020d29d694

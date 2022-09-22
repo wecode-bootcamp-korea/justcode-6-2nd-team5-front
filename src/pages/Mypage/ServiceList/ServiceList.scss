@@ -1,0 +1,30 @@
+.mypage-service-guide-wrap,
+.mypage-service-center-wrap {
+  .service-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+
+    li {
+      width: 33%;
+      padding: 0 0.4%;
+
+      button {
+        width: 100%;
+        padding: 15px;
+        margin-top: 10px;
+        font-size: var(--font-size-middle);
+        font-weight: bold;
+        background-color: #fff;
+        border: 1px solid rgb(217, 217, 217);
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: var(--color-white-gray);
+      }
+    }
+  }
+}

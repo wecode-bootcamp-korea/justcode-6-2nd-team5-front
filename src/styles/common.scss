@@ -1,0 +1,70 @@
+.todo {
+  border: 1px solid black;
+}
+
+:root {
+  --border-color: #abccff;
+  --color-white-blue: #f4f9ff;
+  --color-blue: #63a1ff;
+  --color-soft-blue: #85b5ff;
+  --color-bright-blue: #569aff;
+  --color-white-gray: #f8f8f8;
+  --color-gray: #aeaeae;
+  --color-white-opacity07: rgba(255, 255, 255, 0.7);
+  --color-background: rgb(245, 245, 245);
+
+  --font-size-small: 15px;
+  --font-size-middle: 18px;
+  --font-size-big: 23px;
+  --font-size-tag: 25px;
+}
+
+.content-wrapper {
+  margin: 7.5%;
+
+  .title {
+    text-align: center;
+    margin-bottom: 2.5%;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  svg {
+    vertical-align: bottom;
+  }
+}
+
+.swiper {
+  &:hover {
+    .swiper-button-next,
+    .swiper-button-prev {
+      display: flex;
+    }
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: none;
+    top: 35%;
+    padding: 0 0.25%;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: large;
+  }
+
+  .swiper-pagination {
+    position: relative;
+    margin-top: 2.5%;
+  }
+
+  .swiper-pagination-bullet-active {
+    width: 30px;
+    border-radius: 5px;
+    background: #333;
+    border: 1px solid transparent;
+  }
+}
