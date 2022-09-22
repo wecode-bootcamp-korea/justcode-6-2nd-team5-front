@@ -25,11 +25,13 @@
     border-top: 1px dashed gray;
 
     .check-filter {
-      padding: 10px 0;
+      display: flex;
+      padding: 20px 0;
 
       input {
         width: var(--icon-size-small);
         margin-left: auto;
+        cursor: pointer;
       }
     }
 
@@ -52,7 +54,9 @@
         }
       }
 
-      .slide {
+      .slider {
+        display: flex;
+        justify-content: center;
         font-size: var(--font-size-product-small);
       }
 
@@ -61,6 +65,8 @@
         justify-content: center;
 
         span {
+          display: flex;
+          align-items: center;
           color: rgb(96, 96, 96);
           justify-content: center;
           margin: 0 5px;
@@ -68,10 +74,11 @@
 
         .min,
         .max {
-          width: 140px;
+          width: 180px;
           font-size: var(--font-size-product-small);
           border: 1px solid var(--color-gray);
           border-radius: 14px;
+          padding: 10px 20px;
         }
       }
     }

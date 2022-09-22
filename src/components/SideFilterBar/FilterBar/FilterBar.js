@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Dep1 from "../Dep1/Dep1";
+import RangeSlider from "../RangeSlider/RangeSlider";
 import "./FilterBar.scss";
 
 function FilterBar(props) {
@@ -11,6 +12,15 @@ function FilterBar(props) {
     setIsOndep1((prev) => !prev);
   };
 
+  //천단위 , 찍기 위한 함수
+  const numberFormat = (num) => {
+    if (num >= 1000) {
+      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } else {
+      return num;
+    }
+  };
+
   // http://localhost:8000/rentcar/searchList post
 
   // http://localhost:8000/rentcar/searchList?
@@ -18,12 +28,13 @@ function FilterBar(props) {
   return (
     <div className="sfb-wrap product-bar product-bar">
       <Dep1 title={"필터"} isOndep1={isOndep1} onCheckDep1={onCheckDep1} />
-      {filterTypes && (
+      {
         <ul className="dep2">
           {filterTypes.map((filterType) => {
             return (
               <div key={filterType.id}>
                 <li
+                  className="list"
                   key={filterType.id}
                   id={filterType.id}
                   onClick={filterSelect}
@@ -52,30 +63,31 @@ function FilterBar(props) {
                 {filterType.disabled && filterType.slideList && (
                   <ul className="dep3">
                     <li className="slide-filter">
-                      <div className="text-wrap">
-                        <span>최소</span>
-                        <span>최대</span>
+                      <div className="slider">
+                        <RangeSlider
+                          min={filterType.slideList[0]}
+                          max={filterType.slideList[1]}
+                        />
                       </div>
-                      <div className="slide">slide</div>
                       {filterType.id === 0 && (
                         <div className="range">
                           <span className="min todo">
-                            {filterType.slideList[0]}원
+                            {numberFormat(filterType.slideList[0])}원
                           </span>
                           <span>~</span>
                           <span className="max todo">
-                            {filterType.slideList[1]}원
+                            {numberFormat(filterType.slideList[1])}원
                           </span>
                         </div>
                       )}
                       {filterType.id === 3 && (
                         <div className="range">
                           <span className="min todo">
-                            {filterType.slideList[0]}회
+                            {numberFormat(filterType.slideList[0])}회
                           </span>
                           <span>~</span>
                           <span className="max todo">
-                            {filterType.slideList[1]}회
+                            {numberFormat(filterType.slideList[1])}회
                           </span>
                         </div>
                       )}
@@ -86,7 +98,7 @@ function FilterBar(props) {
             );
           })}
         </ul>
-      )}
+      }
     </div>
   );
 }

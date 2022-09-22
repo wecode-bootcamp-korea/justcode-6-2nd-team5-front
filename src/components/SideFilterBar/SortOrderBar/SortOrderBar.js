@@ -56,7 +56,12 @@ function SortOrderBar(props) {
         <ul className="dep2">
           {orderTypes.map((type) => {
             return (
-              <li key={type.id} id={type.id} onClick={onCheckDep2}>
+              <li
+                className="list"
+                key={type.id}
+                id={type.id}
+                onClick={onCheckDep2}
+              >
                 <span id={type.id} onClick={onCheckDep2}>
                   {type.type}
                 </span>
