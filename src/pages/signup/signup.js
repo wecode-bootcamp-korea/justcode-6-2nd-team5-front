@@ -1,11 +1,91 @@
 import "./signup.scss";
 import { useState } from "react";
 import SignupModal from "../../components/signup/signupModal";
+import { navigate } from "react-router-dom";
 
 function Signup() {
+  const [name, setName] = useState("");
+  const [birth, setBirth] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [gender, setGender] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordChk, setPasswordChk] = useState("");
+  const [isValid, setIsValid] = useState(false);
+
   const [modalOpen, setModalOpen] = useState(false);
   const showModal = () => {
     setModalOpen(true);
+  };
+
+  const userSignupEmailHandler = (e) => {
+    const emailValue = e.target.value;
+    setEmail(emailValue);
+  };
+
+  const userSignupPasswordHandler = (e) => {
+    const passwordValue = e.target.value;
+    setPassword(passwordValue);
+  };
+
+  const userSignupPasswordChkHandler = (e) => {
+    const passwordChkValue = e.target.value;
+    setPasswordChk(passwordChkValue);
+  };
+
+  const userSignupNameHandler = (e) => {
+    const nameValue = e.target.value;
+    setName(nameValue);
+  };
+
+  const userSignupPhoneNumberHandler = (e) => {
+    const phoneNumberValue = e.target.value;
+    setPhoneNumber(phoneNumberValue);
+  };
+
+  const passwordPattern =
+    /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,16}$/;
+  const phonePattern = /^010-?([0-9]{3,4})-?([0-9]{4})$/;
+
+  const userSignUp = () => {
+    email.includes("@") &&
+    email.split(".").length - 1 >= 1 &&
+    password.length >= 8 &&
+    password.length <= 16
+      ? setIsValid(true)
+      : setIsValid(false);
+
+    if (password !== passwordChk) {
+      alert("입력한 비밀번호가 다릅니다.");
+    } else if (passwordPattern.test(password) == false) {
+      alert("비밀번호를 확인해주세요.");
+    } else if (phonePattern.test(phoneNumber) == false) {
+      alert("전화번호를 확인해주세요.");
+    } else {
+      // api docs 확인 후 바꿔야함
+      fetch("http://localhost:8000/users/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name,
+          birth: birth,
+          phoneNumber: phoneNumber,
+          gender: gender,
+          email: email,
+          password: password,
+        }),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          if (result.message == "") {
+            // navigate("/login");
+          } else {
+            alert("회원가입에 실패하였습니다.");
+          }
+        });
+    }
   };
 
   return (
@@ -22,6 +102,7 @@ function Signup() {
             <input
               id="signup-id"
               placeholder="example@jejupass.com"
+              onChange={userSignupEmailHandler}
               className="id-input"
             ></input>
             <button
@@ -40,6 +121,7 @@ function Signup() {
             <input
               id="signup-pw"
               placeholder="영문, 숫자, 특수문자 8 ~ 16자 이내"
+              onChange={userSignupPasswordHandler}
               className="signup-input"
             ></input>
           </div>
@@ -50,6 +132,7 @@ function Signup() {
             <input
               id="signup-pw"
               placeholder="확인을 위해 한번 더 입력해주세요."
+              onChange={userSignupPasswordChkHandler}
               className="signup-input"
             ></input>
           </div>
@@ -57,7 +140,11 @@ function Signup() {
             <label htmlFor="signup-name" className="signup-label">
               이름
             </label>
-            <input id="signup-name" className="signup-input"></input>
+            <input
+              id="signup-name"
+              className="signup-input"
+              onChange={userSignupNameHandler}
+            ></input>
           </div>
           <div className="signup-bday-container">
             <span className="signup-bday">생년월일</span>
@@ -95,7 +182,8 @@ function Signup() {
             </label>
             <input
               id="signup-ph-n"
-              placeholder="- 를 빼고 입력해주세요."
+              placeholder="- 를 포함해 입력해주세요."
+              onChange={userSignupPhoneNumberHandler}
               className="signup-input"
             ></input>
           </div>
@@ -122,7 +210,9 @@ function Signup() {
           </div>
         </form>
         <div>
-          <button className="signup-action-btn">확인</button>
+          <button className="signup-action-btn" onClick={userSignUp}>
+            확인
+          </button>
         </div>
       </div>
     </div>
