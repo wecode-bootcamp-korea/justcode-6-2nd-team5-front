@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import "./TermsSignup.scss";
+import "./termsSignup.scss";
 
 function TermsSignup() {
   const navigate = useNavigate();

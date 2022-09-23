@@ -5,9 +5,9 @@ import Mypage from "./pages/Mypage/Mypage";
 import RentCar from "./pages/RentCar/RentCar";
 import Main from "./pages/Main/Main";
 import Login from "./pages/login/login";
-import TermsSignup from "./components/Signup/TermsSignup";
-import Signup from "./pages/Signup/Signup";
-import SignupFin from "./components/Signup/SignupFin";
+import TermsSignup from "./components/signup/termsSignup";
+import Signup from "./pages/signup/signup";
+import SignupFin from "./components/signup/signupFin";
 
 function Router() {
   return (

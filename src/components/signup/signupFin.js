@@ -1,4 +1,4 @@
-import "./SignupFin.scss";
+import "./signupFin.scss";
 import signupJeju from "../../assets/images/signupJeju.png";
 import { useNavigate } from "react-router-dom";
 
