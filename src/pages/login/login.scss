@@ -17,6 +17,7 @@
 .login {
   width: 100%;
   text-align: center;
+  background-color: white;
 
   .login-container {
     width: 20%;
@@ -112,7 +113,7 @@
         input::placeholder {
           font-weight: 600;
           font-size: 18px;
-          color: #adb5bd;
+          color: #808080;
         }
       }
 
@@ -132,6 +133,10 @@
 
         .id-save-mrl-24 {
           margin-left: 22px;
+        }
+
+        label {
+          cursor: pointer;
         }
       }
 
@@ -205,11 +210,13 @@
         .icon-n-css {
           width: 50px;
           margin-right: 20px;
+          cursor: pointer;
         }
 
         .icon-k-css {
           width: 48px;
           margin-left: 5px;
+          cursor: pointer;
         }
       }
     }

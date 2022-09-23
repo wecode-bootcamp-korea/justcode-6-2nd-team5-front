@@ -119,10 +119,18 @@ function Login() {
             </div>
             <div>
               <button className="icon-btn">
-                <img src={naverIcon} className="icon-n-css"></img>
+                <img
+                  src={naverIcon}
+                  className="icon-n-css"
+                  onClick={() => alert("아직 준비되지 않았습니다.")}
+                ></img>
               </button>
               <button className="icon-btn">
-                <img src={kakaoIcon} className="icon-k-css"></img>
+                <img
+                  src={kakaoIcon}
+                  className="icon-k-css"
+                  onClick={() => alert("아직 준비되지 않았습니다.")}
+                ></img>
               </button>
             </div>
           </div>
