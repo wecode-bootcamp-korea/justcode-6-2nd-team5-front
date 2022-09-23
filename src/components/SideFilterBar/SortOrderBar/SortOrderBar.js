@@ -17,7 +17,19 @@ function SortOrderBar(props) {
   const [isOnOrderType0, setIsOnOrderType0] = useState(false);
   const [isOnOrderType1, setIsOnOrderType1] = useState(false);
   const [isOnOrderType2, setIsOnOrderType2] = useState(false);
-  const disabledList = [isOnOrderType0, isOnOrderType1, isOnOrderType2];
+  const [isOnOrderType3, setIsOnOrderType3] = useState(false);
+  const [isOnOrderType4, setIsOnOrderType4] = useState(false);
+  const [isOnOrderType5, setIsOnOrderType5] = useState(false);
+  const [isOnOrderType6, setIsOnOrderType6] = useState(false);
+  const disabledList = [
+    isOnOrderType0,
+    isOnOrderType1,
+    isOnOrderType2,
+    isOnOrderType3,
+    isOnOrderType4,
+    isOnOrderType5,
+    isOnOrderType6,
+  ];
 
   // dep-2 insert state value into orderTypes
   const insertDisabled = (data, disableds) => {
@@ -36,16 +48,64 @@ function SortOrderBar(props) {
       setIsOnOrderType0(true);
       setIsOnOrderType1(false);
       setIsOnOrderType2(false);
+      setIsOnOrderType3(false);
+      setIsOnOrderType4(false);
+      setIsOnOrderType5(false);
+      setIsOnOrderType6(false);
     }
     if (orderTypeId === "1") {
       setIsOnOrderType0(false);
       setIsOnOrderType1(true);
       setIsOnOrderType2(false);
+      setIsOnOrderType3(false);
+      setIsOnOrderType4(false);
+      setIsOnOrderType5(false);
+      setIsOnOrderType6(false);
     }
     if (orderTypeId === "2") {
       setIsOnOrderType0(false);
       setIsOnOrderType1(false);
       setIsOnOrderType2(true);
+      setIsOnOrderType3(false);
+      setIsOnOrderType4(false);
+      setIsOnOrderType5(false);
+      setIsOnOrderType6(false);
+    }
+    if (orderTypeId === "3") {
+      setIsOnOrderType0(false);
+      setIsOnOrderType1(false);
+      setIsOnOrderType2(false);
+      setIsOnOrderType3(true);
+      setIsOnOrderType4(false);
+      setIsOnOrderType5(false);
+      setIsOnOrderType6(false);
+    }
+    if (orderTypeId === "4") {
+      setIsOnOrderType0(false);
+      setIsOnOrderType1(false);
+      setIsOnOrderType2(false);
+      setIsOnOrderType3(false);
+      setIsOnOrderType4(true);
+      setIsOnOrderType5(false);
+      setIsOnOrderType6(false);
+    }
+    if (orderTypeId === "5") {
+      setIsOnOrderType0(false);
+      setIsOnOrderType1(false);
+      setIsOnOrderType2(false);
+      setIsOnOrderType3(false);
+      setIsOnOrderType4(false);
+      setIsOnOrderType5(true);
+      setIsOnOrderType6(false);
+    }
+    if (orderTypeId === "6") {
+      setIsOnOrderType0(false);
+      setIsOnOrderType1(false);
+      setIsOnOrderType2(false);
+      setIsOnOrderType3(false);
+      setIsOnOrderType4(false);
+      setIsOnOrderType5(false);
+      setIsOnOrderType6(true);
     }
   };
 
