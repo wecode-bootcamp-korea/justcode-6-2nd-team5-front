@@ -9,16 +9,12 @@ function FilterBar(props) {
   const { filterTypes, filterSelect } = props;
 
   // Dep1 disabled
-  const [isOpen, setIsOpen] = useState(false);
+  const [isRefresh, setIsRefresh] = useState(false);
 
   // Dep1 disabled 값 가져오는 함수
   const getDep1Disabled = (bool) => {
-    setIsOpen(bool);
+    setIsRefresh(bool);
   };
-
-  useEffect(() => {
-    console.log(isOpen);
-  }, [isOpen]);
 
   // API
   // http://localhost:8000/rentcar/searchList? GET
@@ -56,6 +52,7 @@ function FilterBar(props) {
                   <CheckList
                     filterTypeId={filterType.id}
                     checkList={filterType.checkList}
+                    isRefresh={isRefresh}
                   />
                 )}
                 {filterType.disabled && filterType.slideList && (
@@ -63,12 +60,14 @@ function FilterBar(props) {
                     filterTypeId={filterType.id}
                     filterType={filterType.type}
                     slideList={filterType.slideList}
+                    isRefresh={isRefresh}
                   />
                 )}
                 {filterType.disabled && filterType.pointList && (
                   <PointList
                     filterTypeId={filterType.id}
                     slideList={filterType.slideList}
+                    isRefresh={isRefresh}
                   />
                 )}
               </div>

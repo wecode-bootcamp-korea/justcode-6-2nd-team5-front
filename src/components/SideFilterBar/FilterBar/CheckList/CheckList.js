@@ -1,7 +1,7 @@
 import "./CheckList.scss";
 
 function CheckList(props) {
-  const { filterTypeId, checkList } = props;
+  const { filterTypeId, checkList, isRefresh } = props;
 
   return (
     <ul className="dep3" id={filterTypeId}>

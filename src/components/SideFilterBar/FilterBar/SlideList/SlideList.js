@@ -3,7 +3,7 @@ import RangeSlider from "./RangeSlider/RangeSlider";
 import "./SlideList.scss";
 
 function SlideList(props) {
-  const { filterTypeId, filterType, slideList } = props;
+  const { filterTypeId, filterType, slideList, isRefresh } = props;
 
   // 슬라이더 value: 가격범위
   const [priceValue, setPriceValue] = useState([0, 0]);
@@ -11,7 +11,7 @@ function SlideList(props) {
   // 슬라이더 value: 누적예약
   const [bookedValue, setBookedValue] = useState([0, 0]);
 
-  // 슬라이더 초기값 세팅
+  // 슬라이더 초기값 세팅 or 필터초기화 세팅
   useEffect(() => {
     // 가격범위
     setPriceValue([slideList[0], slideList[1]]);
@@ -19,7 +19,7 @@ function SlideList(props) {
     slideList[1] !== 0
       ? setBookedValue([slideList[0], slideList[1]])
       : setBookedValue([slideList[0], 100]);
-  }, [filterTypeId]);
+  }, [filterTypeId, isRefresh]);
 
   // 슬라이더 핸들러: 가격범위
   const handlePriceChange = (event, newValue) => {
