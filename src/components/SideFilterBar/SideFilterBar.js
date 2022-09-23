@@ -6,10 +6,16 @@ import FilterBar from "./FilterBar/FilterBar";
 function SideFilterBar(props) {
   const { orderTypes, filterTypes, filterSelect } = props;
 
+  // 자식 컴포넌트 state 값들 가져오는 함수
+  const getSateValue = (list) => {
+    console.log(list);
+  };
+
   return (
     <div className="rentcar-sfb-wrap">
-      <SortOrderBar orderTypes={orderTypes} />
+      <SortOrderBar orderTypes={orderTypes} getSateValue={getSateValue} />
       <FilterBar filterTypes={filterTypes} filterSelect={filterSelect} />
+      <div className="submit-btn"></div>
     </div>
   );
 }

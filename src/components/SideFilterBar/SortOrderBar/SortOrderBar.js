@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Dep1 from "../Dep1/Dep1";
 import "./SortOrderBar.scss";
 
@@ -14,14 +14,14 @@ function SortOrderBar(props) {
   };
 
   // dep-2 check-circle state value
-  const [isOnOrderType0, setIsOnOrderType0] = useState(false);
+  const [isOnOrderType0, setIsOnOrderType0] = useState(true);
   const [isOnOrderType1, setIsOnOrderType1] = useState(false);
   const [isOnOrderType2, setIsOnOrderType2] = useState(false);
   const [isOnOrderType3, setIsOnOrderType3] = useState(false);
   const [isOnOrderType4, setIsOnOrderType4] = useState(false);
   const [isOnOrderType5, setIsOnOrderType5] = useState(false);
   const [isOnOrderType6, setIsOnOrderType6] = useState(false);
-  const disabledList = [
+  const orderDisabledList = [
     isOnOrderType0,
     isOnOrderType1,
     isOnOrderType2,
@@ -38,7 +38,7 @@ function SortOrderBar(props) {
     }
   };
 
-  if (orderTypes) insertDisabled(orderTypes, disabledList);
+  if (orderTypes) insertDisabled(orderTypes, orderDisabledList);
 
   // dep-2 change check circle disabled
   const onCheckDep2 = (e) => {
@@ -108,6 +108,31 @@ function SortOrderBar(props) {
       setIsOnOrderType6(true);
     }
   };
+
+  // 정렬 타입 추출 함수
+  const isTrue = (obj) => {
+    return obj.disabled === true;
+  };
+
+  var orderType = orderTypes.filter((obj) => isTrue(obj));
+
+  // useEffect(() => {
+  //   orderType.length !== 0 && console.log(orderType);
+  // }, [orderType]);
+
+  // API GET
+  // useEffect(() => {
+  //   orderType.length !== 0 &&
+  //     fetch("API 주소", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ orderType: orderType }),
+  //     })
+  //       .then((res) => res.json)
+  //       .then((data) => console.log(data));
+  // }, [orderType]);
 
   return (
     <div className="sob-wrap product-bar">
