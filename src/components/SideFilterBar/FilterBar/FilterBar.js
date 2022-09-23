@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Dep1 from "../Dep1/Dep1";
 import CheckList from "./CheckList/CheckList";
 import "./FilterBar.scss";
+import PointList from "./PointList/PointList";
 import SlideList from "./SlideList/SlideList";
 
 function FilterBar(props) {
@@ -31,7 +32,11 @@ function FilterBar(props) {
                   id={filterType.id}
                   onClick={filterSelect}
                 >
-                  <span id={filterType.id} onClick={filterSelect}>
+                  <span
+                    className="dep2-title"
+                    id={filterType.id}
+                    onClick={filterSelect}
+                  >
                     {filterType.type}
                   </span>
                   <div
@@ -50,6 +55,12 @@ function FilterBar(props) {
                 )}
                 {filterType.disabled && filterType.slideList && (
                   <SlideList
+                    filterTypeId={filterType.id}
+                    slideList={filterType.slideList}
+                  />
+                )}
+                {filterType.disabled && filterType.pointList && (
+                  <PointList
                     filterTypeId={filterType.id}
                     slideList={filterType.slideList}
                   />

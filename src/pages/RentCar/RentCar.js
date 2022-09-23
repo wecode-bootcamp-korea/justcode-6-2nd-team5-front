@@ -77,11 +77,13 @@ function RentCar() {
   const [isCheckFilter1, setIsCheckFilter1] = useState(false);
   const [isCheckFilter2, setIsCheckFilter2] = useState(false);
   const [isCheckFilter3, setIsCheckFilter3] = useState(false);
+  const [isCheckFilter4, setIsCheckFilter4] = useState(false);
   const filterDep2Disableds = [
     isCheckFilter0,
     isCheckFilter1,
     isCheckFilter2,
     isCheckFilter3,
+    isCheckFilter4,
   ];
   const [filterTypes, setFilterTypes] = useState([]);
 
@@ -106,6 +108,7 @@ function RentCar() {
     if (tagId === "1") setIsCheckFilter1(!isCheckFilter1);
     if (tagId === "2") setIsCheckFilter2(!isCheckFilter2);
     if (tagId === "3") setIsCheckFilter3(!isCheckFilter3);
+    if (tagId === "4") setIsCheckFilter4(!isCheckFilter4);
   };
 
   return (

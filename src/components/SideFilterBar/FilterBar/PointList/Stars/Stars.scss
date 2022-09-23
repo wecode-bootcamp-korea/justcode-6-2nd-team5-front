@@ -1,0 +1,21 @@
+.stars-wrap {
+  display: flex;
+  .star-box,
+  .star-box-4 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 20%;
+  }
+
+  .star-box-4 {
+    padding: 0 10px;
+  }
+
+  .star {
+    width: 18px;
+    height: 18px;
+    background-image: url("../../../../../assets/images/star-icon.png");
+    background-size: cover;
+  }
+}
