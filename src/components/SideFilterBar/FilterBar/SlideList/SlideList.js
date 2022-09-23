@@ -13,18 +13,20 @@ function SlideList(props) {
 
   // 슬라이더 초기값 세팅
   useEffect(() => {
-    // 렌터카 금액
+    // 가격범위
     setPriceValue([slideList[0], slideList[1]]);
-    // 렌터카 누적예약
-    setBookedValue([slideList[0], slideList[1]]);
+    // 누적예약
+    slideList[1] !== 0
+      ? setBookedValue([slideList[0], slideList[1]])
+      : setBookedValue([slideList[0], 100]);
   }, [filterTypeId]);
 
-  // 슬라이더 핸들러: 렌터카 금액
+  // 슬라이더 핸들러: 가격범위
   const handlePriceChange = (event, newValue) => {
     setPriceValue(newValue);
   };
 
-  // 슬라이더 핸들러: 렌터카 누적예약
+  // 슬라이더 핸들러: 누적예약
   const handleBookedChange = (event, newValue) => {
     setBookedValue(newValue);
   };
@@ -46,7 +48,7 @@ function SlideList(props) {
             filterTypeId={filterTypeId}
             value={bookedValue}
             min={slideList[0]}
-            max={slideList[1]}
+            max={slideList[1] === 0 ? 100 : slideList[1]}
             handleChange={handleBookedChange}
           />
         )}

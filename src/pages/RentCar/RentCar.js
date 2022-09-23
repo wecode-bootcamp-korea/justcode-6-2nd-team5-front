@@ -65,9 +65,13 @@ function RentCar() {
   const [orderTypes, setOrderTypes] = useState([]);
 
   useEffect(() => {
-    fetch("/data/rentcar/orderType.json")
+    fetch("/data/rentcar/orderType.json", {
+      method: "GET",
+    })
       .then((res) => res.json())
-      .then((data) => setOrderTypes(data.orderTypes));
+      .then((data) => {
+        setOrderTypes(data.orderTypes);
+      });
   }, []);
 
   //
@@ -89,11 +93,17 @@ function RentCar() {
   // Filter Bar mockdata: dep-2, dep-3
   const [filterTypes, setFilterTypes] = useState([]);
 
+  const rentCarUrl =
+    "http://localhost:8000/rentcar/searchList?rentStartDate=2022-09-28&rentEndDate=2022-09-29&rentStartTime=1&rentEndTime=2&insurance=일반자차&age=만 26세이상&experience=1년 미만";
+
+  //"/data/rentcar/filterType.json"
   useEffect(() => {
-    fetch("/data/rentcar/filterType.json")
+    fetch("/data/rentcar/filterType.json", {
+      method: "GET",
+    })
       .then((res) => res.json())
       .then((data) => {
-        setFilterTypes(data.filterTypes);
+        setFilterTypes(data[0].filterTypes);
       });
   }, []);
 
