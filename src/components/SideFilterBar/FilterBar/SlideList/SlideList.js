@@ -3,51 +3,51 @@ import RangeSlider from "./RangeSlider/RangeSlider";
 import "./SlideList.scss";
 
 function SlideList(props) {
-  const { filterTypeId, slideList } = props;
+  const { filterTypeId, filterType, slideList } = props;
 
-  // 슬라이더 value: 렌터카 금액
-  const [rentCarPriceValue, setRentCarPriceValue] = useState([0, 0]);
+  // 슬라이더 value: 가격범위
+  const [priceValue, setPriceValue] = useState([0, 0]);
 
-  // 슬라이더 value: 렌터카 누적예약
-  const [rentCarBookedValue, setRentCarBookedValue] = useState([0, 0]);
+  // 슬라이더 value: 누적예약
+  const [bookedValue, setBookedValue] = useState([0, 0]);
 
   // 슬라이더 초기값 세팅
   useEffect(() => {
     // 렌터카 금액
-    setRentCarPriceValue([slideList[0], slideList[1]]);
+    setPriceValue([slideList[0], slideList[1]]);
     // 렌터카 누적예약
-    setRentCarBookedValue([slideList[0], slideList[1]]);
+    setBookedValue([slideList[0], slideList[1]]);
   }, [filterTypeId]);
 
   // 슬라이더 핸들러: 렌터카 금액
-  const handleRentCarPriceChange = (event, newValue) => {
-    setRentCarPriceValue(newValue);
+  const handlePriceChange = (event, newValue) => {
+    setPriceValue(newValue);
   };
 
   // 슬라이더 핸들러: 렌터카 누적예약
-  const handleRentCarBookedChange = (event, newValue) => {
-    setRentCarBookedValue(newValue);
+  const handleBookedChange = (event, newValue) => {
+    setBookedValue(newValue);
   };
 
   return (
     <ul className="dep3">
       <li className="slide-filter">
-        {filterTypeId === 0 && (
+        {filterType === "가격 범위" && (
           <RangeSlider
             filterTypeId={filterTypeId}
-            value={rentCarPriceValue}
+            value={priceValue}
             min={slideList[0]}
             max={slideList[1]}
-            handleChange={handleRentCarPriceChange}
+            handleChange={handlePriceChange}
           />
         )}
-        {filterTypeId === 3 && (
+        {filterType === "누적예약" && (
           <RangeSlider
             filterTypeId={filterTypeId}
-            value={rentCarBookedValue}
+            value={bookedValue}
             min={slideList[0]}
             max={slideList[1]}
-            handleChange={handleRentCarBookedChange}
+            handleChange={handleBookedChange}
           />
         )}
       </li>

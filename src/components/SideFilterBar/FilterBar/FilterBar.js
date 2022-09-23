@@ -55,6 +55,7 @@ function FilterBar(props) {
                 {filterType.disabled && filterType.slideList && (
                   <SlideList
                     filterTypeId={filterType.id}
+                    filterType={filterType.type}
                     slideList={filterType.slideList}
                   />
                 )}

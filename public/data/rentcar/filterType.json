@@ -2,7 +2,7 @@
   "filterTypes": [
     {
       "id": 0,
-      "type": "금액",
+      "type": "가격 범위",
       "slideList": [1000, 120000]
     },
     {
