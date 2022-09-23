@@ -5,13 +5,13 @@ import "./SortOrderBar.scss";
 function SortOrderBar(props) {
   const { orderTypes } = props;
 
-  // dep-1 check state value
-  const [isOndep1, setIsOndep1] = useState(false);
+  // // dep-1 check state value
+  // const [isOndep1, setIsOndep1] = useState(false);
 
-  // dep-1 change disabled
-  const onCheckDep1 = () => {
-    setIsOndep1((prev) => !prev);
-  };
+  // // dep-1 change disabled
+  // const onCheckDep1 = () => {
+  //   setIsOndep1((prev) => !prev);
+  // };
 
   // dep-2 check-circle state value
   const [isOnOrderType0, setIsOnOrderType0] = useState(true);
@@ -134,10 +134,18 @@ function SortOrderBar(props) {
   //       .then((data) => console.log(data));
   // }, [orderType]);
 
+  // Dep1 disabled
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Dep1 disabled 값 가져오는 함수
+  const getDep1Disabled = (bool) => {
+    setIsOpen(bool);
+  };
+
   return (
     <div className="sob-wrap product-bar">
-      <Dep1 title={"정렬"} isOndep1={isOndep1} onCheckDep1={onCheckDep1} />
-      {isOndep1 && (
+      <Dep1 title={"정렬"} getValue={getDep1Disabled} />
+      {isOpen && (
         <ul className="dep2">
           {orderTypes.map((type) => {
             return (

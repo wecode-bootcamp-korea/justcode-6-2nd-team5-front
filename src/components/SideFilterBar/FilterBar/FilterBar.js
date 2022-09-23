@@ -8,18 +8,24 @@ import SlideList from "./SlideList/SlideList";
 function FilterBar(props) {
   const { filterTypes, filterSelect } = props;
 
-  // Dep1 props data
-  const [isOndep1, setIsOndep1] = useState(false);
-  const onCheckDep1 = () => {
-    setIsOndep1((prev) => !prev);
+  // Dep1 disabled
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Dep1 disabled 값 가져오는 함수
+  const getDep1Disabled = (bool) => {
+    setIsOpen(bool);
   };
+
+  useEffect(() => {
+    console.log(isOpen);
+  }, [isOpen]);
 
   // API
   // http://localhost:8000/rentcar/searchList? GET
 
   return (
     <div className="sfb-wrap product-bar product-bar">
-      <Dep1 title={"필터"} isOndep1={isOndep1} onCheckDep1={onCheckDep1} />
+      <Dep1 title={"필터"} getValue={getDep1Disabled} />
       {
         <ul className="dep2">
           {filterTypes.map((filterType) => {
