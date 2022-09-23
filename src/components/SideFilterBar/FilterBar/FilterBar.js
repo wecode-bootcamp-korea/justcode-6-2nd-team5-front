@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Dep1 from "../Dep1/Dep1";
+import CheckList from "./CheckList/CheckList";
 import "./FilterBar.scss";
 import SlideList from "./SlideList/SlideList";
 
@@ -42,14 +43,10 @@ function FilterBar(props) {
                   ></div>
                 </li>
                 {filterType.disabled && filterType.checkList && (
-                  <ul className="dep3">
-                    {filterType.checkList.map((content, index) => (
-                      <li className="check-filter" key={index}>
-                        <span>{content}</span>
-                        <input type="checkbox" />
-                      </li>
-                    ))}
-                  </ul>
+                  <CheckList
+                    filterTypeId={filterType.id}
+                    checkList={filterType.checkList}
+                  />
                 )}
                 {filterType.disabled && filterType.slideList && (
                   <SlideList
