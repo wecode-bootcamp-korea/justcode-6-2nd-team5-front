@@ -16,7 +16,7 @@ function PointList() {
   return (
     <ul className="dep3">
       <li className="point-filter"></li>
-      <div className="slider">
+      <div className="point-slider">
         <Box sx={{ width: 278 }}>
           <Slider
             getAriaLabel={() => "range"}
