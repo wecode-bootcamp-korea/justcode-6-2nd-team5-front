@@ -4,7 +4,8 @@ import SideFilterBar from "../../components/SideFilterBar/SideFilterBar";
 import "./RentCar.scss";
 
 function RentCar() {
-  // 선택된 태그 state value
+  // Serch Tag Box props
+  // tag disabled
   const [isOnTag0, setIsOnTag0] = useState(false);
   const [isOnTag1, setIsOnTag1] = useState(false);
   const [isOnTag2, setIsOnTag2] = useState(false);
@@ -15,7 +16,7 @@ function RentCar() {
   const [isOnTag7, setIsOnTag7] = useState(false);
   const [isOnTag8, setIsOnTag8] = useState(false);
 
-  // tad disabled state value list
+  // tag disabled list
   const tagDisableds = [
     isOnTag0,
     isOnTag1,
@@ -28,10 +29,9 @@ function RentCar() {
     isOnTag8,
   ];
 
-  // SearchTagBox props
+  // Search Tag Box mockdata
   const [tagList, setTagList] = useState([]);
 
-  // 태그 mockdata
   useEffect(() => {
     fetch("/data/rentcar/tagList.json")
       .then((res) => res.json())
@@ -61,8 +61,7 @@ function RentCar() {
   };
 
   // Side Filter Bar props
-
-  // order type mockdata
+  // Sort Order Bar mockdata
   const [orderTypes, setOrderTypes] = useState([]);
 
   useEffect(() => {
@@ -71,13 +70,14 @@ function RentCar() {
       .then((data) => setOrderTypes(data.orderTypes));
   }, []);
 
-  // filter type mockdata
-  // filter dep-2
+  //
   const [isCheckFilter0, setIsCheckFilter0] = useState(false);
   const [isCheckFilter1, setIsCheckFilter1] = useState(false);
   const [isCheckFilter2, setIsCheckFilter2] = useState(false);
   const [isCheckFilter3, setIsCheckFilter3] = useState(false);
   const [isCheckFilter4, setIsCheckFilter4] = useState(false);
+
+  // Filter Bar disabled list: dep-2
   const filterDep2Disableds = [
     isCheckFilter0,
     isCheckFilter1,
@@ -85,6 +85,8 @@ function RentCar() {
     isCheckFilter3,
     isCheckFilter4,
   ];
+
+  // Filter Bar mockdata: dep-2, dep-3
   const [filterTypes, setFilterTypes] = useState([]);
 
   useEffect(() => {
@@ -95,12 +97,12 @@ function RentCar() {
       });
   }, []);
 
-  // 필터 dep-2 disabled 속성 할당
+  // Filter Bar disabled 속성 할당: dep-2
   for (let i = 0; i < filterTypes.length; i++) {
     filterTypes[i].disabled = filterDep2Disableds[i];
   }
 
-  // filter dep-2 선택/선택해제 함수
+  // Filter Bar 선택/선택해제 함수: dep-2
   const filterSelect = (e) => {
     const tagId = e.target.id;
 

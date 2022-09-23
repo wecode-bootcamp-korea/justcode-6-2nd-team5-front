@@ -8,15 +8,14 @@ import SlideList from "./SlideList/SlideList";
 function FilterBar(props) {
   const { filterTypes, filterSelect } = props;
 
-  // deb-1 props data
+  // Dep1 props data
   const [isOndep1, setIsOndep1] = useState(false);
   const onCheckDep1 = () => {
     setIsOndep1((prev) => !prev);
   };
 
-  // http://localhost:8000/rentcar/searchList post
-
-  // http://localhost:8000/rentcar/searchList?
+  // API
+  // http://localhost:8000/rentcar/searchList? GET
 
   return (
     <div className="sfb-wrap product-bar product-bar">
@@ -33,7 +32,7 @@ function FilterBar(props) {
                   onClick={filterSelect}
                 >
                   <span
-                    className="dep2-title"
+                    className="dep2-type"
                     id={filterType.id}
                     onClick={filterSelect}
                   >

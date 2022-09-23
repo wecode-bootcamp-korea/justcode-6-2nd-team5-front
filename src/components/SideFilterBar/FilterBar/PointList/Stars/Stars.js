@@ -14,8 +14,8 @@ function Stars() {
       {className.map((cl, index) => {
         return (
           <div className={cl} key={index}>
-            {[...Array(index + 1)].map(() => {
-              return <div className="star"></div>;
+            {[...Array(index + 1)].map((el, index) => {
+              return <div key={`star${index}`} className="star"></div>;
             })}
           </div>
         );
