@@ -13,6 +13,24 @@ html {
     padding-top: 64px;
     font-weight: 600;
 
+    #fullAgree,
+    #firstAgree,
+    #secondAgree,
+    #thirdAgree,
+    .terms-label,
+    .font-awesome {
+      cursor: pointer;
+    }
+
+    .terms-comment-first,
+    .terms-comment-second {
+      cursor: default;
+    }
+
+    .terms-agree {
+      color: black;
+    }
+
     .terms-text {
       padding-bottom: 35px;
       font-size: 18px;
@@ -32,13 +50,19 @@ html {
       padding-left: 20px;
       padding-right: 20px;
 
+      #firstAgree,
+      #secondAgree,
+      #thirdAgree {
+        padding-left: 5px;
+      }
+
       .full-consent {
         height: 50px;
         margin-top: 7px;
 
-        #terms-chks {
-          width: 22px;
-          height: 25px;
+        #fullAgree {
+          width: 21px;
+          height: 24px;
           position: relative;
           top: 5.5px;
         }
@@ -53,14 +77,19 @@ html {
       .terms-essential {
         height: 90px;
         padding-top: 20px;
+        padding-left: 8px;
         border-top: 1px dotted #b1b1b1;
         border-bottom: 1px dotted #b1b1b1;
+
+        .font-awesome {
+          padding-left: 8px;
+        }
 
         span {
           color: #0055ff;
         }
 
-        label {
+        .label {
           color: #808080;
         }
 
@@ -72,23 +101,29 @@ html {
       .terms-select {
         height: 60px;
         padding-top: 20px;
+        padding-left: 8px;
+
+        .font-awesome {
+          padding-left: 8px;
+        }
+      }
+
+      .terms-span {
         color: #808080;
       }
 
       .terms-comment-first {
         margin-bottom: 8px;
+
         color: #808080;
         font-size: 15px;
       }
 
       .terms-comment-second {
         height: 55px;
+
         color: #808080;
         font-size: 15px;
-
-        .terms-span-comments {
-          padding-left: 19px;
-        }
       }
     }
 
@@ -104,7 +139,8 @@ html {
       background: #b1b1b1;
       cursor: pointer;
     }
-    .terms-action-btn:hover {
+
+    .terms-action-true-btn {
       color: white;
       background-color: #569aff;
     }
