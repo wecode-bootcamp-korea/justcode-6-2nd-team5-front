@@ -5,13 +5,13 @@ import "./SortOrderBar.scss";
 function SortOrderBar(props) {
   const { orderTypes } = props;
 
-  // // dep-1 check state value
-  // const [isOndep1, setIsOndep1] = useState(false);
+  // Dep1 disabled
+  const [isOpen, setIsOpen] = useState(false);
 
-  // // dep-1 change disabled
-  // const onCheckDep1 = () => {
-  //   setIsOndep1((prev) => !prev);
-  // };
+  // Dep1 disabled 값 가져오는 함수
+  const getDep1Disabled = (bool) => {
+    setIsOpen(bool);
+  };
 
   // dep-2 check-circle state value
   const [isOnOrderType0, setIsOnOrderType0] = useState(true);
@@ -107,39 +107,6 @@ function SortOrderBar(props) {
       setIsOnOrderType5(false);
       setIsOnOrderType6(true);
     }
-  };
-
-  // 정렬 타입 추출 함수
-  const isTrue = (obj) => {
-    return obj.disabled === true;
-  };
-
-  var orderType = orderTypes.filter((obj) => isTrue(obj));
-
-  // useEffect(() => {
-  //   orderType.length !== 0 && console.log(orderType);
-  // }, [orderType]);
-
-  // API GET
-  // useEffect(() => {
-  //   orderType.length !== 0 &&
-  //     fetch("API 주소", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({ orderType: orderType }),
-  //     })
-  //       .then((res) => res.json)
-  //       .then((data) => console.log(data));
-  // }, [orderType]);
-
-  // Dep1 disabled
-  const [isOpen, setIsOpen] = useState(false);
-
-  // Dep1 disabled 값 가져오는 함수
-  const getDep1Disabled = (bool) => {
-    setIsOpen(bool);
   };
 
   return (
