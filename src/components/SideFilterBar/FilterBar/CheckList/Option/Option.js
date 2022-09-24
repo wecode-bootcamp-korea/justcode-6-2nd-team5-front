@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./Option.scss";
 
 function Option(props) {
@@ -7,7 +7,11 @@ function Option(props) {
     option,
     checkedItemHandler,
     isAllChecked,
-    allCheckedHandler,
+    isRefresh,
+    setIsAllChecked,
+    // isAllFilter,
+    // autoCheckedHandler,
+    // allCheckedHandler,
   } = props;
 
   // 옵션 상태 관리값
@@ -19,9 +23,31 @@ function Option(props) {
     checkedItemHandler(target.id, target.value, target.checked);
   };
 
-  // 옵션 전체 클릭 해제시
+  // 옵션 전체 선택/해제시
+  useEffect(() => {
+    isAllChecked ? setChecked(true) : setChecked(false);
+  }, [isAllChecked]);
 
-  useEffect(() => setChecked(false), [isAllChecked]);
+  // 필터 초기화
+  useEffect(() => {
+    setIsAllChecked(false);
+    setChecked(false);
+  }, [isRefresh]);
+
+  // // 옵션 전체 선택시 자동으로 전체 클릭
+  // const autoAllChecked = useCallback(() => {
+  //   autoCheckedHandler({
+  //     target: {
+  //       id: isAllFilter[0],
+  //       filterContent: isAllFilter[1],
+  //       checked: isAllFilter[2],
+  //     },
+  //   });
+  // }, [isAllFilter[2]]);
+
+  // useEffect(() => {
+  //   autoAllChecked();
+  // }, [autoAllChecked]);
 
   return (
     <li className="check-filter">
