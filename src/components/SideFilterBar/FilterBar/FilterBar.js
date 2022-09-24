@@ -56,49 +56,51 @@ function FilterBar(props) {
       <Dep1 title={"필터"} getValue={getDep1Disabled} />
       {
         <ul className="dep2">
-          {filterTypes.map((filterType) => {
+          {filterTypes.map((filterInfo) => {
             return (
-              <div key={filterType.id}>
+              <div key={filterInfo.id}>
                 <li
                   className="list"
-                  key={filterType.id}
-                  id={filterType.id}
+                  key={filterInfo.id}
+                  id={filterInfo.id}
                   onClick={filterSelect}
                 >
                   <span
                     className="dep2-type"
-                    id={filterType.id}
+                    id={filterInfo.id}
                     onClick={filterSelect}
                   >
-                    {filterType.type}
+                    {filterInfo.type}
                   </span>
                   <div
                     className={
-                      filterType.disabled ? "right-icon-on" : "right-icon-off"
+                      filterInfo.disabled ? "right-icon-on" : "right-icon-off"
                     }
-                    id={filterType.id}
+                    id={filterInfo.id}
                     onClick={filterSelect}
                   ></div>
                 </li>
-                {filterType.disabled && filterType.checkList && (
+                {filterInfo.disabled && filterInfo.checkList && (
                   <CheckList
-                    filterTypeId={filterType.id}
-                    checkList={filterType.checkList}
+                    filterTypeId={filterInfo.id}
+                    filterType={filterInfo.type}
+                    checkList={filterInfo.checkList}
                     isRefresh={isRefresh}
                   />
                 )}
-                {filterType.disabled && filterType.slideList && (
+                {filterInfo.disabled && filterInfo.slideList && (
                   <SlideList
-                    filterTypeId={filterType.id}
-                    filterType={filterType.type}
-                    slideList={filterType.slideList}
+                    filterTypeId={filterInfo.id}
+                    filterType={filterInfo.type}
+                    slideList={filterInfo.slideList}
                     isRefresh={isRefresh}
                   />
                 )}
-                {filterType.disabled && filterType.pointList && (
+                {filterInfo.disabled && filterInfo.pointList && (
                   <PointList
-                    filterTypeId={filterType.id}
-                    slideList={filterType.slideList}
+                    filterTypeId={filterInfo.id}
+                    filterType={filterInfo.type}
+                    slideList={filterInfo.slideList}
                     isRefresh={isRefresh}
                   />
                 )}
