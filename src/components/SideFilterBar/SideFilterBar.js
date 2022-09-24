@@ -15,44 +15,16 @@ function SideFilterBar(props) {
   // 체크리스트: 관리값
   const [checkedItems, setCheckedItems] = useState([]);
 
-  // 체크리스트: 각 필터별 전체 버튼 관리값
-  const [isAllFilter, setIsAllFilter] = useState(["", "", false]);
-
-  const checkAllChecked = (new1, older1, ele) => {
-    let count1 = 0;
-    let count2 = 0;
-
-    new1.map((filteredItem) => {
-      if (filteredItem.filterType === ele.filterType) {
-        count1++;
-      }
-    });
-    older1.map((filterType) => {
-      if (filterType.type === ele.filterType) {
-        count2 = filterType.checkList.length;
-      }
-    });
-
-    return count1 === count2;
-  };
-
   // 체크리스트: 선택된 항목 관리 함수
   const getCheckedItem = (item, action) => {
     let filteredItems;
 
     if (action === "check") {
       checkedItems.push(item);
-      filteredItems = _.uniqBy(checkedItems, "filterContent");
-
-      checkAllChecked(filteredItems, filterTypes, item)
-        ? setIsAllFilter([item.filterType, item.filterContent, true])
-        : setIsAllFilter([item.filterType, "", false]);
     } else if (action === "delete") {
       const deletedIndex = checkedItems.indexOf(item);
       checkedItems.splice(deletedIndex, 1);
       filteredItems = checkedItems;
-
-      setIsAllFilter([item.filterType, item.filterContent, false]);
     } else if (action === "refresh") {
       checkedItems.splice(0, checkedItems.length);
       filteredItems = checkedItems;
@@ -68,7 +40,6 @@ function SideFilterBar(props) {
         }
       });
       filteredItems = checkedItems;
-      setIsAllFilter([item, "", true]);
     } else if (action === "all delete") {
       filterTypes.map((filterType) => {
         if (filterType.type === item) {
@@ -83,7 +54,6 @@ function SideFilterBar(props) {
         }
       });
       filteredItems = checkedItems;
-      setIsAllFilter([item, "", false]);
     }
 
     filteredItems = _.uniqBy(checkedItems, "filterContent");
@@ -93,11 +63,7 @@ function SideFilterBar(props) {
   return (
     <div className="rentcar-sfb-wrap">
       <SortOrderBar orderTypes={orderTypes} getSateValue={getSateValue} />
-      <FilterBar
-        filterTypes={filterTypes}
-        getCheckedItem={getCheckedItem}
-        isAllFilter={isAllFilter}
-      />
+      <FilterBar filterTypes={filterTypes} getCheckedItem={getCheckedItem} />
       <div className="submit-btn"></div>
     </div>
   );

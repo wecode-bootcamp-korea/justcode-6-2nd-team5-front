@@ -6,7 +6,7 @@ import PointList from "./PointList/PointList";
 import SlideList from "./SlideList/SlideList";
 
 function FilterBar(props) {
-  const { filterTypes, getCheckedItem, isAllFilter } = props;
+  const { filterTypes, getCheckedItem } = props;
 
   // Filter types
   const [isCheckFilter0, setIsCheckFilter0] = useState(false);
@@ -87,7 +87,6 @@ function FilterBar(props) {
                     checkList={filterInfo.checkList}
                     isRefresh={isRefresh}
                     getCheckedItem={getCheckedItem}
-                    isAllFilter={isAllFilter}
                   />
                 )}
                 {filterInfo.disabled && filterInfo.slideList && (

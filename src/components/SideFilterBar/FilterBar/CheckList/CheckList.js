@@ -3,14 +3,8 @@ import "./CheckList.scss";
 import Option from "./Option/Option";
 
 function CheckList(props) {
-  const {
-    filterTypeId,
-    filterType,
-    checkList,
-    isRefresh,
-    getCheckedItem,
-    // isAllFilter,
-  } = props;
+  const { filterTypeId, filterType, checkList, isRefresh, getCheckedItem } =
+    props;
 
   // 체크 선택 관리 함수
   const checked = (checked) => {
@@ -43,22 +37,6 @@ function CheckList(props) {
       : getCheckedItem(target.id, "all delete");
   };
 
-  // const autoCheckedHandler = ({ target }) => {
-  //   if (target.checked) {
-  //     setIsAllChecked(target.checked);
-  //     getCheckedItem(
-  //       { id: target.id, filterContent: target.filterContent },
-  //       "check"
-  //     );
-  //   } else {
-  //     setIsAllChecked(target.checked);
-  //     getCheckedItem(
-  //       { id: target.id, filterContent: target.filterContent },
-  //       "delete"
-  //     );
-  //   }
-  // };
-
   useEffect(() => {
     getCheckedItem([], "refresh");
   }, [isRefresh]);
@@ -82,11 +60,8 @@ function CheckList(props) {
           option={option}
           checkedItemHandler={checkedItemHandler}
           isAllChecked={isAllChecked}
+          setIsAllChecked={setIsAllChecked}
           isRefresh={isRefresh}
-          // isAllFilter={isAllFilter}
-          // setIsAllChecked={setIsAllChecked}
-          // autoCheckedHandler={autoCheckedHandler}
-          allCheckedHandler={allCheckedHandler}
         />
       ))}
     </ul>
