@@ -12,10 +12,10 @@ function SideFilterBar(props) {
     console.log(list);
   };
 
-  // 체크리스트 관리값
+  // 체크리스트: 관리값
   const [checkedItems, setCheckedItems] = useState([]);
 
-  // 체크리스트 선택된 항목 관리 함수
+  // 체크리스트: 선택된 항목 관리 함수
   const getCheckedItem = (item, action) => {
     let filteredItems;
 
@@ -26,8 +26,10 @@ function SideFilterBar(props) {
       const deletedIndex = checkedItems.indexOf(item);
       checkedItems.splice(deletedIndex, 1);
       filteredItems = checkedItems;
+    } else if (action === "refresh") {
+      checkedItems.splice(0, checkedItems.length);
+      filteredItems = checkedItems;
     }
-
     setCheckedItems(filteredItems);
   };
 

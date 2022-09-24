@@ -20,7 +20,8 @@ function Option(props) {
   };
 
   // 옵션 전체 클릭 해제시
-  useEffect(() => allCheckedHandler(), [isAllChecked]);
+
+  useEffect(() => setChecked(false), [isAllChecked]);
 
   return (
     <li className="check-filter">

@@ -6,8 +6,6 @@ function CheckList(props) {
   const { filterTypeId, filterType, checkList, isRefresh, getCheckedItem } =
     props;
 
-  // 선택한 체크 항목
-
   // 체크 선택 관리 함수
   const checked = (checked) => {
     getCheckedItem(checked, "check");
@@ -28,14 +26,10 @@ function CheckList(props) {
     isChecked ? checked(item) : deleted(item);
   };
 
-  // useEffect(() => {
-  //   getCheckedItems(checkedItems);
-  // }, [checkedItems]);
-
   // 옵션 전체 선택 관리값
   const [isAllChecked, setIsAllChecked] = useState(false);
 
-  const allCheckedHandler = (isChecked) => {
+  const allCheckedHandler = () => {
     // if (isChecked) {
     //   setCheckedItem(new Set(checkList.map(({ id }) => id)));
     //   setIsAllChecked(true);
@@ -45,6 +39,10 @@ function CheckList(props) {
     //   setIsAllChecked(false);
     // }
   };
+
+  useEffect(() => {
+    getCheckedItem([], "refresh");
+  }, [isRefresh]);
 
   return (
     <ul className="dep3" id={filterTypeId}>
