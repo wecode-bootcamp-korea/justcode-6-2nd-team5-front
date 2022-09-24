@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./SideFilterBar.scss";
 import SortOrderBar from "./SortOrderBar/SortOrderBar";
 import FilterBar from "./FilterBar/FilterBar";
+import _ from "lodash";
 
 function SideFilterBar(props) {
   const { orderTypes, filterTypes } = props;
@@ -11,10 +12,29 @@ function SideFilterBar(props) {
     console.log(list);
   };
 
+  // 체크리스트 관리값
+  const [checkedItems, setCheckedItems] = useState([]);
+
+  // 체크리스트 선택된 항목 관리 함수
+  const getCheckedItem = (item, action) => {
+    let filteredItems;
+
+    if (action === "check") {
+      checkedItems.push(item);
+      filteredItems = _.uniqBy(checkedItems, "filterContent");
+    } else if (action === "delete") {
+      const deletedIndex = checkedItems.indexOf(item);
+      checkedItems.splice(deletedIndex, 1);
+      filteredItems = checkedItems;
+    }
+
+    setCheckedItems(filteredItems);
+  };
+
   return (
     <div className="rentcar-sfb-wrap">
       <SortOrderBar orderTypes={orderTypes} getSateValue={getSateValue} />
-      <FilterBar filterTypes={filterTypes} />
+      <FilterBar filterTypes={filterTypes} getCheckedItem={getCheckedItem} />
       <div className="submit-btn"></div>
     </div>
   );

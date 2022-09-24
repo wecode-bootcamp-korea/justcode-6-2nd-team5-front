@@ -1,39 +1,36 @@
 import { useEffect, useState } from "react";
 import "./CheckList.scss";
 import Option from "./Option/Option";
-// import _ from "lodash";
 
 function CheckList(props) {
-  const { filterTypeId, filterType, checkList, isRefresh } = props;
+  const { filterTypeId, filterType, checkList, isRefresh, getCheckedItem } =
+    props;
 
-  // 선택된 체크리스트
-  const [checkedItems, setCheckedItems] = useState([]);
+  // 선택한 체크 항목
 
   // 체크 선택 관리 함수
   const checked = (checked) => {
-    checkedItems.push(checked);
-    setCheckedItems(checkedItems);
-    console.log(checkedItems);
+    getCheckedItem(checked, "check");
   };
 
   // 체크 해제 관리 함수
   const deleted = (deleted) => {
-    const deletedIndex = checkedItems.indexOf(deleted);
-    checkedItems.splice(deletedIndex, 1);
-    setCheckedItems(checkedItems);
-    console.log(checkedItems);
+    getCheckedItem(deleted, "delete");
   };
 
   // 선택/해제된 체크 핸들러
   const checkedItemHandler = (type, name, isChecked) => {
-    const checkedItem = {
+    const item = {
       filterType: type,
       filterContent: name,
     };
-    isChecked ? checked(checkedItem) : deleted(checkedItem);
+
+    isChecked ? checked(item) : deleted(item);
   };
 
-  // setCheckedItem(_.uniqBy([{ checkedItem }], "optionName"));
+  // useEffect(() => {
+  //   getCheckedItems(checkedItems);
+  // }, [checkedItems]);
 
   // 옵션 전체 선택 관리값
   const [isAllChecked, setIsAllChecked] = useState(false);
