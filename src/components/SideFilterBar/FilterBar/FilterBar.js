@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Dep1 from "../Dep1/Dep1";
 import CheckList from "./CheckList/CheckList";
 import "./FilterBar.scss";

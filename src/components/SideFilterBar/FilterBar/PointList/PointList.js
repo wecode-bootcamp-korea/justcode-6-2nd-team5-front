@@ -24,7 +24,7 @@ function PointList(props) {
     <ul className="dep3">
       <li className="point-filter"></li>
       <div className="point-slider">
-        <Box sx={{ width: 278 }}>
+        <Box sx={{ width: 175 }}>
           <Slider
             getAriaLabel={() => "range"}
             value={hotelPointValue}

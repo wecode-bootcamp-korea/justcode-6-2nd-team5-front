@@ -37,7 +37,7 @@ function RangeSlider(props) {
   return (
     <div>
       <div className="slider">
-        <Box sx={{ width: 320 }}>
+        <Box sx={{ width: 220 }}>
           <Slider
             getAriaLabel={() => "range"}
             value={value}
