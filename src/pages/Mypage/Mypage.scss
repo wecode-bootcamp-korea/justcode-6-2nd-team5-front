@@ -5,8 +5,8 @@
   padding: 80px 0px;
 
   width: 80%;
-  min-width: 1400px; //최소 너비 지정
-  max-width: 1800px; //최대 너비 지정
+  min-width: 1000px;
+  max-width: 1800px;
   margin: 0 auto;
 
   .mypage-content {
@@ -15,7 +15,7 @@
 }
 
 .mypage-content-title {
-  font-size: var(--font-size-big);
+  font-size: var(--font-size-product-title);
   font-weight: bold;
   margin-top: 60px;
 }
