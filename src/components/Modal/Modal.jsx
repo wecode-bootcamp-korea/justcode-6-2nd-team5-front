@@ -1,22 +1,19 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
-import Date from "../Modal/Date";
-import Time from "../Modal/Time";
 
-import { MenuBox, Menu, SearchBtn } from "../../pages/SearchMenu";
+import MainContextProvider from "./detailSearch/rentCar/context/Context";
 
-import { DefaultIconBtn } from "../../pages/IconMenu";
-import { AiFillCar } from "react-icons/ai";
-import { FaPlaneDeparture } from "react-icons/fa";
-import { FaBed } from "react-icons/fa";
-import { FaTicketAlt } from "react-icons/fa";
-import { FaCoffee } from "react-icons/fa";
-import { FaHotdog } from "react-icons/fa";
+import RentCarModal from "./modals/RentCarModal";
+import FlightModal from "./modals/FlightModal";
+import AccomodationModal from "./modals/AccomodationModal";
+import TripModal from "./modals/TripModal";
+import CafeModal from "./modals/CafeModal";
+import FoodModal from "./modals/FoodModal";
 
-const Modal = ({ setOpen }) => {
-  const [condition, setCondition] = useState("time");
+import { BtnBox } from "./commonStyled";
 
+const Modal = ({ setOpen, menuArr, clickedIcon, setClickedIcon }) => {
   useEffect(() => {
     const $body = document.querySelector("body");
     $body.style.overflow = "hidden";
@@ -27,66 +24,34 @@ const Modal = ({ setOpen }) => {
     setOpen(false);
   };
 
-  const menuArr = [
-    { icon: <AiFillCar />, name: "렌터카검색" },
-    { icon: <FaPlaneDeparture />, name: "항공검색" },
-    { icon: <FaBed />, name: "숙박검색" },
-    { icon: <FaTicketAlt />, name: "트립검색" },
-    { icon: <FaCoffee />, name: "카페검색" },
-    { icon: <FaHotdog />, name: "맛집검색" },
-  ];
-
   return (
-    <Overlay>
-      <ModalWrap>
-        <CloseButton onClick={handleClose}>✕</CloseButton>
-        <Contents>
-          {menuArr.map((menu, index) => {
-            return <ModalIconBtn key={index}>{menu.icon}</ModalIconBtn>;
-          })}
-        </Contents>
-        <MenuBox>
-          <Menu
-            onClick={() => setCondition("date")}
-            className={condition === "date" && "border"}
-            fontSize
-          >
-            <h6>인수/반납일</h6>
-            <p>인수/반납일을 선택해주세요.</p>
-          </Menu>
-          <Menu
-            onClick={() => {
-              setCondition("time");
-              console.log(condition);
-            }}
-            className={condition === "time" && "border"}
-            fontSize
-          >
-            <h6>인수/반납 시간</h6>
-            <p>시간을 선택해주세요.</p>
-          </Menu>
-          <Menu
-            onClick={() => setCondition("car")}
-            className={condition === "car" && "border"}
-            fontSize
-          >
-            <h6>차량조건</h6>
-            <p>조건을 선택해주세요.</p>
-          </Menu>
-          <Menu
-            onClick={() => setCondition("driver")}
-            className={condition === "driver" && "border"}
-            fontSize
-          >
-            <h6>운전자조건</h6>
-            <p>운전자조건을 선택해주세요.</p>
-          </Menu>
-          <SearchBtn fontSize>검색</SearchBtn>
-        </MenuBox>
-        {condition === "date" && <Date />}
-        {condition == "time" && <Time />}
-      </ModalWrap>
-    </Overlay>
+    <MainContextProvider>
+      <Overlay>
+        <ModalWrap>
+          <CloseButton onClick={handleClose}>✕</CloseButton>
+          <BtnBox primary>
+            {menuArr.map((menu) => {
+              return (
+                <ModalIconBtn
+                  onClick={(e) => setClickedIcon(Number(e.target.id))}
+                  key={menu.id}
+                  id={menu.id}
+                  className={clickedIcon === menu.id && "clicked"}
+                >
+                  {menu.icon}
+                </ModalIconBtn>
+              );
+            })}
+          </BtnBox>
+          {clickedIcon === 1 && <RentCarModal />}
+          {clickedIcon === 2 && <FlightModal />}
+          {clickedIcon === 3 && <AccomodationModal />}
+          {clickedIcon === 4 && <TripModal />}
+          {clickedIcon === 5 && <CafeModal />}
+          {clickedIcon === 6 && <FoodModal />}
+        </ModalWrap>
+      </Overlay>
+    </MainContextProvider>
   );
 };
 
@@ -105,7 +70,7 @@ const Overlay = styled.div`
 const ModalWrap = styled.div`
   position: relative;
   width: 100%;
-  height: 80vh;
+  height: fit-content;
   background-color: #f8f8f8;
   position: absolute;
   top: 0;
@@ -122,23 +87,32 @@ const CloseButton = styled.div`
   cursor: pointer;
 `;
 
-const Contents = styled.div`
+const ModalIconBtn = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
-
-  .search-menu {
-    font-size: 14px;
-  }
-`;
-
-const ModalIconBtn = styled(DefaultIconBtn)`
+  align-items: center;
+  margin: 50px 10px;
+  padding: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 16px;
+  border: none;
+  color: #808080;
+  font-size: 13px;
+  font-weight: 600;
+  background-color: #ffffff;
   width: 70px;
   height: 70px;
   margin: 10px;
+  cursor: pointer;
 
   svg {
     font-size: 30px;
     margin-top: 5px;
+    margin-bottom: 10px;
+    color: #63a1ff;
+    pointer-events: none;
   }
 `;
 

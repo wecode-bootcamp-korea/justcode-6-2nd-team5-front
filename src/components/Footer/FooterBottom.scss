@@ -4,12 +4,12 @@ $pretendard: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
 
 @mixin foot-bottom-text {
   font-weight: 600;
-  font-size: 17px;
+  font-size: 16px;
   opacity: 0.6;
 }
 
 .footer-bottom-container {
-  padding: 60px 8%;
+  padding: 60px 110px 50px;
   background-color: #18225c;
   color: white;
   font-family: $pretendard;
@@ -20,7 +20,7 @@ $pretendard: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
     h5 {
       padding-right: 10px;
       font-weight: 700;
-      font-size: 17px;
+      font-size: 16px;
     }
 
     p {
@@ -38,7 +38,7 @@ $pretendard: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
     }
     .first-p {
       @include foot-bottom-text;
-      font-size: 14px;
+      font-size: 12px;
 
       span {
         padding-right: 15px;
@@ -50,9 +50,10 @@ $pretendard: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
       }
     }
 
-    .second-p {
+    .second-p,
+    .third-p {
       @include foot-bottom-text;
-      font-size: 14px;
+      font-size: 12px;
     }
   }
 }

@@ -56,6 +56,7 @@ const NavContainer = styled.div`
   width: 100vw;
   padding: 35px 0 20px 0;
   background-color: #f8f8f8;
+  letter-spacing: -0.5px;
 
   .logo-box {
     width: 100px;
@@ -85,8 +86,8 @@ const NavContainer = styled.div`
 export const MenuTab = styled.li`
   padding-right: 30px;
   font-family: "NanumSquareRound", sans-serif;
-  font-weight: 800;
-  font-size: 1.6rem;
+  font-weight: 900;
+  font-size: 22px;
   cursor: pointer;
   &:hover {
     color: #63a1ff;

@@ -55,6 +55,7 @@ const FixNavContainer = styled.div`
   width: 100vw;
   padding: 15px 70px;
   background-color: #1d68dc;
+  letter-spacing: -0.5px;
 
   .menu-box {
     display: flex;
@@ -78,7 +79,7 @@ const FixMenuTab = styled.li`
   padding-right: 30px;
   font-family: "NanumSquareRound", sans-serif;
   font-weight: 900;
-  font-size: 25px;
+  font-size: 24px;
   color: white;
   background-color: #1d68dc;
   cursor: pointer;

@@ -34,7 +34,7 @@ const FooterBottom = () => {
             의무와 책임은 판매자에게 있습니다.
           </p>
         </li>
-        <li className="second-p">
+        <li className="third-p">
           <span>Copyright ⓒ KAFLIX All Rights Reserved</span>
         </li>
       </div>

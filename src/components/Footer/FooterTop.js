@@ -66,11 +66,11 @@ const FooterTop = () => {
         <ul>
           <h5 className="phone-number">1544-0445 </h5>
           <p className="foot-text">
-            <li>
+            <li className="flex-between">
               <span>평일</span>
               <span> 09:00 ~ 18:00 </span>
             </li>
-            <li>
+            <li className="flex-between">
               <span>점심시간</span>
               <span> 12:00 ~ 13:00 </span>
             </li>

@@ -2,6 +2,11 @@
   display: flex;
 }
 
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+
 $pretendard: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
   Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic",
   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
@@ -12,7 +17,7 @@ $border: 1.5px solid #dadada;
 @mixin foot-menu {
   margin-bottom: 20px;
   color: $black;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 800;
 }
 
@@ -20,6 +25,8 @@ $border: 1.5px solid #dadada;
   color: #808080;
   line-height: 23px;
   padding-bottom: 30px;
+  font-weight: 500;
+  font-size: 0.9rem;
 }
 
 .foot-top-container {
@@ -28,6 +35,8 @@ $border: 1.5px solid #dadada;
   margin: 0 auto;
   padding: 0 8%;
   border-top: $border;
+  background-color: white;
+  letter-spacing: -0.8px;
 
   .foot-info {
     padding-top: 50px;
@@ -45,7 +54,7 @@ $border: 1.5px solid #dadada;
       a {
         margin-bottom: 18px;
         color: $gray;
-        font-size: 18px;
+        font-size: 15.5px;
         font-weight: 500;
       }
     }
@@ -64,7 +73,7 @@ $border: 1.5px solid #dadada;
       }
 
       span {
-        font-size: 15px;
+        font-size: 14px;
       }
     }
 
@@ -92,8 +101,9 @@ $border: 1.5px solid #dadada;
   }
 
   .foot-contact {
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding-top: 50px;
+    flex: auto;
 
     li {
       margin-right: 20px;
@@ -114,11 +124,21 @@ $border: 1.5px solid #dadada;
         border-radius: 50px;
         border: none;
       }
+    }
+
+    ul {
+      width: 38%;
 
       .phone-number {
-        margin-bottom: 12px;
-        font-size: 27px;
-        font-weight: 900;
+        margin-bottom: 23px;
+        font-size: 24px;
+        font-weight: 800;
+        line-height: 15px;
+      }
+
+      .foot-text {
+        @include foot-text;
+        color: #404040;
       }
     }
   }

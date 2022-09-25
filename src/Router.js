@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Nav from "./components/Nav/Nav";
-import Header from "./pages/Header";
+import Header from "./components/Header/FixHeader";
 import FooterTop from "./components/Footer/FooterTop";
 import FooterBottom from "./components/Footer/FooterBottom";
 import Mypage from "./pages/Mypage/Mypage";
