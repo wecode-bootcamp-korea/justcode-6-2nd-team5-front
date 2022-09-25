@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./Option.scss";
 
 function Option(props) {
@@ -20,7 +20,7 @@ function Option(props) {
     checkedItemHandler(target.id, target.value, target.checked);
   };
 
-  // 옵션 전체 선택/해제시
+  // 업데이트: 선택/해제
   useEffect(() => {
     isAllChecked ? setChecked(true) : setChecked(false);
   }, [isAllChecked]);

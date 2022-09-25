@@ -29,6 +29,7 @@ function CheckList(props) {
   // 옵션 전체 선택 관리값
   const [isAllChecked, setIsAllChecked] = useState(false);
 
+  // 옵션 전체 선택 핸들러
   const allCheckedHandler = ({ target }) => {
     setIsAllChecked(target.checked);
 
@@ -37,6 +38,7 @@ function CheckList(props) {
       : getCheckedItem(target.id, "all delete");
   };
 
+  // 필터 초기화
   useEffect(() => {
     getCheckedItem([], "refresh");
   }, [isRefresh]);

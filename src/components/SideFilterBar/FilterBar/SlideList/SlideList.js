@@ -3,7 +3,14 @@ import RangeSlider from "./RangeSlider/RangeSlider";
 import "./SlideList.scss";
 
 function SlideList(props) {
-  const { filterTypeId, filterType, slideList, isRefresh } = props;
+  const {
+    filterTypeId,
+    filterType,
+    slideList,
+    isRefresh,
+    getPriceRange,
+    getBookedRange,
+  } = props;
 
   // 슬라이더 value: 가격범위
   const [priceValue, setPriceValue] = useState([0, 0]);
@@ -14,11 +21,14 @@ function SlideList(props) {
   // 슬라이더 초기값 세팅 or 필터초기화 세팅
   useEffect(() => {
     // 가격범위
-    setPriceValue([slideList[0], slideList[1]]);
+    if (filterType === "가격 범위") setPriceValue([slideList[0], slideList[1]]);
+
     // 누적예약
-    slideList[1] !== 0
-      ? setBookedValue([slideList[0], slideList[1]])
-      : setBookedValue([slideList[0], 100]);
+    if (filterType === "누적예약") {
+      slideList[1] !== 0
+        ? setBookedValue([slideList[0], slideList[1]])
+        : setBookedValue([slideList[0], 100]);
+    }
   }, [filterTypeId, isRefresh]);
 
   // 슬라이더 핸들러: 가격범위
@@ -30,6 +40,17 @@ function SlideList(props) {
   const handleBookedChange = (event, newValue) => {
     setBookedValue(newValue);
   };
+
+  // 업데이트: 가격 범위
+  useEffect(() => {
+    getPriceRange(priceValue);
+    getBookedRange(bookedValue);
+  }, [priceValue, bookedValue]);
+
+  // // 업데이트: 누적예약
+  // useEffect(() => {
+  //   getBookedRange(bookedValue);
+  // }, [bookedValue]);
 
   return (
     <ul className="dep3">

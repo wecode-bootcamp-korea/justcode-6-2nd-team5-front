@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./SideFilterBar.scss";
 import SortOrderBar from "./SortOrderBar/SortOrderBar";
 import FilterBar from "./FilterBar/FilterBar";
@@ -7,10 +7,53 @@ import _ from "lodash";
 function SideFilterBar(props) {
   const { orderTypes, filterTypes } = props;
 
-  // 자식 컴포넌트 state 값들 가져오는 함수
-  const getSateValue = (list) => {
-    console.log(list);
+  // 슬라이드리스트: 관리값
+  const [slideItems, setSlideItems] = useState({
+    priceRange: [],
+    bookedRange: [],
+  });
+
+  // 슬라이드리스트: 가격 범위/누적예약 초기값 세팅
+  useEffect(() => {
+    filterTypes &&
+      filterTypes.map((filterType) => {
+        if (filterType.type === "가격 범위")
+          slideItems.priceRange = [
+            filterType.slideList[0],
+            filterType.slideList[1],
+          ];
+        if (filterType.type === "누적예약")
+          slideItems.bookedRange = [
+            filterType.slideList[0],
+            filterType.slideList[1],
+          ];
+
+        setSlideItems(slideItems);
+      });
+  }, [filterTypes]);
+
+  // 슬라이드리스트: 슬라이드 된 가격 범위 관리 함수
+  const getPriceRange = (price) => {
+    console.log("price");
+    slideItems.priceRange = price;
+    setSlideItems(slideItems);
   };
+
+  // 슬라이드리스트: 슬라이드 된 누적예약 범위 관리 함수
+  const getBookedRange = (booked) => {
+    console.log("booked");
+
+    slideItems.bookedRange = booked;
+    setSlideItems(slideItems);
+  };
+
+  const update = useCallback(() => {
+    // console.log(slideItems);
+  }, [slideItems]);
+
+  useEffect(() => {
+    update();
+  }, [update]);
 
   // 체크리스트: 관리값
   const [checkedItems, setCheckedItems] = useState([]);
@@ -58,12 +101,18 @@ function SideFilterBar(props) {
 
     filteredItems = _.uniqBy(checkedItems, "filterContent");
     setCheckedItems(filteredItems);
+    console.log(filteredItems);
   };
 
   return (
     <div className="rentcar-sfb-wrap">
-      <SortOrderBar orderTypes={orderTypes} getSateValue={getSateValue} />
-      <FilterBar filterTypes={filterTypes} getCheckedItem={getCheckedItem} />
+      <SortOrderBar orderTypes={orderTypes} />
+      <FilterBar
+        filterTypes={filterTypes}
+        getPriceRange={getPriceRange}
+        getBookedRange={getBookedRange}
+        getCheckedItem={getCheckedItem}
+      />
       <div className="submit-btn"></div>
     </div>
   );
