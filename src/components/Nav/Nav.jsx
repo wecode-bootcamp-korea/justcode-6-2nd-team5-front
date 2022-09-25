@@ -9,7 +9,6 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 
 const Nav = () => {
   const menu = useLocation();
-  console.log(menu.pathname);
   const [scrollPosition, setScrollPosition] = useState(0);
   const updateScroll = () => {
     setScrollPosition(window.scrollY || document.documentElement.scrollTop);

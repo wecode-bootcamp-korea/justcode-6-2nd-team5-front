@@ -1,9 +1,24 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import SearchTagBox from "../../components/SearchTagBox/SearchTagBox";
 import SideFilterBar from "../../components/SideFilterBar/SideFilterBar";
 import "./RentCar.scss";
 
 function RentCar() {
+  const location = useLocation();
+
+  // 초기 필터링 세팅
+  useEffect(() => {
+    const url = `http://localhost:8000${location.pathname}${decodeURIComponent(
+      location.search
+    )}`;
+    console.log("current", url);
+
+    // fetch(url)
+    //   .then((res) => res.json())
+    //   .then((data) => console.log(data));
+  }, [location.search]);
+
   // Serch Tag Box props
   // Search Tag Box mockdata
   const [tagList, setTagList] = useState([]);
