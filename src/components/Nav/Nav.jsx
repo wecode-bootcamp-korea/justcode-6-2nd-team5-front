@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useParams, useLocation } from "react-router-dom";
 
 import FixNav from "./FixNav";
 
@@ -8,6 +8,8 @@ import { BiSearch, BiLogIn } from "react-icons/bi";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 
 const Nav = () => {
+  const menu = useLocation();
+  console.log(menu.pathname);
   const [scrollPosition, setScrollPosition] = useState(0);
   const updateScroll = () => {
     setScrollPosition(window.scrollY || document.documentElement.scrollTop);
@@ -21,24 +23,36 @@ const Nav = () => {
       <NavContainer>
         <div className="logo-box"></div>
         <ul className="menu-box">
-          <MenuTab>
+          <MenuTab className={menu.pathname === "/esg" && "color"}>
             <Link to="/esg">ESG</Link>
           </MenuTab>
-          <MenuTab>
-            <Link to="/rentcar">렌터카</Link>
+          <MenuTab className={menu.pathname === "/rentercar" && "color"}>
+            <Link to="/rentercar">렌터카</Link>
           </MenuTab>
-          <MenuTab>항공</MenuTab>
-          <MenuTab>숙박</MenuTab>
-          <MenuTab>트립</MenuTab>
-          <MenuTab>카페패스</MenuTab>
-          <MenuTab>맛집</MenuTab>
+          <MenuTab className={menu.pathname === "/preparing" && "color"}>
+            <Link to="/preparing">항공</Link>
+          </MenuTab>
+          <MenuTab className={menu.pathname === "/accomodation" && "color"}>
+            <Link to="/accomodation">숙박</Link>
+          </MenuTab>
+          <MenuTab>
+            <Link to="/preparing">트립</Link>
+          </MenuTab>
+          <MenuTab>
+            <Link to="/preparing">카페패햐스</Link>
+          </MenuTab>
+          <MenuTab className={menu.pathname === "/food" && "color"}>
+            <Link to="/food">맛집</Link>
+          </MenuTab>
           <BiSearch className="search-icon" />
         </ul>
         <div className="info-box">
-          <InfoTab>
-            <BiLogIn color="gray" />
-            로그인
-          </InfoTab>
+          <Link to="/login">
+            <InfoTab>
+              <BiLogIn color="gray" />
+              로그인
+            </InfoTab>
+          </Link>
           <InfoTab>
             <HiOutlineShoppingBag color="gray" />
             주문조회
@@ -57,6 +71,10 @@ const NavContainer = styled.div`
   padding: 35px 0 20px 0;
   background-color: #f8f8f8;
   letter-spacing: -0.5px;
+
+  .color {
+    color: #63a1ff;
+  }
 
   .logo-box {
     width: 100px;

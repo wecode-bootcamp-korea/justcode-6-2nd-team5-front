@@ -10,37 +10,41 @@ const FixNav = () => {
     <FixNavContainer>
       <ul className="menu-box">
         <FixMenuTab>
-          <Link to="/">ESG</Link>
+          <Link to="/esg">ESG</Link>
         </FixMenuTab>
         <FixMenuTab>
           <Link to="/rentcar">렌터카</Link>
         </FixMenuTab>
         <FixMenuTab>
-          <Link to="/">항공</Link>
+          <Link to="/preparing">항공</Link>
         </FixMenuTab>
         <FixMenuTab>
-          <Link to="/">숙박</Link>
+          <Link to="/accomodation">숙박</Link>
         </FixMenuTab>
         <FixMenuTab>
-          <Link to="/">트립</Link>
+          <Link to="/preparing">트립</Link>
         </FixMenuTab>
         <FixMenuTab>
-          <Link to="/">카페패스</Link>
+          <Link to="/preparing">카페패스</Link>
         </FixMenuTab>
         <FixMenuTab>
-          <Link to="/">맛집</Link>
+          <Link to="/food">맛집</Link>
         </FixMenuTab>
         <BiSearch className="search-icon" />
       </ul>
       <div className="info-box">
-        <FixInfoTab>
-          <BiLogIn color="rgba(255, 255, 255, 0.6)" />
-          <span>로그인</span>
-        </FixInfoTab>
-        <FixInfoTab>
-          <HiOutlineShoppingBag color="rgba(255, 255, 255, 0.6)" />
-          <span>주문조회</span>
-        </FixInfoTab>
+        <Link to="/login">
+          <FixInfoTab>
+            <BiLogIn color="rgba(255, 255, 255, 0.6)" />
+            <span>로그인</span>
+          </FixInfoTab>
+        </Link>
+        <Link to="/mypage">
+          <FixInfoTab>
+            <HiOutlineShoppingBag color="rgba(255, 255, 255, 0.6)" />
+            <span>주문조회</span>
+          </FixInfoTab>
+        </Link>
       </div>
     </FixNavContainer>
   );

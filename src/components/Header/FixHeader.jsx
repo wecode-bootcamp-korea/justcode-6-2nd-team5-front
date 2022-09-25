@@ -28,6 +28,7 @@ const Header = () => {
 
   const modalOpen = (event) => {
     setOpen(true);
+    console.log(isOpen);
   };
 
   const menuArr = [
