@@ -30,30 +30,23 @@ function SideFilterBar(props) {
 
         setSlideItems(slideItems);
       });
-  }, [filterTypes]);
+  }, []);
 
   // 슬라이드리스트: 슬라이드 된 가격 범위 관리 함수
   const getPriceRange = (price) => {
-    console.log("price");
     slideItems.priceRange = price;
     setSlideItems(slideItems);
   };
 
   // 슬라이드리스트: 슬라이드 된 누적예약 범위 관리 함수
   const getBookedRange = (booked) => {
-    console.log("booked");
-
     slideItems.bookedRange = booked;
     setSlideItems(slideItems);
   };
 
-  const update = useCallback(() => {
-    // console.log(slideItems);
-  }, [slideItems]);
-
-  useEffect(() => {
-    update();
-  }, [update]);
+  // useEffect(() => {
+  //   console.log(slideItems);
+  // }, [setSlideItems]);
 
   // 체크리스트: 관리값
   const [checkedItems, setCheckedItems] = useState([]);
@@ -68,6 +61,7 @@ function SideFilterBar(props) {
       const deletedIndex = checkedItems.indexOf(item);
       checkedItems.splice(deletedIndex, 1);
       filteredItems = checkedItems;
+      console.log("del", filteredItems);
     } else if (action === "refresh") {
       checkedItems.splice(0, checkedItems.length);
       filteredItems = checkedItems;
@@ -101,9 +95,34 @@ function SideFilterBar(props) {
 
     filteredItems = _.uniqBy(checkedItems, "filterContent");
     setCheckedItems(filteredItems);
-    console.log(filteredItems);
+
+    // setCheckedItems(filteredItems);
   };
 
+  // query 관리값
+  const [query, setQuery] = useState("");
+
+  // query list 관리값
+  const [queryList, setQueryList] = useState([]);
+
+  // query 업데이트 함수
+  const updateQuery = (newOption) => {
+    // query += newOption;
+    // setQuery(query);
+
+    if (newOption.length !== 0) {
+      newOption.map((option) => {
+        queryList.push(`${option.filterType}=${option.filterContent}`);
+      });
+      setQueryList(_.uniqBy(queryList));
+    }
+  };
+
+  useEffect(() => {
+    updateQuery(checkedItems);
+  }, [checkedItems]);
+
+  console.log("queryList", queryList);
   return (
     <div className="rentcar-sfb-wrap">
       <SortOrderBar orderTypes={orderTypes} />
