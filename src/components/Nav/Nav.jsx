@@ -39,7 +39,7 @@ const Nav = () => {
             <Link to="/preparing">트립</Link>
           </MenuTab>
           <MenuTab>
-            <Link to="/preparing">카페패햐스</Link>
+            <Link to="/preparing">카페패스</Link>
           </MenuTab>
           <MenuTab className={menu.pathname === "/food" && "color"}>
             <Link to="/food">맛집</Link>
