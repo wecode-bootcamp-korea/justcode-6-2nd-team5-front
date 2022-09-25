@@ -1,0 +1,24 @@
+.dep1 {
+  .right-icon-off,
+  .right-icon-on {
+    width: var(--icon-size-big);
+    height: var(--icon-size-big);
+  }
+}
+
+.sob-wrap {
+  .right-icon-off {
+    background-image: url("../../../assets/images/arow-down-icon.png");
+  }
+
+  .right-icon-on {
+    background-image: url("../../../assets/images/arow-up-icon.png");
+  }
+}
+
+.sfb-wrap {
+  .right-icon-off,
+  .right-icon-on {
+    background-image: url("../../../assets/images/change-icon.png");
+  }
+}

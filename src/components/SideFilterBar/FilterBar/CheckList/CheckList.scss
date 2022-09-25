@@ -1,0 +1,10 @@
+.check-filter {
+  display: flex;
+  padding: 20px 0;
+
+  input {
+    width: var(--icon-size-small);
+    margin-left: auto;
+    cursor: pointer;
+  }
+}

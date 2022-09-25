@@ -1,0 +1,31 @@
+[
+  {
+    "filterTypes": [
+      {
+        "id": 0,
+        "type": "가격 범위",
+        "slideList": [1000, 120000]
+      },
+      {
+        "id": 1,
+        "type": "연식",
+        "checkList": ["content1", "content2"]
+      },
+      {
+        "id": 2,
+        "type": "옵션",
+        "checkList": ["content3", "content4"]
+      },
+      {
+        "id": 3,
+        "type": "누적예약",
+        "slideList": [0, 0]
+      },
+      {
+        "id": 4,
+        "type": "별점",
+        "pointList": []
+      }
+    ]
+  }
+]
