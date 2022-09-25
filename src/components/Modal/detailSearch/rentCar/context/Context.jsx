@@ -11,7 +11,6 @@ const MainContextProvider = ({ children }) => {
   const [dateSet, setDateSet] = useState({ start: "", end: "" });
 
   const onDateSetting = (start, end) => {
-    console.log("바보");
     if (start && end) {
       const startDay =
         start.getFullYear().toString() +
@@ -28,7 +27,7 @@ const MainContextProvider = ({ children }) => {
 
       return setDateSet({ start: startDay, end: endDay });
     } else {
-      console.log("선택해주세요");
+      return;
     }
   };
 

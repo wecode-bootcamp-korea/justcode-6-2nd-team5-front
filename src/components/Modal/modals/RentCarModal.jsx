@@ -13,7 +13,6 @@ import DriverCondition from "../detailSearch/rentCar/DriverCondition";
 const RentCarModal = () => {
   const { dateSet } = useContext(MainContext);
   const [condition, setCondition] = useState("date");
-  console.log(dateSet);
   return (
     <>
       <MenuBox primary>
@@ -23,11 +22,13 @@ const RentCarModal = () => {
           primary
         >
           <h6>인수/반납일</h6>
-          <p>
-            {dateSet
-              ? "인수/반납일을 선택해주세요."
-              : `{dateSet.start} ~ {dateSet.end}`}
-          </p>
+          {dateSet.end === "" ? (
+            <p>인수/반납일을 선택해주세요.</p>
+          ) : (
+            <p date>
+              {dateSet.start} ~ {dateSet.end}
+            </p>
+          )}
         </Menu>
         <Menu
           onClick={() => {

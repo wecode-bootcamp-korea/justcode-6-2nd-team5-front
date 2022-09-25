@@ -87,7 +87,7 @@ export const Menu = styled.div`
   }
 
   p {
-    color: #aeaeae;
+    color: ${(props) => (!!props.date ? "#202020" : "#aeaeae")};
     font-size: ${(props) => (props.primary ? "15px" : "1rem")};
     font-weight: 600;
     cursor: pointer;
