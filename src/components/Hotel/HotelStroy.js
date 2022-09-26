@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination } from "swiper";
+import { useNavigate } from "react-router-dom";
 import "./HotelStory.scss";
 
 SwiperCore.use([Navigation, Pagination]);
@@ -37,11 +38,11 @@ function HotelStroy() {
           {data.map((data) => (
             <SwiperSlide key={data.id}>
               <div className="hotel-story-slide">
-                <figure>
+                <div className="test">
                   <img src={data.img} className="first-img" />
                   <img src={data.img} className="second-img" />
                   <strong>{data.comment}</strong>
-                </figure>
+                </div>
               </div>
             </SwiperSlide>
           ))}

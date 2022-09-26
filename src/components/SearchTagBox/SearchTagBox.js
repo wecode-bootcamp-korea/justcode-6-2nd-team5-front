@@ -1,8 +1,52 @@
 import { useState } from "react";
-import "./SerchTagBox.scss";
+import "./SearchTagBox.scss";
 
-function SerchTagBox(props) {
-  const { title, tagList, tagSelect } = props;
+function SearchTagBox(props) {
+  const { title, tagList } = props;
+
+  // tag disabled
+  const [isOnTag0, setIsOnTag0] = useState(false);
+  const [isOnTag1, setIsOnTag1] = useState(false);
+  const [isOnTag2, setIsOnTag2] = useState(false);
+  const [isOnTag3, setIsOnTag3] = useState(false);
+  const [isOnTag4, setIsOnTag4] = useState(false);
+  const [isOnTag5, setIsOnTag5] = useState(false);
+  const [isOnTag6, setIsOnTag6] = useState(false);
+  const [isOnTag7, setIsOnTag7] = useState(false);
+  const [isOnTag8, setIsOnTag8] = useState(false);
+
+  // tag disabled list
+  const tagDisableds = [
+    isOnTag0,
+    isOnTag1,
+    isOnTag2,
+    isOnTag3,
+    isOnTag4,
+    isOnTag5,
+    isOnTag6,
+    isOnTag7,
+    isOnTag8,
+  ];
+
+  // 각 태그에 disabled 속성 할당
+  for (let i = 0; i < tagList.length; i++) {
+    tagList[i].disabled = tagDisableds[i];
+  }
+
+  // 태그 선택/선택해제 함수
+  const tagSelect = (e) => {
+    const tagId = e.target.id;
+
+    if (tagId === "0") setIsOnTag0((prev) => !prev);
+    if (tagId === "1") setIsOnTag1((prev) => !prev);
+    if (tagId === "2") setIsOnTag2((prev) => !prev);
+    if (tagId === "3") setIsOnTag3((prev) => !prev);
+    if (tagId === "4") setIsOnTag4((prev) => !prev);
+    if (tagId === "5") setIsOnTag5((prev) => !prev);
+    if (tagId === "6") setIsOnTag6((prev) => !prev);
+    if (tagId === "7") setIsOnTag7((prev) => !prev);
+    if (tagId === "8") setIsOnTag8((prev) => !prev);
+  };
 
   // 버튼 슬라이드
   const [tagListSlide, setTagListSlide] = useState(0);
@@ -25,43 +69,8 @@ function SerchTagBox(props) {
     if (tagListSlide < 0) setTagListSlide((prev) => prev + 200);
   };
 
-  // ------------------ 이부분 수정하여 부모 컴포넌트에 선언 후 props로 넘겨 받기 ---------------------
-
-  // 넘겨줄 때 형태
-  // <SerchTagBox title={"빠른 검색"} tagList={tagList} tagSelect={tagSelect} />
-
-  // 선택된 태그 state value (태그 개수만큼 선연)
-  // const [isOnTag0, setIsOnTag0] = useState(false);
-  // const [isOnTag1, setIsOnTag1] = useState(false);
-  // const [isOnTag2, setIsOnTag2] = useState(false);
-
-  // 태그 mockdata (태그 개수만큼 선언)
-  // const tagList = [
-  //   {
-  //     tagName: "캐스퍼",
-  //     disabled: isOnTag0
-  //   },
-  //   {
-  //     tagName: "애견동반",
-  //     disabled: isOnTag1
-  //   },
-  //   {
-  //     tagName: "낚시용품 가능",
-  //     disabled: isOnTag2
-  //   },
-  // ];
-
-  // 태그 선택/선택해제 함수 (태그 개수만큼 선언)
-  // const tagSelect = (e) => {
-  //   const tagId = e.target.id;
-
-  //   if (tagId === "0") setIsOnTag0((prev) => !prev);
-  //   if (tagId === "1") setIsOnTag1((prev) => !prev);
-  //   if (tagId === "2") setIsOnTag2((prev) => !prev);
-  // };
-
   return (
-    <div className="rentcar-stb-wrap">
+    <div className="rentcar-stb-wrap product-bar">
       <div className="title">{title}</div>
       {/* prev 버튼은 tag list의 위치가 초기 위치보다 클 때만 렌더링 되도록 함 */}
       {tagListSlide < 0 && (
@@ -71,12 +80,12 @@ function SerchTagBox(props) {
       )}
       <div className="tag-list-wrap">
         <div className="tag-list" style={{ marginLeft: `${tagListSlide}px` }}>
-          {tagList.map((tagInfo, index) => {
+          {tagList.map((tagInfo) => {
             return (
               <button
                 className={tagInfo.disabled ? "tag-on" : "tag-off"}
-                key={index}
-                id={index}
+                key={tagInfo.id}
+                id={tagInfo.id}
                 onClick={tagSelect}
               >
                 {tagInfo.disabled && <span>✓</span>}#{tagInfo.tagName}
@@ -95,4 +104,4 @@ function SerchTagBox(props) {
   );
 }
 
-export default SerchTagBox;
+export default SearchTagBox;

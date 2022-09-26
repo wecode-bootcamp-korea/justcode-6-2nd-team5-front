@@ -1,0 +1,59 @@
+$pretendard: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+  Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic",
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+
+@mixin foot-bottom-text {
+  font-weight: 600;
+  font-size: 16px;
+  opacity: 0.6;
+}
+
+.footer-bottom-container {
+  padding: 60px 110px 50px;
+  background-color: #18225c;
+  color: white;
+  font-family: $pretendard;
+
+  .foot-bottom-menu {
+    display: flex;
+    padding-bottom: 30px;
+    h5 {
+      padding-right: 10px;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    p {
+      @include foot-bottom-text;
+    }
+  }
+
+  .foot-bottom-text {
+    li {
+      padding-bottom: 20px;
+    }
+
+    p {
+      padding-bottom: 5px;
+    }
+    .first-p {
+      @include foot-bottom-text;
+      font-size: 12px;
+
+      span {
+        padding-right: 15px;
+      }
+
+      .left-line {
+        padding-left: 15px;
+        border-left: 0.5px solid rgba(255, 255, 255, 0.493);
+      }
+    }
+
+    .second-p,
+    .third-p {
+      @include foot-bottom-text;
+      font-size: 12px;
+    }
+  }
+}
