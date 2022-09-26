@@ -8,12 +8,7 @@ import _ from "lodash";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function FilterBar(props) {
-  const {
-    filterTypes,
-    getPriceRange,
-    getBookedRange,
-    // getQueryList
-  } = props;
+  const { filterTypes } = props;
 
   // Filter types
   const [isCheckFilter0, setIsCheckFilter0] = useState(false);
@@ -183,8 +178,6 @@ function FilterBar(props) {
                       filterType={filterInfo.type}
                       slideList={filterInfo.slideList}
                       isRefresh={isRefresh}
-                      getPriceRange={getPriceRange}
-                      getBookedRange={getBookedRange}
                       getSlideItem={getSlideItem}
                       isDone={isDone}
                     />

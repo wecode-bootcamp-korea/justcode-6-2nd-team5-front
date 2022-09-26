@@ -16,7 +16,7 @@ function RentCar() {
     // fetch(url)
     //   .then((res) => res.json())
     //   .then((data) => console.log(data));
-  }, [location.search]);
+  }, [location]);
 
   // Serch Tag Box props
   // Search Tag Box mockdata

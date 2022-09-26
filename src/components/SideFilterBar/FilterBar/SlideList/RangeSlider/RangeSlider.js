@@ -4,7 +4,7 @@ import Slider from "@mui/material/Slider";
 import { useEffect, useState } from "react";
 
 function RangeSlider(props) {
-  const { filterTypeId, min, max, getValue } = props;
+  const { filterTypeId, min, max, getValue, isRefresh } = props;
 
   //천단위 , 찍기 위한 함수
   const numberFormat = (num) => {
@@ -47,6 +47,11 @@ function RangeSlider(props) {
   useEffect(() => {
     getValue(range);
   }, [range]);
+
+  // 필터 초기화
+  useEffect(() => {
+    setRange([min, max]);
+  }, [isRefresh]);
 
   return (
     <div>

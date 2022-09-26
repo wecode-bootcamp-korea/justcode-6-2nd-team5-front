@@ -3,22 +3,8 @@ import RangeSlider from "./RangeSlider/RangeSlider";
 import "./SlideList.scss";
 
 function SlideList(props) {
-  const {
-    filterTypeId,
-    filterType,
-    slideList,
-    isRefresh,
-    getSlideItem,
-    isDone,
-  } = props;
-
-  // const [price, setPrice] = useState([]);
-  // const [booked, setBooked] = useState([]);
-
-  // const [slideItems1, setSlideItems1] = useState({ price: [], booked: [] });
-  // const [slideItems2, setSlideItems2] = useState({ price: [], booked: [] });
-
-  const [slideItems, setSlideItems] = useState([]);
+  const { filterTypeId, filterType, slideList, isRefresh, getSlideItem } =
+    props;
 
   const getPrice = (range) => {
     getSlideItem(filterTypeId, range);
