@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate, Link, useParams, useLocation } from "react-router-dom";
 
 import FixNav from "./FixNav";
@@ -9,13 +9,24 @@ import logo from "../../assets/images/logo-square.png";
 import { BiSearch, BiLogIn } from "react-icons/bi";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 
+import { ModalContext } from "../Context/ModalContext";
+
 const Nav = () => {
-  const menu = useLocation();
-  console.log(menu.pathname);
+  const { clickedIcon, setClickedIcon } = useContext(ModalContext);
   const [scrollPosition, setScrollPosition] = useState(0);
+
+  const menu = useLocation();
+
+  const onClick = (e) => {
+    setClickedIcon(e.target.id);
+    console.log(e);
+    console.log("테스트", clickedIcon);
+  };
+
   const updateScroll = () => {
     setScrollPosition(window.scrollY || document.documentElement.scrollTop);
   };
+
   useEffect(() => {
     window.addEventListener("scroll", updateScroll);
   });
@@ -32,13 +43,19 @@ const Nav = () => {
           <MenuTab className={menu.pathname === "/esg" && "color"}>
             <Link to="/esg">ESG</Link>
           </MenuTab>
-          <MenuTab className={menu.pathname === "/rentercar" && "color"}>
+          <MenuTab
+            onClick={onClick}
+            id="1"
+            className={menu.pathname.includes("/rentercar") && "color"}
+          >
             <Link to="/rentercar">렌터카</Link>
           </MenuTab>
           <MenuTab className={menu.pathname === "/preparing" && "color"}>
             <Link to="/preparing">항공</Link>
           </MenuTab>
-          <MenuTab className={menu.pathname === "/accomodation" && "color"}>
+          <MenuTab
+            className={menu.pathname.includes("/accomodation") && "color"}
+          >
             <Link to="/accomodation">숙박</Link>
           </MenuTab>
           <MenuTab>
@@ -47,7 +64,7 @@ const Nav = () => {
           <MenuTab>
             <Link to="/preparing">카페패스</Link>
           </MenuTab>
-          <MenuTab className={menu.pathname === "/food" && "color"}>
+          <MenuTab className={menu.pathname.includes("/food") && "color"}>
             <Link to="/food">맛집</Link>
           </MenuTab>
           <BiSearch className="search-icon" />

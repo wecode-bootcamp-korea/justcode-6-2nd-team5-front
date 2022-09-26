@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { ConditionSelector, SelectBtn, HashTagBtn } from "../commonStyled";
 
 const LocationCondition = () => {
+  const [location, setLocation] = useState("");
+  const colorChange = (e) => {
+    setLocation(Number(e.target.id));
+  };
   const locationArr = [
-    "제주시",
-    "서귀포시",
-    "제주시 동부",
-    "서귀포시 동부",
-    "제주시 서부",
-    "서귀포시 서부",
+    { id: 1, text: "제주시" },
+    { id: 2, text: "서귀포시" },
+    { id: 3, text: "제주시 동부" },
+    { id: 4, text: "서귀포시 동부" },
+    { id: 5, text: "제주시 서부" },
+    { id: 6, text: "서귀포시 서부" },
   ];
 
   return (
@@ -20,8 +24,17 @@ const LocationCondition = () => {
       </h2>
       <div className="box">
         <h5>지역 검색</h5>
-        {locationArr.map((item, index) => {
-          return <SelectBtn key={index}>{item}</SelectBtn>;
+        {locationArr.map((item) => {
+          return (
+            <SelectBtn
+              onClick={colorChange}
+              id={item.id}
+              key={item.id}
+              className={location === item.id && "clicked"}
+            >
+              {item.text}
+            </SelectBtn>
+          );
         })}
       </div>
       <div className="box">

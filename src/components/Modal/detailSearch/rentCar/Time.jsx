@@ -3,11 +3,12 @@ import styled from "styled-components";
 
 import { ConditionSelector } from "../../commonStyled";
 
-const Time = () => {
-  const [selected, setSelected] = useState("0900");
-  const handleSelect = (e) => {
-    setSelected(e.target.value);
-  };
+const Time = ({
+  takeSelected,
+  returnSelected,
+  handleTakeSelect,
+  handleReturnSelect,
+}) => {
 
   const OPTIONS = [
     { value: "08:00", name: "08:00" },
@@ -50,8 +51,12 @@ const Time = () => {
         선택해주세요<span style={{ color: "red" }}> .</span>
       </h2>
       <div className="box">
-        <h5>인수시간{selected}</h5>
-        <SelectTime name="인수시간" onChange={handleSelect} value={selected}>
+        <h5>인수시간</h5>
+        <SelectTime
+          name="인수시간"
+          onChange={handleTakeSelect}
+          value={takeSelected}
+        >
           {OPTIONS.map((option) => {
             return (
               <option key={option.value} value={option.value}>
@@ -63,7 +68,11 @@ const Time = () => {
       </div>
       <div className="box">
         <h5>반납시간</h5>
-        <SelectTime name="인수시간">
+        <SelectTime
+          name="인수시간"
+          onChange={handleReturnSelect}
+          value={returnSelected}
+        >
           {OPTIONS.map((option) => {
             return (
               <option key={option.value} value={option.value}>

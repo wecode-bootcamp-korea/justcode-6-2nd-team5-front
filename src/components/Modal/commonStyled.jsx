@@ -87,10 +87,16 @@ export const Menu = styled.div`
   }
 
   p {
-    color: ${(props) => (!!props.date ? "#202020" : "#aeaeae")};
+    color: ${(props) => (props.className === "date" ? "#202020" : "#aeaeae")};
     font-size: ${(props) => (props.primary ? "15px" : "1rem")};
     font-weight: 600;
     cursor: pointer;
+  }
+
+  .date {
+    font-weight: 700;
+    letter-spacing: -0.8px;
+    color: #202020;
   }
 
   //헤더 항공 부분 아이콘

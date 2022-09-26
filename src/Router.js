@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ModalProvider from "./components/Context/ModalContext"
 
 import Nav from "./components/Nav/Nav";
 import Main from "./pages/Main/Main";
@@ -19,26 +20,28 @@ import FooterBottom from "./components/Footer/FooterBottom";
 
 function Router() {
   return (
-    <BrowserRouter>
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/esg" element={<Esg />} />
-        <Route path="/rentercar" element={<RenterCar />} />
-        <Route path="/accomodation" element={<Accomodation />} />
-        <Route path="/food" element={<Food />} />
-        <Route path="/preparing" element={<Preparing />} />
-        <Route path="/mypage" element={<Mypage />} />
-        <Route path="/rentcar" element={<RentCar />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/termsSignup" element={<TermsSignup />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/signupFin" element={<SignupFin />} />
-        <Route path="/preparing" element={<Preparing />} />
-      </Routes>
-      <FooterTop />
-      <FooterBottom />
-    </BrowserRouter>
+    <ModalProvider>
+      <BrowserRouter>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/esg" element={<Esg />} />
+          <Route path="/rentercar" element={<RenterCar />} />
+          <Route path="/accomodation" element={<Accomodation />} />
+          <Route path="/food" element={<Food />} />
+          <Route path="/preparing" element={<Preparing />} />
+          <Route path="/mypage" element={<Mypage />} />
+          <Route path="/rentcar" element={<RentCar />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/termsSignup" element={<TermsSignup />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/signupFin" element={<SignupFin />} />
+          <Route path="/preparing" element={<Preparing />} />
+        </Routes>
+        <FooterTop />
+        <FooterBottom />
+      </BrowserRouter>
+    </ModalProvider>
   );
 }
 

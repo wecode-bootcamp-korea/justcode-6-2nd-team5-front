@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { ConditionSelector } from "../../commonStyled"
+import { ConditionSelector } from "../../commonStyled";
 import { SelectBtn } from "../../commonStyled";
 
-const CarCondition = () => {
+const CarCondition = ({ setInsurance }) => {
   const insuranceTypeArr = [
     { id: 1, text: "일반자차" },
     { id: 2, text: "완전자차" },
@@ -26,6 +26,7 @@ const CarCondition = () => {
   const [choice, setChoice] = useState("");
 
   const colorChange = (e) => {
+    setInsurance(e.target.innerHTML);
     setChoice(Number(e.target.id));
   };
 
@@ -33,7 +34,7 @@ const CarCondition = () => {
     <ConditionSelector>
       <h2 className="title">
         적용하실 보험/차종을
-        <br /> 선택하세요<span style={{color: "red"}}> .</span>
+        <br /> 선택하세요<span style={{ color: "red" }}> .</span>
       </h2>
       <div className="box">
         <h5>보험 선택</h5>
@@ -74,5 +75,3 @@ const CarCondition = () => {
 };
 
 export default CarCondition;
-
-

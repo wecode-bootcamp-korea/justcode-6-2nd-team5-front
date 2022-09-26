@@ -4,7 +4,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { ko } from "date-fns/esm/locale";
 
-import { MainContext } from "./context/Context";
+import { MainContext } from "../../../Context/MainContext";
 
 import { ConditionSelector } from "../../commonStyled";
 
@@ -39,36 +39,13 @@ const RentalDate = () => {
           minDate={new Date()}
           inline
           monthsShown={2}
-          // renderCustomHeader={({
-          //   date,
-          //   changeYear,
-          //   changeMonth,
-          //   decreaseMonth,
-          //   increaseMonth,
-          //   prevMonthButtonDisabled,
-          //   nextMonthButtonDisabled,
-          // }) => (
-          //   <div className="date-customheader">
-          //     <button
-          //       onClick={decreaseMonth}
-          //       disabled={prevMonthButtonDisabled}
-          //     ></button>
-          //     <div className="custom-month">
-          //       {date.getFullYear()}년 {date.getMonth()}월
-          //     </div>
-          //     <button
-          //       onClick={increaseMonth}
-          //       disabled={nextMonthButtonDisabled}
-          //     ></button>
-          //   </div>
-          // )}
         />
       </StyledCalendar>
     </ConditionSelector>
   );
 };
 
-const StyledCalendar = styled.div`
+export const StyledCalendar = styled.div`
   .react-datepicker {
     padding: 30px 20px;
     border: none;
