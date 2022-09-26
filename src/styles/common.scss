@@ -17,6 +17,13 @@
   --font-size-middle: 18px;
   --font-size-big: 23px;
   --font-size-tag: 25px;
+  --font-size-product-title: 28px;
+  --font-size-product-content: 25px;
+  --font-size-product-small: 22px;
+
+  --icon-size-big: 24px;
+  --icon-size-small: 20px;
+  --icon-check-box: 32px;
 }
 
 .content-wrapper {
@@ -66,5 +73,56 @@
     border-radius: 5px;
     background: #333;
     border: 1px solid transparent;
+  }
+}
+
+.product-bar {
+  padding: 20px 40px;
+  border-radius: 20px;
+  background-color: #fff;
+  margin-bottom: 20px;
+
+  .title {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    min-width: fit-content; // 글씨 줄바꿈 방지
+    font-size: var(--font-size-product-title);
+    font-weight: bold;
+    margin-right: 50px;
+  }
+
+  .dep1 {
+    display: flex;
+    cursor: pointer;
+
+    .right-icon-off,
+    .right-icon-on {
+      width: var(--icon-size-big);
+      height: var(--icon-size-big);
+    }
+  }
+
+  .right-icon-off,
+  .right-icon-on {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    background-size: cover;
+  }
+
+  .dep2 {
+    margin-top: 30px;
+
+    .list {
+      display: flex;
+      cursor: pointer;
+
+      span {
+        display: flex;
+        font-size: var(--font-size-product-content);
+        padding: 20px 0px;
+      }
+    }
   }
 }

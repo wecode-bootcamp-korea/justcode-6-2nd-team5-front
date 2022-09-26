@@ -1,0 +1,27 @@
+.sfb-wrap {
+  .dep2 {
+    font-weight: bold;
+
+    .right-icon-off,
+    .right-icon-on {
+      width: var(--icon-size-small);
+      height: var(--icon-size-small);
+    }
+
+    .right-icon-off {
+      background-image: url("../../../assets/images/arow-down-icon.png");
+    }
+    .right-icon-on {
+      background-image: url("../../../assets/images/arow-up-icon.png");
+    }
+  }
+
+  .dep3 {
+    font-size: var(--font-size-product-content);
+    font-weight: 500;
+    color: gray;
+    margin: 15px 0;
+    cursor: default;
+    border-top: 1px dashed gray;
+  }
+}

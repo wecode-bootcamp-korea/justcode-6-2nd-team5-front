@@ -1,0 +1,40 @@
+{
+  "tagList": [
+    {
+      "id": 0,
+      "tagName": "캐스퍼"
+    },
+    {
+      "id": 1,
+      "tagName": "애견동반"
+    },
+    {
+      "id": 2,
+      "tagName": "낚시용품 가능"
+    },
+    {
+      "id": 3,
+      "tagName": "오픈카"
+    },
+    {
+      "id": 4,
+      "tagName": "주유비 SAVE, 전기차"
+    },
+    {
+      "id": 5,
+      "tagName": "ALL NEW 신차"
+    },
+    {
+      "id": 6,
+      "tagName": "전기충전"
+    },
+    {
+      "id": 7,
+      "tagName": "BMW"
+    },
+    {
+      "id": 8,
+      "tagName": "차박/캠핑카"
+    }
+  ]
+}

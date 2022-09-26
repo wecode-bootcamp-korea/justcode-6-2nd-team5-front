@@ -1,19 +1,9 @@
 .rentcar-stb-wrap {
+  display: flex;
   position: relative; // next, prev 버튼 위치 고정을 위해
-  display: flex; // 가로정렬
   align-items: center; // 세로 중앙 정렬
-  padding: 20px 40px;
-  border-radius: 20px;
-  background-color: #fff;
 
   --slide-btn-size: 40px; // next, prev 버튼 size
-
-  .title {
-    min-width: fit-content; // 글씨 줄바꿈 방지
-    font-size: 28px;
-    font-weight: bold;
-    margin-right: 50px;
-  }
 
   .tag-list-wrap {
     display: flex; // button 들이 삐져나와 줄바꿈하는 것을 막음

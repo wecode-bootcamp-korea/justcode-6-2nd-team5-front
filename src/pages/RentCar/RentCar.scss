@@ -1,19 +1,24 @@
-body {
+.rentcar-container {
+  min-width: 1600px; //최소 너비 지정
+  padding: 80px 0px;
   background-color: var(--color-background);
 }
 
-.rentcar-container {
+.rentcar-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 80px 0px;
   width: 80%;
 
-  min-width: 1400px; //최소 너비 지정
+  min-width: 1600px; //최소 너비 지정
   max-width: 1800px; //최대 너비 지정
   margin: 0 auto;
 
-  .rentcar-content {
-    width: 80%;
+  .rentcar-main-content {
+    display: flex;
+
+    .rentcar-list {
+      width: 75%;
+    }
   }
 }
