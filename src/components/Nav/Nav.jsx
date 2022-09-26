@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate, Link, useParams, useLocation } from "react-router-dom";
 
 import FixNav from "./FixNav";
+import Modal from "../../components/Modal/Modal";
 
 import styled from "styled-components";
 import jejuzoaLogo from "../../assets/images/jejuzoa-logo.png";
@@ -12,15 +13,14 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { ModalContext } from "../Context/ModalContext";
 
 const Nav = () => {
-  const { clickedIcon, setClickedIcon } = useContext(ModalContext);
+  const { isOpen, setOpen, setClickedIcon } = useContext(ModalContext);
   const [scrollPosition, setScrollPosition] = useState(0);
 
   const menu = useLocation();
 
-  const onClick = (e) => {
-    setClickedIcon(e.target.id);
-    console.log(e);
-    console.log("테스트", clickedIcon);
+  const modalOpen = () => {
+    setOpen(true);
+    setClickedIcon(1);
   };
 
   const updateScroll = () => {
@@ -40,14 +40,7 @@ const Nav = () => {
           </Link>
         </div>
         <ul className="menu-box">
-          <MenuTab className={menu.pathname === "/esg" && "color"}>
-            <Link to="/esg">ESG</Link>
-          </MenuTab>
-          <MenuTab
-            onClick={onClick}
-            id="1"
-            className={menu.pathname.includes("/rentercar") && "color"}
-          >
+          <MenuTab className={menu.pathname.includes("/rentercar") && "color"}>
             <Link to="/rentercar">렌터카</Link>
           </MenuTab>
           <MenuTab className={menu.pathname === "/preparing" && "color"}>
@@ -67,7 +60,12 @@ const Nav = () => {
           <MenuTab className={menu.pathname.includes("/food") && "color"}>
             <Link to="/food">맛집</Link>
           </MenuTab>
-          <BiSearch className="search-icon" />
+          <MenuTab className={menu.pathname === "/esg" && "color"}>
+            <Link to="/esg">ESG</Link>
+          </MenuTab>
+          <span onClick={modalOpen}>
+            <BiSearch className="search-icon" />
+          </span>
         </ul>
         <div className="info-box">
           <Link to="/login">
@@ -83,6 +81,7 @@ const Nav = () => {
         </div>
       </NavContainer>
       {scrollPosition < 100 ? null : <FixNav />}
+      {isOpen && <Modal />}
     </>
   );
 };

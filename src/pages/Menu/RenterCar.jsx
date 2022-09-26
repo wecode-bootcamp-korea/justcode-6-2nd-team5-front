@@ -4,22 +4,13 @@ import RentCarHeader from "../../components/Header/RentCarHeader";
 import { ModalContext } from "../../components/Context/ModalContext";
 
 const RenterCar = () => {
-  const { isOpen, setOpen, clickedIcon, setClickedIcon } =
-    useContext(ModalContext);
-
-  console.log(clickedIcon);
+  const { isOpen } = useContext(ModalContext);
 
   return (
     <>
       <RentCarHeader />
       <div> 렌터카.</div>
-      {isOpen && (
-        <Modal
-          setOpen={setOpen}
-          clickedIcon={clickedIcon}
-          setClickedIcon={setClickedIcon}
-        />
-      )}
+      {isOpen && <Modal />}
     </>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ModalProvider from "./components/Context/ModalContext"
+import ModalProvider from "./components/Context/ModalContext";
 
 import Nav from "./components/Nav/Nav";
 import Main from "./pages/Main/Main";

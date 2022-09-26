@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import styled from "styled-components";
 
 import MainContextProvider from "../../components/Context/MainContext";
+import { ModalContext } from "../Context/ModalContext";
 
 import RentCarModal from "./modals/RentCarModal";
 import FlightModal from "./modals/FlightModal";
@@ -20,7 +21,9 @@ import { FaTicketAlt } from "react-icons/fa";
 import { FaCoffee } from "react-icons/fa";
 import { FaHotdog } from "react-icons/fa";
 
-const Modal = ({ setOpen, clickedIcon, setClickedIcon }) => {
+const Modal = () => {
+  const { setOpen, clickedIcon, setClickedIcon } = useContext(ModalContext);
+
   useEffect(() => {
     const $body = document.querySelector("body");
     $body.style.overflow = "hidden";

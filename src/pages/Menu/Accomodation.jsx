@@ -4,20 +4,13 @@ import AccomodationHeader from "../../components/Header/RoomHeader";
 import { ModalContext } from "../../components/Context/ModalContext";
 
 const Accomodation = () => {
-  const { isOpen, setOpen, clickedIcon, setClickedIcon } =
-    useContext(ModalContext);
+  const { isOpen } = useContext(ModalContext);
 
   return (
     <>
       <AccomodationHeader />
       <div> 숙박.</div>
-      {isOpen && (
-        <Modal
-          setOpen={setOpen}
-          clickedIcon={clickedIcon}
-          setClickedIcon={setClickedIcon}
-        />
-      )}
+      {isOpen && <Modal />}
     </>
   );
 };

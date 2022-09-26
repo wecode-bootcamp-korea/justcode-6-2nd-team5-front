@@ -1,6 +1,4 @@
 import React, { useState, useContext, createContext } from "react";
-import RentCarModal from "../Modal/modals/RentCarModal";
-import RentalDate from "../Modal/detailSearch/rentCar/RentalDate";
 
 export const MainContext = createContext({
   dateSet: { start: "", end: "" },
@@ -23,21 +21,23 @@ const MainContextProvider = ({ children }) => {
       };
 
       const startDay =
-        start.getFullYear().toString() +
+        start.getFullYear().toString().slice(2) +
         `.` +
         (start.getMonth() + 1).toString() +
         `.` +
         start.getDate().toString() +
         day(start.getDay()).toString();
       const endDay =
-        end.getFullYear().toString() +
+        end.getFullYear().toString().slice(2) +
         `.` +
         (end.getMonth() + 1).toString() +
         `.` +
         end.getDate().toString() +
         day(end.getDay()).toString();
+      const timeGap =
+        Math.round(end.getTime() - start.getTime()) / (1000 * 60 * 60);
 
-      return setDateSet({ start: startDay, end: endDay });
+      return setDateSet({ start: startDay, end: endDay, time: timeGap });
     } else {
       return;
     }

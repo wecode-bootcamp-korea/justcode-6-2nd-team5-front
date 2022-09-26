@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { ConditionSelector } from "../../commonStyled";
 import { SelectBtn } from "../../commonStyled";
 
-const CarCondition = ({ setInsurance }) => {
+const CarCondition = ({ setInsurance, setCarType }) => {
   const insuranceTypeArr = [
     { id: 1, text: "일반자차" },
     { id: 2, text: "완전자차" },
@@ -16,10 +16,11 @@ const CarCondition = ({ setInsurance }) => {
     { id: 0, text: "전체" },
     { id: 1, text: "경형" },
     { id: 2, text: "소형" },
-    { id: 3, text: "중형" },
-    { id: 4, text: "승합" },
-    { id: 5, text: "SUV/캠핑" },
-    { id: 6, text: "전기" },
+    { id: 3, text: "준중형" },
+    { id: 4, text: "중형" },
+    { id: 5, text: "고급" },
+    { id: 6, text: "SUV/캠핑" },
+    { id: 7, text: "승합" },
   ];
 
   const [select, setSelect] = useState([]);
@@ -59,9 +60,13 @@ const CarCondition = ({ setInsurance }) => {
               otherType
               key={item.id}
               onClick={() => {
-                select.includes(item.id)
-                  ? setSelect(select.filter((arr) => arr !== item.id))
-                  : setSelect((el) => [...el, item.id]);
+                if (select.includes) {
+                  setSelect([1, 2, 3, 4, 5, 6, 7]);
+                } else if (select.includes(item.id)) {
+                  setSelect(select.filter((arr) => arr !== item.id));
+                } else {
+                  setSelect((el) => [...el, item.id]);
+                }
               }}
               className={select.includes(item.id) && "clicked"}
             >

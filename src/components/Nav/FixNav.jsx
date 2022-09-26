@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 import styled from "styled-components";
 import { BiSearch, BiLogIn } from "react-icons/bi";
 import { HiOutlineShoppingBag } from "react-icons/hi";
+import { ModalContext } from "../Context/ModalContext";
+import Modal from "../Modal/Modal";
 
 const FixNav = () => {
+  const { isOpen, setOpen, setClickedIcon } = useContext(ModalContext);
+
+  const modalOpen = () => {
+    setOpen(true);
+  };
+
   return (
     <FixNavContainer>
       <ul className="menu-box">
-        <FixMenuTab>
-          <Link to="/esg">ESG</Link>
-        </FixMenuTab>
         <FixMenuTab>
           <Link to="/rentcar">렌터카</Link>
         </FixMenuTab>
@@ -30,7 +35,10 @@ const FixNav = () => {
         <FixMenuTab>
           <Link to="/food">맛집</Link>
         </FixMenuTab>
-        <BiSearch className="search-icon" />
+        <FixMenuTab>
+          <Link to="/esg">ESG</Link>
+        </FixMenuTab>
+        <BiSearch onClick={modalOpen} className="search-icon" />
       </ul>
       <div className="info-box">
         <Link to="/login">
@@ -46,6 +54,7 @@ const FixNav = () => {
           </FixInfoTab>
         </Link>
       </div>
+      {isOpen && <Modal />}
     </FixNavContainer>
   );
 };

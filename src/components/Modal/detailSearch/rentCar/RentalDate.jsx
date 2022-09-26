@@ -10,7 +10,7 @@ import { ConditionSelector } from "../../commonStyled";
 
 const RentalDate = () => {
   const { onDateSetting } = useContext(MainContext);
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
   const onChange = (dates) => {
@@ -31,6 +31,7 @@ const RentalDate = () => {
         <DatePicker
           dateFormat="yy.MM.dd(eee)"
           dateFormatCalendar="yyyy년 M월"
+          showPreviousMonths={false}
           startDate={startDate}
           endDate={endDate}
           onChange={onChange}
