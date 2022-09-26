@@ -73,6 +73,48 @@ function FilterBar(props) {
     }
   };
 
+  // 적용 버튼 관리 함수
+  const submit = () => {
+    setIsDone(true);
+  };
+
+  // query items 관리값
+  const [squeryItems, setSQueryItems] = useState([]);
+  const [squery, setSQuery] = useState([]);
+
+  // 슬라이드리스트: 범위 가져오는 함수
+  const getSlideItem = (id, item) => {
+    if (item.length !== 0) {
+      const result = {
+        id: id,
+        item: item,
+      };
+      squeryItems.unshift(result);
+      const filtered = _.uniqBy(squeryItems, "id");
+
+      if (filtered.length === 2) {
+        const bookedQuery = `bookedmin=${filtered[0].item[0]}&bookedmax=${filtered[0].item[1]}`;
+        const priceQuery = `pricemin=${filtered[1].item[0]}&pricemax=${filtered[1].item[1]}`;
+        let queryList = [];
+        queryList.push(priceQuery);
+        queryList.push(bookedQuery);
+        const queryResult = queryList.slice(-2);
+        const slideQuery = queryResult.join("&");
+        setSQuery(slideQuery);
+      }
+    }
+  };
+
+  // 필터 적용한 정보 불러오기
+  useEffect(() => {
+    if (squery.length !== 0) {
+      const checkQuery = makeQuery();
+      const url = `${location.pathname}?${checkQuery}&${squery}`;
+      navigate(url);
+      setIsDone(false);
+    }
+  }, [isDone]);
+
   // query 작성 함수
   const makeQuery = () => {
     const listResult = [];
@@ -93,21 +135,6 @@ function FilterBar(props) {
 
   const navigate = useNavigate();
   const location = useLocation();
-
-  // 필터 적용한 정보 불러오기
-  useEffect(() => {
-    if (isDone) {
-      const search = makeQuery();
-      const url = `${location.pathname}?${search}`;
-      navigate(url);
-    }
-    setIsDone(false);
-  }, [isDone]);
-
-  // 적용 버튼 관리 함수
-  const submit = () => {
-    setIsDone(true);
-  };
 
   return (
     <>
@@ -158,8 +185,11 @@ function FilterBar(props) {
                       isRefresh={isRefresh}
                       getPriceRange={getPriceRange}
                       getBookedRange={getBookedRange}
+                      getSlideItem={getSlideItem}
+                      isDone={isDone}
                     />
                   )}
+
                   {filterInfo.disabled && filterInfo.pointList && (
                     <PointList
                       filterTypeId={filterInfo.id}

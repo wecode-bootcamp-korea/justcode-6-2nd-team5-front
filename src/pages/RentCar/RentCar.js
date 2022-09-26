@@ -12,7 +12,6 @@ function RentCar() {
     const url = `http://localhost:8000${location.pathname}${decodeURIComponent(
       location.search
     )}`;
-    console.log("current", url);
 
     // fetch(url)
     //   .then((res) => res.json())
