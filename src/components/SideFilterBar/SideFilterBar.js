@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import "./SideFilterBar.scss";
 import SortOrderBar from "./SortOrderBar/SortOrderBar";
 import FilterBar from "./FilterBar/FilterBar";

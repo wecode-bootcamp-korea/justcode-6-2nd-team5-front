@@ -204,7 +204,9 @@ function FilterBar(props) {
           </ul>
         }
       </div>
-      <button onClick={submit}>적용</button>
+      <button className="filter-submit-btn  rentcar-sfb-wrap" onClick={submit}>
+        적용
+      </button>
     </>
   );
 }
