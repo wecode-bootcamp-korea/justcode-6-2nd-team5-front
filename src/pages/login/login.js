@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./login.scss";
 import naverIcon from "../../assets/images/btnN.png";
 import kakaoIcon from "../../assets/images/btnK.png";
@@ -7,6 +8,11 @@ import loginBanner from "../../assets/images/login-jeju-b.png";
 function Login() {
   const [userEmail, setUserEamil] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  const navigate = useNavigate();
+
+  const signupBtn = () => {
+    navigate("/termsSignup");
+  };
 
   const userEmailHandler = (e) => {
     const userEmailValue = e.target.value;
@@ -111,7 +117,9 @@ function Login() {
           <div className="login-btn">
             <a className="btn-aft">아이디 찾기</a>
             <a className="btn-aft">비밀번호 찾기</a>
-            <a className="btn-bef">회원가입</a>
+            <a className="btn-bef" onClick={signupBtn}>
+              회원가입
+            </a>
           </div>
           <div>
             <div className="tit-bef">
