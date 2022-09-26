@@ -3,7 +3,7 @@ import Dep1 from "../Dep1/Dep1";
 import "./SortOrderBar.scss";
 
 function SortOrderBar(props) {
-  const { orderTypes } = props;
+  const { orderTypes, getSortOrder } = props;
 
   // Dep1 disabled
   const [isOpen, setIsOpen] = useState(false);
@@ -43,6 +43,9 @@ function SortOrderBar(props) {
   // dep-2 change check circle disabled
   const onCheckDep2 = (e) => {
     const orderTypeId = e.target.id;
+
+    // 쿼리 변수 상위폴더에 넘기기
+    getSortOrder(orderTypes[e.target.id].type);
 
     if (orderTypeId === "0") {
       setIsOnOrderType0(true);
