@@ -103,11 +103,21 @@ function FilterBar(props) {
     }
   };
 
+  // 별점리스트: 관리 값
+  const [pointQuery, setPointQuery] = useState("");
+
+  // 별점리스트: 범위 가져오는 함수
+  const getPointItem = (range) => {
+    setIsDone(false);
+    const query = `pointmin=${range[0]}&pointmax=${range[1]}`;
+    setPointQuery(query);
+  };
+
   // 필터 적용한 정보 불러오기
   useEffect(() => {
     if (squery.length !== 0) {
       const checkQuery = makeQuery();
-      const url = `${location.pathname}?${checkQuery}&${squery}`;
+      const url = `${location.pathname}?${checkQuery}&${squery}&${pointQuery}`;
       navigate(url);
       setIsDone(false);
     }
@@ -196,6 +206,8 @@ function FilterBar(props) {
                       filterType={filterInfo.type}
                       slideList={filterInfo.slideList}
                       isRefresh={isRefresh}
+                      getPointItem={getPointItem}
+                      isDone={isDone}
                     />
                   )}
                 </div>
