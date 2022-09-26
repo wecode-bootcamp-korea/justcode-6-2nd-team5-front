@@ -80,7 +80,6 @@ function TermsSignup() {
               >
                 이용약관 동의
               </label>
-              <br></br>
               <div>
                 <FontAwesomeIcon icon={faCheck} />
                 <span className="font-awesome">[필수]</span>
