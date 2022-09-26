@@ -58,6 +58,7 @@ function FilterBar(props) {
 
   // 체크리스트: 선택된 옵션들 가져오는 함수
   const getQueryList = (queryList) => {
+    setIsDone(false);
     if (queryList.length !== 0) {
       let result = [];
       for (let i = 0; i < queryList.length; i++) {
@@ -65,6 +66,8 @@ function FilterBar(props) {
       }
       queryItems.push(result);
       setQueryItems(queryItems);
+    } else {
+      setQueryItems([]);
     }
   };
 
@@ -112,20 +115,24 @@ function FilterBar(props) {
 
   // query 작성 함수
   const makeQuery = () => {
-    const listResult = [];
-    let queryResult = "";
-    let filteredQuery = "";
+    if (queryItems.length !== 0) {
+      const listResult = [];
+      let queryResult = "";
+      let filteredQuery = "";
 
-    queryItems.map((option) => {
-      listResult.push(option);
-    });
+      queryItems.map((option) => {
+        listResult.push(option);
+      });
 
-    listResult.map((option) => {
-      queryResult += option;
-    });
+      listResult.map((option) => {
+        queryResult += option;
+      });
 
-    filteredQuery = _.uniqBy(queryResult.split("&")).join("&");
-    return filteredQuery;
+      filteredQuery = _.uniqBy(queryResult.split("&")).join("&");
+      return filteredQuery;
+    } else {
+      return "";
+    }
   };
 
   const navigate = useNavigate();
