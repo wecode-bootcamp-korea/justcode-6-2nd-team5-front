@@ -29,7 +29,8 @@ const RentalDate = () => {
       </h2>
       <StyledCalendar>
         <DatePicker
-          dateFormat="yyyy.MM.dd(eee)"
+          dateFormat="yy.MM.dd(eee)"
+          dateFormatCalendar="yyyy년 M월"
           startDate={startDate}
           endDate={endDate}
           onChange={onChange}
@@ -38,6 +39,29 @@ const RentalDate = () => {
           minDate={new Date()}
           inline
           monthsShown={2}
+          // renderCustomHeader={({
+          //   date,
+          //   changeYear,
+          //   changeMonth,
+          //   decreaseMonth,
+          //   increaseMonth,
+          //   prevMonthButtonDisabled,
+          //   nextMonthButtonDisabled,
+          // }) => (
+          //   <div className="date-customheader">
+          //     <button
+          //       onClick={decreaseMonth}
+          //       disabled={prevMonthButtonDisabled}
+          //     ></button>
+          //     <div className="custom-month">
+          //       {date.getFullYear()}년 {date.getMonth()}월
+          //     </div>
+          //     <button
+          //       onClick={increaseMonth}
+          //       disabled={nextMonthButtonDisabled}
+          //     ></button>
+          //   </div>
+          // )}
         />
       </StyledCalendar>
     </ConditionSelector>

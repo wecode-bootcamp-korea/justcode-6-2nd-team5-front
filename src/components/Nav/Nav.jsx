@@ -4,6 +4,8 @@ import { useNavigate, Link, useParams, useLocation } from "react-router-dom";
 import FixNav from "./FixNav";
 
 import styled from "styled-components";
+import jejuzoaLogo from "../../assets/images/jejuzoa-logo.png";
+import logo from "../../assets/images/logo-square.png";
 import { BiSearch, BiLogIn } from "react-icons/bi";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 
@@ -21,7 +23,11 @@ const Nav = () => {
   return (
     <>
       <NavContainer>
-        <div className="logo-box"></div>
+        <div className="logo-box">
+          <Link to="/">
+            <img src={logo} />
+          </Link>
+        </div>
         <ul className="menu-box">
           <MenuTab className={menu.pathname === "/esg" && "color"}>
             <Link to="/esg">ESG</Link>
@@ -77,7 +83,10 @@ const NavContainer = styled.div`
   }
 
   .logo-box {
-    width: 100px;
+    padding: 0 40px;
+    img {
+      width: 130px;
+    }
   }
 
   .menu-box {
@@ -102,6 +111,7 @@ const NavContainer = styled.div`
 `;
 
 export const MenuTab = styled.li`
+  text-align: center;
   padding-right: 30px;
   font-family: "NanumSquareRound", sans-serif;
   font-weight: 900;
