@@ -1,0 +1,215 @@
+.restaurant-container {
+  display: flex;
+  padding: 7.5% 12.5%;
+
+  .restaurant-content {
+    width: 25%;
+  }
+
+  .restaurant-main-content {
+    width: 75%;
+  }
+}
+
+.restaurant-list-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2.5%;
+  border-radius: 16px;
+  background-color: white;
+
+  .restaurant-list {
+    margin: 7.5% 0;
+
+    &:nth-child(odd) {
+      margin-left: 7.5%;
+    }
+
+    &:nth-child(even) {
+      margin-right: 7.5%;
+    }
+
+    .restaurant-img {
+      img {
+        width: 100%;
+        border-radius: 16px;
+      }
+    }
+
+    .restaurant-info {
+      margin-top: 2.5%;
+      color: #606060;
+
+      h1 {
+        margin: 1% 0;
+        font-weight: 700;
+        line-height: 1.4;
+        font-size: large;
+        color: black;
+      }
+
+      span {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+      span:nth-child(-n + 3) {
+        border-right: 1px solid gainsboro;
+      }
+
+      .total-like::before {
+        content: "";
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        margin: 0 0 -3px 0;
+        background: url("https://static-www.jejupass.com/resource/PC/images/food/ico_like-on.png")
+          no-repeat;
+      }
+
+      .total-review-point::before {
+        content: "";
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        margin: 0 0 -3px 0;
+        background: url("https://static-www.jejupass.com/resource/PC/images/food/ico_starx18.png")
+          no-repeat;
+      }
+
+      p {
+        margin: 2.5% 0;
+        line-height: 1.4;
+      }
+    }
+  }
+}
+
+.total-restaurant {
+  margin-bottom: 12px;
+  padding: 16px 24px;
+  color: gray;
+  border-radius: 16px;
+  background: #fff;
+
+  span {
+    color: #63a1ff;
+    font-weight: 400;
+  }
+}
+
+// .category-wrapper {
+//   display: flex;
+//   justify-content: space-between;
+//   padding-bottom: 10%;
+//   padding-top: 10%;
+//   border-bottom: 0.5px solid gainsboro;
+
+//   button {
+//     border: none;
+//     background-color: transparent;
+//     cursor: pointer;
+//   }
+// }
+
+// .category-list-wrapper {
+//   padding-top: 10%;
+// }
+
+// /* The container */
+// .container {
+//   display: block;
+//   position: relative;
+//   margin-bottom: 12px;
+//   cursor: pointer;
+//   font-size: 22px;
+//   -webkit-user-select: none;
+//   -moz-user-select: none;
+//   -ms-user-select: none;
+//   user-select: none;
+// }
+
+// /* Hide the browser's default checkbox */
+// .container input {
+//   position: absolute;
+//   opacity: 0;
+//   cursor: pointer;
+//   height: 0;
+//   width: 0;
+// }
+
+// /* Create a custom checkbox */
+// .checkmark {
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   height: 25px;
+//   width: 25px;
+//   background-color: #eee;
+//   border-radius: 6px;
+// }
+
+// /* When the checkbox is checked, add a blue background */
+// .container input:checked ~ .checkmark {
+//   background-color: #2196f3;
+// }
+
+// /* Create the checkmark/indicator (hidden when not checked) */
+// .checkmark:after {
+//   content: "";
+//   position: absolute;
+// }
+
+// /* Show the checkmark when checked */
+// .container input:checked ~ .checkmark:after {
+//   display: block;
+// }
+
+// /* Style the checkmark/indicator */
+// .container .checkmark:after {
+//   left: 9px;
+//   top: 5px;
+//   width: 5px;
+//   height: 10px;
+//   border: solid white;
+//   border-width: 0 3px 3px 0;
+//   -webkit-transform: rotate(45deg);
+//   -ms-transform: rotate(45deg);
+//   transform: rotate(45deg);
+// }
+
+// /* Create a custom radio button */
+// .radiomark {
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   height: 25px;
+//   width: 25px;
+//   background-color: #eee;
+//   border-radius: 50%;
+// }
+
+// /* When the radio button is checked, add a blue background */
+// .container input:checked ~ .radiomark {
+//   background-color: #2196f3;
+// }
+
+// /* Create the indicator (the dot/circle - hidden when not checked) */
+// .radiomark:after {
+//   content: "";
+//   position: absolute;
+// }
+
+// /* Show the indicator (dot/circle) when checked */
+// .container input:checked ~ .radiomark:after {
+//   display: block;
+// }
+
+// /* Style the indicator (dot/circle) */
+// .container .radiomark:after {
+//   top: 9px;
+//   left: 9px;
+//   width: 8px;
+//   height: 8px;
+//   border-radius: 50%;
+//   background: white;
+// }

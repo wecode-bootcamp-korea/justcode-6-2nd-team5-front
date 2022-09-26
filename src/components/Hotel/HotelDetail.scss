@@ -1,0 +1,119 @@
+.hotel-detail-container {
+  width: 100%;
+  text-align: center;
+  font-family: "NanumSquareRound";
+
+  .hotel-detail-contens {
+    width: 60%;
+    margin: 0 auto;
+
+    .hotel-detail-top {
+      margin: 5% 10%;
+      background-color: white;
+
+      .detail-event {
+        margin-bottom: 20px;
+
+        .detail-e-border {
+          color: #63a1ff;
+          border: 0.5px solid #f4f9ff;
+          background-color: #e8f0ef;
+          border-radius: 5px;
+        }
+      }
+
+      img {
+        width: 30%;
+        height: 335px;
+        margin-right: 50px;
+        border-radius: 16px;
+        float: left;
+      }
+
+      h1 {
+        font-size: 2.4rem;
+        font-weight: 900;
+        line-height: 1.4;
+      }
+      .span-style {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-weight: 900;
+        font-size: 15px;
+      }
+
+      .hotel-detail-info {
+        text-align: left;
+
+        .hotel-tag-item {
+          height: 40px;
+          margin-top: 20px;
+          margin-right: 5px;
+          padding: 0 20px;
+          line-height: 1.4;
+          color: gray;
+          font-size: 1rem;
+          font-weight: 600;
+          display: inline-block;
+          border-radius: 55px;
+          border: 1px solid #eaeaea;
+          background: #fff;
+          cursor: pointer;
+        }
+      }
+
+      p {
+        line-height: 1.4;
+        color: #606060;
+        font-weight: 600;
+        font-size: 1.2rem;
+
+        span {
+          color: black;
+          margin-left: 5%;
+        }
+
+        &:last-child {
+          border-bottom: 1px solid gainsboro;
+          padding-bottom: 5%;
+        }
+      }
+
+      .detail-bottom {
+        margin-top: 20px;
+        font-weight: 600;
+      }
+    }
+
+    .hotel-detail-wrapper {
+      margin: 5% 10%;
+      padding: 2.5%;
+      border: 1px solid gainsboro;
+      border-radius: 16px;
+      background-color: white;
+
+      .hotel-btn-wrapper {
+        border: none;
+
+        .hotel-tabs-btn {
+          border: none;
+          background-color: inherit;
+          width: 25%;
+          border-bottom: 1px solid gainsboro;
+          padding-bottom: 2.5%;
+          margin-bottom: 5%;
+          color: gray;
+          font-family: "NanumSquareRound";
+          font-weight: 900;
+          font-size: 1.2rem;
+          cursor: pointer;
+
+          &:focus {
+            border-bottom: 3px solid black;
+            color: #404040;
+          }
+        }
+      }
+    }
+  }
+}

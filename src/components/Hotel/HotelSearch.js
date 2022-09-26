@@ -11,11 +11,7 @@ function HotelSearch() {
       <h1 className="hotel-theme-search-title">테마검색</h1>
       <div className="inner">
         <div className="theme-tag-list">
-          <button
-            className="theme-tag-item"
-            id="hotel-icon"
-            onClick={themeTagClick}
-          >
+          <button className="theme-tag-item" onClick={themeTagClick}>
             #인기
             <img src={HotelIcon} id="hotel-icon"></img>
           </button>

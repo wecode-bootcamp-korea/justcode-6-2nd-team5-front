@@ -17,6 +17,8 @@ import Signup from "./pages/signup/signup";
 import SignupFin from "./components/signup/signupFin";
 import FooterTop from "./components/Footer/FooterTop";
 import FooterBottom from "./components/Footer/FooterBottom";
+import HotelThema from "./components/Hotel/HotelThema";
+import HotelDetail from "./components/Hotel/HotelDetail";
 
 function Router() {
   return (
@@ -37,6 +39,8 @@ function Router() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/signupFin" element={<SignupFin />} />
         <Route path="/preparing" element={<Preparing />} />
+        <Route path="/hotelThema" element={<HotelThema />} />
+        <Route path="/hoteldetail" element={<HotelDetail />} />
       </Routes>
       <FooterTop />
       <FooterBottom />

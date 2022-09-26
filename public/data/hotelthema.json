@@ -1,0 +1,48 @@
+{
+  "restaurantList": [
+    {
+      "id": 1,
+      "name": "그마니네 식당",
+      "intro": "맛도 그만! 가격도 그만! 만족하면 그만!이라는 뜻의 이곳은 통갈치 전문점이에요",
+      "reviewPoint": 2.7,
+      "totalLike": 0,
+      "category": [],
+      "hashTag": ["#애월맛집", "#은갈치", "#전복해물탕"],
+      "address": "애월",
+      "img": "https://static-file.jejupass.com/download/15072.webp?width=768&height=768"
+    },
+    {
+      "id": 2,
+      "name": "그마니네 식당",
+      "intro": "맛도 그만! 가격도 그만! 만족하면 그만!이라는 뜻의 이곳은 통갈치 전문점이에요. 푸짐한 한상에 전복, 딱새우, 순두부, 수제비 그리고 통갈치까지 알차게 만날 수 있어요. ",
+      "reviewPoint": 2.7,
+      "totalLike": 0,
+      "category": [],
+      "hashTag": ["#애월맛집", "#은갈치", "#전복해물탕"],
+      "address": "애월",
+      "img": "https://static-file.jejupass.com/download/15072.webp?width=768&height=768"
+    },
+    {
+      "id": 3,
+      "name": "그마니네 식당",
+      "intro": "맛도 그만! 가격도 그만! 만족하면 그만!이라는 뜻의 이곳은 통갈치 전문점이에요",
+      "reviewPoint": 2.7,
+      "totalLike": 0,
+      "category": [],
+      "hashTag": ["#애월맛집", "#은갈치", "#전복해물탕"],
+      "address": "애월",
+      "img": "https://static-file.jejupass.com/download/15072.webp?width=768&height=768"
+    },
+    {
+      "id": 4,
+      "name": "그마니네 식당",
+      "intro": "맛도 그만! 가격도 그만! 만족하면 그만!이라는 뜻의 이곳은 통갈치 전문점이에요",
+      "reviewPoint": 2.7,
+      "totalLike": 0,
+      "category": [],
+      "hashTag": ["#애월맛집", "#은갈치", "#전복해물탕"],
+      "address": "애월",
+      "img": "https://static-file.jejupass.com/download/15072.webp?width=768&height=768"
+    }
+  ]
+}
