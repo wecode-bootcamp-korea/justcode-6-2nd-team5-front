@@ -26,7 +26,7 @@ function Router() {
         <Route path="/esg" element={<Esg />} />
         <Route path="/rentercar" element={<RenterCar />} />
         <Route path="/accomodation" element={<Accomodation />} />
-        <Route path="/food" element={<Food />} />
+        <Route path="/food/:id" element={<Food />} />
         <Route path="/preparing" element={<Preparing />} />
         <Route path="/mypage" element={<Mypage />} />
         <Route path="/rentercar/rentcar/:id" element={<RentCar />} />

@@ -13,29 +13,13 @@ function RentCar() {
   useEffect(() => {
     const url = `http://localhost:8000${location.pathname}${decodeURIComponent(
       location.search
-    )}&${sortQuery}`;
+    )}`;
     // console.log(url);
 
     // fetch(url)
     //   .then((res) => res.json())
     //   .then((data) => console.log(data));
   }, [location]);
-
-  // sort order bar 쿼리 변수 관리값
-  const [sortQuery, setSortQuery] = useState("정렬=추천순");
-
-  // sort order bar 쿼리 변수명 가져오는 함수
-  const getSortOrder = (sortType) => {
-    setSortQuery(`정렬=${sortType}`);
-
-    const url = `http://localhost:8000${location.pathname}${decodeURIComponent(
-      location.search
-    )}&${sortType}`;
-
-    // fetch(url)
-    //   .then(res => res.json())
-    //   .then(data => console.log(data))
-  };
 
   // Serch Tag Box props
   // Search Tag Box mockdata
@@ -91,11 +75,7 @@ function RentCar() {
           <SearchTagBox title={"빠른 검색"} tagList={tagList} />
         </div>
         <div className="rentcar-main-content">
-          <SideFilterBar
-            orderTypes={orderTypes}
-            filterTypes={filterTypes}
-            getSortOrder={getSortOrder}
-          />
+          <SideFilterBar orderTypes={orderTypes} filterTypes={filterTypes} />
           <div className="rentcar-list-wrap">
             <TotalBox totalAmount={913} />
             <RentCarList rentCarList={rentCarList} rentCarTags={rentCarTags} />
