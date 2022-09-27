@@ -15,7 +15,7 @@ function RentCar() {
       location.search
     )}`;
 
-    console.log(url);
+    // console.log(url);
     // fetch(url)
     //   .then((res) => res.json())
     //   .then((data) => console.log(data));
@@ -47,11 +47,12 @@ function RentCar() {
       });
   }, []);
 
-  // Filter Bar, RentCarList props
-  // Filter Bar, RentCarList API data: dep-3
+  // Filter Bar, TotalBox, RentCarList props
+  // Filter Bar, TotalBox, RentCarList API data
   const [filterTypes, setFilterTypes] = useState([]);
   const [rentCarTags, setRentCarTags] = useState([]);
   const [rentCarList, setRentCarList] = useState([]);
+  const [totalAmount, setTotalAmount] = useState(0);
 
   const filterTypeUrl =
     "http://localhost:8000/rentcar/searchList?rentStartDate=2022-09-28&rentEndDate=2022-09-29&rentStartTime=1&rentEndTime=2&insurance=일반자차&age=만 26세이상&experience=1년 미만";
@@ -65,6 +66,12 @@ function RentCar() {
         setFilterTypes(data[0].filterTypes);
         setRentCarTags(data[0].filterTypes[2].checkList);
         setRentCarList(data[0].carList);
+
+        let count = 0;
+        data[0].carList.map((car) => {
+          count += car.rentCarCompanyList.length;
+        });
+        setTotalAmount(count);
       });
   }, []);
 
@@ -77,7 +84,7 @@ function RentCar() {
         <div className="rentcar-main-content">
           <SideFilterBar orderTypes={orderTypes} filterTypes={filterTypes} />
           <div className="rentcar-list-wrap">
-            <TotalBox totalAmount={913} />
+            <TotalBox totalAmount={totalAmount} />
             <RentCarList rentCarList={rentCarList} rentCarTags={rentCarTags} />
           </div>
         </div>

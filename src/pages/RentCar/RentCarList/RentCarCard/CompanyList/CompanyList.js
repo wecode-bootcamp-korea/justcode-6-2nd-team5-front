@@ -1,8 +1,11 @@
 import { useEffect, useRef, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./CompanyList.scss";
 
 function CompanyList(props) {
   const { companyInfo } = props;
+  const navigate = useNavigate();
+  const location = useLocation();
 
   //천단위 , 찍기 위한 함수
   const numberFormat = (num) => {
@@ -13,15 +16,15 @@ function CompanyList(props) {
     }
   };
 
-  // 선택된 렌터카 기업 상태값
+  // 선택된 렌터카 업체 상태값
   const [currentCompany, setCurrentCompany] = useState(0);
 
-  // 각 기업카드에 들어갈 ref 값
+  // 각 업체카드에 들어갈 ref 값
   const companyCardRef = useRef([]);
 
   useEffect(() => {
     for (let i = 0; i < companyCardRef.current.length; i++) {
-      // 기업 리스트중 선택된 기업인 경우 스타일 변경
+      // 업체 리스트중 선택된 업체인 경우 스타일 변경
       if (companyCardRef.current[i].id === currentCompany) {
         companyCardRef.current[i].className = "company-card-on product-bar";
       } else {
@@ -32,7 +35,7 @@ function CompanyList(props) {
 
   // company 선택시
   const onSelect = (e) => {
-    // 선택된 기업 세팅
+    // 선택된 업체 세팅
     setCurrentCompany(e.target.id);
   };
 
@@ -40,6 +43,18 @@ function CompanyList(props) {
   const onReserve = (e) => {
     // 이벤트 버블링 막기
     e.stopPropagation();
+    // 대여일, 반납일, 대여시간, 반납시간, 보험, 차종, 운전자 연령, 경력은 유지한 상태로 navigate
+    const conditionQuery = decodeURIComponent(location.search)
+      .split("&")
+      .slice(0, 8)
+      .join("&");
+    // 선택한 업체 고유 id
+    const rentCompanyCarId = `&rentCompanyCarId=${e.target.id}`;
+
+    // 경로 이동
+    const url = "/rentercar/rentcar/detail" + conditionQuery + rentCompanyCarId;
+    console.log(url);
+    // navigate(url);
   };
 
   return (
