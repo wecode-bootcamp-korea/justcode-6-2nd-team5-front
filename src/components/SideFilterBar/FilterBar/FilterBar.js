@@ -67,7 +67,8 @@ function FilterBar(props) {
       queryItems.push(result);
       setQueryItems(queryItems);
     } else {
-      setQueryItems([]);
+      queryItems.splice(0, queryItems.length);
+      setQueryItems(queryItems);
     }
   };
 
@@ -115,41 +116,90 @@ function FilterBar(props) {
 
   // 필터 적용한 정보 불러오기
   useEffect(() => {
-    if (squery.length !== 0 || queryItems.length !== 0) {
+    if (isDone) {
       const checkQuery = makeQuery();
 
-      let plusUrl = "";
+      if (location.pathname.split("/").includes("rentcar")) {
+        if (squery.length !== 0 || checkQuery.split("&").length > 7) {
+          let url = "";
+          let plusUrl = "";
 
-      if (checkQuery !== 0) plusUrl += makeQuery();
-      if (squery.length !== 0) plusUrl += `&${squery}`;
-      if (pointQuery.length !== 0) plusUrl += `&${pointQuery}`;
+          if (checkQuery) plusUrl += checkQuery;
+          if (squery.length !== 0) plusUrl += `&${squery}`;
+          if (pointQuery) plusUrl += `&${pointQuery}`;
 
-      const url = `${location.pathname}?` + plusUrl.replace("&", "");
-      navigate(url);
+          url += location.pathname + plusUrl;
 
-      setIsDone(false);
+          navigate(url);
+          setIsDone(false);
+        } else {
+        }
+      } else {
+        if (squery.length !== 0 || checkQuery !== 0) {
+          let url = "";
+          let plusUrl = "";
+
+          if (checkQuery) plusUrl += checkQuery;
+          if (squery.length !== 0) plusUrl += `&${squery}`;
+          if (pointQuery) plusUrl += `&${pointQuery}`;
+
+          url += decodeURIComponent(location.pathname) + plusUrl;
+
+          navigate(url);
+          setIsDone(false);
+        } else {
+          const url = decodeURIComponent(location.pathname).replace(
+            "/searchList?",
+            ""
+          );
+          navigate(url);
+        }
+      }
+      setQueryItems([]);
     }
   }, [isDone]);
 
   // query 작성 함수
   const makeQuery = () => {
-    if (queryItems.length !== 0) {
+    if (queryItems.length > 0) {
       const listResult = [];
       let queryResult = "";
       let filteredQuery = "";
 
+      // 렌터카의 경우 기존 조건들 유지 / 숙박, 맛집의 경우 기존 조건들 리셋
+      if (location.pathname.split("/").includes("rentcar")) {
+        queryResult += decodeURIComponent(location.search)
+          .split("&")
+          .slice(0, 8)
+          .join("&");
+      } else {
+        queryResult += "?";
+      }
+
+      // 배열 생성 후
       queryItems.map((option) => {
         listResult.push(option);
       });
 
+      // 문자열로 연결
       listResult.map((option) => {
         queryResult += option;
       });
 
+      // 중복 제거
       filteredQuery = _.uniqBy(queryResult.split("&")).join("&");
       return filteredQuery;
     } else {
-      return "";
+      // 아무 옵션도 없는 경우
+      // 렌터카의 경우 기존 조건들 유지 / 숙박, 맛집의 경우 기존 조건들 리셋
+      if (location.pathname.split("/").includes("rentcar")) {
+        return decodeURIComponent(location.search)
+          .split("&")
+          .slice(0, 8)
+          .join("&");
+      } else {
+        return "?";
+      }
     }
   };
 
