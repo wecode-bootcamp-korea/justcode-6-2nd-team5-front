@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import banner from "../../assets/images/made-banner.png";
-import testPhoto from "../../assets/images/test-photo.jpeg";
+
 import { FaRegHeart, FaHeart, FaUserAlt } from "react-icons/fa";
-import Content from "../../components/Review/ReveiwContent";
+import NoReview from "../../components/Review/NoReview";
+import WriteReviewModal from "./WriteReviewModal";
+import Content from "./ReveiwContent";
 
 const Review = () => {
+  const [isOpen, setOpen] = useState(false);
+
   const replaceStr = (e) => {
     let len = e.length;
     return `${e.substring(0, len - 2)}*${e[len - 1]}`;
@@ -37,7 +41,7 @@ const Review = () => {
         </div>
       </RateContainer>
       <SubmitContainer>
-        <button>리뷰 남기기</button>
+        <button onClick={() => setOpen(true)}>리뷰 남기기</button>
       </SubmitContainer>
       <ListContainer>
         <img src={banner} />
@@ -46,33 +50,10 @@ const Review = () => {
             <span className="photo-review">포토리뷰(0)</span>
             <span className="toggle-btn">토글</span>
           </div>
-          <div className="sort">정렬</div>
         </div>
-        <ReviewContent>
-          <div className="text">
-            <div className="user-box">
-              <div className="user-img">
-                <FaUserAlt />
-              </div>
-              <span className="user-id">{replaceStr("jdc19407")}</span>
-            </div>
-            <div className="rate-date">
-              <span className="comment-rate">★☆☆☆☆</span>
-              <span className="date">2021-05-29</span>
-            </div>
-            <p className="content">
-              여기 진짜 비싸요 반면에 구성은 별로임 엄빠 모시고가서 기분
-              대박상해서 나온 경험 ㅂㄷㅂㄷ...
-            </p>
-            <div className="like-btn">
-              <FaRegHeart />
-              <span className="like-num">0</span>
-            </div>
-          </div>
-          <div className="photo">
-            <img src={testPhoto} />
-          </div>
-        </ReviewContent>
+        <Content />
+        <NoReview />
+        {isOpen && <WriteReviewModal setOpen={setOpen} />}
       </ListContainer>
     </>
   );
