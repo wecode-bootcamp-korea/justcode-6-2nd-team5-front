@@ -1,0 +1,29 @@
+.restaurant-menu-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 5%;
+
+  li {
+    border: 1px solid gainsboro;
+    border-radius: 12px;
+    height: 168px;
+    margin-bottom: 10%;
+  }
+
+  span {
+    display: block;
+  }
+
+  span:first-child {
+    font-size: 1.4rem;
+    font-weight: 700;
+    padding: 35px;
+  }
+
+  span:last-child {
+    padding-left: 35px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #63a1ff;
+  }
+}
