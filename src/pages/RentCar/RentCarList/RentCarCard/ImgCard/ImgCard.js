@@ -3,8 +3,6 @@ import "./ImgCard.scss";
 function ImgCard(props) {
   const { carInfo } = props;
 
-  console.log(carInfo.carPhoto);
-
   return (
     <>
       {carInfo && (

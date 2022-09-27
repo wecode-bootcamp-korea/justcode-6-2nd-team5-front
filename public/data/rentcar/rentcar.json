@@ -72,7 +72,8 @@
             "driverAge": "만 26세",
             "driverExperience": "경력 2년이상",
             "totalReserve": 1930,
-            "price": 12600
+            "price": 12600,
+            "rentCompanyCarId": 133
           },
           {
             "companyName": "제주사랑렌터카",
@@ -83,7 +84,8 @@
             "driverAge": "만 23세",
             "driverExperience": "경력 2년이상",
             "totalReserve": 128,
-            "price": 27400
+            "price": 27400,
+            "rentCompanyCarId": 115
           }
         ]
       },
@@ -103,7 +105,8 @@
             "driverAge": "만 23세",
             "driverExperience": "경력 2년이상",
             "totalReserve": 758,
-            "price": 12100
+            "price": 12100,
+            "rentCompanyCarId": 118
           }
         ]
       }
