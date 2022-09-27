@@ -1,5 +1,9 @@
 .stars-wrap {
   display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 226.8px;
+  margin-bottom: 10px;
   .star-box,
   .star-box-4 {
     display: flex;
@@ -13,8 +17,8 @@
   }
 
   .star {
-    width: 18px;
-    height: 18px;
+    width: 12px;
+    height: 12px;
     background-image: url("../../../../../assets/images/star-icon.png");
     background-size: cover;
   }

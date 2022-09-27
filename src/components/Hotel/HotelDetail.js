@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./HotelDetail.scss";
 import Rooms from "./Rooms";
 import Policies from "./Policies";
@@ -10,6 +10,25 @@ import Lodge from "../Lodge/Lodge";
 
 function HotelDetail() {
   const [tabIndex, setTabIndex] = useState(1);
+  const [hotelData, setHotelData] = useState();
+  // let hotelData = {};
+  const hotelId = 1;
+
+  useEffect(() => {
+    fetch("http://localhost:8000/lodgment/item/1", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setHotelData(data);
+        // hotelData = data;
+        console.log("응애122" + data);
+      });
+  }, []);
+
+  console.log("응애1" + hotelData);
+  // console.log("응애2" + hotelData.lodgment);
+
   return (
     <div className="hotel-detail-container">
       <div className="hotel-detail-contens">
@@ -21,15 +40,16 @@ function HotelDetail() {
             <div className="detail-event">
               <span className="detail-e-border">제주패스 단독</span>
             </div>
-            <h1>유수암 소랑</h1>
+            <h1>test</h1>
             <p className="span-style">[제주패스X유수암소랑 단독오픈]</p>
-            <p>'소랑은'제주방언으로 '사랑'을 뜻합니다</p>
+            {/* <p>'소랑은'제주방언으로 '사랑'을 뜻합니다</p>
             <p>
               유수암 소랑에 머물고 가시는 모든 분들이 사랑으로 충만하시길 바라며
             </p>
             <p>
               여러분의 안락한 휴식공간을 선물해 드리기 위해 최선을 다하겠습니다.
-            </p>
+            </p> */}
+            <p>test</p>
             <div>
               <button className="hotel-tag-item">#인기</button>
               <button className="hotel-tag-item">#감성숙소</button>

@@ -10,7 +10,7 @@ function HotelStroy() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("/data/hotelstory.json")
+    fetch("/data/hotel/hotelstory.json")
       .then((res) => res.json())
       .then((data) => {
         setData(data.hotelStory);
@@ -27,7 +27,6 @@ function HotelStroy() {
           spaceBetween={50}
           slidesPerView={1}
           scrollbar={{ draggable: true }}
-          navigation
           pagination={{ clickable: true }}
           breakpoints={{
             768: {
@@ -38,7 +37,7 @@ function HotelStroy() {
           {data.map((data) => (
             <SwiperSlide key={data.id}>
               <div className="hotel-story-slide">
-                <div className="test">
+                <div className="hotel-story-slide-hidden">
                   <img src={data.img} className="first-img" />
                   <img src={data.img} className="second-img" />
                   <strong>{data.comment}</strong>

@@ -1,129 +1,107 @@
 import React, { useState, useEffect } from "react";
-
+import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./HotelThema.scss";
-import { IoIosArrowDown } from "react-icons/io";
-import { IoIosArrowUp } from "react-icons/io";
+import SideFilterBar from "../../components/SideFilterBar/SideFilterBar";
 
-function Restaurant() {
+function HotelThema() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [data, setData] = useState([]);
-  const [menuBox, setMenuBox] = useState(null);
-  const [locationBox, setLocationBox] = useState(null);
-  const [p, setP] = useState(false);
+
+  const HotelThemaClick = () => {
+    navigate("/hotelDetail");
+  };
 
   useEffect(() => {
-    fetch("/data/hotelthema.json")
+    // fetch("/data/hotel/hotelThema.json")
+    fetch("http://localhost:8000/lodgment/list", {
+      method: "GET",
+    })
       .then((res) => res.json())
       .then((data) => {
-        setData(data.restaurantList);
+        setData(data);
       });
   }, []);
 
-  // const checkHandler = (e) => {
-  //   if (e.target.checked) {
-  //     localStorage.setItem("checkbox", e.target.value);
-  //     setP(true);
-  //   } else {
-  //     localStorage.removeItem("checkbox", e.target.value);
-  //     setP(false);
-  //   }
-  //   console.log(localStorage.getItem("checkbox"));
-  // };
+  // Side Filter Bar props
+  // Sort Order Bar mockdata
+  const [orderTypes, setOrderTypes] = useState([]);
+
+  useEffect(() => {
+    fetch("/data/rentcar/orderType.json", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setOrderTypes(data.orderTypes.hotel);
+      });
+  }, []);
+  // sort order bar 쿼리 변수 관리값
+  const [sortQuery, setSortQuery] = useState("order=추천순");
+  // sort order bar 쿼리 변수명 가져오는 함수
+  const getSortOrder = (sortType) => {
+    setSortQuery(`order=${sortType}`);
+
+    const url = `http://localhost:8000${location.pathname}${decodeURIComponent(
+      location.search
+    )}&${`order=${sortType}`}`;
+
+    // fetch(url)
+    //   .then(res => res.json())
+    //   .then(data => console.log(data))
+  };
+
+  // Filter Bar props
+  // Filter Bar mockdata: dep-3
+  const [filterTypes, setFilterTypes] = useState([]);
+
+  const filterTypeUrl =
+    "http://localhost:8000/rentcar/searchList?rentStartDate=2022-09-28&rentEndDate=2022-09-29&rentStartTime=1&rentEndTime=2&insurance=일반자차&age=만 26세이상&experience=1년 미만";
+
+  useEffect(() => {
+    fetch("/data/hotel/filterType.json", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setFilterTypes(data[0].filterTypes);
+      });
+  }, []);
 
   return (
-    <div className="restaurant-container">
-      <div className="restaurant-content">
-        <div className="restaurant-top-content">
-          {/* <div className="category-wrapper"> */}
-          {/* <span>메뉴</span>
-            <button onClick={() => setMenuBox(!menuBox)}>
-              {menuBox === true ? <IoIosArrowDown /> : <IoIosArrowUp />}
-            </button>
-          </div>
-          {menuBox && (
-            <form className="category-list-wrapper">
-              <label class="container">
-                전체
-                <input type="checkbox" />
-                <span class="checkmark"></span>
-              </label>
-              <label class="container">
-                일식
-                <input type="checkbox" />
-                <span class="checkmark"></span>
-              </label>
-              <label class="container">
-                한식
-                <input type="checkbox" />
-                <span class="checkmark"></span>
-              </label>
-              <label class="container">
-                중식
-                <input
-                  type="checkbox"
-                  value="중식"
-                  onChange={checkHandler}
-                  checked={p}
-                />
-                <span class="checkmark"></span>
-              </label>
-              <label class="container">
-                양식
-                <input
-                  type="checkbox"
-                  value="양식"
-                  onChange={checkHandler}
-                  checked={p}
-                />
-                <span class="checkmark"></span>
-              </label>
-            </form>
-          )}
-          <div className="category-wrapper">
-            <span>지역</span>
-            <button onClick={() => setLocationBox(!locationBox)}>
-              {locationBox === true ? <IoIosArrowDown /> : <IoIosArrowUp />}
-            </button>
-          </div>
-          {locationBox && (
-            <form className="category-list-wrapper">
-              <label class="container">
-                One
-                <input type="radio" name="radio" />
-                <span class="radiomark"></span>
-              </label>
-              <label class="container">
-                Two
-                <input type="radio" name="radio" />
-                <span class="radiomark"></span>
-              </label>
-              <label class="container">
-                Three
-                <input type="radio" name="radio" />
-                <span class="radiomark"></span>
-              </label>
-              <label class="container">
-                Four
-                <input type="radio" name="radio" />
-                <span class="radiomark"></span>
-              </label>
-            </form>
-          )} */}
+    <div className="hotel-thema-container">
+      <div className="hotel-thema-content">
+        <div className="hotel-thema-top-content">
+          <SideFilterBar
+            orderTypes={orderTypes}
+            filterTypes={filterTypes}
+            getSortOrder={getSortOrder}
+          />
         </div>
       </div>
-      <div className="restaurant-main-content">
-        <div className="total-restaurant">
+      <div className="hotel-thema-main-content">
+        <div className="hotel-thema-keyword">
+          <span>테마 키워드</span>
+          <button className="thema-keyword-btn">전체</button>
+        </div>
+        <div className="total-hotel-thema">
           <p>
-            총 <span>129</span>건
+            총 <span>1326 </span>건
           </p>
         </div>
-        <div className="restaurant-list-wrapper">
+        <div className="hotel-thema-list-wrapper">
           {data.map((data) => {
             return (
-              <div className="restaurant-list" key={data.id}>
-                <div className="restaurant-img">
-                  <img src={data.img} alt="이미지" />
+              <div className="hotel-thema-list" key={data.id}>
+                <div className="hotel-thema-img">
+                  <img
+                    src={data.photo[0]}
+                    alt="이미지"
+                    onClick={HotelThemaClick}
+                  />
                 </div>
-                <div className="restaurant-info">
+                <div className="hotel-thema-info">
                   <h1>{data.name}</h1>
                   <span className="total-like">{data.totalLike} </span>
                   <span className="total-review-point">{data.reviewPoint}</span>
@@ -140,4 +118,4 @@ function Restaurant() {
   );
 }
 
-export default Restaurant;
+export default HotelThema;

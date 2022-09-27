@@ -11,13 +11,19 @@ function Hotel() {
     navigate("/hoteldetail");
   };
 
+  const HotelSearchClick = () => {
+    navigate("/hotelthema");
+  };
+
   return (
     <div className="hotel-container">
       <div className="hotel-contens">
         <div onClick={LodgeClick}>
           <Lodge />
         </div>
-        <HotelSearch />
+        <div onClick={HotelSearchClick}>
+          <HotelSearch />
+        </div>
         <HotelStroy />
         <Promotion />
       </div>
