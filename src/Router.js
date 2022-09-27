@@ -16,6 +16,7 @@ import Signup from "./pages/signup/signup";
 import SignupFin from "./components/signup/signupFin";
 import FooterTop from "./components/Footer/FooterTop";
 import FooterBottom from "./components/Footer/FooterBottom";
+import RentCarDetail from "./pages/RentCarDetail/RentCarDetail";
 
 function Router() {
   return (
@@ -30,7 +31,7 @@ function Router() {
         <Route path="/preparing" element={<Preparing />} />
         <Route path="/mypage" element={<Mypage />} />
         <Route path="/rentercar/rentcar/:id" element={<RentCar />} />
-        {/* <Route path="/rentercar/rentcar/detail/:id" element={<RentCar />} /> */}
+        <Route path="/rentercar/detail/:id" element={<RentCarDetail />} />
         <Route path="/login" element={<Login />} />
         <Route path="/termsSignup" element={<TermsSignup />} />
         <Route path="/signup" element={<Signup />} />

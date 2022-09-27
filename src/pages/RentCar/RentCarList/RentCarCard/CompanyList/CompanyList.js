@@ -52,9 +52,10 @@ function CompanyList(props) {
     const rentCompanyCarId = `&rentCompanyCarId=${e.target.id}`;
 
     // 경로 이동
-    const url = "/rentercar/rentcar/detail" + conditionQuery + rentCompanyCarId;
-    console.log(url);
-    // navigate(url);
+    const url =
+      "/rentercar/detail/searchList" + conditionQuery + rentCompanyCarId;
+    // console.log(url);
+    navigate(url);
   };
 
   return (

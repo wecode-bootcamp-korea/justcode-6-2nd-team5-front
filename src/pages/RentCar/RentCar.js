@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import RentCarHeader from "../../components/Header/RentCarHeader";
 import SearchTagBox from "../../components/SearchTagBox/SearchTagBox";
 import SideFilterBar from "../../components/SideFilterBar/SideFilterBar";
 import TotalBox from "../../components/TotalBox/TotalBox";
@@ -77,6 +78,7 @@ function RentCar() {
 
   return (
     <div className="rentcar-container">
+      <RentCarHeader />
       <div className="rentcar-content">
         <div className="rentcar-top-content">
           <SearchTagBox title={"빠른 검색"} tagList={tagList} />
