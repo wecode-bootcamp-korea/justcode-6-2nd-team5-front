@@ -30,6 +30,7 @@ function Router() {
         <Route path="/preparing" element={<Preparing />} />
         <Route path="/mypage" element={<Mypage />} />
         <Route path="/rentercar/rentcar/:id" element={<RentCar />} />
+        {/* <Route path="/rentercar/rentcar/detail/:id" element={<RentCar />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/termsSignup" element={<TermsSignup />} />
         <Route path="/signup" element={<Signup />} />

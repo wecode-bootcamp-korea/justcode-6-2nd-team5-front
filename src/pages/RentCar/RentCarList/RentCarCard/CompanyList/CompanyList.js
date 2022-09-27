@@ -24,7 +24,7 @@ function CompanyList(props) {
 
   useEffect(() => {
     for (let i = 0; i < companyCardRef.current.length; i++) {
-      // 업체 리스트중 선택된 업체인 경우 스타일 변경
+      // 업체 리스트 중 선택된 업체인 경우 스타일 변경
       if (companyCardRef.current[i].id === currentCompany) {
         companyCardRef.current[i].className = "company-card-on product-bar";
       } else {
@@ -64,7 +64,11 @@ function CompanyList(props) {
           return (
             <div key={info.rentCompanyCarId} className="company-list-wrap">
               <div
-                className="company-card-off product-bar"
+                className={
+                  index === 0
+                    ? "company-card-on product-bar"
+                    : "company-card-off product-bar"
+                }
                 ref={(elem) => {
                   companyCardRef.current[index] = elem;
                 }}
