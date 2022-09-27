@@ -5,7 +5,6 @@ import { MenuBox, Menu, SearchBtn } from "../Modal/commonStyled";
 
 const RentCarHeader = () => {
   const { isOpen, setOpen, setClickedIcon } = useContext(ModalContext);
-
   const modalOpen = () => {
     setOpen(true);
   };

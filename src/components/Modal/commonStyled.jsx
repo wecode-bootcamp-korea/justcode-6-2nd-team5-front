@@ -261,6 +261,6 @@ export const HashTagBtn = styled.button`
   font-size: 12px;
   font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
     Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic",
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif; ;
-;
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  cursor: pointer;
 `;
