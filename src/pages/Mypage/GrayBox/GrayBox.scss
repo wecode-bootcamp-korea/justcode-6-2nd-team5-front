@@ -1,5 +1,5 @@
 .mypage-graybox-wrap {
-  font-size: 20px;
+  font-size: var(--font-size-product-content);
   padding: 30px 0;
   margin-top: 20px;
   background-color: #f4f9ff;
@@ -23,7 +23,6 @@
 
       p {
         color: #606060;
-        font-size: 20px;
 
         span {
           color: black;
