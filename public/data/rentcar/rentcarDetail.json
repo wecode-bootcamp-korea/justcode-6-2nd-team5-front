@@ -1,0 +1,41 @@
+[
+  {
+    "carName": "올 뉴 모닝",
+    "carPhoto": "https://static-file.jejupass.com/download/649917",
+    "ridePeopleNumber": 5,
+    "oilType": "휘발유",
+    "rentcaryearinfo": "1",
+    "experience": "경력 1년이상",
+    "age": "만 21세",
+    "insurance": "일반자차",
+    "price": 274000,
+    "options": ["후방센서", "네비게이션", "금연차량"],
+    "rentCarCompany": "씨유렌터카",
+    "rentCarCompanyAddress": "제주특별자치도 제주시 도두일동 1173-2",
+    "rentCarCompanyPhoneNumber": "064-742-7900",
+    "mapaddress": "https://www.google.co.kr/maps/place/%EB%AC%B4%EC%A7%80%EA%B0%9C%EB%A0%8C%ED%8A%B8%EC%B9%B4/data=!3m1!4b1!4m5!3m4!1s0x350cfb1cfbc4d44d:0x6b83b062fa5a2af4!8m2!3d33.4962567!4d126.4826426?hl=ko",
+    "rentPlace": "렌터카 본사",
+    "shuttlePlace": "렌트카종합안내센터 [5구역 5번]",
+    "shuttleSchedule": "08:00 ~ 20:00",
+    "shuttleInterval": "20~30분",
+    "shuttleRequiredTime": "5~6분",
+    "reviewList": [
+      {
+        "review": "사장님이 잘 굴러가고 차가 친절해요!",
+        "userName": "oh",
+        "userPhoto": "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi1.sndcdn.com%2Favatars-N81qLQnmB6A3i1Cp-BQJv0g-t500x500.jpg&type=sc960_832",
+        "created_at": "2022-09-21 14:28:38.000000",
+        "reviewPhoto": "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fcdn.clien.net%2Fweb%2Fapi%2Ffile%2FF01%2F12548378%2F3d3e956c3bff17.jpg&type=a340",
+        "reviewPoint": 4.16
+      },
+      {
+        "review": "그럭저럭이에요",
+        "userName": "cat",
+        "userPhoto": "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi1.sndcdn.com%2Favatars-N81qLQnmB6A3i1Cp-BQJv0g-t500x500.jpg&type=sc960_832",
+        "created_at": "2022-09-21 14:28:38.000000",
+        "reviewPhoto": "https://search.pstatic.net/sunny/?src=https%3A%2F%2Ffile1.bobaedream.co.kr%2Fhotcar%2F2022%2F08%2F31%2F17%2FEgAL1661935666_167853207.jpg&type=a340",
+        "reviewPoint": 3
+      }
+    ]
+  }
+]

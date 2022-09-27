@@ -15,8 +15,9 @@
   .rentcar-main-content {
     display: flex;
 
-    .rentcar-list {
+    .rentcar-list-wrap {
       width: 75%;
+      margin-left: 14px;
     }
   }
 }

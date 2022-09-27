@@ -1,0 +1,44 @@
+.car-img-content-wrap {
+  background-color: var(--color-white-gray);
+
+  .content-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .car-name {
+      width: 20%;
+      margin-right: 0;
+    }
+
+    .car-img {
+      width: 30%;
+      height: 150px;
+      background-size: cover;
+      margin-right: 50px;
+    }
+
+    .car-detail-info {
+      display: flex;
+      align-items: center;
+
+      .icon {
+        width: var(--font-size-product-small);
+        height: var(--font-size-product-small);
+        background-size: cover;
+      }
+
+      .people-icon {
+        background-image: url("../../../../../assets/images/people-icon.png");
+      }
+      .oil-icon {
+        background-image: url("../../../../../assets/images/oil-icon.png");
+      }
+      span {
+        color: gray;
+        font-size: var(--font-size-product-small);
+        margin: 0px 5px;
+      }
+    }
+  }
+}
