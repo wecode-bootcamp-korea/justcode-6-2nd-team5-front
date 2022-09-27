@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from "react";
 
 import { ConditionSelector } from "../../commonStyled";
 import { SelectBtn } from "../../commonStyled";
@@ -31,6 +30,14 @@ const CarCondition = ({ setInsurance, setCarType }) => {
     setChoice(Number(e.target.id));
   };
 
+  // useEffect(() => {
+  //   if (select.length === 7 || select[select.length - 1] === 0) setSelect([0]);
+  //   if (select[0] === 0 && select.length > 1)
+  //     setSelect(select.filter((number) => number !== 0));
+  // }, [select]);
+
+  console.log(select);
+
   return (
     <ConditionSelector>
       <h2 className="title">
@@ -60,13 +67,14 @@ const CarCondition = ({ setInsurance, setCarType }) => {
               otherType
               key={item.id}
               onClick={() => {
-                if (select.includes) {
-                  setSelect([1, 2, 3, 4, 5, 6, 7]);
-                } else if (select.includes(item.id)) {
-                  setSelect(select.filter((arr) => arr !== item.id));
-                } else {
-                  setSelect((el) => [...el, item.id]);
+                if (select.length === 6 || select[select.length - 1] === 0)
+                  setSelect([0]);
+                else if (item.id !== 0) {
+                  select.includes(item.id)
+                    ? setSelect(select.filter((arr) => arr !== item.id))
+                    : setSelect((el) => [...el, item.id]);
                 }
+                console.log(select.length);
               }}
               className={select.includes(item.id) && "clicked"}
             >

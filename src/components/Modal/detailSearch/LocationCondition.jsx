@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { ConditionSelector, SelectBtn, HashTagBtn } from "../commonStyled";
+import { ConditionSelector, SelectBtn } from "../commonStyled";
 
 const LocationCondition = () => {
   const [location, setLocation] = useState("");

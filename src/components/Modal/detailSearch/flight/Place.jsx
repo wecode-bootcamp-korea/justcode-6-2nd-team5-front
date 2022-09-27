@@ -1,6 +1,7 @@
 import React from "react";
 
 import { ConditionSelector, HashTagBtn } from "../../commonStyled";
+import AreaSearch from "../ common/AreaSearch";
 
 const Place = () => {
   return (
@@ -14,6 +15,7 @@ const Place = () => {
       </div>
       <div className="box">
         <h5>지역으로 검색</h5>
+        <AreaSearch />
       </div>
     </ConditionSelector>
   );
