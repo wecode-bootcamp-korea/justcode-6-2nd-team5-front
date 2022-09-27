@@ -40,7 +40,6 @@ function Router() {
         <Route path="/signupFin" element={<SignupFin />} />
         <Route path="/preparing" element={<Preparing />} />
         <Route path="/hotelThema" element={<HotelThema />} />
-        <Route path="/hoteldetail" element={<HotelDetail />} />
       </Routes>
       <FooterTop />
       <FooterBottom />

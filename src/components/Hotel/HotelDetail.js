@@ -4,6 +4,7 @@ import Rooms from "./Rooms";
 import Policies from "./Policies";
 import Facilities from "./Facilities";
 import Location from "./Location";
+import Lodge from "../Lodge/Lodge";
 // import BookmarkIcon from "../../assets/images/bookmark-icon.png";
 // import Share from "../../assets/images/hotel-share.png";
 
@@ -37,7 +38,7 @@ function HotelDetail() {
             </div>
             <div className="detail-bottom">
               <p>
-                위치 <span>제주도>제주시>애월</span>
+                위치 <span>제주도 | 제주시 | 애월</span>
               </p>
             </div>
           </div>
@@ -57,12 +58,19 @@ function HotelDetail() {
               <button onClick={() => setTabIndex(4)} className="hotel-tabs-btn">
                 지도
               </button>
+              <button onClick={() => setTabIndex(5)} className="hotel-tabs-btn">
+                리뷰
+              </button>
               {tabIndex === 1 && <Rooms />}
               {tabIndex === 2 && <Policies />}
               {tabIndex === 3 && <Facilities />}
               {tabIndex === 4 && <Location />}
+              {/* {tabIndex === 5 && <Review />} */}
             </div>
           </div>
+        </div>
+        <div className="slider">
+          <Lodge />
         </div>
       </div>
     </div>

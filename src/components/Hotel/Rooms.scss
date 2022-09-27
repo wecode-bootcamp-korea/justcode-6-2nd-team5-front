@@ -17,11 +17,13 @@
         border: 1px solid #eaeaea;
         border-radius: 8px;
         background: #fff;
+        cursor: pointer;
       }
     }
 
     .rooms-select {
       margin-top: 12px;
+      margin-bottom: 20px;
       border: 1px solid #eaeaea;
       border-radius: 10px;
 
@@ -93,6 +95,13 @@
             border: none;
             border-radius: 8px;
             background-color: #63a1ff;
+            cursor: pointer;
+          }
+
+          .end {
+            font-size: 1rem;
+            color: white;
+            background-color: gray;
           }
         }
       }

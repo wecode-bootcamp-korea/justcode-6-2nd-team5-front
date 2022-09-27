@@ -12,19 +12,48 @@ function Rooms() {
 
         <div className="rooms-select">
           <div className="rooms-select-top">
-            <span>디럭스</span>
+            <span>디럭스더블</span>
           </div>
           <div className="rooms-select-contents">
-            <span>디럭스(2인조식포함) ></span>
+            <span>디럭스더블 ></span>
             <div className="contents-price-info">
-              <strong>367,500원</strong>
+              <strong>72,950원</strong>
               <span className="contents-price">환불불가</span>
               <span className="contents-price-bottom">1박 기준, 세금포함</span>
               <button className="contents-price-status">예약</button>
             </div>
-            {/* <div className="contents-price-btn">
-              <button className="contents-price-status">판매완료</button> */}
-            {/* </div> */}
+          </div>
+        </div>
+      </div>
+      <div className="rooms-contents">
+        <div className="rooms-select">
+          <div className="rooms-select-top">
+            <span>디럭스트윈(오션뷰)</span>
+          </div>
+          <div className="rooms-select-contents">
+            <span>디럭스트윈(오션뷰) ></span>
+            <div className="contents-price-info">
+              <strong>95,300원</strong>
+              <span className="contents-price">환불불가</span>
+              <span className="contents-price-bottom">1박 기준, 세금포함</span>
+              <button className="contents-price-status end">판매완료</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="rooms-contents">
+        <div className="rooms-select">
+          <div className="rooms-select-top">
+            <span>패밀리더블트윈</span>
+          </div>
+          <div className="rooms-select-contents">
+            <span>패밀리더블트윈 ></span>
+            <div className="contents-price-info">
+              <strong>103,530원</strong>
+              <span className="contents-price">환불불가</span>
+              <span className="contents-price-bottom">1박 기준, 세금포함</span>
+              <button className="contents-price-status">예약</button>
+            </div>
           </div>
         </div>
       </div>
