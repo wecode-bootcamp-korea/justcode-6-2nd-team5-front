@@ -1,0 +1,58 @@
+[
+  {
+    "filterTypes": ["완성한 것들..가격, 연식, 어쩌구저쩌구.."],
+    "carList": [
+      {
+        "carName": "올 뉴 모닝",
+        "carPhoto": "PhotoURL",
+        "ridePeopleNumber": 5,
+        "oilType": "휘발유",
+        "option": ["블루투스", "후방센서", "후방카메라"],
+        "rentCarCompanyList": [
+          {
+            "companyName": "제주로렌터카",
+            "reviewPoint": 4.3,
+            "totalReview": 106,
+            "insurance": "완전자차",
+            "rentCarYear": "2020~21년",
+            "driverAge": "만 26세",
+            "driverExperience": "경력 2년이상",
+            "totalReserve": 1930,
+            "price": 12600
+          },
+          {
+            "companyName": "제주사랑렌터카",
+            "reviewPoint": 0,
+            "totalReview": 0,
+            "insurance": "완전자차",
+            "rentCarYear": "2018~19년",
+            "driverAge": "만 23세",
+            "driverExperience": "경력 2년이상",
+            "totalReserve": 128,
+            "price": 27400
+          }
+        ]
+      },
+      {
+        "carName": "SM3",
+        "carPhoto": "PhotoURL",
+        "ridePeopleNumber": 5,
+        "oilType": "전기차",
+        "option": ["블루투스", "후방카메라", "열선시트", "네비게이션"],
+        "rentCarCompanyList": [
+          {
+            "companyName": "무지개렌터카",
+            "reviewPoint": 3.5,
+            "totalReview": 1,
+            "insurance": "완전자차",
+            "rentCarYear": "2018~19년",
+            "driverAge": "만 23세",
+            "driverExperience": "경력 2년이상",
+            "totalReserve": 758,
+            "price": 12100
+          }
+        ]
+      }
+    ]
+  }
+]
