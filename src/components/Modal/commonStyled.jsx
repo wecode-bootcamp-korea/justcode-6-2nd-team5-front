@@ -52,7 +52,8 @@ export const MenuBox = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
-  margin: ${(props) => (props.primary ? "0 210px" : "0 100px")};
+  width: ${(props) => (props.primary ? "1020px" : "1224px")};
+  margin: 0 auto;
   padding-right: 110px;
   padding-bottom: 20px;
 

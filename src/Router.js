@@ -17,29 +17,36 @@ import Signup from "./pages/signup/signup";
 import SignupFin from "./components/signup/signupFin";
 import FooterTop from "./components/Footer/FooterTop";
 import FooterBottom from "./components/Footer/FooterBottom";
+import Restaurant from "./pages/Restaurant/Restaurant";
+import RestaurantDetail from "./pages/Restaurant/RestaurantDetail";
 
 function Router() {
   return (
-    <BrowserRouter>
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/esg" element={<Esg />} />
-        <Route path="/rentercar" element={<RenterCar />} />
-        <Route path="/accomodation" element={<Accomodation />} />
-        <Route path="/food" element={<Food />} />
-        <Route path="/preparing" element={<Preparing />} />
-        <Route path="/mypage" element={<Mypage />} />
-        <Route path="/rentcar" element={<RentCar />} />
-        <Route path="/rentcar/:id" element={<RentCar />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/termsSignup" element={<TermsSignup />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/signupFin" element={<SignupFin />} />
-      </Routes>
-      <FooterTop />
-      <FooterBottom />
-    </BrowserRouter>
+    <ModalProvider>
+      <BrowserRouter>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/esg" element={<Esg />} />
+          <Route path="/rentercar" element={<RenterCar />} />
+          <Route path="/accomodation" element={<Accomodation />} />
+          <Route path="/food" element={<Food />} />
+          <Route path="/preparing" element={<Preparing />} />
+          <Route path="/mypage" element={<Mypage />} />
+          <Route path="/rentcar" element={<RentCar />} />
+          <Route path="/rentcar/:id" element={<RentCar />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/termsSignup" element={<TermsSignup />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/signupFin" element={<SignupFin />} />
+          <Route path="/preparing" element={<Preparing />} />
+          <Route path="/restaurant" element={<Restaurant />} />
+          <Route path="/restaurantDetail" element={<RestaurantDetail />} />
+        </Routes>
+        <FooterTop />
+        <FooterBottom />
+      </BrowserRouter>
+    </ModalProvider>
   );
 }
 
