@@ -1,15 +1,43 @@
 {
-  "restaurantDetailList": [
+  "restaurant": {
+    "id": 1,
+    "name": "그마니네 식당",
+    "intro": "맛도 그만! 가격도 그만! 만족하면 그만!이라는 뜻의 이곳은 통갈치 전문점이에요. 푸짐한 한상에 전복, 딱새우, 순두부, 수제비 그리고 통갈치까지 알차게 만날 수 있어요. 직접 손질해주시는 해물들을 편리하게 먹을 수 있어 남녀노소 누구나 즐기기 좋아요.",
+    "businessHour": "09:00 ~ 20:00",
+    "phoneNumber": "070-1234-5678",
+    "closedDay": "연중무휴",
+    "reviewPoint": 2.7,
+    "regionAddress": "애월",
+    "fullAddress": "제주특별자치도 제주시 내도3길 11 1층",
+    "googleAddress": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.5955057195424!2d126.8560949150034!3d37.49387063604469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9d406c4c49fd%3A0x3290407af81d85a!2z7KCc7KO86rCI7LmY7KGw66a8!5e0!3m2!1sen!2sus!4v1664101930720!5m2!1sen!2sus",
+    "photo": "https://static-file.jejupass.com/download/15072.webp?width=768&height=768",
+    "totalLike": 10,
+    "hashTag": ["#애월맛집", "#은갈치", "#전복해물탕"]
+  },
+
+  "menu": [
     {
       "id": 1,
-      "name": "그마니네 식당",
-      "intro": "맛도 그만! 가격도 그만! 만족하면 그만!이라는 뜻의 이곳은 통갈치 전문점이에요. 푸짐한 한상에 전복, 딱새우, 순두부, 수제비 그리고 통갈치까지 알차게 만날 수 있어요. 직접 손질해주시는 해물들을 편리하게 먹을 수 있어 남녀노소 누구나 즐기기 좋아요.",
-      "reviewPoint": 2.7,
-      "totalLike": 0,
-      "category": [],
-      "hashTag": ["#애월맛집", "#은갈치", "#전복해물탕"],
-      "address": "애월",
-      "img": "https://static-file.jejupass.com/download/15072.webp?width=768&height=768"
+      "menu": "자반 고등어",
+      "price": 30000
+    },
+
+    {
+      "id": 2,
+      "menu": "자반 고등어",
+      "price": 30000
+    },
+
+    {
+      "id": 3,
+      "menu": "자반 고등어",
+      "price": 30000
+    },
+
+    {
+      "id": 4,
+      "menu": "자반 고등어",
+      "price": 30000
     }
   ]
 }

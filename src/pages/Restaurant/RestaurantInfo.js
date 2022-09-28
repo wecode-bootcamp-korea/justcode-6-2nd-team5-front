@@ -2,32 +2,28 @@ import React from "react";
 
 import "./RestaurantInfo.scss";
 
-function RestaurantInfo() {
+function RestaurantInfo({ data }) {
   return (
     <div className="restaurant-info-wrapper">
       <div className="restaurant-map">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.5955057195424!2d126.8560949150034!3d37.49387063604469!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9d406c4c49fd%3A0x3290407af81d85a!2z7KCc7KO86rCI7LmY7KGw66a8!5e0!3m2!1sen!2sus!4v1664101930720!5m2!1sen!2sus"
-          width="100%"
-          height="600px"
-        ></iframe>
+        <iframe src={data.googleAddress} width="100%" height="400px"></iframe>
       </div>
       <div className="restaurant-detail-info-list">
         <div className="restaurant-detail-info">
           <span>영업시간 : </span>
-          <span>09:00 ~ 20:00 </span>
+          <span>{data.businessHour}</span>
         </div>
         <div className="restaurant-detail-info">
           <span>휴뮤일 : </span>
-          <span>연중무휴</span>
+          <span>{data.closedDay}</span>
         </div>
         <div className="restaurant-detail-info">
           <span>전화번호 : </span>
-          <span>07041392441</span>
+          <span>{data.phoneNumber}</span>
         </div>
         <div className="restaurant-detail-info">
           <span>주소 : </span>
-          <span>제주특별자치도 제주시 내도3길 11 1층</span>
+          <span>{data.fullAddress}</span>
         </div>
       </div>
     </div>

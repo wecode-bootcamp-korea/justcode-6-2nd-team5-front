@@ -15,16 +15,13 @@ function RestaurantDetail() {
     fetch("/data/restaurantDetailList.json")
       .then((res) => res.json())
       .then((data) => {
-        setData(data.restaurantDetailList);
+        setData(data);
       });
   }, []);
 
   return (
     <>
-      {data.map((data) => {
-        return <RestaurantDetailList data={data} />;
-      })}
-
+      {data.length !== 0 && <RestaurantDetailList data={data.restaurant} />}
       <div className="restaurant-detail-wrapper">
         <div className="restaurant-button-wrapper">
           <button onClick={() => setTabIndex(1)}>업체정보</button>
@@ -34,8 +31,12 @@ function RestaurantDetail() {
           <button onClick={() => setTabIndex(3)}>리뷰</button>
         </div>
 
-        {tabIndex === 1 && <RestaurantInfo />}
-        {tabIndex === 2 && <RestaurantMenu />}
+        {data.length !== 0 && tabIndex === 1 && (
+          <RestaurantInfo data={data.restaurant} />
+        )}
+        {data.length !== 0 && tabIndex === 2 && (
+          <RestaurantMenu data={data.menu} />
+        )}
         {tabIndex === 3 && <RestaurantReview />}
       </div>
     </>

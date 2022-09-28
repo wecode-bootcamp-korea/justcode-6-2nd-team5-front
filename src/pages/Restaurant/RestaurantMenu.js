@@ -2,42 +2,18 @@ import React from "react";
 
 import "./RestaurantMenu.scss";
 
-function RestaurantMenu() {
+function RestaurantMenu({ data }) {
   return (
     <div>
       <ul className="restaurant-menu-wrapper">
-        <li>
-          <span>고등어조림(중)</span>
-          <span>30,000</span>
-        </li>
-        <li>
-          <span>고등어조림(중)</span>
-          <span>30,000</span>
-        </li>
-        <li>
-          <span>고등어조림(중)</span>
-          <span>30,000</span>
-        </li>
-        <li>
-          <span>고등어조림(중)</span>
-          <span>30,000</span>
-        </li>
-        <li>
-          <span>고등어조림(중)</span>
-          <span>30,000</span>
-        </li>
-        <li>
-          <span>고등어조림(중)</span>
-          <span>30,000</span>
-        </li>
-        <li>
-          <span>고등어조림(중)</span>
-          <span>30,000</span>
-        </li>
-        <li>
-          <span>고등어조림(중)</span>
-          <span>30,000</span>
-        </li>
+        {data.map((menu) => {
+          return (
+            <li>
+              <span>{menu.menu}</span>
+              <span>{menu.price.toLocaleString() + "원"} </span>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
