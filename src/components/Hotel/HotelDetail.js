@@ -102,7 +102,7 @@ function HotelDetail() {
                   <span className="review-star">{hotelData.reviewPoint}</span>
                 </div>
                 <div>
-                  <img src={BookmarkIcon} className="bookmark"></img>
+                  {/* <img src={BookmarkIcon} className="bookmark"></img> */}
                   {/* <img src={ShareIcon} className="share"></img> */}
                 </div>
               </div>
