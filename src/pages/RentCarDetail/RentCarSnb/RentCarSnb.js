@@ -38,6 +38,17 @@ function RentCarSnb(props) {
     }
   };
 
+  // 규칙 및 유의사항 모달창 닫는 함수
+  const [isModal, setIsModal] = useState(false);
+
+  const closeModal = () => {
+    setIsModal(false);
+  };
+
+  const openeModal = () => {
+    setIsModal(true);
+  };
+
   return (
     <div className={`rentcar-detail-snb-wrap ${scrollActive ? "fixed" : ""}`}>
       <div className="rentcar-detail-column">
@@ -92,8 +103,10 @@ function RentCarSnb(props) {
         </div>
         <button className="service-btn">슈퍼무제한으로 예약</button>
       </div>
-      <button className="submit-btn">예약</button>
-      <AlertModal />
+      <button className="submit-btn" onClick={openeModal}>
+        예약
+      </button>
+      {isModal && <AlertModal closeModal={closeModal} />}
     </div>
   );
 }

@@ -26,7 +26,6 @@ function RentCarDetail() {
   useEffect(() => {
     const conditionList = decodeURIComponent(location.search).split("&");
     const rentCompanyCarId = conditionList[8].split("=")[1];
-    console.log(rentCompanyCarId);
 
     // 렌트카 정보 API
     fetch(
