@@ -12,21 +12,21 @@ function RestaurantInfo() {
           height="600px"
         ></iframe>
       </div>
-      <div className="restaurant-detail-info">
-        <div>
+      <div className="restaurant-detail-info-list">
+        <div className="restaurant-detail-info">
           <span>영업시간 : </span>
           <span>09:00 ~ 20:00 </span>
         </div>
-        <div>
+        <div className="restaurant-detail-info">
           <span>휴뮤일 : </span>
           <span>연중무휴</span>
         </div>
-        <div>
+        <div className="restaurant-detail-info">
           <span>전화번호 : </span>
           <span>07041392441</span>
         </div>
-        <div>
-          <span>주소 :</span>
+        <div className="restaurant-detail-info">
+          <span>주소 : </span>
           <span>제주특별자치도 제주시 내도3길 11 1층</span>
         </div>
       </div>
