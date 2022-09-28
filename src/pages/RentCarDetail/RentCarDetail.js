@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import RentCarHeader from "../../components/Header/RentCarHeader";
 import ImgCard from "../RentCar/RentCarList/RentCarCard/ImgCard/ImgCard";
-import RestaurantMenu from "../Restaurant/RestaurantMenu";
 import RestaurantReview from "../Restaurant/RestaurantReview";
 import "./RentCarDetail.scss";
 import RentCarInfo from "./RentCarInfo/RentCarInfo";
+import RentCarRule from "./RentCarRule/RentCarRule";
 
 function RentCarDetail() {
   const location = useLocation();
@@ -61,12 +61,12 @@ function RentCarDetail() {
 
               <button onClick={() => setTabIndex(3)}>리뷰</button>
 
-              <button onClick={() => setTabIndex(1)}>업체정보</button>
+              <button onClick={() => setTabIndex(4)}>업체정보</button>
             </div>
-            <p className="company-name">업체 이름</p>
-            {tabIndex === 1 && <RentCarInfo />}
-            {tabIndex === 2 && <RestaurantMenu />}
+            {tabIndex === 1 && <RentCarRule />}
+            {/* {tabIndex === 2 && <RestaurantMenu />} */}
             {tabIndex === 3 && <RestaurantReview />}
+            {tabIndex === 4 && <RentCarInfo />}
           </div>
         </div>
         <div className="rentcar-detail-snb"></div>

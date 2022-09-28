@@ -4,6 +4,13 @@
   border-radius: 16px;
   background-color: #fff;
 
+  .company-name {
+    font-size: 22px;
+    font-weight: bold;
+    padding-left: 20px;
+    padding-bottom: 20px;
+  }
+
   .rentcar-button-wrap {
     display: flex;
     justify-content: space-between;
@@ -29,18 +36,19 @@
 }
 
 .rentcar-detail-info {
-  margin-top: 20px;
+  margin-top: 40px;
 
   span {
     color: #606060;
   }
 
   p {
-    line-height: 1.4;
+    line-height: 2;
     font-size: 17px;
     font-weight: 700;
     display: inline;
     margin-right: 14px;
+    margin-left: 20px;
 
     span {
       color: black;
@@ -57,7 +65,7 @@
     text-align: center;
     width: 80%;
     padding: 10px 15px;
-    margin-top: 20px;
+    margin-top: 50px;
     margin-left: auto;
     margin-right: auto;
     font-weight: bold;
