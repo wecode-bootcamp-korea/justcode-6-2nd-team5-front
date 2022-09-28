@@ -73,17 +73,6 @@ const CarCondition = ({ setInsurance, setCarType }) => {
               otherType
               key={item.id}
               onClick={() => {
-<<<<<<< HEAD
-                if (select.length === 6 || select[select.length - 1] === 0)
-                  setSelect([0]);
-                else if (item.id !== 0) {
-                  select.includes(item.id)
-                    ? setSelect(select.filter((arr) => arr !== item.id))
-                    : setSelect((el) => [...el, item.id]);
-                }
-                console.log(select.length);
-                // setCarType(select);
-=======
                 //select 배열내에 내가 클릭한 버튼의 아이디가 들어있는 경우 ? 내가 누른 버튼 아이디 빼고 배열 반환 : 배열에 내가 누른 버튼 아이디 추가 (단, 누른게 0이면 [0] 배열 반환)
                 select.includes(item.id) && item.id !== 0
                   ? setSelect(select.filter((arr) => arr !== item.id))
@@ -91,7 +80,6 @@ const CarCondition = ({ setInsurance, setCarType }) => {
                       if (item.id !== 0) return [...el, item.id];
                       else return [0];
                     });
->>>>>>> main
               }}
               className={select.includes(item.id) && "clicked"}
             >
