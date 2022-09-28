@@ -22,7 +22,6 @@ import RestaurantDetail from "./pages/Restaurant/RestaurantDetail";
 
 function Router() {
   return (
-
     <ModalProvider>
       <BrowserRouter>
         <Nav />
@@ -46,6 +45,7 @@ function Router() {
         <FooterTop />
         <FooterBottom />
       </BrowserRouter>
+    </ModalProvider>
   );
 }
 

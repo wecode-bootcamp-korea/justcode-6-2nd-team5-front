@@ -62,9 +62,9 @@ const Modal = () => {
               );
             })}
           </BtnBox>
-          {clickedIcon === (1 || "/rentercar") && <RentCarModal />}
-          {clickedIcon === (2 || "/flight") && <FlightModal />}
-          {clickedIcon === (3 || "/accomodation") && <AccomodationModal />}
+          {clickedIcon === 1 && <RentCarModal />}
+          {clickedIcon === 2 && <FlightModal />}
+          {clickedIcon === 3 && <AccomodationModal />}
           {clickedIcon === 4 && <TripModal />}
           {clickedIcon === 5 && <CafeModal />}
           {clickedIcon === 6 && <FoodModal />}
@@ -74,7 +74,7 @@ const Modal = () => {
   );
 };
 
-const Overlay = styled.div`
+export const Overlay = styled.div`
   position: fixed;
   width: 100%;
   height: 100%;
