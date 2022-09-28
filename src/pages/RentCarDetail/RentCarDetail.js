@@ -5,6 +5,7 @@ import ImgCard from "../RentCar/RentCarList/RentCarCard/ImgCard/ImgCard";
 import "./RentCarDetail.scss";
 import RentCarInfo from "./RentCarInfo/RentCarInfo";
 import RentCarRule from "./RentCarRule/RentCarRule";
+import RentCarSnb from "./RentCarSnb/RentCarSnb";
 import RenterCarInsurance from "./RenterCarInsurance/RenterCarInsurance";
 
 function RentCarDetail() {
@@ -18,6 +19,9 @@ function RentCarDetail() {
 
   // 업체 정보: RentCarInfo props
   const [rentCaompanyInfo, setRentCompanyInfo] = useState({});
+
+  // 가격 정보: RentCarSnb props
+  const [priceInfo, setPriceInfo] = useState(0);
 
   useEffect(() => {
     const conditionList = decodeURIComponent(location.search).split("&");
@@ -63,12 +67,14 @@ function RentCarDetail() {
         });
 
         // RentCarRule props
-        console.log(data[0]);
         SetInsurance({
           age: data[0].age,
           experience: data[0].experience,
           insurance: data[0].insurance,
         });
+
+        // RentCarSnb props
+        setPriceInfo(data[0].price);
       });
   }, [location]);
 
@@ -97,7 +103,7 @@ function RentCarDetail() {
             {tabIndex === 4 && <RentCarInfo company={rentCaompanyInfo} />}
           </div>
         </div>
-        <div className="rentcar-detail-snb"></div>
+        <RentCarSnb price={priceInfo} />
       </div>
     </div>
   );

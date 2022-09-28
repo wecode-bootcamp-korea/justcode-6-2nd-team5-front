@@ -1,0 +1,74 @@
+import "./RentCarSnb.scss";
+
+function RentCarSnb(props) {
+  const { price } = props;
+
+  //천단위 , 찍기 위한 함수
+  const numberFormat = (num) => {
+    if (num >= 1000) {
+      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    } else {
+      return num.toString();
+    }
+  };
+
+  return (
+    <div className="rentcar-detail-snb-wrap">
+      <div className="rentcar-detail-column">
+        <div className="top-box">
+          <p className="main-title">선택한 요금제 정보</p>
+          <p className="title">
+            대여요금(할인가)
+            <span className="small-price">{numberFormat(price)}원</span>
+          </p>
+
+          <p>완전자차 포함</p>
+        </div>
+        <div className="coupon-and-point-box">
+          <p className="title">쿠폰 & 쿠폰 적용</p>
+          <div>로그인하고 혜택받기 &gt;</div>
+        </div>
+        <div className="price-box">
+          <p className="title">
+            최종 결제금액
+            <span className="big-price">{numberFormat(price)}원</span>
+          </p>
+        </div>
+        <div className="point-box">
+          <p className="title">
+            최대 적립 포인트
+            <span style={{ fontWeight: "400" }}>최대</span> 1,713P
+          </p>
+          <p>
+            기본 적립 <span>313P</span>
+          </p>
+          <p>
+            포토리뷰 작성시 <span>150P</span>
+          </p>
+        </div>
+        <div className="plus-point-box">
+          <p className="title">
+            포인트 더 받기
+            <span style={{ fontWeight: "400" }}>최대</span> 1,251P
+          </p>
+          <p>
+            그린 앱시시더 적립 <span>626P</span>
+          </p>
+          <p>
+            충전 포인트로 결제시 <span>626P</span>
+          </p>
+        </div>
+        <div className="alert-box">
+          <p className="title">바로 결제해야 예약 확정</p>
+          <span style={{ color: "gray", fontWeight: "bold" }}>
+            시간이 경과될 경우 좌석이 매진되거나 요금이 변동될 수 있습니다.
+          </span>
+        </div>
+        <button className="service-btn">슈퍼무제한으로 예약</button>
+      </div>
+      <button className="submit-btn">예약</button>
+    </div>
+  );
+}
+
+export default RentCarSnb;
