@@ -1,0 +1,99 @@
+.restaurant-container {
+  display: flex;
+  padding: 7.5% 12.5%;
+  background-color: #f8f8f8;
+
+  .restaurant-content {
+    width: 25%;
+  }
+
+  .restaurant-main-content {
+    width: 75%;
+  }
+}
+
+.restaurant-list-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2.5%;
+  border-radius: 16px;
+  background-color: white;
+
+  .restaurant-list {
+    margin: 7.5% 0;
+
+    &:nth-child(odd) {
+      margin-left: 7.5%;
+    }
+
+    &:nth-child(even) {
+      margin-right: 7.5%;
+    }
+
+    .restaurant-img {
+      img {
+        width: 100%;
+        border-radius: 16px;
+      }
+    }
+
+    .restaurant-info {
+      margin-top: 2.5%;
+      color: #606060;
+
+      h1 {
+        margin: 1% 0;
+        font-weight: 700;
+        line-height: 1.4;
+        font-size: large;
+        color: black;
+      }
+
+      span {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+      span:nth-child(-n + 3) {
+        border-right: 1px solid gainsboro;
+      }
+
+      .total-like::before {
+        content: "";
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        margin: 0 0 -3px 0;
+        background: url("https://static-www.jejupass.com/resource/PC/images/food/ico_like-on.png")
+          no-repeat;
+      }
+
+      .total-review-point::before {
+        content: "";
+        display: inline-block;
+        width: 18px;
+        height: 18px;
+        margin: 0 0 -3px 0;
+        background: url("https://static-www.jejupass.com/resource/PC/images/food/ico_starx18.png")
+          no-repeat;
+      }
+
+      p {
+        margin: 2.5% 0;
+        line-height: 1.4;
+      }
+    }
+  }
+}
+
+.total-restaurant {
+  margin-bottom: 12px;
+  padding: 16px 24px;
+  color: gray;
+  border-radius: 16px;
+  background: #fff;
+
+  span {
+    color: #63a1ff;
+    font-weight: 400;
+  }
+}

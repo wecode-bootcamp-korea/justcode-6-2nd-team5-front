@@ -115,10 +115,18 @@ function FilterBar(props) {
 
   // 필터 적용한 정보 불러오기
   useEffect(() => {
-    if (squery.length !== 0) {
+    if (squery.length !== 0 || queryItems.length !== 0) {
       const checkQuery = makeQuery();
-      const url = `${location.pathname}?${checkQuery}&${squery}&${pointQuery}`;
+
+      let plusUrl = "";
+
+      if (checkQuery !== 0) plusUrl += makeQuery();
+      if (squery.length !== 0) plusUrl += `&${squery}`;
+      if (pointQuery.length !== 0) plusUrl += `&${pointQuery}`;
+
+      const url = `${location.pathname}?` + plusUrl.replace("&", "");
       navigate(url);
+
       setIsDone(false);
     }
   }, [isDone]);
