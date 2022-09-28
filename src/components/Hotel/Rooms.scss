@@ -18,6 +18,7 @@
         border-radius: 8px;
         background: #fff;
         cursor: pointer;
+        font-family: "Pretendard-Regular";
       }
     }
 
@@ -47,12 +48,49 @@
         padding: 32px 24px;
         margin: 0 0.6%;
         font-weight: 800;
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         text-align: left;
+
+        .rooms-info {
+          margin-top: 20px;
+          font-weight: 100;
+          font-size: 15px;
+          color: gray;
+
+          span {
+            // margin-right: 12px;
+          }
+
+          .rooms-people-icon {
+            // margin-left: 10px;
+          }
+
+          .rooms-people-icon::before {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: url("https://static-www.jejupass.com/resource/PC/images/common/spr_stay.png")
+              no-repeat;
+          }
+
+          .rooms-bed-icon::before {
+            content: "";
+            position: absolute;
+            margin-left: 10px;
+            width: 16px;
+            height: 16px;
+            background: url("https://ifh.cc/g/3gjVJF.png") no-repeat;
+          }
+
+          .rooms-smoking {
+            margin-left: 10px;
+          }
+        }
 
         .contents-price-info {
           position: relative;
-          bottom: 22px;
+          bottom: 33px;
           text-align: right;
 
           strong {
@@ -90,7 +128,7 @@
             height: 50px;
             bottom: 20px;
             color: white;
-            font-family: "NanumSquareRound";
+            font-family: "Pretendard-Regular";
             font-size: 1.2rem;
             font-weight: 600;
             border: none;

@@ -44,6 +44,9 @@ function Router() {
           <Route path="/preparing" element={<Preparing />} />
           <Route path="/restaurant" element={<Restaurant />} />
           <Route path="/restaurantDetail" element={<RestaurantDetail />} />
+          <Route path="/hotel" element={<Hotel />} />
+          <Route path="/hotelThema" element={<HotelThema />} />
+          <Route path="/hotelDetail" element={<HotelDetail />} />
         </Routes>
         <FooterTop />
         <FooterBottom />

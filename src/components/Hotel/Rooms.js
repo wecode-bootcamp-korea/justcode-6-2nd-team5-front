@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Rooms.scss";
+import BedIcon from "../../assets/images/hotel-bed.png";
 
 function Rooms(hotelData) {
   // const [roomData, setRoomData] = useState(hotelData.hotelData.room);
@@ -18,9 +19,24 @@ function Rooms(hotelData) {
               <span>{room.roomName}</span>
             </div>
             <div className="rooms-select-contents">
-              <span>{room.roomName} ></span>
+              <span>
+                {room.roomName}
+                {" >"}
+              </span>
+              <div className="rooms-info">
+                <span className="rooms-people-icon">
+                  {"　"}
+                  기준 {room.peopleNumber}명
+                </span>
+                <span className="rooms-bed-icon">
+                  {"　"}
+                  {"　"}
+                  {room.bedInfo}
+                </span>
+                <span className="rooms-smoking">{room.smoking}</span>
+              </div>
               <div className="contents-price-info">
-                <strong>{room.price} 원</strong>
+                <strong>{room.price.toLocaleString()} 원</strong>
                 <span className="contents-price">환불불가</span>
                 <span className="contents-price-bottom">
                   1박 기준, 세금포함

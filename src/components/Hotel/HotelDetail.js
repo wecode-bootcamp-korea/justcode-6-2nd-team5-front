@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./HotelDetail.scss";
 import Rooms from "./Rooms";
 import Policies from "./Policies";
 import Facilities from "./Facilities";
 import Location from "./Location";
-import Lodge from "../Lodge/Lodge";
+import HotelRanking from "../../components/Hotel/HotelRanking";
+import Review from "../Review/Review";
 import BookmarkIcon from "../../assets/images/bookmark-icon.png";
 import ShareIcon from "../../assets/images/hotel-share.png";
 
 function HotelDetail() {
+  const location = useLocation();
+  const id = location.state.id;
   const [tabIndex, setTabIndex] = useState(1);
   const [hotelData, setHotelData] = useState({
     id: "",
@@ -23,11 +27,17 @@ function HotelDetail() {
     tag: "",
     totalLike: "",
     room: [],
+    review: [],
   });
 
+  const navigate = useNavigate();
+  const HotelRankingClick = () => {
+    navigate("/hotelthema");
+  };
+
   useEffect(() => {
-    // fetch("http://localhost:8000/lodgment/item/1", {
-    fetch("/data/hotel/hoteldetail.json", {
+    fetch(`http://localhost:8000/lodgment/item/${id}`, {
+      // fetch("/data/hotel/hoteldetail.json", {
       method: "GET",
     })
       .then((res) => res.json())
@@ -46,6 +56,7 @@ function HotelDetail() {
           tag: data.lodgment.tag,
           totalLike: data.lodgment.totalLike,
           room: data.room,
+          review: data.review,
         });
       });
   }, []);
@@ -101,10 +112,6 @@ function HotelDetail() {
                   <span className="hotel-review">리뷰</span>
                   <span className="review-star">{hotelData.reviewPoint}</span>
                 </div>
-                <div>
-                  {/* <img src={BookmarkIcon} className="bookmark"></img> */}
-                  {/* <img src={ShareIcon} className="share"></img> */}
-                </div>
               </div>
             </div>
           </div>
@@ -130,13 +137,13 @@ function HotelDetail() {
               {tabIndex === 1 && <Rooms hotelData={hotelData} />}
               {tabIndex === 2 && <Policies />}
               {tabIndex === 3 && <Facilities />}
-              {tabIndex === 4 && <Location />}
-              {/* {tabIndex === 5 && <Review />} */}
+              {tabIndex === 4 && <Location hotelData={hotelData} />}
+              {tabIndex === 5 && <Review reviewData={hotelData.review} />}
             </div>
           </div>
         </div>
-        <div className="slider">
-          <Lodge />
+        <div className="slider" onClick={HotelRankingClick}>
+          <HotelRanking />
         </div>
       </div>
     </div>

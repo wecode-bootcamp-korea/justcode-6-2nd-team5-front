@@ -8,19 +8,19 @@ function HotelThema() {
   const navigate = useNavigate();
   const location = useLocation();
   const [data, setData] = useState([]);
-
-  const HotelThemaClick = () => {
-    navigate("/hotelDetail");
+  const HotelThemaClick = (params) => {
+    window.scrollTo(0, 0);
+    navigate("/hotelDetail", { state: { id: params } });
   };
 
   useEffect(() => {
-    fetch("/data/hotel/hotelThema.json", {
-      // fetch("http://localhost:8000/lodgment/list", {
+    // fetch("/data/hotel/hotelThema.json", {
+    fetch("http://localhost:8000/lodgment/list", {
       method: "GET",
     })
       .then((res) => res.json())
       .then((data) => {
-        setData(data);
+        setData(data.lodgmentList);
       });
   }, []);
 
@@ -98,7 +98,7 @@ function HotelThema() {
                   <img
                     src={data.photo[0]}
                     alt="이미지"
-                    onClick={HotelThemaClick}
+                    onClick={() => HotelThemaClick(data.id)}
                   />
                 </div>
                 <div className="hotel-thema-info">
