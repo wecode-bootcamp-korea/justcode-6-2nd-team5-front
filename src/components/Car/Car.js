@@ -24,7 +24,7 @@ function Car() {
     <div className="content-wrapper">
       <h1 className="title">
         최저가 렌터카 추천
-        <FaCar />
+        {/* <FaCar /> */}
       </h1>
       <Swiper
         spaceBetween={20}

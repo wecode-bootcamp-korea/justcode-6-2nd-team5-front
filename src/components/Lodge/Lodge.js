@@ -25,7 +25,8 @@ function Lodge() {
   return (
     <div className="content-wrapper">
       <h1 className="title">
-        제주다운 감성숙소 추천 <FaHotel />
+        제주다운 감성숙소 추천
+        {/* <FaHotel /> */}
       </h1>
       <Swiper
         spaceBetween={20}

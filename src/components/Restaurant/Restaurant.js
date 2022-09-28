@@ -17,7 +17,7 @@ function Restaurant() {
     <div className="content-wrapper">
       <h1 className="title">
         제주도 맛집 추천
-        <IoRestaurant />
+        {/* <IoRestaurant /> */}
       </h1>
       <div className="restaurant-wrapper">
         {data.map((data) => (

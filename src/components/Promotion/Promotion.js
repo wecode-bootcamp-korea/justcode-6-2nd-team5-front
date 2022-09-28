@@ -24,7 +24,7 @@ function Promotion() {
     <div className="content-wrapper">
       <h1 className="title">
         놓치면 안되는 제주패스 프로모션
-        <IoGift />
+        {/* <IoGift /> */}
       </h1>
       <div className="promotion-wrapper">
         <Swiper

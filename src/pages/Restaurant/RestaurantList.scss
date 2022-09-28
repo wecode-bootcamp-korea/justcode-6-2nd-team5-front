@@ -1,0 +1,57 @@
+@mixin content-before($background) {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin: 0 0 -3px 0;
+  background: $background;
+}
+
+.restaurant-list {
+  margin: 7.5% 0;
+
+  .restaurant-img {
+    width: 100%;
+    border-radius: 16px;
+  }
+
+  .restaurant-info {
+    color: #606060;
+    margin-top: 2.5%;
+    line-height: 1.4;
+
+    h1 {
+      margin: 1% 0;
+      font-weight: 700;
+      font-size: large;
+      color: black;
+    }
+
+    span {
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+
+    span:nth-child(-n + 3) {
+      border-right: 1px solid gainsboro;
+    }
+
+    p {
+      margin: 2.5% 0;
+    }
+
+    .total-like::before {
+      @include content-before(
+        url("https://static-www.jejupass.com/resource/PC/images/food/ico_like-on.png")
+          no-repeat
+      );
+    }
+
+    .total-point::before {
+      @include content-before(
+        url("https://static-www.jejupass.com/resource/PC/images/food/ico_starx18.png")
+          no-repeat
+      );
+    }
+  }
+}

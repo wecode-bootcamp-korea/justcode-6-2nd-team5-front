@@ -18,6 +18,7 @@ import FooterTop from "./components/Footer/FooterTop";
 import FooterBottom from "./components/Footer/FooterBottom";
 import Restaurant from "./pages/Restaurant/Restaurant";
 import RestaurantDetail from "./pages/Restaurant/RestaurantDetail";
+import RestaurantMain from "./pages/Restaurant/RestaurantMain";
 
 function Router() {
   return (
@@ -37,7 +38,8 @@ function Router() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/signupFin" element={<SignupFin />} />
         <Route path="/preparing" element={<Preparing />} />
-        <Route path="/restaurant" element={<Restaurant />} />
+        <Route path="/restaurant" element={<RestaurantMain />} />
+        <Route path="/restaurant/:id" element={<Restaurant />} />
         <Route path="/restaurantDetail" element={<RestaurantDetail />} />
       </Routes>
       <FooterTop />
