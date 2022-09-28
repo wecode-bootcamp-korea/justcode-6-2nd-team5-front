@@ -6,6 +6,7 @@ import RestaurantReview from "../Restaurant/RestaurantReview";
 import "./RentCarDetail.scss";
 import RentCarInfo from "./RentCarInfo/RentCarInfo";
 import RentCarRule from "./RentCarRule/RentCarRule";
+import RenterCarInsurance from "./RenterCarInsurance/RenterCarInsurance";
 
 function RentCarDetail() {
   const location = useLocation();
@@ -64,7 +65,7 @@ function RentCarDetail() {
               <button onClick={() => setTabIndex(4)}>업체정보</button>
             </div>
             {tabIndex === 1 && <RentCarRule />}
-            {/* {tabIndex === 2 && <RestaurantMenu />} */}
+            {tabIndex === 2 && <RenterCarInsurance />}
             {tabIndex === 3 && <RestaurantReview />}
             {tabIndex === 4 && <RentCarInfo />}
           </div>
