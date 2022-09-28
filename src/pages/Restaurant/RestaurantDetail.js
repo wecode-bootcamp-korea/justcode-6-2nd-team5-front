@@ -37,7 +37,9 @@ function RestaurantDetail() {
         {data.length !== 0 && tabIndex === 2 && (
           <RestaurantMenu data={data.menu} />
         )}
-        {tabIndex === 3 && <RestaurantReview />}
+        {data.length !== 0 && tabIndex === 3 && (
+          <RestaurantReview data={data.restaurant} />
+        )}
       </div>
     </>
   );
