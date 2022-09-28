@@ -34,7 +34,7 @@ const FlightModal = () => {
           primary
         >
           <h6>인원 및 좌석등급</h6>
-          <p>성인1, 전체</p>
+          <p className="date">성인1, 전체</p>
         </Menu>
         <SearchBtn primary>검색</SearchBtn>
       </MenuBox>

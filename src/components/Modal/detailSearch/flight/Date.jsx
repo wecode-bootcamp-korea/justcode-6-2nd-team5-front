@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState, useContext } from "react";
+import { StyledCalendar } from "../rentCar/RentalDate";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { ko } from "date-fns/esm/locale";
 
 import { ConditionSelector } from "../../commonStyled";
 
 const Date = () => {
-  const [value, setValue] = useState(0);
-
   return (
     <ConditionSelector>
       <h2 className="title">
@@ -13,23 +14,16 @@ const Date = () => {
         <br />
         선택하세요<span style={{ color: "red" }}> .</span>
       </h2>
-      <div className="box">
-        <StyledCalendar></StyledCalendar>
-      </div>
-      <div className="box"></div>
+      <StyledCalendar>
+        <DatePicker
+          dateFormatCalendar="yyyy년 M월"
+          locale={ko}
+          inline
+          monthsShown={2}
+        />
+      </StyledCalendar>
     </ConditionSelector>
   );
 };
-
-const StyledCalendar = styled.div`
-  .react-calendar {
-    background: white;
-  }
-
-  .react-calendar__navigation__label {
-    background: white;
-    border: none;
-  }
-`;
 
 export default Date;

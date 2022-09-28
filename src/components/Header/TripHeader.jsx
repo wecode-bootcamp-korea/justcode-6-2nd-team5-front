@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
+import { ModalContext } from "../../components/Context/ModalContext"
 import { NormalSearchBox } from "../Modal/commonStyled";
 import { BiSearch } from "react-icons/bi";
 

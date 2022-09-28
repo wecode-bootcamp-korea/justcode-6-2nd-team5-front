@@ -74,7 +74,7 @@ export const Menu = styled.div`
     "1px solid #63a1ff"};
   height: ${(props) => (props.primary ? "80px" : "95px")};
   width: ${(props) => props.width};
-  padding: 23px 30px 0px 23px;
+  padding: 23px 10px 0px 23px;
   background-color: white;
   border-radius: 16px;
   box-shadow: 0 8px 16px 0 rgba(32, 32, 32, 0.08);
@@ -87,10 +87,17 @@ export const Menu = styled.div`
   }
 
   p {
-    color: ${(props) => (!!props.date ? "#202020" : "#aeaeae")};
-    font-size: ${(props) => (props.primary ? "15px" : "1rem")};
+    color: ${(props) => (props.className === "date" ? "#202020" : "#aeaeae")};
+    font-size: ${(props) => (props.primary ? "14px" : "1rem")};
     font-weight: 600;
     cursor: pointer;
+  }
+
+  .date {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.8px;
+    color: #202020;
   }
 
   //헤더 항공 부분 아이콘
@@ -254,6 +261,6 @@ export const HashTagBtn = styled.button`
   font-size: 12px;
   font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
     Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic",
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif; ;
-;
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+  cursor: pointer;
 `;

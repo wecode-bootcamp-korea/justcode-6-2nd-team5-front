@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 
+import { ModalContext } from "../../components/Context/ModalContext";
 import { MenuBox, Menu, SearchBtn } from "../Modal/commonStyled";
 
-const RoomHeader = ({ modalOpen }) => {
+const RoomHeader = () => {
+  const { isOpen, setOpen, setClickedIcon } = useContext(ModalContext);
+
+  const modalOpen = () => {
+    setOpen(true);
+    console.log(isOpen);
+  };
+
   return (
-    <MenuBox>
+    <MenuBox onClick={() => setClickedIcon(3)}>
       <Menu onClick={modalOpen} width="43%" className="border">
         <h6>여행지</h6>
         <p>여행지를 선택해주세요.</p>
