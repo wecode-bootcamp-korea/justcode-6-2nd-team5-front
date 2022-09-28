@@ -2,8 +2,12 @@ import { useEffect, useState } from "react";
 import TagList from "../../RentCar/RentCarList/RentCarCard/TagList/TagList";
 import "./RenterCarInsurance.scss";
 
-function RenterCarInsurance() {
+function RenterCarInsurance(props) {
+  const { insurance } = props;
+
+  // 모든 태그
   const [rentCarTags, setRentCarTags] = useState([]);
+  // 유효 태그
   const [rentCarTagInfo, setRentCarTagsInfo] = useState([]);
 
   // 차량의 모든 태그들 세팅
@@ -38,7 +42,7 @@ function RenterCarInsurance() {
           </div>
           <div className="subtitle">
             <p>연령</p>
-            <span>만 23세 이상</span>
+            <span>{insurance.age} 이상</span>
           </div>
         </div>
         <div className="top-box-card">
@@ -47,7 +51,7 @@ function RenterCarInsurance() {
           </div>
           <div className="subtitle">
             <p>운전경력</p>
-            <span>2년 이상</span>
+            <span>{insurance.experience}</span>
           </div>
         </div>
         <div className="top-box-card">
@@ -56,7 +60,7 @@ function RenterCarInsurance() {
           </div>
           <div className="subtitle">
             <p>운전면허</p>
-            <span>2종 보통 이상</span>
+            <span>{insurance.insurance}</span>
           </div>
         </div>
       </div>

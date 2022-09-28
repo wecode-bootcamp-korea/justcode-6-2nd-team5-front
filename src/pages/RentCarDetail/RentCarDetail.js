@@ -13,11 +13,11 @@ function RentCarDetail() {
   // 차량 정보: ImgCard props
   const [carInfo, setCarInfo] = useState({});
 
+  // 차량/보험 정보: RenterCarInsurance props
+  const [insurance, SetInsurance] = useState({});
+
   // 업체 정보: RentCarInfo props
   const [rentCaompanyInfo, setRentCompanyInfo] = useState({});
-
-  // 차량/보험 정보: RenterCarInsurance props
-  const [insurance, SetInsurance] = useState([]);
 
   useEffect(() => {
     const conditionList = decodeURIComponent(location.search).split("&");
@@ -61,6 +61,14 @@ function RentCarDetail() {
           shuttleInterval: data[0].shuttleInterval,
           shuttleRequiredTime: data[0].shuttleRequiredTime,
         });
+
+        // RentCarRule props
+        console.log(data[0]);
+        SetInsurance({
+          age: data[0].age,
+          experience: data[0].experience,
+          insurance: data[0].insurance,
+        });
       });
   }, [location]);
 
@@ -84,7 +92,7 @@ function RentCarDetail() {
               <button onClick={() => setTabIndex(4)}>업체정보</button>
             </div>
             {tabIndex === 1 && <RentCarRule />}
-            {tabIndex === 2 && <RenterCarInsurance />}
+            {tabIndex === 2 && <RenterCarInsurance insurance={insurance} />}
             {/* {tabIndex === 3 && <RestaurantReview />} */}
             {tabIndex === 4 && <RentCarInfo company={rentCaompanyInfo} />}
           </div>
