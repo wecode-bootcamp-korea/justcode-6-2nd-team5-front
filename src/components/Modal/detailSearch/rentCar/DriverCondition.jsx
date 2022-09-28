@@ -3,15 +3,17 @@ import styled from "styled-components";
 
 import { ConditionSelector, SelectBtn } from "../../commonStyled";
 
-const DriverCondition = () => {
+const DriverCondition = ({ setDriverAge, setDriverCareer }) => {
   const [age, setAge] = useState("");
   const [career, setCareer] = useState("");
 
   const colorChangeAge = (e) => {
     setAge(Number(e.target.id));
+    setDriverAge(e.target.innerHTML);
   };
   const colorChangeCareer = (e) => {
     setCareer(Number(e.target.id));
+    setDriverCareer(e.target.innerHTML);
   };
 
   const driverAgeArr = [

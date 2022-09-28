@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 
 import { NormalSearchBox } from "../Modal/commonStyled";
 import { BiSearch } from "react-icons/bi";

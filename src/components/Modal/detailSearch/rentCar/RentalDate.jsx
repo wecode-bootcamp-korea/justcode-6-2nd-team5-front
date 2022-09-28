@@ -4,13 +4,13 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { ko } from "date-fns/esm/locale";
 
-import { MainContext } from "./context/Context";
+import { MainContext } from "../../../Context/MainContext";
 
 import { ConditionSelector } from "../../commonStyled";
 
 const RentalDate = () => {
   const { onDateSetting } = useContext(MainContext);
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
   const onChange = (dates) => {
@@ -29,7 +29,9 @@ const RentalDate = () => {
       </h2>
       <StyledCalendar>
         <DatePicker
-          dateFormat="yyyy.MM.dd(eee)"
+          dateFormat="yy.MM.dd(eee)"
+          dateFormatCalendar="yyyy년 M월"
+          showPreviousMonths={false}
           startDate={startDate}
           endDate={endDate}
           onChange={onChange}
@@ -44,7 +46,7 @@ const RentalDate = () => {
   );
 };
 
-const StyledCalendar = styled.div`
+export const StyledCalendar = styled.div`
   .react-datepicker {
     padding: 30px 20px;
     border: none;
