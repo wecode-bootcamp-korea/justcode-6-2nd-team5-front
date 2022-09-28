@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+
 import styled from "styled-components";
 import Modal from "../Modal/Modal";
+import { ModalContext } from "../../components/Context/ModalContext";
 
 import RentCarHeader from "./RentCarHeader";
 import FlightHeader from "./FlightHeader";
@@ -19,14 +21,16 @@ import { FaCoffee } from "react-icons/fa";
 import { FaHotdog } from "react-icons/fa";
 
 const Header = () => {
-  const [clickedIcon, setClickedIcon] = useState(1);
-  const [isOpen, setOpen] = useState(false);
+  const { isOpen, setOpen, clickedIcon, setClickedIcon } =
+    useContext(ModalContext);
+  // const [clickedIcon, setClickedIcon] = useState(1);
+  // const [isOpen, setOpen] = useState(false);
 
   const changeColor = (e) => {
     setClickedIcon(Number(e.target.id));
   };
 
-  const modalOpen = (event) => {
+  const modalOpen = () => {
     setOpen(true);
     console.log(isOpen);
   };
@@ -66,7 +70,7 @@ const Header = () => {
       {isOpen && (
         <Modal
           setOpen={setOpen}
-          menuArr={menuArr}
+          // menuArr={menuArr}
           clickedIcon={clickedIcon}
           setClickedIcon={setClickedIcon}
         />
