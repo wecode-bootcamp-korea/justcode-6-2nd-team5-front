@@ -75,6 +75,7 @@ const CarCondition = ({ setInsurance, setCarType }) => {
                     : setSelect((el) => [...el, item.id]);
                 }
                 console.log(select.length);
+                // setCarType(select);
               }}
               className={select.includes(item.id) && "clicked"}
             >

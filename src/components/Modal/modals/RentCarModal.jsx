@@ -22,7 +22,7 @@ const RentCarModal = () => {
 
   //보험, 차종 선택 state
   const [insurance, setInsurance] = useState("");
-  const [carType, setCarType] = useState("");
+  const [carType, setCarType] = useState([]);
 
   //운전자 나이, 경력 선택 state
   const [driverAge, setDriverAge] = useState("");
@@ -41,6 +41,41 @@ const RentCarModal = () => {
       Number(takeSelected.slice(0, 2))
   );
 
+  // const changeNameOfCarType = (carType) => {
+  //   const newArr = [];
+  //   carType.map((car) => {
+  //     switch (car) {
+  //       case 0:
+  //         newArr.push("전체");
+  //         break;
+  //       case 1:
+  //         newArr.push("경형");
+  //         break;
+  //       case 2:
+  //         newArr.push("소형");
+  //         break;
+  //       case 3:
+  //         newArr.push("준중형");
+  //         break;
+  //       case 4:
+  //         newArr.push("중형");
+  //         break;
+  //       case 5:
+  //         newArr.push("고급");
+  //         break;
+  //       case 6:
+  //         newArr.push("SUV/캠핑");
+  //         break;
+  //       case 7:
+  //         newArr.push("승합");
+  //         break;
+  //     }
+  //     return newArr;
+  //   });
+  // };
+
+  // console.log(changeNameOfCarType(carType));
+
   console.log(timeGap);
   console.log("날짜", dateSet);
   console.log("인수시간", takeSelected);
@@ -49,7 +84,7 @@ const RentCarModal = () => {
   console.log("나이", driverAge);
   console.log("경력", driverCareer);
 
-  const conditionCheck = () => {
+  const handleSearchClick = () => {
     if (
       dateSet === "" ||
       takeSelected === "" ||
@@ -111,7 +146,10 @@ const RentCarModal = () => {
           {insurance === "" ? (
             <p>조건을 선택해주세요.</p>
           ) : (
-            <p className="date">{insurance}</p>
+            <p className="date">
+              {insurance}
+              {carType}
+            </p>
           )}
         </Menu>
         <Menu
@@ -129,7 +167,7 @@ const RentCarModal = () => {
             <p>운전자조건을 선택해주세요.</p>
           )}
         </Menu>
-        <SearchBtn primary onClick={conditionCheck}>
+        <SearchBtn primary onClick={handleSearchClick}>
           검색
         </SearchBtn>
       </MenuBox>
