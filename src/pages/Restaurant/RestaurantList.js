@@ -1,10 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./RestaurantList.scss";
 
 function RestaurantList({ data }) {
+  const navigate = useNavigate();
+  const checkHandler = (id) => {
+    navigate(`/restaurant/detail/${id}`);
+  };
   return (
-    <div className="restaurant-list" key={data.id}>
+    <div
+      className="restaurant-list"
+      key={data.id}
+      onClick={() => checkHandler(data.id)}
+    >
       <div>
         <img src={data.img} alt="이미지" className="restaurant-img" />
       </div>
