@@ -1,22 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const AreaSearch = () => {
+  const navigate = useNavigate;
   const AreaArr = [
-    { id: 1, text: "전체" },
-    { id: 2, text: "제주시내" },
-    { id: 3, text: "조천・함덕" },
-    { id: 4, text: "구좌・월정" },
-    { id: 5, text: "애월" },
-    { id: 6, text: "한림・협재" },
-    { id: 7, text: "중문" },
-    { id: 8, text: "서귀포" },
-    { id: 9, text: "표선・남원" },
-    { id: 10, text: "성산・우도" },
-    { id: 11, text: "안덕・대정" },
-    { id: 12, text: "한경・저지" },
+    { id: 1, text: "제주시내" },
+    { id: 2, text: "조천・함덕" },
+    { id: 3, text: "구좌・월정" },
+    { id: 4, text: "애월" },
+    { id: 5, text: "한림・협재" },
+    { id: 6, text: "서귀포・중문" },
+    { id: 7, text: "표선・남원" },
+    { id: 8, text: "성산・우도" },
+    { id: 9, text: "안덕・대정" },
+    { id: 10, text: "한경・저지" },
   ];
 
+  const [selectArea, setSelectArea] = useState("");
+  const onClick = (e) => {
+    setSelectArea(e.target.innerHTML);
+    const url = `
+    &category(메뉴)
+    &hashTag(태그)
+    &facility(편의사항)
+    &address(주소)`;
+    navigate(`/restaurant/list?${url}`);
+  };
   return (
     <Flex>
       {AreaArr.map((item) => {
@@ -52,7 +62,12 @@ const AreaBtn = styled.span`
     height: 65px;
     border-radius: 50px;
     border: none;
-    background-color: gray;
+    background-color: #808080;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #404040;
+    }
   }
 
   .AreaName {
@@ -60,6 +75,7 @@ const AreaBtn = styled.span`
     font-size: 12px;
     font-weight: 600;
     color: #808080;
+    cursor: pointer;
   }
 `;
 

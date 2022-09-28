@@ -9,7 +9,6 @@ const RentCarHeader = () => {
   console.log(location);
   // console.log(rentHeader.search !== "");
   const { isOpen, setOpen, setClickedIcon } = useContext(ModalContext);
-
   const modalOpen = () => {
     setOpen(true);
   };

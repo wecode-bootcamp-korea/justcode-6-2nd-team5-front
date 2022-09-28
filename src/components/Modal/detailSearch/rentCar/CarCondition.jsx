@@ -36,8 +36,14 @@ const CarCondition = ({ setInsurance, setCarType }) => {
   //     setSelect(select.filter((number) => number !== 0));
   // }, [select]);
 
-  console.log(select);
+  useEffect(() => {
+    if (select.includes(0) && select.length > 1) {
+      setSelect(select.filter((num) => num !== 0));
+    }
+    if (select.length === 7) setSelect([0]);
+  }, [select]);
 
+  console.log(select);
   return (
     <ConditionSelector>
       <h2 className="title">
@@ -67,6 +73,7 @@ const CarCondition = ({ setInsurance, setCarType }) => {
               otherType
               key={item.id}
               onClick={() => {
+<<<<<<< HEAD
                 if (select.length === 6 || select[select.length - 1] === 0)
                   setSelect([0]);
                 else if (item.id !== 0) {
@@ -76,6 +83,15 @@ const CarCondition = ({ setInsurance, setCarType }) => {
                 }
                 console.log(select.length);
                 // setCarType(select);
+=======
+                //select 배열내에 내가 클릭한 버튼의 아이디가 들어있는 경우 ? 내가 누른 버튼 아이디 빼고 배열 반환 : 배열에 내가 누른 버튼 아이디 추가 (단, 누른게 0이면 [0] 배열 반환)
+                select.includes(item.id) && item.id !== 0
+                  ? setSelect(select.filter((arr) => arr !== item.id))
+                  : setSelect((el) => {
+                      if (item.id !== 0) return [...el, item.id];
+                      else return [0];
+                    });
+>>>>>>> main
               }}
               className={select.includes(item.id) && "clicked"}
             >
