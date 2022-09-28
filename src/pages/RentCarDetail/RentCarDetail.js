@@ -27,6 +27,7 @@ function RentCarDetail() {
       //   rentCompanyCarId: rentCompanyCarId,
       // }),
       // }
+      //
     )
       .then((res) => res.json())
       .then((data) => {
