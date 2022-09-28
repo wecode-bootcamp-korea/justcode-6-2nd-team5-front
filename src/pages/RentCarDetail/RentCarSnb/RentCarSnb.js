@@ -1,7 +1,32 @@
+import { useEffect, useState } from "react";
 import "./RentCarSnb.scss";
 
 function RentCarSnb(props) {
-  const { price } = props;
+  const { price, setNavActive } = props;
+
+  // 네브 스크롤시 따라오게 하기
+  const [scrollY, setScrollY] = useState(0);
+  const [scrollActive, setScrollActive] = useState(false);
+
+  const scrollFixed = () => {
+    if (scrollY > 100) {
+      setScrollY(window.pageYOffset);
+      setScrollActive(true);
+    } else {
+      setScrollY(window.pageYOffset);
+      setScrollActive(false);
+    }
+  };
+
+  useEffect(() => {
+    const scrollListener = () => {
+      window.addEventListener("scroll", scrollFixed);
+    };
+    scrollListener();
+    return () => {
+      window.removeEventListener("scroll", scrollFixed);
+    };
+  });
 
   //천단위 , 찍기 위한 함수
   const numberFormat = (num) => {
@@ -13,7 +38,7 @@ function RentCarSnb(props) {
   };
 
   return (
-    <div className="rentcar-detail-snb-wrap">
+    <div className={`rentcar-detail-snb-wrap ${scrollActive ? "fixed" : ""}`}>
       <div className="rentcar-detail-column">
         <div className="top-box">
           <p className="main-title">선택한 요금제 정보</p>

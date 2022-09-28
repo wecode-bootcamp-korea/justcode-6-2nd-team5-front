@@ -1,3 +1,9 @@
+.fixed {
+  position: sticky;
+  height: 100%;
+  top: 100px;
+}
+
 .rentcar-detail-snb-wrap {
   display: flex;
   flex-direction: column;
@@ -10,18 +16,19 @@
     background-color: #fff;
 
     height: fit-content;
-    line-height: 30px;
+    line-height: 20px;
     p {
       padding: 5px;
+      font-size: 15px;
     }
+
     div {
-      padding: 15px 0px;
+      padding: 8px 0px;
     }
 
     .title {
       display: flex;
       justify-content: space-between;
-      font-size: var(--font-size-product-content);
       font-weight: bold;
     }
 
@@ -29,7 +36,7 @@
       padding-top: 0;
       border-bottom: 1px solid gray;
       .main-title {
-        font-size: 20px;
+        font-size: 18px;
         font-weight: bold;
       }
     }
@@ -80,7 +87,6 @@
     padding: 4%;
     width: 90%;
 
-    font-size: var(--font-size-product-content);
     font-weight: bold;
     text-align: center;
 
