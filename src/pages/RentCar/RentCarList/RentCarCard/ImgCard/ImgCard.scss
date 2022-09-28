@@ -1,6 +1,4 @@
 .car-img-content-wrap {
-  background-color: var(--color-white-gray);
-
   .content-wrap {
     display: flex;
     justify-content: center;
@@ -12,9 +10,10 @@
     }
 
     .car-img {
-      width: 30%;
+      width: 25%;
       height: 150px;
-      background-size: cover;
+      background-size: contain;
+      background-repeat: no-repeat;
       margin-right: 50px;
     }
 
@@ -34,11 +33,24 @@
       .oil-icon {
         background-image: url("../../../../../assets/images/oil-icon.png");
       }
+      .calendar-icon {
+        width: var(--icon-size-small);
+        height: var(--icon-size-small);
+        background-image: url("../../../../../assets/images/calendar-icon.png");
+        margin-left: 5px;
+      }
+
       span {
         color: gray;
         font-size: var(--font-size-product-small);
         margin: 0px 5px;
       }
     }
+  }
+  .rentcar-detail-p-tag {
+    color: rgb(149, 149, 149);
+    font-size: 14px;
+    text-align: center;
+    margin: 15px 0;
   }
 }

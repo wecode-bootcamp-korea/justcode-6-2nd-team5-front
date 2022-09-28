@@ -10,7 +10,6 @@ function SideFilterBar(props) {
     <div className="rentcar-sfb-wrap">
       <SortOrderBar orderTypes={orderTypes} getSortOrder={getSortOrder} />
       <FilterBar filterTypes={filterTypes} />
-      <div className="submit-btn"></div>
     </div>
   );
 }

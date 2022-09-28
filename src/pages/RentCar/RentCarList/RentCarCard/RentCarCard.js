@@ -41,7 +41,7 @@ function RentCarCard(props) {
 
   return (
     <div className="rentcar-card-wrap product-bar">
-      <ImgCard carInfo={carInfo} />
+      <ImgCard carInfo={carInfo} styleChange={false} />
       <TagList TagInfo={tagInfo} rentCarTags={rentCarTags} />
       <CompanyList companyInfo={companyInfo} />
     </div>

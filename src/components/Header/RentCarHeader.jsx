@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { MenuBox, Menu, SearchBtn } from "../Modal/commonStyled";
 
 const RentCarHeader = ({ modalOpen }) => {
-  console.log(modalOpen);
+  // console.log(modalOpen);
 
   return (
     <MenuBox>

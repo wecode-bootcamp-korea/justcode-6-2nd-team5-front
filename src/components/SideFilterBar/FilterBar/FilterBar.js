@@ -74,6 +74,7 @@ function FilterBar(props) {
 
   // 적용 버튼 관리 함수
   const submit = () => {
+    window.scrollTo(0, 0);
     setIsDone(true);
   };
 

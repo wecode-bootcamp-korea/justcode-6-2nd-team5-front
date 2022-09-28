@@ -17,11 +17,13 @@ import SignupFin from "./components/signup/signupFin";
 import FooterTop from "./components/Footer/FooterTop";
 import FooterBottom from "./components/Footer/FooterBottom";
 import RentCarDetail from "./pages/RentCarDetail/RentCarDetail";
+import ScrollTop from "./components/ScrollTop/ScrollTop";
 
 function Router() {
   return (
     <BrowserRouter>
       <Nav />
+      <ScrollTop />
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/esg" element={<Esg />} />
