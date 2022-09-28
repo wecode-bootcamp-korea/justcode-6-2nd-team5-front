@@ -4,7 +4,7 @@
   font-family: "Pretendard-Regular";
 
   .hotel-detail-contens {
-    width: 60%;
+    width: 70%;
     margin: 0 auto;
 
     .hotel-detail-top {
@@ -44,6 +44,8 @@
 
       .hotel-detail-info {
         text-align: left;
+        border-bottom: 1px solid gainsboro;
+        padding-bottom: 6%;
 
         .hotel-tag-item {
           height: 40px;
@@ -61,28 +63,65 @@
           background: #fff;
           cursor: pointer;
         }
-      }
 
-      p {
-        line-height: 1.4;
-        color: #606060;
-        font-weight: 600;
-        font-size: 1.2rem;
+        .detail-bottom {
+          margin-top: 20px;
+          font-weight: 600;
 
-        span {
-          color: black;
-          margin-left: 5%;
+          p {
+            line-height: 1.4;
+            color: #606060;
+            font-weight: 600;
+            font-size: 1.2rem;
+
+            .hotel-location {
+              display: inline;
+              margin-right: 3%;
+            }
+
+            .hotel-address {
+              display: inline;
+
+              .after::after {
+                content: "";
+                display: inline-block;
+                margin: 0 25px;
+                width: 1px;
+                height: 17px;
+                background: gray;
+                vertical-align: middle;
+              }
+            }
+          }
+
+          .review-content {
+            margin-top: 3px;
+            line-height: 1.4;
+            color: #606060;
+            font-weight: 600;
+            font-size: 1.2rem;
+
+            .hotel-review {
+              margin-right: 3%;
+            }
+
+            .review-star::before {
+              content: "";
+              display: inline-block;
+              width: 20px;
+              height: 20px;
+              margin: 0 0 -3px 0;
+              background: url("https://static-www.jejupass.com/resource/PC/images/food/ico_starx18.png")
+                no-repeat;
+            }
+          }
+
+          .bookmark,
+          .share {
+            width: 27px;
+            height: 27px;
+          }
         }
-
-        &:last-child {
-          border-bottom: 1px solid gainsboro;
-          padding-bottom: 5%;
-        }
-      }
-
-      .detail-bottom {
-        margin-top: 20px;
-        font-weight: 600;
       }
     }
 
@@ -121,4 +160,14 @@
       margin: 3.5%;
     }
   }
+}
+
+.total-like::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  margin: 0 0 -3px 0;
+  background: url("https://static-www.jejupass.com/resource/PC/images/food/ico_like-on.png")
+    no-repeat;
 }

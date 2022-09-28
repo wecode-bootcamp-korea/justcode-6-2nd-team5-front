@@ -5,42 +5,67 @@ import Policies from "./Policies";
 import Facilities from "./Facilities";
 import Location from "./Location";
 import Lodge from "../Lodge/Lodge";
-// import BookmarkIcon from "../../assets/images/bookmark-icon.png";
-// import Share from "../../assets/images/hotel-share.png";
+import BookmarkIcon from "../../assets/images/bookmark-icon.png";
+import ShareIcon from "../../assets/images/hotel-share.png";
 
 function HotelDetail() {
   const [tabIndex, setTabIndex] = useState(1);
-  const [hotelData, setHotelData] = useState();
-  // let hotelData = {};
-  const hotelId = 1;
+  const [hotelData, setHotelData] = useState({
+    id: "",
+    name: "",
+    intro: "",
+    reviewPoint: "",
+    bigAddress: "",
+    regionAddress: "",
+    fullAddress: "",
+    photo: [],
+    hashTag: "",
+    tag: "",
+    totalLike: "",
+    room: [],
+  });
 
   useEffect(() => {
-    fetch("http://localhost:8000/lodgment/item/1", {
+    // fetch("http://localhost:8000/lodgment/item/1", {
+    fetch("/data/hotel/hoteldetail.json", {
       method: "GET",
     })
       .then((res) => res.json())
       .then((data) => {
-        setHotelData(data);
-        // hotelData = data;
-        console.log("응애122" + data);
+        setHotelData({
+          ...hotelData,
+          id: data.lodgment.id,
+          name: data.lodgment.name,
+          intro: data.lodgment.intro,
+          reviewPoint: data.lodgment.reviewPoint,
+          bigAddress: data.lodgment.bigAddress,
+          regionAddress: data.lodgment.regionAddress,
+          fullAddress: data.lodgment.fullAddress,
+          photo: data.lodgment.photo,
+          hashTag: data.lodgment.hashTag,
+          tag: data.lodgment.tag,
+          totalLike: data.lodgment.totalLike,
+          room: data.room,
+        });
       });
   }, []);
 
-  console.log("응애1" + hotelData);
-  // console.log("응애2" + hotelData.lodgment);
+  // console.log("ROOM" + JSON.stringify(hotelData));
 
   return (
     <div className="hotel-detail-container">
       <div className="hotel-detail-contens">
         <div className="hotel-detail-top">
           <div>
-            <img src="https://static-file.jejupass.com/download/15072.webp?width=928&height=928"></img>
+            {/* <img src="https://static-file.jejupass.com/download/15072.webp?width=928&height=928"></img> */}
+
+            <img src={hotelData.photo[0]}></img>
           </div>
           <div className="hotel-detail-info">
             <div className="detail-event">
               <span className="detail-e-border">제주패스 단독</span>
             </div>
-            <h1>test</h1>
+            <h1>{hotelData.name}</h1>
             <p className="span-style">[제주패스X유수암소랑 단독오픈]</p>
             {/* <p>'소랑은'제주방언으로 '사랑'을 뜻합니다</p>
             <p>
@@ -49,17 +74,38 @@ function HotelDetail() {
             <p>
               여러분의 안락한 휴식공간을 선물해 드리기 위해 최선을 다하겠습니다.
             </p> */}
-            <p>test</p>
+            <p>{hotelData.intro}</p>
             <div>
-              <button className="hotel-tag-item">#인기</button>
+              <button className="hotel-tag-item">{hotelData.hashTag}</button>
               <button className="hotel-tag-item">#감성숙소</button>
               <button className="hotel-tag-item">#특급호텔</button>
               <button className="hotel-tag-item">#바비큐</button>
             </div>
             <div className="detail-bottom">
               <p>
-                위치 <span>제주도 | 제주시 | 애월</span>
+                <div className="hotel-location">위치</div>
+                <div className="hotel-address">
+                  <span className="hotel-address-list after">
+                    {hotelData.bigAddress}
+                  </span>
+                  <span className="hotel-address-list after">
+                    {hotelData.regionAddress}
+                  </span>
+                  <span className="hotel-address-list ">
+                    {hotelData.fullAddress}
+                  </span>
+                </div>
               </p>
+              <div className="review-content">
+                <div>
+                  <span className="hotel-review">리뷰</span>
+                  <span className="review-star">{hotelData.reviewPoint}</span>
+                </div>
+                <div>
+                  <img src={BookmarkIcon} className="bookmark"></img>
+                  {/* <img src={ShareIcon} className="share"></img> */}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -81,7 +127,7 @@ function HotelDetail() {
               <button onClick={() => setTabIndex(5)} className="hotel-tabs-btn">
                 리뷰
               </button>
-              {tabIndex === 1 && <Rooms />}
+              {tabIndex === 1 && <Rooms hotelData={hotelData} />}
               {tabIndex === 2 && <Policies />}
               {tabIndex === 3 && <Facilities />}
               {tabIndex === 4 && <Location />}

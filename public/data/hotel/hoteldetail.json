@@ -1,0 +1,118 @@
+{
+  "lodgment": {
+    "id": 1,
+    "name": "실험1",
+    "intro": "하나 둘 셋 넷 다~섯 여!섯! 일@곱@ 여#덟 아$홉$ 열",
+    "phoneNumber": "010-1234-5678",
+    "reviewPoint": 3,
+    "useInfo": "ㅇㅁㄴㅇ1asfqsd",
+    "bigAddress": "제주시 서부",
+    "regionAddress": "애월",
+    "fullAddress": "세부주소",
+    "photo": [
+      "https://i.esdrop.com/d/f/ZMy3lUAiyF/GQ15r1oLVT.jpg",
+      "https://i.esdrop.com/d/f/ZMy3lUAiyF/gNVkFUI3s7.jpg"
+    ],
+    "facility": ["룸서비스", "바"],
+    "hashTag": ["실험"],
+    "tag": ["호텔"],
+    "totalLike": 0
+  },
+  "room": [
+    {
+      "id": 1,
+      "lodgmentId": 1,
+      "roomName": "스탠다드 솔로",
+      "peopleNumber": "1",
+      "smoking": "금연",
+      "bedInfo": "싱글 1개",
+      "price": 100000,
+      "photo": [
+        "https://i.esdrop.com/d/f/ZMy3lUAiyF/gNVkFUI3s7.jpg",
+        "https://i.esdrop.com/d/f/ZMy3lUAiyF/S1kqMjWrGX.jpg"
+      ]
+    },
+    {
+      "id": 2,
+      "lodgmentId": 1,
+      "roomName": "스텐다드 더블",
+      "peopleNumber": "4",
+      "smoking": "흡연",
+      "bedInfo": "더블 2개",
+      "price": 400000,
+      "photo": null
+    }
+  ],
+  "review": [
+    {
+      "id": 1,
+      "lodgmentId": 1,
+      "userId": 1,
+      "category": "photo",
+      "review": "조아용",
+      "cleanPoint": 4,
+      "facilityPoint": 4,
+      "servicePoint": 4,
+      "costperformancePoint": 4,
+      "reviewPoint": 4,
+      "created_att": "2022-09-21",
+      "photo": "https://i.esdrop.com/d/f/ZMy3lUAiyF/bgYzCwwg45.jpg"
+    },
+    {
+      "id": 2,
+      "lodgmentId": 1,
+      "userId": 2,
+      "category": null,
+      "review": "안조아용",
+      "cleanPoint": 1,
+      "facilityPoint": 1,
+      "servicePoint": 1,
+      "costperformancePoint": 1,
+      "reviewPoint": 1,
+      "created_att": "2022-09-21",
+      "photo": null
+    },
+    {
+      "id": 3,
+      "lodgmentId": 1,
+      "userId": 2,
+      "category": "photo",
+      "review": "몰루용",
+      "cleanPoint": 3,
+      "facilityPoint": 3,
+      "servicePoint": 3,
+      "costperformancePoint": 3,
+      "reviewPoint": 3,
+      "created_att": "2022-09-21",
+      "photo": "https://i.esdrop.com/d/f/ZMy3lUAiyF/bgYzCwwg45.jpg"
+    },
+    {
+      "id": 8,
+      "lodgmentId": 1,
+      "userId": 2,
+      "category": null,
+      "review": "사진없우용",
+      "cleanPoint": 4,
+      "facilityPoint": 2,
+      "servicePoint": 1,
+      "costperformancePoint": 3,
+      "reviewPoint": 2.5,
+      "created_att": "2022-09-21",
+      "photo": null
+    },
+    {
+      "id": 9,
+      "lodgmentId": 1,
+      "userId": 2,
+      "category": null,
+      "review": "사진읎우용",
+      "cleanPoint": 1,
+      "facilityPoint": 1,
+      "servicePoint": 1,
+      "costperformancePoint": 3,
+      "reviewPoint": 1.5,
+      "created_att": "2022-09-21",
+      "photo": null
+    }
+  ]
+}

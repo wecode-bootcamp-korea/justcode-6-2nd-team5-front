@@ -14,8 +14,8 @@ function HotelThema() {
   };
 
   useEffect(() => {
-    // fetch("/data/hotel/hotelThema.json")
-    fetch("http://localhost:8000/lodgment/list", {
+    fetch("/data/hotel/hotelThema.json", {
+      // fetch("http://localhost:8000/lodgment/list", {
       method: "GET",
     })
       .then((res) => res.json())
