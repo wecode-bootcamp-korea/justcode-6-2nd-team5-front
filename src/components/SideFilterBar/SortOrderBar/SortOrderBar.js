@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import Dep1 from "../Dep1/Dep1";
 import "./SortOrderBar.scss";
 
 function SortOrderBar(props) {
-  const { orderTypes, getSortOrder } = props;
+  const { orderTypes } = props;
 
   // Dep1 disabled
   const [isOpen, setIsOpen] = useState(false);
@@ -40,12 +41,32 @@ function SortOrderBar(props) {
 
   if (orderTypes) insertDisabled(orderTypes, orderDisabledList);
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // 정렬 쿼리 변수 리턴하는 함수
+  const makeSortQuery = (newQuery) => {
+    let olderQuery = decodeURIComponent(location.search);
+    const queryOptions = olderQuery.split("&");
+
+    for (let i = 0; i < queryOptions.length; i++) {
+      for (let j = 0; j < orderTypes.length; j++) {
+        if (queryOptions[i] === `정렬=${orderTypes[j].type}`) {
+          const deleteIndex = queryOptions.indexOf(queryOptions[i]);
+
+          queryOptions.splice(deleteIndex, 1, `정렬=${newQuery}`).join("&");
+        }
+      }
+    }
+    return queryOptions.join("&");
+  };
+
   // dep-2 change check circle disabled
   const onCheckDep2 = (e) => {
     const orderTypeId = e.target.id;
+    const url = makeSortQuery(orderTypes[e.target.id].type);
 
-    // 쿼리 변수 상위폴더에 넘기기
-    getSortOrder(orderTypes[e.target.id].type);
+    navigate(`${location.pathname}${url}`);
 
     if (orderTypeId === "0") {
       setIsOnOrderType0(true);

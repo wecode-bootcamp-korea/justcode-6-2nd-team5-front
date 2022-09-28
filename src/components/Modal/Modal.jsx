@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 
-import MainContextProvider from "./detailSearch/rentCar/context/Context";
+import MainContextProvider from "../../components/Context/MainContext";
+import { ModalContext } from "../Context/ModalContext";
 
 import RentCarModal from "./modals/RentCarModal";
 import FlightModal from "./modals/FlightModal";
@@ -13,7 +14,16 @@ import FoodModal from "./modals/FoodModal";
 
 import { BtnBox } from "./commonStyled";
 
-const Modal = ({ setOpen, menuArr, clickedIcon, setClickedIcon }) => {
+import { AiFillCar } from "react-icons/ai";
+import { FaPlaneDeparture } from "react-icons/fa";
+import { FaBed } from "react-icons/fa";
+import { FaTicketAlt } from "react-icons/fa";
+import { FaCoffee } from "react-icons/fa";
+import { FaHotdog } from "react-icons/fa";
+
+const Modal = () => {
+  const { setOpen, clickedIcon, setClickedIcon } = useContext(ModalContext);
+
   useEffect(() => {
     const $body = document.querySelector("body");
     $body.style.overflow = "hidden";
@@ -23,6 +33,15 @@ const Modal = ({ setOpen, menuArr, clickedIcon, setClickedIcon }) => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const menuArr = [
+    { id: 1, icon: <AiFillCar />, name: "렌터카검색" },
+    { id: 2, icon: <FaPlaneDeparture />, name: "항공검색" },
+    { id: 3, icon: <FaBed />, name: "숙박검색" },
+    { id: 4, icon: <FaTicketAlt />, name: "트립검색" },
+    { id: 5, icon: <FaCoffee />, name: "카페검색" },
+    { id: 6, icon: <FaHotdog />, name: "맛집검색" },
+  ];
 
   return (
     <MainContextProvider>
@@ -55,7 +74,7 @@ const Modal = ({ setOpen, menuArr, clickedIcon, setClickedIcon }) => {
   );
 };
 
-const Overlay = styled.div`
+export const Overlay = styled.div`
   position: fixed;
   width: 100%;
   height: 100%;

@@ -1,0 +1,11 @@
+.totalbox {
+  .title {
+    color: gray;
+    font-weight: 500;
+
+    .amount {
+      color: var(--color-bright-blue);
+      margin-left: 5px;
+    }
+  }
+}
