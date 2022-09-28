@@ -39,15 +39,33 @@ function CompanyList(props) {
     setCurrentCompany(e.target.id);
   };
 
+  // 차종 중복 선택시 모두 포함한 쿼리 반환 함수
+  const makeConditionQuery = () => {
+    // condition 쿼리변수들 중 차종에 관한 쿼리의 인덱스가 담김
+    let carTypeIndex = [];
+    const conditon = decodeURIComponent(location.search).split("&");
+
+    // carType을 포함한 쿼리 변수를 추출
+    conditon.map((query, index) => {
+      if (query.includes("carType")) carTypeIndex.push(index);
+    });
+
+    // 조건 제외 쿼리들 삭제
+    const endIndex = carTypeIndex[carTypeIndex.length - 1];
+
+    return decodeURIComponent(location.search)
+      .split("&")
+      .slice(0, endIndex + 1)
+      .join("&");
+  };
+
   // 에약 버튼
   const onReserve = (e) => {
     // 이벤트 버블링 막기
     e.stopPropagation();
     // 대여일, 반납일, 대여시간, 반납시간, 보험, 차종, 운전자 연령, 경력은 유지한 상태로 navigate
-    const conditionQuery = decodeURIComponent(location.search)
-      .split("&")
-      .slice(0, 8)
-      .join("&");
+    const conditionQuery = makeConditionQuery();
+
     // 선택한 업체 고유 id
     const rentCompanyCarId = `&rentCompanyCarId=${e.target.id}`;
 
