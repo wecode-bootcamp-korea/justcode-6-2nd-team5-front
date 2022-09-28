@@ -71,7 +71,6 @@ function CompanyList(props) {
 
     // 경로 이동
     const url = "/rentcarDetail/searchList" + conditionQuery + rentCompanyCarId;
-    // console.log(url);
     navigate(url);
   };
 

@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import RentCarHeader from "../../components/Header/RentCarHeader";
 import ImgCard from "../RentCar/RentCarList/RentCarCard/ImgCard/ImgCard";
-import RestaurantInfo from "../Restaurant/RestaurantInfo";
 import RestaurantMenu from "../Restaurant/RestaurantMenu";
 import RestaurantReview from "../Restaurant/RestaurantReview";
 import "./RentCarDetail.scss";
+import RentCarInfo from "./RentCarInfo/RentCarInfo";
 
 function RentCarDetail() {
   const location = useLocation();
@@ -53,15 +53,18 @@ function RentCarDetail() {
         <div className="rentcar-detail-list-wrap">
           <ImgCard carInfo={carInfo} styleChange={true} />
           <p className="rule">운임규정 및 취소 규정 안내 &gt;</p>
-          <div className="restaurant-detail-wrapper">
-            <div className="restaurant-button-wrapper">
-              <button onClick={() => setTabIndex(1)}>업체정보</button>
+          <div className="rentcar-detail-info-box">
+            <div className="rentcar-button-wrap">
+              <button onClick={() => setTabIndex(1)}>유의사항</button>
 
-              <button onClick={() => setTabIndex(2)}>메뉴</button>
+              <button onClick={() => setTabIndex(2)}>차량/보험</button>
 
               <button onClick={() => setTabIndex(3)}>리뷰</button>
+
+              <button onClick={() => setTabIndex(1)}>업체정보</button>
             </div>
-            {tabIndex === 1 && <RestaurantInfo />}
+            <p className="company-name">업체 이름</p>
+            {tabIndex === 1 && <RentCarInfo />}
             {tabIndex === 2 && <RestaurantMenu />}
             {tabIndex === 3 && <RestaurantReview />}
           </div>
