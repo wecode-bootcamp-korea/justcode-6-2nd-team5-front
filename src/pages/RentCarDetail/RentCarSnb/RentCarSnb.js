@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import AlertModal from "../../../components/AlertModal/AlertModal";
 import "./RentCarSnb.scss";
 
 function RentCarSnb(props) {
@@ -92,6 +93,7 @@ function RentCarSnb(props) {
         <button className="service-btn">슈퍼무제한으로 예약</button>
       </div>
       <button className="submit-btn">예약</button>
+      <AlertModal />
     </div>
   );
 }
