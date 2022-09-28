@@ -82,7 +82,7 @@ function Restaurant() {
         <RestaurantTotal />
         <div className="restaurant-list-wrapper">
           {data.map((data) => {
-            return <RestaurantList data={data} />;
+            return <RestaurantList data={data} key={data.id} />;
           })}
         </div>
       </div>

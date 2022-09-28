@@ -14,19 +14,19 @@ function RestaurantInfo() {
       </div>
       <div className="restaurant-detail-info">
         <div>
-          <p>영업시간 : </p>
+          <span>영업시간 : </span>
           <span>09:00 ~ 20:00 </span>
         </div>
         <div>
-          <p>휴뮤일 : </p>
+          <span>휴뮤일 : </span>
           <span>연중무휴</span>
         </div>
         <div>
-          <p>전화번호 : </p>
+          <span>전화번호 : </span>
           <span>07041392441</span>
         </div>
         <div>
-          <p>주소 :</p>
+          <span>주소 :</span>
           <span>제주특별자치도 제주시 내도3길 11 1층</span>
         </div>
       </div>

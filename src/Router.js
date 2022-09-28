@@ -40,7 +40,7 @@ function Router() {
         <Route path="/preparing" element={<Preparing />} />
         <Route path="/restaurant" element={<RestaurantMain />} />
         <Route path="/restaurant/:id" element={<Restaurant />} />
-        <Route path="/restaurantDetail" element={<RestaurantDetail />} />
+        <Route path="/restaurant/detail/:id" element={<RestaurantDetail />} />
       </Routes>
       <FooterTop />
       <FooterBottom />
