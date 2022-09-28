@@ -4,12 +4,16 @@ import ReactPaginate from "react-paginate";
 import "./RestaurantPaginate.scss";
 
 function RestaurantPaginate(props) {
+  const handlePageClick = (data) => {
+    props.offsetHandler(data.selected * 10);
+  };
+
   return (
     <ReactPaginate
       previousLabel="&laquo;"
       nextLabel="&raquo;"
       pageCount={Math.ceil(props.totalCount / 2)}
-      //   onPageChange={handlePageClick}
+      onPageChange={handlePageClick}
       containerClassName={"pagination"}
       previousClassName={"previous-button"}
       nextClassName={"next-button"}

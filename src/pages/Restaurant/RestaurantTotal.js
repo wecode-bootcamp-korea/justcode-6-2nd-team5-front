@@ -2,11 +2,11 @@ import React from "react";
 
 import "./RestaurantTotal.scss";
 
-function RestaurantTotal() {
+function RestaurantTotal(props) {
   return (
     <div className="total-restaurant">
       <span>총</span>
-      <span>129</span>
+      <span>{props.totalCount}</span>
       <span>건</span>
     </div>
   );

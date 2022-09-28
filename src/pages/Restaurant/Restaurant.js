@@ -11,6 +11,7 @@ import RestaurantPaginate from "./RestaurantPaginate";
 function Restaurant() {
   const location = useLocation();
   const [data, setData] = useState([]);
+  const [offset, setOffset] = useState(0);
   const [orderTypes, setOrderTypes] = useState([]);
   const [filterTypes, setFilterTypes] = useState([]);
   const [sortQuery, setSortQuery] = useState("정렬=추천순");
@@ -18,13 +19,13 @@ function Restaurant() {
   useEffect(() => {
     const url = `http://localhost:8000${location.pathname}${decodeURIComponent(
       location.search
-    )}&${sortQuery}`;
+    )}&${sortQuery}&offset=${offset}&limit=10`;
     console.log(url);
 
     // fetch(url)
     //   .then((res) => res.json())
     //   .then((data) => console.log(data));
-  }, [location]);
+  }, [location, offset]);
 
   useEffect(() => {
     fetch("/data/restaurantList.json")
@@ -56,6 +57,11 @@ function Restaurant() {
       });
   }, []);
 
+  // 페이지네이션 함수
+  const offsetHandler = (offsetNum) => {
+    setOffset(offsetNum);
+  };
+
   // sort order bar 쿼리 변수명 가져오는 함수
   const getSortOrder = (sortType) => {
     setSortQuery(`정렬=${sortType}`);
@@ -70,8 +76,6 @@ function Restaurant() {
       .then((data) => console.log(data));
   };
 
-  console.log(data);
-
   return (
     <div className="restaurant-container">
       <div className="restaurant-top-content">
@@ -82,7 +86,7 @@ function Restaurant() {
         />
       </div>
       <div className="restaurant-main-content">
-        <RestaurantTotal />
+        {data.length != 0 && <RestaurantTotal totalCount={data.totalCount} />}
         <div className="restaurant-list-wrapper">
           {data.length !== 0 &&
             data.restaurantList.map((data) => {
@@ -90,7 +94,10 @@ function Restaurant() {
             })}
         </div>
         {data.length != 0 && (
-          <RestaurantPaginate totalCount={data.totalCount} />
+          <RestaurantPaginate
+            offsetHandler={offsetHandler}
+            totalCount={data.totalCount}
+          />
         )}
       </div>
     </div>
