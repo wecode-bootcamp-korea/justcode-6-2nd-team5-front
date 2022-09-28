@@ -1,14 +1,21 @@
 import React, { useContext } from "react";
+import { useLocation } from "react-router-dom";
 
 import { ModalContext } from "../../components/Context/ModalContext";
 import { MenuBox, Menu, SearchBtn } from "../Modal/commonStyled";
 
 const RentCarHeader = () => {
+  const location = useLocation();
+  console.log(location);
+  // console.log(rentHeader.search !== "");
   const { isOpen, setOpen, setClickedIcon } = useContext(ModalContext);
 
   const modalOpen = () => {
     setOpen(true);
   };
+  // const url = location.href;
+  // const urlParams = url.searchParams;
+  // console.log(urlParams);
 
   return (
     <MenuBox onClick={() => setClickedIcon(1)}>
