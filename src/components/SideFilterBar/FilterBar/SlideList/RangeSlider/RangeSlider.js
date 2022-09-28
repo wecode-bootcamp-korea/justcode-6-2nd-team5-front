@@ -1,9 +1,10 @@
 import "./RangeSlider.scss";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
+import { useEffect, useState } from "react";
 
 function RangeSlider(props) {
-  const { filterTypeId, value, min, max, handleChange } = props;
+  const { filterTypeId, min, max, getValue, isRefresh } = props;
 
   //천단위 , 찍기 위한 함수
   const numberFormat = (num) => {
@@ -34,13 +35,31 @@ function RangeSlider(props) {
     return `${returnValue} ${unit}`;
   }
 
+  // 슬라이더 범위
+  const [range, setRange] = useState([min, max]);
+
+  // 슬라이더 핸들러
+  const handleChange = (event, newValue) => {
+    setRange(newValue);
+  };
+
+  // 슬라이더 범위 업데이트
+  useEffect(() => {
+    getValue(range);
+  }, [range]);
+
+  // 필터 초기화
+  useEffect(() => {
+    setRange([min, max]);
+  }, [isRefresh]);
+
   return (
     <div>
       <div className="slider">
-        <Box sx={{ width: 320 }}>
+        <Box sx={{ width: 220 }}>
           <Slider
             getAriaLabel={() => "range"}
-            value={value}
+            value={range}
             onChange={handleChange}
             valueLabelDisplay="auto"
             min={min}
@@ -51,11 +70,11 @@ function RangeSlider(props) {
       </div>
       <div className="range">
         <span className="min todo">
-          {numberFormat(value[0]) + unitFormat(filterTypeId)}
+          {numberFormat(range[0]) + unitFormat(filterTypeId)}
         </span>
         <span>~</span>
         <span className="max todo">
-          {numberFormat(value[1]) + unitFormat(filterTypeId)}
+          {numberFormat(range[1]) + unitFormat(filterTypeId)}
         </span>
       </div>
     </div>

@@ -60,7 +60,7 @@ function SearchTagBox(props) {
         .offsetWidth;
 
     // next 버튼의 렌더링 조건 설정 (tag-list 의 너비와 버튼 슬라이드의 최대움직임값은 반비례 관계)
-    setSlideCondition(1500000 / tagListWidth);
+    setSlideCondition(400000 / tagListWidth);
 
     if (tagListSlide > -slideCondition) setTagListSlide((prev) => prev - 200);
   };
