@@ -58,7 +58,7 @@
     "carList": [
       {
         "carName": "올 뉴 모닝",
-        "carPhoto": "/data/images/car.png",
+        "carPhoto": "/images/car.png",
         "ridePeopleNumber": 5,
         "oilType": "휘발유",
         "option": ["블루투스", "후방센서", "후방카메라"],
@@ -91,7 +91,7 @@
       },
       {
         "carName": "SM3",
-        "carPhoto": "/data/images/car.png",
+        "carPhoto": "/images/car.png",
         "ridePeopleNumber": 5,
         "oilType": "전기차",
         "option": ["블루투스", "후방카메라", "열선시트", "네비게이션"],

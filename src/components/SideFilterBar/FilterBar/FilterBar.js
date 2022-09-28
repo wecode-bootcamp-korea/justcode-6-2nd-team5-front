@@ -169,9 +169,18 @@ function FilterBar(props) {
 
       // 렌터카의 경우 기존 조건들 유지 / 숙박, 맛집의 경우 기존 조건들 리셋
       if (location.pathname.split("/").includes("rentcar")) {
+        let carTypeIndex = [];
+        const conditon = decodeURIComponent(location.search).split("&");
+
+        conditon.map((q, index) => {
+          if (q.includes("carType")) carTypeIndex.push(index);
+        });
+
+        const endIndex = carTypeIndex[carTypeIndex.length - 1];
+
         queryResult += decodeURIComponent(location.search)
           .split("&")
-          .slice(0, 8)
+          .slice(0, endIndex + 1)
           .join("&");
       } else {
         queryResult += "?";
@@ -194,9 +203,18 @@ function FilterBar(props) {
       // 아무 옵션도 없는 경우
       // 렌터카의 경우 기존 조건들 유지 / 숙박, 맛집의 경우 기존 조건들 리셋
       if (location.pathname.split("/").includes("rentcar")) {
+        let carTypeIndex = [];
+        const conditon = decodeURIComponent(location.search).split("&");
+
+        conditon.map((q, index) => {
+          if (q.includes("carType")) carTypeIndex.push(index);
+        });
+
+        const endIndex = carTypeIndex[carTypeIndex.length - 1];
+
         return decodeURIComponent(location.search)
           .split("&")
-          .slice(0, 8)
+          .slice(0, endIndex + 1)
           .join("&");
       } else {
         return "?";

@@ -2,6 +2,9 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import RentCarHeader from "../../components/Header/RentCarHeader";
 import ImgCard from "../RentCar/RentCarList/RentCarCard/ImgCard/ImgCard";
+import RestaurantInfo from "../Restaurant/RestaurantInfo";
+import RestaurantMenu from "../Restaurant/RestaurantMenu";
+import RestaurantReview from "../Restaurant/RestaurantReview";
 import "./RentCarDetail.scss";
 
 function RentCarDetail() {
@@ -41,6 +44,8 @@ function RentCarDetail() {
       });
   }, [location]);
 
+  const [tabIndex, setTabIndex] = useState(1);
+
   return (
     <div className="rentcar-detail-container">
       <RentCarHeader />
@@ -48,6 +53,18 @@ function RentCarDetail() {
         <div className="rentcar-detail-list-wrap">
           <ImgCard carInfo={carInfo} styleChange={true} />
           <p className="rule">운임규정 및 취소 규정 안내 &gt;</p>
+          <div className="restaurant-detail-wrapper">
+            <div className="restaurant-button-wrapper">
+              <button onClick={() => setTabIndex(1)}>업체정보</button>
+
+              <button onClick={() => setTabIndex(2)}>메뉴</button>
+
+              <button onClick={() => setTabIndex(3)}>리뷰</button>
+            </div>
+            {tabIndex === 1 && <RestaurantInfo />}
+            {tabIndex === 2 && <RestaurantMenu />}
+            {tabIndex === 3 && <RestaurantReview />}
+          </div>
         </div>
         <div className="rentcar-detail-snb"></div>
       </div>
