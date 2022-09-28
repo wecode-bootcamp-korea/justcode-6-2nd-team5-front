@@ -6,6 +6,7 @@ import RestaurantTotal from "./RestaurantTotal";
 import SideFilterBar from "../../components/SideFilterBar/SideFilterBar";
 
 import "./Restaurant.scss";
+import RestaurantPaginate from "./RestaurantPaginate";
 
 function Restaurant() {
   const location = useLocation();
@@ -29,7 +30,7 @@ function Restaurant() {
     fetch("/data/restaurantList.json")
       .then((res) => res.json())
       .then((data) => {
-        setData(data.restaurantList);
+        setData(data);
       });
   }, []);
 
@@ -69,6 +70,8 @@ function Restaurant() {
       .then((data) => console.log(data));
   };
 
+  console.log(data);
+
   return (
     <div className="restaurant-container">
       <div className="restaurant-top-content">
@@ -81,10 +84,14 @@ function Restaurant() {
       <div className="restaurant-main-content">
         <RestaurantTotal />
         <div className="restaurant-list-wrapper">
-          {data.map((data) => {
-            return <RestaurantList data={data} key={data.id} />;
-          })}
+          {data.length !== 0 &&
+            data.restaurantList.map((data) => {
+              return <RestaurantList data={data} key={data.id} />;
+            })}
         </div>
+        {data.length != 0 && (
+          <RestaurantPaginate totalCount={data.totalCount} />
+        )}
       </div>
     </div>
   );
