@@ -43,8 +43,8 @@ function RentCarSnb(props) {
   // 규칙 및 유의사항 모달창 닫는 함수
   const [isModal, setIsModal] = useState(false);
 
-  const closeModal = () => {
-    navigate("/mypage");
+  const closeModal = (isDone) => {
+    isDone ? navigate("/mypage") : setIsModal(false);
   };
 
   const openeModal = () => {

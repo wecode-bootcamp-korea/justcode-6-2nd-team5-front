@@ -39,11 +39,13 @@ function RentCarDetail() {
   };
 
   useEffect(() => {
+    // 쿼리 변수들 리스트에 담음
     const conditionList = decodeURIComponent(location.search).split("&");
 
     // 쿼리변수에서 rentCompanyCarId 값 추출
     const rentCompanyCarId = conditionList.pop().split("=")[1];
 
+    // 이전 페이지 url 세팅
     setPrevUrl(conditionList.join("&"));
 
     // 렌트카 정보 API
@@ -56,9 +58,12 @@ function RentCarDetail() {
       .then((res) => res.json())
       .then((data) => {
         if (data === "없는 차량입니다") {
-          // setIsNone(false);
+          // 차량 없을시 모달창
+          setIsNone(false);
         } else {
-          // setIsNone(true);
+          // 차량 있을 시 차량 정보 UI
+          setIsNone(true);
+
           // ImgCard props
           setCarInfo({
             carName: data[0].carName,

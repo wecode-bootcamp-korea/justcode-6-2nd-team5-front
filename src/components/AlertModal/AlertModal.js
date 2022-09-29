@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./AlertModal.scss";
 
 function AlertModal(props) {
@@ -8,7 +7,7 @@ function AlertModal(props) {
   const modalContent = [
     "최소 수수료 규정",
     "인수불가 및 환불사항",
-    "예약시 유의하상",
+    "예약시 유의사항",
   ];
 
   const [onFocus, setOnFocus] = useState("0");
@@ -30,7 +29,7 @@ function AlertModal(props) {
   };
 
   useEffect(() => {
-    if (isDone && isAlert) closeModal();
+    if (isDone && isAlert) closeModal(true);
   }, [isDone]);
 
   return (
@@ -84,6 +83,12 @@ function AlertModal(props) {
         {/* 경고 메시지를 넘겨 받은 경우 */}
         {alertMessage && <p className="alert-message">{alertMessage[1]}</p>}
 
+        {/* 닫는 버튼 */}
+        {!isAlert && !alertMessage && (
+          <div className="close-btn" onClick={() => closeModal(false)}>
+            x
+          </div>
+        )}
         <button className="btn" onClick={onSubmit}>
           {!isAlert && !alertMessage && "예약하기"}
           {isAlert && !alertMessage && "확인"}

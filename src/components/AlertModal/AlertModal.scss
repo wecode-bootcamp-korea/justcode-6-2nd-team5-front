@@ -15,7 +15,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
+    width: 350px;
     border-radius: 5px;
 
     background-color: #fff;
@@ -43,6 +43,7 @@
         cursor: pointer;
       }
       .focus {
+        font-size: larger;
         color: black;
         border-bottom: 1px solid var(--color-soft-bright-blue);
       }
@@ -51,6 +52,19 @@
     img {
       padding: 10px 10px;
       width: 100%;
+    }
+    .close-btn {
+      position: absolute;
+      left: 97%;
+      top: -1.5%;
+      text-align: center;
+      line-height: 1;
+      width: 20px;
+      height: 20px;
+      color: white;
+      background-color: var(--color-bright-blue);
+      border-radius: 20px;
+      cursor: pointer;
     }
 
     .btn {
