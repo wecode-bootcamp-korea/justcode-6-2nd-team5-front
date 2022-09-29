@@ -1,18 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate, Link, useParams, useLocation } from "react-router-dom";
 
 import FixNav from "./FixNav";
+import Modal from "../../components/Modal/Modal";
 
 import styled from "styled-components";
+import jejuzoaLogo from "../../assets/images/jejuzoa-logo.png";
+import logo from "../../assets/images/logo-square.png";
 import { BiSearch, BiLogIn } from "react-icons/bi";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 
+import { ModalContext } from "../Context/ModalContext";
+
 const Nav = () => {
-  const menu = useLocation();
+  const { isOpen, setOpen, setClickedIcon } = useContext(ModalContext);
   const [scrollPosition, setScrollPosition] = useState(0);
+
+  const menu = useLocation();
+
+  const modalOpen = () => {
+    setOpen(true);
+    setClickedIcon(1);
+  };
+
   const updateScroll = () => {
     setScrollPosition(window.scrollY || document.documentElement.scrollTop);
   };
+
   useEffect(() => {
     window.addEventListener("scroll", updateScroll);
   });
@@ -20,30 +34,38 @@ const Nav = () => {
   return (
     <>
       <NavContainer>
-        <div className="logo-box"></div>
+        <div className="logo-box">
+          <Link to="/">
+            <img src={logo} />
+          </Link>
+        </div>
         <ul className="menu-box">
-          <MenuTab className={menu.pathname === "/esg" && "color"}>
-            <Link to="/esg">ESG</Link>
-          </MenuTab>
-          <MenuTab className={menu.pathname === "/rentercar" && "color"}>
+          <MenuTab className={menu.pathname.includes("/rentercar") && "color"}>
             <Link to="/rentercar">렌터카</Link>
           </MenuTab>
           <MenuTab className={menu.pathname === "/preparing" && "color"}>
             <Link to="/preparing">항공</Link>
           </MenuTab>
-          <MenuTab className={menu.pathname === "/accomodation" && "color"}>
+          <MenuTab
+            className={menu.pathname.includes("/accomodation") && "color"}
+          >
             <Link to="/accomodation">숙박</Link>
           </MenuTab>
           <MenuTab>
             <Link to="/preparing">트립</Link>
           </MenuTab>
           <MenuTab>
-            <Link to="/preparing">카페패햐스</Link>
+            <Link to="/preparing">카페패스</Link>
           </MenuTab>
-          <MenuTab className={menu.pathname === "/food" && "color"}>
+          <MenuTab className={menu.pathname === "/restaurant" && "color"}>
             <Link to="/restaurant">맛집</Link>
           </MenuTab>
-          <BiSearch className="search-icon" />
+          <MenuTab className={menu.pathname === "/esg" && "color"}>
+            <Link to="/esg">ESG</Link>
+          </MenuTab>
+          <span onClick={modalOpen}>
+            <BiSearch className="search-icon" />
+          </span>
         </ul>
         <div className="info-box">
           <Link to="/login">
@@ -59,6 +81,7 @@ const Nav = () => {
         </div>
       </NavContainer>
       {scrollPosition < 100 ? null : <FixNav />}
+      {isOpen && <Modal />}
     </>
   );
 };
@@ -76,7 +99,10 @@ const NavContainer = styled.div`
   }
 
   .logo-box {
-    width: 100px;
+    padding: 0 40px;
+    img {
+      width: 130px;
+    }
   }
 
   .menu-box {
@@ -101,6 +127,7 @@ const NavContainer = styled.div`
 `;
 
 export const MenuTab = styled.li`
+  text-align: center;
   padding-right: 30px;
   font-family: "NanumSquareRound", sans-serif;
   font-weight: 900;

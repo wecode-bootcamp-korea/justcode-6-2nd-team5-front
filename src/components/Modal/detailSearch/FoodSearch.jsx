@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 
 import { ConditionSelector, HashTagBtn } from "../commonStyled";
+import AreaSearch from "./ common/AreaSearch";
 
 const FoodSearch = () => {
   const foodHashArr = [
@@ -30,6 +30,7 @@ const FoodSearch = () => {
       </div>
       <div className="box">
         <h5>지역으로 검색</h5>
+        <AreaSearch />
       </div>
     </ConditionSelector>
   );

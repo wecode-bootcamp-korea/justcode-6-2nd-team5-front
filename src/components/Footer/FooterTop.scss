@@ -2,10 +2,10 @@
   display: flex;
 }
 
-.flex-between {
-  display: flex;
-  justify-content: space-between;
-}
+// .flex-between {
+//   display: flex;
+//   justify-content: space-between;
+// }
 
 $pretendard: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
   Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic",
@@ -30,8 +30,9 @@ $border: 1.5px solid #dadada;
 }
 
 .foot-top-container {
+  width: 100vw;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   margin: 0 auto;
   padding: 0 8%;
   border-top: $border;
@@ -101,9 +102,9 @@ $border: 1.5px solid #dadada;
   }
 
   .foot-contact {
-    justify-content: space-evenly;
-    padding-top: 50px;
-    flex: auto;
+    width: 410px;
+    // justify-content: space-evenly;
+    padding: 50px 40px;
 
     li {
       margin-right: 20px;
@@ -127,7 +128,7 @@ $border: 1.5px solid #dadada;
     }
 
     ul {
-      width: 38%;
+      width: 50%;
 
       .phone-number {
         margin-bottom: 23px;
@@ -139,6 +140,10 @@ $border: 1.5px solid #dadada;
       .foot-text {
         @include foot-text;
         color: #404040;
+
+        span {
+          width: 60px;
+        }
       }
     }
   }
