@@ -9,10 +9,22 @@ function HotelThema() {
   const navigate = useNavigate();
   const location = useLocation();
   const [data, setData] = useState([]);
+  const [offset, setOffset] = useState(0);
+
   const HotelThemaClick = (params) => {
     window.scrollTo(0, 0);
     navigate("/hotelDetail", { state: { id: params } });
   };
+
+  useEffect(() => {
+    const url = `http://localhost:8000${location.pathname}${decodeURIComponent(
+      location.search
+    )}&${sortQuery}&offset=${offset}`;
+    console.log("첫번째 콘솔이야이야이야" + url);
+
+    fetch(url).then((res) => console.log(res));
+    // .then((data) => setData(data));
+  }, [location, offset]);
 
   useEffect(() => {
     // fetch("/data/hotel/hotelThema.json", {
@@ -48,9 +60,11 @@ function HotelThema() {
       location.search
     )}&${`order=${sortType}`}`;
 
-    // fetch(url)
-    //   .then(res => res.json())
-    //   .then(data => console.log(data))
+    console.log("url이야아아  " + url);
+
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => console.log(data));
   };
 
   // Filter Bar props
