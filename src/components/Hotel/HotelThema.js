@@ -10,6 +10,9 @@ function HotelThema() {
   const location = useLocation();
   const [data, setData] = useState([]);
   const [offset, setOffset] = useState(0);
+  const [orderTypes, setOrderTypes] = useState([]);
+  const [filterTypes, setFilterTypes] = useState([]);
+  const [sortQuery, setSortQuery] = useState("order=추천순");
 
   const HotelThemaClick = (params) => {
     window.scrollTo(0, 0);
@@ -19,27 +22,26 @@ function HotelThema() {
   useEffect(() => {
     const url = `http://localhost:8000${location.pathname}${decodeURIComponent(
       location.search
-    )}&${sortQuery}&offset=${offset}`;
-    console.log("첫번째 콘솔이야이야이야" + url);
+    )}&${sortQuery}&offset=${offset}`; // &${sortQuery}&offset=${offset}
 
-    fetch(url).then((res) => console.log(res));
-    // .then((data) => setData(data));
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setData(data.lodgmentList));
   }, [location, offset]);
 
-  useEffect(() => {
-    // fetch("/data/hotel/hotelThema.json", {
-    fetch("http://localhost:8000/lodgment/list", {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data.lodgmentList);
-      });
-  }, []);
+  // useEffect(() => {
+  //   // fetch("/data/hotel/hotelThema.json", {
+  //   fetch("http://localhost:8000/lodgment/list", {
+  //     method: "GET",
+  //   })
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setData(data.lodgmentList);
+  //     });
+  // }, []);
 
   // Side Filter Bar props
   // Sort Order Bar mockdata
-  const [orderTypes, setOrderTypes] = useState([]);
 
   useEffect(() => {
     fetch("/data/rentcar/orderType.json", {
@@ -51,7 +53,7 @@ function HotelThema() {
       });
   }, []);
   // sort order bar 쿼리 변수 관리값
-  const [sortQuery, setSortQuery] = useState("order=추천순");
+
   // sort order bar 쿼리 변수명 가져오는 함수
   const getSortOrder = (sortType) => {
     setSortQuery(`order=${sortType}`);
@@ -60,8 +62,6 @@ function HotelThema() {
       location.search
     )}&${`order=${sortType}`}`;
 
-    console.log("url이야아아  " + url);
-
     fetch(url)
       .then((res) => res.json())
       .then((data) => console.log(data));
@@ -69,7 +69,6 @@ function HotelThema() {
 
   // Filter Bar props
   // Filter Bar mockdata: dep-3
-  const [filterTypes, setFilterTypes] = useState([]);
 
   const filterTypeUrl =
     "http://localhost:8000/rentcar/searchList?rentStartDate=2022-09-28&rentEndDate=2022-09-29&rentStartTime=1&rentEndTime=2&insurance=일반자차&age=만 26세이상&experience=1년 미만";
