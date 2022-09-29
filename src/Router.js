@@ -11,12 +11,15 @@ import Food from "./pages/Menu/Food";
 import Mypage from "./pages/Mypage/Mypage";
 import RentCar from "./pages/RentCar/RentCar";
 import Preparing from "./pages/Menu/Preparing";
+import Hotel from "./pages/Hotel/Hotel";
 import Login from "./pages/login/login";
 import TermsSignup from "./components/signup/termsSignup";
 import Signup from "./pages/signup/signup";
 import SignupFin from "./components/signup/signupFin";
 import FooterTop from "./components/Footer/FooterTop";
 import FooterBottom from "./components/Footer/FooterBottom";
+import HotelThema from "./components/Hotel/HotelThema";
+import HotelDetail from "./components/Hotel/HotelDetail";
 import Restaurant from "./pages/Restaurant/Restaurant";
 import RestaurantDetail from "./pages/Restaurant/RestaurantDetail";
 
@@ -41,6 +44,9 @@ function Router() {
           <Route path="/preparing" element={<Preparing />} />
           <Route path="/restaurant" element={<Restaurant />} />
           <Route path="/restaurantDetail" element={<RestaurantDetail />} />
+          <Route path="/hotel" element={<Hotel />} />
+          <Route path="/hotelThema" element={<HotelThema />} />
+          <Route path="/hotelDetail" element={<HotelDetail />} />
         </Routes>
         <FooterTop />
         <FooterBottom />

@@ -1,0 +1,149 @@
+.rooms-container {
+  .rooms-contents {
+    .contents-top {
+      padding: 14px 20px 14px 24px;
+      border: 1px solid gainsboro;
+      border-radius: 16px;
+      text-align: left;
+
+      .contents-top-btn {
+        position: relative;
+        padding: 0 10px;
+        margin: 0 0.5%;
+        line-height: 35px;
+        color: gray;
+        font-weight: 900;
+        font-size: 1rem;
+        border: 1px solid #eaeaea;
+        border-radius: 8px;
+        background: #fff;
+        cursor: pointer;
+        font-family: "Pretendard-Regular";
+      }
+    }
+
+    .rooms-select {
+      margin-top: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #eaeaea;
+      border-radius: 10px;
+
+      .rooms-select-top {
+        line-height: 56px;
+        text-align: left;
+        color: #202020;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        background-color: #f8f8f8;
+
+        span {
+          padding: 0 10px;
+          margin: 0 2%;
+          font-weight: 900;
+          font-size: 1.25rem;
+        }
+      }
+
+      .rooms-select-contents {
+        padding: 32px 24px;
+        margin: 0 0.6%;
+        font-weight: 800;
+        font-size: 1.2rem;
+        text-align: left;
+
+        .rooms-info {
+          margin-top: 20px;
+          font-weight: 100;
+          font-size: 15px;
+          color: gray;
+
+          span {
+            // margin-right: 12px;
+          }
+
+          .rooms-people-icon {
+            // margin-left: 10px;
+          }
+
+          .rooms-people-icon::before {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: url("https://static-www.jejupass.com/resource/PC/images/common/spr_stay.png")
+              no-repeat;
+          }
+
+          .rooms-bed-icon::before {
+            content: "";
+            position: absolute;
+            margin-left: 10px;
+            width: 16px;
+            height: 16px;
+            background: url("https://ifh.cc/g/3gjVJF.png") no-repeat;
+          }
+
+          .rooms-smoking {
+            margin-left: 10px;
+          }
+        }
+
+        .contents-price-info {
+          position: relative;
+          bottom: 33px;
+          text-align: right;
+
+          strong {
+            margin-right: 10.5%;
+            display: block;
+            color: #202020;
+            font-size: 1.4rem;
+            font-weight: 900;
+          }
+
+          .contents-price {
+            font-size: 1rem;
+            color: red;
+          }
+
+          .contents-price::after {
+            content: "";
+            display: inline-block;
+            margin: 0 8px;
+            width: 1px;
+            height: 14px;
+            background: #eaeaea;
+            vertical-align: middle;
+          }
+
+          .contents-price-bottom {
+            margin-right: 20px;
+            font-size: 1rem;
+            color: gray;
+          }
+
+          .contents-price-status {
+            position: relative;
+            width: 8%;
+            height: 50px;
+            bottom: 20px;
+            color: white;
+            font-family: "Pretendard-Regular";
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            background-color: #63a1ff;
+            cursor: pointer;
+          }
+
+          .end {
+            font-size: 1rem;
+            color: white;
+            background-color: gray;
+          }
+        }
+      }
+    }
+  }
+}
