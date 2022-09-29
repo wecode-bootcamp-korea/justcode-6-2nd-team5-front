@@ -37,7 +37,7 @@ const Content = ({ content }) => {
           </div> */}
         </div>
         <div className="photo" onClick={handlePhotoOpen}>
-          <img src={testPhoto} />
+          <img src={photo} />
         </div>
       </ReviewContent>
       {photoOpen && <PhotoModal setPhotoOpen={setPhotoOpen} />}

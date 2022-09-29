@@ -66,7 +66,7 @@ const FixNavContainer = styled.div`
   z-index: 999;
   justify-content: space-between;
   width: 100vw;
-  padding: 15px 70px;
+  padding: 15px 80px;
   background-color: #1d68dc;
   letter-spacing: -0.5px;
 

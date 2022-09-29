@@ -33,8 +33,6 @@ const RentCarHeader = () => {
     {
       location.search === "" ? setCondition("date") : setCondition(e.target.id);
     }
-    console.log(e);
-    console.log(condition);
   };
   // const url = location.href;
   // const urlParams = url.searchParams;
