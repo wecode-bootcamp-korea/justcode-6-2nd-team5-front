@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import RentCarHeader from "../../components/Header/RentCarHeader";
 import SearchTagBox from "../../components/SearchTagBox/SearchTagBox";
 import SideFilterBar from "../../components/SideFilterBar/SideFilterBar";
 import TotalBox from "../../components/TotalBox/TotalBox";
@@ -8,18 +9,6 @@ import RentCarList from "./RentCarList/RentCarList";
 
 function RentCar() {
   const location = useLocation();
-
-  // 초기 필터링 세팅
-  useEffect(() => {
-    const url = `http://localhost:8000${location.pathname}${decodeURIComponent(
-      location.search
-    )}`;
-    // console.log(url);
-
-    // fetch(url)
-    //   .then((res) => res.json())
-    //   .then((data) => console.log(data));
-  }, [location]);
 
   // Serch Tag Box props
   // Search Tag Box mockdata
@@ -47,29 +36,47 @@ function RentCar() {
       });
   }, []);
 
-  // Filter Bar, RentCarList props
-  // Filter Bar, RentCarList API data: dep-3
+  // Filter Bar, TotalBox, RentCarList props
+  // Filter Bar, TotalBox, RentCarList API data
   const [filterTypes, setFilterTypes] = useState([]);
   const [rentCarTags, setRentCarTags] = useState([]);
   const [rentCarList, setRentCarList] = useState([]);
+  const [totalAmount, setTotalAmount] = useState(0);
 
-  const filterTypeUrl =
-    "http://localhost:8000/rentcar/searchList?rentStartDate=2022-09-28&rentEndDate=2022-09-29&rentStartTime=1&rentEndTime=2&insurance=일반자차&age=만 26세이상&experience=1년 미만";
-
+  // 초기 필터링 세팅
   useEffect(() => {
-    fetch("/data/rentcar/rentcar.json", {
+    const url = `http://localhost:8000${location.pathname}${decodeURIComponent(
+      location.search
+    )}`;
+
+    fetch(url, {
       method: "GET",
     })
       .then((res) => res.json())
       .then((data) => {
+        // SideFilterBar props
         setFilterTypes(data[0].filterTypes);
-        setRentCarTags(data[0].filterTypes[2].checkList);
+
+        // RentCarList props
+        if (data[0].filterTypes.length) {
+          setRentCarTags(data[0].filterTypes[2].checkList);
+        }
+
+        // RentCarList props
         setRentCarList(data[0].carList);
+
+        // TotalBox props
+        let count = 0;
+        data[0].carList.map((car) => {
+          count += car.rentCarCompanyList.length;
+        });
+        setTotalAmount(count);
       });
-  }, []);
+  }, [location]);
 
   return (
     <div className="rentcar-container">
+      <RentCarHeader />
       <div className="rentcar-content">
         <div className="rentcar-top-content">
           <SearchTagBox title={"빠른 검색"} tagList={tagList} />
@@ -77,8 +84,15 @@ function RentCar() {
         <div className="rentcar-main-content">
           <SideFilterBar orderTypes={orderTypes} filterTypes={filterTypes} />
           <div className="rentcar-list-wrap">
-            <TotalBox totalAmount={913} />
+            <TotalBox totalAmount={totalAmount} />
             <RentCarList rentCarList={rentCarList} rentCarTags={rentCarTags} />
+            {totalAmount === 0 && (
+              <div className="product-bar" style={{ height: "33%" }}>
+                <p style={{ textAlign: "center", marginTop: "20px" }}>
+                  조회 내역이 없습니다.
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>

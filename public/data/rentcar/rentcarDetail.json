@@ -4,21 +4,25 @@
     "carPhoto": "https://static-file.jejupass.com/download/649917",
     "ridePeopleNumber": 5,
     "oilType": "휘발유",
-    "rentcaryearinfo": "1",
+    "rentcaryearinfo": "2016~17년",
+
     "experience": "경력 1년이상",
     "age": "만 21세",
     "insurance": "일반자차",
     "price": 274000,
+
     "options": ["후방센서", "네비게이션", "금연차량"],
+
     "rentCarCompany": "씨유렌터카",
     "rentCarCompanyAddress": "제주특별자치도 제주시 도두일동 1173-2",
     "rentCarCompanyPhoneNumber": "064-742-7900",
-    "mapaddress": "https://www.google.co.kr/maps/place/%EB%AC%B4%EC%A7%80%EA%B0%9C%EB%A0%8C%ED%8A%B8%EC%B9%B4/data=!3m1!4b1!4m5!3m4!1s0x350cfb1cfbc4d44d:0x6b83b062fa5a2af4!8m2!3d33.4962567!4d126.4826426?hl=ko",
+    "mapaddress": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3327.196795046187!2d126.48045391528363!3d33.496256680760816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x350cfb1cfbc4d44d%3A0x6b83b062fa5a2af4!2z66y07KeA6rCc66CM7Yq47Lm0!5e0!3m2!1sko!2skr!4v1664369335878!5m2!1sko!2skr",
     "rentPlace": "렌터카 본사",
     "shuttlePlace": "렌트카종합안내센터 [5구역 5번]",
     "shuttleSchedule": "08:00 ~ 20:00",
     "shuttleInterval": "20~30분",
     "shuttleRequiredTime": "5~6분",
+
     "reviewList": [
       {
         "review": "사장님이 잘 굴러가고 차가 친절해요!",

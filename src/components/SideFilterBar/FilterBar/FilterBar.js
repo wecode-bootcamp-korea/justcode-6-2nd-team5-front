@@ -27,8 +27,10 @@ function FilterBar(props) {
   ];
 
   // Filter Bar disabled 속성 할당: dep-2
-  for (let i = 0; i < filterTypes.length; i++) {
-    filterTypes[i].disabled = filterDep2Disableds[i];
+  if (filterTypes) {
+    for (let i = 0; i < filterTypes.length; i++) {
+      filterTypes[i].disabled = filterDep2Disableds[i];
+    }
   }
 
   // Filter Bar 선택/선택해제 함수: dep-2
@@ -67,12 +69,14 @@ function FilterBar(props) {
       queryItems.push(result);
       setQueryItems(queryItems);
     } else {
-      setQueryItems([]);
+      queryItems.splice(0, queryItems.length);
+      setQueryItems(queryItems);
     }
   };
 
   // 적용 버튼 관리 함수
   const submit = () => {
+    window.scrollTo(0, 0);
     setIsDone(true);
   };
 
@@ -115,41 +119,116 @@ function FilterBar(props) {
 
   // 필터 적용한 정보 불러오기
   useEffect(() => {
-    if (squery.length !== 0 || queryItems.length !== 0) {
+    if (isDone) {
       const checkQuery = makeQuery();
 
-      let plusUrl = "";
+      if (location.pathname.split("/").includes("rentcar")) {
+        let carTypeIndex = [];
+        const conditon = decodeURIComponent(location.search).split("&");
 
-      if (checkQuery !== 0) plusUrl += makeQuery();
-      if (squery.length !== 0) plusUrl += `&${squery}`;
-      if (pointQuery.length !== 0) plusUrl += `&${pointQuery}`;
+        conditon.map((q, index) => {
+          if (q.includes("carType")) carTypeIndex.push(index);
+        });
 
-      const url = `${location.pathname}?` + plusUrl.replace("&", "");
-      navigate(url);
+        const endIndex = carTypeIndex[carTypeIndex.length - 1];
+        if (squery.length !== 0 || checkQuery.split("&").length > endIndex) {
+          let url = "";
+          let plusUrl = "";
 
-      setIsDone(false);
+          if (checkQuery) plusUrl += checkQuery;
+          if (squery.length !== 0) plusUrl += `&${squery}`;
+          if (pointQuery) plusUrl += `&${pointQuery}`;
+
+          url += "/rentcar/filteredList" + plusUrl;
+
+          navigate(url);
+          setIsDone(false);
+        } else {
+        }
+      } else {
+        if (squery.length !== 0 || checkQuery !== 0) {
+          let url = "";
+          let plusUrl = "";
+
+          if (checkQuery) plusUrl += checkQuery;
+          if (squery.length !== 0) plusUrl += `&${squery}`;
+          if (pointQuery) plusUrl += `&${pointQuery}`;
+
+          url += decodeURIComponent(location.pathname) + plusUrl;
+
+          navigate(url);
+          setIsDone(false);
+        } else {
+          const url = decodeURIComponent(location.pathname).replace(
+            "/searchList?",
+            ""
+          );
+          navigate(url);
+        }
+      }
+      setQueryItems([]);
     }
   }, [isDone]);
 
   // query 작성 함수
   const makeQuery = () => {
-    if (queryItems.length !== 0) {
+    if (queryItems.length > 0) {
       const listResult = [];
       let queryResult = "";
       let filteredQuery = "";
 
+      // 렌터카의 경우 기존 조건들 유지 / 숙박, 맛집의 경우 기존 조건들 리셋
+      if (location.pathname.split("/").includes("rentcar")) {
+        let carTypeIndex = [];
+        const conditon = decodeURIComponent(location.search).split("&");
+
+        conditon.map((q, index) => {
+          if (q.includes("carType")) carTypeIndex.push(index);
+        });
+
+        const endIndex = carTypeIndex[carTypeIndex.length - 1];
+
+        queryResult += decodeURIComponent(location.search)
+          .split("&")
+          .slice(0, endIndex + 1)
+          .join("&");
+      } else {
+        queryResult += "?";
+      }
+
+      // 배열 생성 후
       queryItems.map((option) => {
         listResult.push(option);
       });
 
+      // 문자열로 연결
       listResult.map((option) => {
         queryResult += option;
       });
 
+      // 중복 제거
       filteredQuery = _.uniqBy(queryResult.split("&")).join("&");
       return filteredQuery;
     } else {
-      return "";
+      // 아무 옵션도 없는 경우
+      // 렌터카의 경우 기존 조건들 유지 / 숙박, 맛집의 경우 기존 조건들 리셋
+      if (location.pathname.split("/").includes("rentcar")) {
+        let carTypeIndex = [];
+        const conditon = decodeURIComponent(location.search).split("&");
+
+        conditon.map((q, index) => {
+          if (q.includes("carType")) carTypeIndex.push(index);
+        });
+
+        const endIndex = carTypeIndex[carTypeIndex.length - 1];
+
+        return decodeURIComponent(location.search)
+          .split("&")
+          .slice(0, endIndex + 1)
+          .join("&");
+      } else {
+        return "?";
+      }
     }
   };
 
@@ -162,65 +241,68 @@ function FilterBar(props) {
         <Dep1 title={"필터"} getValue={getDep1Disabled} />
         {
           <ul className="dep2">
-            {filterTypes.map((filterInfo) => {
-              return (
-                <div key={filterInfo.id}>
-                  <li
-                    className="list"
-                    key={filterInfo.id}
-                    id={filterInfo.id}
-                    onClick={filterSelect}
-                  >
-                    <span
-                      className="dep2-type"
+            {filterTypes &&
+              filterTypes.map((filterInfo) => {
+                return (
+                  <div key={filterInfo.id}>
+                    <li
+                      className="list"
+                      key={filterInfo.id}
                       id={filterInfo.id}
                       onClick={filterSelect}
                     >
-                      {filterInfo.type}
-                    </span>
-                    <div
-                      className={
-                        filterInfo.disabled ? "right-icon-on" : "right-icon-off"
-                      }
-                      id={filterInfo.id}
-                      onClick={filterSelect}
-                    ></div>
-                  </li>
-                  {filterInfo.disabled && filterInfo.checkList && (
-                    <CheckList
-                      filterTypes={filterTypes}
-                      filterTypeId={filterInfo.id}
-                      filterType={filterInfo.type}
-                      checkList={filterInfo.checkList}
-                      isRefresh={isRefresh}
-                      getQueryList={getQueryList}
-                      isDone={isDone}
-                    />
-                  )}
-                  {filterInfo.disabled && filterInfo.slideList && (
-                    <SlideList
-                      filterTypeId={filterInfo.id}
-                      filterType={filterInfo.type}
-                      slideList={filterInfo.slideList}
-                      isRefresh={isRefresh}
-                      getSlideItem={getSlideItem}
-                      isDone={isDone}
-                    />
-                  )}
+                      <span
+                        className="dep2-type"
+                        id={filterInfo.id}
+                        onClick={filterSelect}
+                      >
+                        {filterInfo.type}
+                      </span>
+                      <div
+                        className={
+                          filterInfo.disabled
+                            ? "right-icon-on"
+                            : "right-icon-off"
+                        }
+                        id={filterInfo.id}
+                        onClick={filterSelect}
+                      ></div>
+                    </li>
+                    {filterInfo.disabled && filterInfo.checkList && (
+                      <CheckList
+                        filterTypes={filterTypes}
+                        filterTypeId={filterInfo.id}
+                        filterType={filterInfo.type}
+                        checkList={filterInfo.checkList}
+                        isRefresh={isRefresh}
+                        getQueryList={getQueryList}
+                        isDone={isDone}
+                      />
+                    )}
+                    {filterInfo.disabled && filterInfo.slideList && (
+                      <SlideList
+                        filterTypeId={filterInfo.id}
+                        filterType={filterInfo.type}
+                        slideList={filterInfo.slideList}
+                        isRefresh={isRefresh}
+                        getSlideItem={getSlideItem}
+                        isDone={isDone}
+                      />
+                    )}
 
-                  {filterInfo.disabled && filterInfo.pointList && (
-                    <PointList
-                      filterTypeId={filterInfo.id}
-                      filterType={filterInfo.type}
-                      slideList={filterInfo.slideList}
-                      isRefresh={isRefresh}
-                      getPointItem={getPointItem}
-                      isDone={isDone}
-                    />
-                  )}
-                </div>
-              );
-            })}
+                    {filterInfo.disabled && filterInfo.pointList && (
+                      <PointList
+                        filterTypeId={filterInfo.id}
+                        filterType={filterInfo.type}
+                        slideList={filterInfo.slideList}
+                        isRefresh={isRefresh}
+                        getPointItem={getPointItem}
+                        isDone={isDone}
+                      />
+                    )}
+                  </div>
+                );
+              })}
           </ul>
         }
       </div>

@@ -2,39 +2,48 @@ import "./RentCarCard.scss";
 import ImgCard from "./ImgCard/ImgCard";
 import TagList from "./TagList/TagList";
 import { useEffect, useState } from "react";
+import CompanyList from "./CompanyList/CompanyList";
 
 function RentCarCard(props) {
   const { rentCarInfo, rentCarTags } = props;
 
   // ImgCard props
-  const [CarInfo, setCarInfo] = useState({});
+  const [carInfo, setCarInfo] = useState({});
 
   // TagList props
-  const [TagInfo, setTagInfo] = useState([]);
+  const [tagInfo, setTagInfo] = useState([]);
+
+  // CompanyList props
+  const [companyInfo, setCompanyInfo] = useState([]);
 
   // props 세팅
   useEffect(() => {
     if (rentCarInfo && rentCarTags) {
-      const ImgCardProps = {
+      // ImgCard props setting
+      const imgCardProps = {
         carName: rentCarInfo.carName,
         carPhoto: rentCarInfo.carPhoto,
         ridePeopleNumber: rentCarInfo.ridePeopleNumber,
         oilType: rentCarInfo.oilType,
       };
 
-      const TagListProps = rentCarInfo.option;
+      // TagList props setting
+      const tagListProps = rentCarInfo.option;
 
+      // ImgCard props setting
+      const companyProps = rentCarInfo.rentCarCompanyList;
       // props setting
-      setCarInfo(ImgCardProps);
-      setTagInfo(TagListProps);
+      setCarInfo(imgCardProps);
+      setTagInfo(tagListProps);
+      setCompanyInfo(companyProps);
     }
   }, [rentCarInfo]);
 
   return (
     <div className="rentcar-card-wrap product-bar">
-      <ImgCard carInfo={CarInfo} />
-      <TagList TagInfo={TagInfo} rentCarTags={rentCarTags} />
-      <div className="company-list-wrap"></div>
+      <ImgCard carInfo={carInfo} styleChange={false} />
+      <TagList TagInfo={tagInfo} rentCarTags={rentCarTags} />
+      <CompanyList companyInfo={companyInfo} />
     </div>
   );
 }

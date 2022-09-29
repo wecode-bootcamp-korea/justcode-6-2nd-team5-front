@@ -22,12 +22,15 @@ import HotelDetail from "./components/Hotel/HotelDetail";
 import Restaurant from "./pages/Restaurant/Restaurant";
 import RestaurantDetail from "./pages/Restaurant/RestaurantDetail/RestaurantDetail";
 import RestaurantMain from "./pages/Restaurant/RestaurantMain";
+import RentCarDetail from "./pages/RentCarDetail/RentCarDetail";
+import ScrollTop from "./components/ScrollTop/ScrollTop";
 
 function Router() {
   return (
     <ModalProvider>
       <BrowserRouter>
         <Nav />
+        <ScrollTop />
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/esg" element={<Esg />} />
@@ -35,7 +38,8 @@ function Router() {
           <Route path="/accomodation" element={<Accomodation />} />
           <Route path="/preparing" element={<Preparing />} />
           <Route path="/mypage" element={<Mypage />} />
-          <Route path="/rentercar/rentcar/:id" element={<RentCar />} />
+          <Route path="/rentcar/:id" element={<RentCar />} />
+          <Route path="/rentcarDetail/:id" element={<RentCarDetail />} />
           <Route path="/login" element={<Login />} />
           <Route path="/termsSignup" element={<TermsSignup />} />
           <Route path="/signup" element={<Signup />} />

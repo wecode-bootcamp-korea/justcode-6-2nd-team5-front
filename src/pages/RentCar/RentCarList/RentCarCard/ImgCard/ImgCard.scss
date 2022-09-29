@@ -1,44 +1,73 @@
 .car-img-content-wrap {
-  background-color: var(--color-white-gray);
+  position: relative;
+  padding: 0;
+  border-radius: 10px;
+  overflow: hidden;
+
+  .opacity-box {
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    background-color: black;
+    opacity: 0.4;
+  }
 
   .content-wrap {
     display: flex;
     justify-content: center;
     align-items: center;
 
-    .car-name {
-      width: 20%;
-      margin-right: 0;
-    }
-
     .car-img {
-      width: 30%;
-      height: 150px;
-      background-size: cover;
-      margin-right: 50px;
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
     }
 
     .car-detail-info {
+      position: absolute;
+      width: 80%;
       display: flex;
       align-items: center;
+      justify-content: space-between;
 
-      .icon {
-        width: var(--font-size-product-small);
-        height: var(--font-size-product-small);
-        background-size: cover;
+      .car-name {
+        font-size: 25px;
+        color: white;
       }
 
-      .people-icon {
-        background-image: url("../../../../../assets/images/people-icon.png");
+      .detail {
+        display: flex;
+
+        .icon {
+          width: var(--font-size-product-small);
+          height: var(--font-size-product-small);
+          background-size: cover;
+        }
+        .people-icon {
+          background-image: url("../../../../../assets/images/people-icon.png");
+        }
+        .oil-icon {
+          background-image: url("../../../../../assets/images/oil-icon.png");
+        }
+        .calendar-icon {
+          width: var(--icon-size-small);
+          height: var(--icon-size-small);
+          background-image: url("../../../../../assets/images/calendar-icon.png");
+          margin-left: 5px;
+        }
       }
-      .oil-icon {
-        background-image: url("../../../../../assets/images/oil-icon.png");
-      }
+
       span {
-        color: gray;
+        color: white;
         font-size: var(--font-size-product-small);
         margin: 0px 5px;
       }
     }
+  }
+  .rentcar-detail-p-tag {
+    color: rgb(149, 149, 149);
+    font-size: 14px;
+    text-align: center;
+    margin: 15px 0;
   }
 }

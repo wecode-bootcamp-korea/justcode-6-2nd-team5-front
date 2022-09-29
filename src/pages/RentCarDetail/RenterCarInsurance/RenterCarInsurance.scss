@@ -1,0 +1,66 @@
+.rentcar-detail-Insurance-wrap {
+  padding: 0 1%;
+  line-height: 20px;
+  .detail-title {
+    font-size: var(--font-size-product-title);
+    font-weight: bold;
+    padding: 20px 00px;
+  }
+
+  .top-box {
+    display: flex;
+    justify-content: space-around;
+    .top-box-card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30%;
+      margin-bottom: 20px;
+      .icon-circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 70px;
+        height: 70px;
+        border-radius: 70px;
+        background-color: var(--color-white-gray);
+
+        .icon {
+          width: 50%;
+          height: 50%;
+          background-size: cover;
+        }
+
+        .icon1 {
+          background-image: url("../../../assets/images/candle-icon.png");
+        }
+        .icon2 {
+          background-image: url("../../../assets/images/steering-wheel-icon.png");
+        }
+        .icon3 {
+          background-image: url("../../../assets/images/card-icon.png");
+        }
+      }
+      .subtitle {
+        margin-left: 20px;
+        p {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  table {
+    text-align: center;
+    width: 100%;
+
+    thead {
+      background-color: var(--color-white-gray);
+      font-weight: bold;
+    }
+  }
+  th,
+  td {
+    padding: 10px;
+  }
+}

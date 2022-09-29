@@ -1,0 +1,108 @@
+.fixed {
+  position: sticky;
+  height: 100%;
+  top: 100px;
+}
+
+.rentcar-detail-snb-wrap {
+  display: flex;
+  flex-direction: column;
+
+  .rentcar-detail-column {
+    padding: 6%;
+
+    border: 2px solid var(--color-bright-blue);
+    border-radius: 16px;
+    background-color: #fff;
+
+    height: fit-content;
+    line-height: 20px;
+    p {
+      padding: 5px;
+      font-size: 15px;
+    }
+
+    div {
+      padding: 8px 0px;
+    }
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+    }
+
+    .top-box {
+      padding-top: 0;
+      border-bottom: 1px solid gray;
+      .main-title {
+        font-size: 18px;
+        font-weight: bold;
+      }
+    }
+
+    .coupon-and-point-box {
+      font-size: 14px;
+      border-bottom: 1px dashed gray;
+      div {
+        text-align: center;
+        border: 1px solid rgb(183, 183, 183);
+        border-radius: 5px;
+        margin: 20px 0px;
+      }
+    }
+
+    .price-box {
+      border-bottom: 1px solid gray;
+      .title {
+        display: flex;
+        align-items: center;
+      }
+      .big-price {
+        color: rgb(67, 73, 255);
+        font-size: 20px;
+      }
+    }
+
+    .point-box,
+    .plus-point-box {
+      p {
+        display: flex;
+        span {
+          margin-left: auto;
+        }
+      }
+    }
+    .plus-point-box {
+      box-sizing: content-box;
+      margin: 0px -7% 0 -7%;
+      padding: 0px 7% 0 7%;
+      background-color: var(--color-soft-bright-blue);
+    }
+  }
+
+  .service-btn,
+  .submit-btn {
+    display: block;
+    padding: 4%;
+    width: 90%;
+
+    font-weight: bold;
+    text-align: center;
+
+    color: var(--color-bright-blue);
+    border: 2px solid var(--color-bright-blue);
+    border-radius: 16px;
+    background-color: #fff;
+    margin: 10px auto;
+  }
+
+  .submit-btn {
+    width: 100%;
+    padding: 5%;
+    border: 0;
+    font-size: var(--font-size-product-title);
+    color: #fff;
+    background-color: var(--color-bright-blue);
+  }
+}
