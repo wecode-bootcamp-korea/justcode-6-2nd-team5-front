@@ -1,0 +1,84 @@
+.rentcar-detail-info-box {
+  padding: 2.5%;
+
+  border-radius: 16px;
+  background-color: #fff;
+
+  .company-name {
+    font-size: 22px;
+    font-weight: bold;
+    padding-left: 20px;
+    padding-bottom: 20px;
+  }
+
+  .rentcar-button-wrap {
+    display: flex;
+    justify-content: space-between;
+    border: none;
+
+    button {
+      border: none;
+      background-color: inherit;
+      width: 33.3%;
+      border-bottom: 1px solid gainsboro;
+      padding-bottom: 2.5%;
+      margin-bottom: 5%;
+      color: gray;
+      font-weight: 700;
+      font-size: large;
+
+      &:focus {
+        border-bottom: 2px solid black;
+        color: #404040;
+      }
+    }
+  }
+}
+
+.rentcar-detail-info {
+  display: flex;
+  margin-top: 40px;
+
+  .info-box2 {
+    margin-left: auto;
+    margin-right: 40px;
+  }
+
+  span {
+    color: #606060;
+  }
+
+  p {
+    line-height: 2;
+    font-size: 17px;
+    font-weight: 700;
+    display: inline;
+    margin-right: 14px;
+    margin-left: 20px;
+
+    span {
+      color: black;
+      margin-left: 10%;
+    }
+
+    &:last-child {
+      border-bottom: 1px solid gainsboro;
+      padding-bottom: 5%;
+    }
+  }
+}
+
+.rentcar-detail-info-wrap {
+  .bottom {
+    text-align: center;
+    width: 80%;
+    padding: 10px 15px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: bold;
+    color: gray;
+    background-color: var(--color-white-gray);
+    border-radius: 10px;
+  }
+}

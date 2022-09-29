@@ -20,9 +20,13 @@ function HotelThema() {
   };
 
   useEffect(() => {
-    const url = `http://localhost:8000${location.pathname}${decodeURIComponent(
-      location.search
-    )}&${sortQuery}&offset=${offset}`; // &${sortQuery}&offset=${offset}
+    const url =
+      // location.search == ?filter 내용 (ex. ?숙소유형=호텔&지역=제주시내)
+      location.search !== ""
+        ? `http://localhost:8000${location.pathname}${decodeURIComponent(
+            location.search
+          )}&${sortQuery}&offset=${offset}`
+        : `http://localhost:8000${location.pathname}?${sortQuery}&offset=${offset}`;
 
     fetch(url)
       .then((res) => res.json())

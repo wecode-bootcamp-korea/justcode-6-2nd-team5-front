@@ -15,6 +15,7 @@ function TagList(props) {
     for (let i = 0; i < rentCarTags.length; i++) {
       const result = rentCarTags.includes(TagInfo[i]);
 
+      // 태그 아이디, 태그 이름, 태그 상태 세팅
       effectiveTags.push({
         id: i,
         tagName: rentCarTags[i],
@@ -22,7 +23,7 @@ function TagList(props) {
       });
     }
 
-    // 태그 아이디, 태그 이름, 태그 상태 세팅
+    // 태그 상태값 세팅
     setEffectiveTag(effectiveTags);
   }, [TagInfo]);
 
