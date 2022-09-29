@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const AreaSearch = () => {
-  const navigate = useNavigate;
+  const navigate = useNavigate();
   const [select, setSelect] = useState([]);
 
   const AreaArr = [
@@ -20,14 +20,24 @@ const AreaSearch = () => {
   ];
 
   const [selectArea, setSelectArea] = useState("");
-  const onClick = (e) => {
-    setSelectArea(e.target.innerHTML);
-    const url = `
-    &category(메뉴)
-    &hashTag(태그)
-    &facility(편의사항)
-    &address(주소)`;
-    navigate(`/restaurant/list?${url}`);
+  // const onClick = (e) => {
+  //   setSelectArea(e.target.innerHTML);
+  //   const url = `
+  //   &category(메뉴)
+  //   &hashTag(태그)
+  //   &facility(편의사항)
+  //   &address(주소)`;
+  //   navigate(`/restaurant/list?${url}`);
+  // };
+
+  const goToArea = (e) => {
+    let url;
+    if (e.target.innertText === "") {
+      url = e.target.innerText;
+    } else {
+      url = e.target.id;
+    }
+    navigate(`/restaurant/list?&address=${url}`);
   };
 
   return (
@@ -36,14 +46,10 @@ const AreaSearch = () => {
         return (
           <AreaBtn
             key={item.id}
-            onClick={() => {
-              select.includes(item.id)
-                ? setSelect(select.filter((arr) => arr !== item.id))
-                : setSelect((el) => [...el, item.id]);
-            }}
+            onClick={goToArea}
             className={select.includes(item.id) && "isClicked"}
           >
-            <button id={item.id} className="AreaImg"></button>
+            <button id={item.text} className="AreaImg"></button>
             <label htmlFor={item.id} className="AreaName">
               {item.text}
             </label>
