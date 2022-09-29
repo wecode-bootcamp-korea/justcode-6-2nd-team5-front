@@ -1,0 +1,59 @@
+{
+  "location": [
+    {
+      "id": 1,
+      "img": "https://static-www.jejupass.com/resource/MO/images/location/ALL.png",
+      "location": "전체"
+    },
+    {
+      "id": 2,
+      "img": "https://static-www.jejupass.com/resource/MO/images/location/JS.png",
+      "location": "제주시내"
+    },
+    {
+      "id": 3,
+      "img": "https://static-www.jejupass.com/resource/MO/images/location/JH.png",
+      "location": "조천·함덕"
+    },
+    {
+      "id": 4,
+      "img": "https://static-www.jejupass.com/resource/MO/images/location/WK.png",
+      "location": "구좌·월정"
+    },
+    {
+      "id": 5,
+      "img": "https://static-www.jejupass.com/resource/MO/images/location/AJ.png",
+      "location": "애월"
+    },
+    {
+      "id": 6,
+      "img": "https://static-www.jejupass.com/resource/MO/images/location/HH.png",
+      "location": "한림·협재"
+    },
+    {
+      "id": 7,
+      "img": "https://static-www.jejupass.com/resource/MO/images/location/SS.png",
+      "location": "서귀포·중문"
+    },
+    {
+      "id": 8,
+      "img": "https://static-www.jejupass.com/resource/MO/images/location/PN.png",
+      "location": "표선·남원"
+    },
+    {
+      "id": 9,
+      "img": "https://static-www.jejupass.com/resource/MO/images/location/SU.png",
+      "location": "성산·섭지코지"
+    },
+    {
+      "id": 10,
+      "img": "https://static-www.jejupass.com/resource/MO/images/location/DM.png",
+      "location": "안덕·대정"
+    },
+    {
+      "id": 11,
+      "img": "https://static-www.jejupass.com/resource/MO/images/location/HJ.png",
+      "location": "한경·저지"
+    }
+  ]
+}
