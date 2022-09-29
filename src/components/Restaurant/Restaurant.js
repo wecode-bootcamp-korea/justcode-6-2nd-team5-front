@@ -7,7 +7,7 @@ function Restaurant() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("/data/restaurantInfo.json")
+    fetch("/data/common/restaurantInfo.json")
       .then((res) => res.json())
       .then((data) => {
         setData(data.restaurantInfo);

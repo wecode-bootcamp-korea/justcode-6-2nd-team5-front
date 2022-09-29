@@ -17,7 +17,7 @@ function RestaurantMain() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("/data/restaurantLocation.json")
+    fetch("/data/restaurant/restaurantLocation.json")
       .then((res) => res.json())
       .then((data) => {
         setData(data.location);

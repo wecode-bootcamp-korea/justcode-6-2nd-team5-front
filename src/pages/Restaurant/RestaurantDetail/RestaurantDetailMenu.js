@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./RestaurantMenu.scss";
+import "./RestaurantDetailMenu.scss";
 
 function RestaurantMenu({ data }) {
   return (

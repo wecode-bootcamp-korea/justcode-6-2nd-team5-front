@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Pagination, Autoplay } from "swiper";
-import { IoGift } from "react-icons/io5";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -13,7 +12,7 @@ function Promotion() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("/data/promotionInfo.json")
+    fetch("/data/common/promotionInfo.json")
       .then((res) => res.json())
       .then((data) => {
         setData(data.promotionInfo);
@@ -22,10 +21,7 @@ function Promotion() {
 
   return (
     <div className="content-wrapper">
-      <h1 className="title">
-        놓치면 안되는 제주패스 프로모션
-        {/* <IoGift /> */}
-      </h1>
+      <h1 className="title">놓치면 안되는 제주패스 프로모션</h1>
       <div className="promotion-wrapper">
         <Swiper
           spaceBetween={20}

@@ -41,7 +41,7 @@ const Nav = () => {
             <Link to="/preparing">카페패햐스</Link>
           </MenuTab>
           <MenuTab className={menu.pathname === "/food" && "color"}>
-            <Link to="/food">맛집</Link>
+            <Link to="/restaurant">맛집</Link>
           </MenuTab>
           <BiSearch className="search-icon" />
         </ul>

@@ -28,7 +28,7 @@ const FixNav = () => {
           <Link to="/preparing">카페패스</Link>
         </FixMenuTab>
         <FixMenuTab>
-          <Link to="/food">맛집</Link>
+          <Link to="/restaurant">맛집</Link>
         </FixMenuTab>
         <BiSearch className="search-icon" />
       </ul>

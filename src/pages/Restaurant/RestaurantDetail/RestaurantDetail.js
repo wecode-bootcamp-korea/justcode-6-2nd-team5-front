@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+import RestaurantInfo from "./RestaurantDetailInfo";
+import RestaurantMenu from "./RestaurantDetailMenu";
+import RestaurantReview from "./RestaurantDetailReview";
 import RestaurantDetailList from "./RestaurantDetailList";
-import RestaurantInfo from "./RestaurantInfo";
-import RestaurantMenu from "./RestaurantMenu";
-import RestaurantReview from "./RestaurantReview";
 
 import "./RestaurantDetail.scss";
 

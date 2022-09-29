@@ -3,10 +3,10 @@ import { useLocation } from "react-router-dom";
 
 import RestaurantList from "./RestaurantList";
 import RestaurantTotal from "./RestaurantTotal";
+import RestaurantPaginate from "./RestaurantPaginate";
 import SideFilterBar from "../../components/SideFilterBar/SideFilterBar";
 
 import "./Restaurant.scss";
-import RestaurantPaginate from "./RestaurantPaginate";
 
 function Restaurant() {
   const location = useLocation();
@@ -20,20 +20,11 @@ function Restaurant() {
     const url = `http://localhost:8000${location.pathname}${decodeURIComponent(
       location.search
     )}&${sortQuery}&offset=${offset}&limit=4`;
-    console.log(url);
 
     fetch(url)
       .then((res) => res.json())
       .then((data) => setData(data));
   }, [location, offset]);
-
-  // useEffect(() => {
-  //   fetch("/data/restaurantList.json")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setData(data);
-  //     });
-  // }, []);
 
   // 목데이터를 이용한 정렬 필터링 부분 데이터 호출
   useEffect(() => {
@@ -48,7 +39,7 @@ function Restaurant() {
 
   // 목데이터를 이용한 카테고리 필터 데이터 호출
   useEffect(() => {
-    fetch("/data/restaurantFilterType.json", {
+    fetch("/data/restaurant/restaurantFilterType.json", {
       method: "GET",
     })
       .then((res) => res.json())
@@ -65,12 +56,9 @@ function Restaurant() {
   // sort order bar 쿼리 변수명 가져오는 함수
   const getSortOrder = (sortType) => {
     setSortQuery(`정렬=${sortType}`);
-
     const url = `http://localhost:8000${location.pathname}${decodeURIComponent(
       location.search
     )}&${sortType}`;
-
-    console.log(url);
     fetch(url)
       .then((res) => res.json())
       .then((data) => console.log(data));

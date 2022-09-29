@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./RestaurantInfo.scss";
+import "./RestaurantDetailInfo.scss";
 
 function RestaurantInfo({ data }) {
   return (

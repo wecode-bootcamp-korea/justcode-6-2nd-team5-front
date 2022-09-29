@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination } from "swiper";
-import { FaHotel } from "react-icons/fa";
 
 import "swiper/css";
 import "swiper/css/navigation";
@@ -15,7 +14,7 @@ function Lodge() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("/data/lodgeInfo.json")
+    fetch("/data/common/lodgeInfo.json")
       .then((res) => res.json())
       .then((data) => {
         setData(data.lodgeInfo);
@@ -24,10 +23,7 @@ function Lodge() {
 
   return (
     <div className="content-wrapper">
-      <h1 className="title">
-        제주다운 감성숙소 추천
-        {/* <FaHotel /> */}
-      </h1>
+      <h1 className="title">제주다운 감성숙소 추천</h1>
       <Swiper
         spaceBetween={20}
         slidesPerView={3}
