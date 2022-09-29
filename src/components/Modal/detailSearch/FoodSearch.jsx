@@ -1,9 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import { ConditionSelector, HashTagBtn } from "../commonStyled";
 import AreaSearch from "./ common/AreaSearch";
 
 const FoodSearch = () => {
+  const navigate = useNavigate();
   const foodHashArr = [
     "#추천맛집",
     "#데이트코스",
@@ -16,6 +18,13 @@ const FoodSearch = () => {
     "#제주시맛집",
     "#공항근처",
   ];
+
+  const goToHash = (e) => {
+    const url = e.target.innerText;
+    console.log(url);
+    navigate(`/restaurant/list?&hashTag=${url}`);
+  };
+
   return (
     <ConditionSelector>
       <h2 className="title">
@@ -25,7 +34,11 @@ const FoodSearch = () => {
       <div className="box">
         <h5>테마로 검색</h5>
         {foodHashArr.map((item, index) => {
-          return <HashTagBtn key={index}>{item}</HashTagBtn>;
+          return (
+            <HashTagBtn onClick={goToHash} key={index}>
+              {item}
+            </HashTagBtn>
+          );
         })}
       </div>
       <div className="box">
