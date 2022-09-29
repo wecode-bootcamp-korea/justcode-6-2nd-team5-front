@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "./HotelThema.scss";
 import SideFilterBar from "../../components/SideFilterBar/SideFilterBar";
+import HotelRanking from "../../components/Hotel/HotelRanking";
 
 function HotelThema() {
   const navigate = useNavigate();
@@ -107,11 +108,15 @@ function HotelThema() {
                   <span className="total-review-point">{data.reviewPoint}</span>
                   <span className="address">{data.address}</span>
                   <p>{data.intro}</p>
-                  <span>{data.hashTag}</span>
+                  <span>{data.hashTag[0]}</span>
+                  <span>{data.hashTag[1]}</span>
                 </div>
               </div>
             );
           })}
+        </div>
+        <div className="ranking">
+          <HotelRanking />
         </div>
       </div>
     </div>

@@ -2,45 +2,45 @@
   "lodgeInfo": [
     {
       "id": 1,
-      "img": "https://ifh.cc/g/mWo4GH.jpg",
-      "title": "씨 스테이",
+      "img": "https://ifh.cc/g/Wy6hhV.jpg",
+      "title": "애펜 스테이",
       "tag": "#감성숙소",
-      "info": "해외 휴양지를 연상시키는 감각적인 인테리어"
+      "info": "넓은 마당을 반려동물과 이용 가능"
     },
     {
       "id": 2,
-      "img": "https://ifh.cc/g/PO4yNp.jpg",
-      "title": "민 조아트",
+      "img": "https://ifh.cc/g/wgmPLQ.jpg",
+      "title": "한 조아옥",
       "tag": "#편안함",
-      "info": "아늑하고 여유롭게 제주의 바람을 느끼는 공간"
+      "info": "아늑하게 제주의 바람을 느끼는 공간"
     },
     {
       "id": 3,
-      "img": "https://ifh.cc/g/Qo8bcV.jpg",
-      "title": "던모호",
+      "img": "https://ifh.cc/g/cVHlL5.jpg",
+      "title": "지양운",
       "tag": "#휴가",
-      "info": "휴양지의 느낌과 모던한 매력이 담긴 숙소"
+      "info": "휴양지의 느낌과 매력이 담긴 숙소"
     },
     {
       "id": 4,
-      "img": "https://ifh.cc/g/bgOlAh.jpg",
-      "title": "스타라이트",
-      "tag": "#강력추천",
-      "info": "제주의 햇살과 별빛을 즐길 수 있는 곳"
+      "img": "https://ifh.cc/g/Hw0dFQ.jpg",
+      "title": "당대",
+      "tag": "#이색적인",
+      "info": "이국적인 스타일의 숙소"
     },
     {
       "id": 5,
-      "img": "https://ifh.cc/g/pH33YO.jpg",
-      "title": "동화이야기",
-      "tag": "#가족여행",
-      "info": "가족단위 고객에게 안성맞춤인 숙소"
+      "img": "https://ifh.cc/g/fSt80d.jpg",
+      "title": "페어리테일",
+      "tag": "#동화",
+      "info": "동화 속 주인공"
     },
     {
       "id": 6,
-      "img": "https://ifh.cc/g/rpxott.jpg",
-      "title": "순하골",
+      "img": "https://ifh.cc/g/bq2w7B.jpg",
+      "title": "어밤",
       "tag": "#여행",
-      "info": "작은 시골에 온듯한 기분을 느낄수 있는 곳"
+      "info": "제주의 바다와 별빛"
     }
   ]
 }
