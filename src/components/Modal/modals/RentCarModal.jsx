@@ -1,7 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { MainContext } from "../../Context/MainContext";
+import { ModalContext } from "../../Context/ModalContext";
 
 import { MenuBox, Menu, SearchBtn } from "../commonStyled";
 
@@ -13,6 +14,7 @@ import DriverCondition from "../detailSearch/rentCar/DriverCondition";
 const RentCarModal = () => {
   const navigate = useNavigate();
   const { dateSet } = useContext(MainContext);
+  const { setOpen, isOpen } = useContext(ModalContext);
 
   const [condition, setCondition] = useState("date");
 
@@ -23,6 +25,7 @@ const RentCarModal = () => {
   //보험, 차종 선택 state
   const [insurance, setInsurance] = useState("");
   const [carType, setCarType] = useState([]);
+  const [replaceCarType, setReplaceCarType] = useState([]);
 
   //운전자 나이, 경력 선택 state
   const [driverAge, setDriverAge] = useState("");
@@ -41,48 +44,43 @@ const RentCarModal = () => {
       Number(takeSelected.slice(0, 2))
   );
 
-  // const changeNameOfCarType = (carType) => {
-  //   const newArr = [];
-  //   carType.map((car) => {
-  //     switch (car) {
-  //       case 0:
-  //         newArr.push("전체");
-  //         break;
-  //       case 1:
-  //         newArr.push("경형");
-  //         break;
-  //       case 2:
-  //         newArr.push("소형");
-  //         break;
-  //       case 3:
-  //         newArr.push("준중형");
-  //         break;
-  //       case 4:
-  //         newArr.push("중형");
-  //         break;
-  //       case 5:
-  //         newArr.push("고급");
-  //         break;
-  //       case 6:
-  //         newArr.push("SUV/캠핑");
-  //         break;
-  //       case 7:
-  //         newArr.push("승합");
-  //         break;
-  //     }
-  //     return newArr;
-  //   });
-  // };
+  useEffect(() => {
+    // console.log(carType);
+    let arr = carType.map((v) => {
+      switch (v) {
+        case 0:
+          return (v = "전체");
+        case 1:
+          return (v = "경형");
+        case 2:
+          return (v = "소형");
+        case 3:
+          return (v = "준중형");
+        case 4:
+          return (v = "중형");
+        case 5:
+          return (v = "고급");
+        case 6:
+          return (v = "SUV/캠핑");
+        case 7:
+          return (v = "승합");
+      }
+    });
+    if (arr.length > 1) {
+      for (let i = 1; i < arr.length; i++) {
+        arr[i] = ", " + arr[i];
+      }
+    }
+    return setReplaceCarType(arr);
+  }, [carType]);
 
-  // console.log(changeNameOfCarType(carType));
-
-  console.log(timeGap);
-  console.log("날짜", dateSet);
-  console.log("인수시간", takeSelected);
-  console.log("반납시간", returnSelected);
-  console.log("보험", insurance);
-  console.log("나이", driverAge);
-  console.log("경력", driverCareer);
+  // console.log(timeGap);
+  // console.log("날짜", dateSet);
+  // console.log("인수시간", takeSelected);
+  // console.log("반납시간", returnSelected);
+  // console.log("보험", insurance);
+  // console.log("나이", driverAge);
+  // console.log("경력", driverCareer);
 
   const handleSearchClick = () => {
     if (
@@ -96,8 +94,10 @@ const RentCarModal = () => {
       alert("조건을 모두 선택해주세요");
       return;
     } else {
-      const url = `rentStartDate=${dateSet.start}8&rentEndDate=${dateSet.end}&rentStartTime=${takeSelected}&rentEndTime=${returnSelected}&insurance=${insurance}&age=${driverAge}&experience=${driverCareer}&carType=경형&carType=소`;
+      const url = `rentStartDate=${dateSet.start}&rentEndDate=${dateSet.end}&rentStartTime=${takeSelected}&rentEndTime=${returnSelected}&insurance=${insurance}&age=${driverAge}&experience=${driverCareer}&carType=경형&carType=소`;
       navigate(`/rentcar/searchList?${url}`);
+      setOpen(false);
+      console.log(isOpen);
     }
   };
 
@@ -147,8 +147,7 @@ const RentCarModal = () => {
             <p>조건을 선택해주세요.</p>
           ) : (
             <p className="date">
-              {insurance}
-              {carType}
+              {insurance}/ {replaceCarType}
             </p>
           )}
         </Menu>

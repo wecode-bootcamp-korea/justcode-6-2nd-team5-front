@@ -5,6 +5,7 @@ import SideFilterBar from "../../components/SideFilterBar/SideFilterBar";
 import TotalBox from "../../components/TotalBox/TotalBox";
 import "./RentCar.scss";
 import RentCarList from "./RentCarList/RentCarList";
+import RentCarHeader from "../../components/Header/RentCarHeader";
 
 function RentCar() {
   const location = useLocation();
@@ -68,21 +69,28 @@ function RentCar() {
       });
   }, []);
 
+
   return (
-    <div className="rentcar-container">
-      <div className="rentcar-content">
-        <div className="rentcar-top-content">
-          <SearchTagBox title={"빠른 검색"} tagList={tagList} />
-        </div>
-        <div className="rentcar-main-content">
-          <SideFilterBar orderTypes={orderTypes} filterTypes={filterTypes} />
-          <div className="rentcar-list-wrap">
-            <TotalBox totalAmount={913} />
-            <RentCarList rentCarList={rentCarList} rentCarTags={rentCarTags} />
+    <>
+      <RentCarHeader />
+      <div className="rentcar-container">
+        <div className="rentcar-content">
+          <div className="rentcar-top-content">
+            <SearchTagBox title={"빠른 검색"} tagList={tagList} />
+          </div>
+          <div className="rentcar-main-content">
+            <SideFilterBar orderTypes={orderTypes} filterTypes={filterTypes} />
+            <div className="rentcar-list-wrap">
+              <TotalBox totalAmount={913} />
+              <RentCarList
+                rentCarList={rentCarList}
+                rentCarTags={rentCarTags}
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

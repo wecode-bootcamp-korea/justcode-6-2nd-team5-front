@@ -6,7 +6,9 @@ import { MenuBox, Menu, SearchBtn } from "../Modal/commonStyled";
 
 const RentCarHeader = () => {
   const location = useLocation();
-  console.log(location);
+  const url = new URLSearchParams(location.search);
+  console.log(url.get("carType"));
+  // console.log(location);
   // console.log(rentHeader.search !== "");
   const { isOpen, setOpen, setClickedIcon } = useContext(ModalContext);
   const modalOpen = () => {

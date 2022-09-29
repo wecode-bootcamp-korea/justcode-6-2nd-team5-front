@@ -28,12 +28,12 @@ function Router() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/esg" element={<Esg />} />
-          <Route path="/rentercar" element={<RenterCar />} />
+          <Route path="/rentcar" element={<RenterCar />} />
           <Route path="/accomodation" element={<Accomodation />} />
           <Route path="/food/:id" element={<Food />} />
           <Route path="/preparing" element={<Preparing />} />
           <Route path="/mypage" element={<Mypage />} />
-          <Route path="/rentercar/rentcar/:id" element={<RentCar />} />
+          <Route path="/rentcar/:id" element={<RentCar />} />
           <Route path="/login" element={<Login />} />
           <Route path="/termsSignup" element={<TermsSignup />} />
           <Route path="/signup" element={<Signup />} />

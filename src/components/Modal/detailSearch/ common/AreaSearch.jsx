@@ -4,6 +4,8 @@ import styled from "styled-components";
 
 const AreaSearch = () => {
   const navigate = useNavigate;
+  const [select, setSelect] = useState([]);
+
   const AreaArr = [
     { id: 1, text: "제주시내" },
     { id: 2, text: "조천・함덕" },
@@ -27,11 +29,20 @@ const AreaSearch = () => {
     &address(주소)`;
     navigate(`/restaurant/list?${url}`);
   };
+
   return (
     <Flex>
       {AreaArr.map((item) => {
         return (
-          <AreaBtn key={item.id}>
+          <AreaBtn
+            key={item.id}
+            onClick={() => {
+              select.includes(item.id)
+                ? setSelect(select.filter((arr) => arr !== item.id))
+                : setSelect((el) => [...el, item.id]);
+            }}
+            className={select.includes(item.id) && "isClicked"}
+          >
             <button id={item.id} className="AreaImg"></button>
             <label htmlFor={item.id} className="AreaName">
               {item.text}
@@ -46,6 +57,12 @@ const AreaSearch = () => {
 const Flex = styled.div`
   display: flex;
   flex-wrap: wrap;
+
+  .isClicked {
+    button {
+      background-color: #404040;
+    }
+  }
 `;
 
 const AreaBtn = styled.span`
