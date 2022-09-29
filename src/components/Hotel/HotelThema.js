@@ -101,7 +101,7 @@ function HotelThema() {
         </div>
         <div className="total-hotel-thema">
           <p>
-            총 <span>1326 </span>건
+            총 <span>{data.length} </span>건
           </p>
         </div>
         <div className="hotel-thema-list-wrapper">
