@@ -19,21 +19,21 @@ function Restaurant() {
   useEffect(() => {
     const url = `http://localhost:8000${location.pathname}${decodeURIComponent(
       location.search
-    )}&${sortQuery}&offset=${offset}&limit=10`;
+    )}&${sortQuery}&offset=${offset}&limit=4`;
     console.log(url);
 
-    // fetch(url)
-    //   .then((res) => res.json())
-    //   .then((data) => console.log(data));
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setData(data));
   }, [location, offset]);
 
-  useEffect(() => {
-    fetch("/data/restaurantList.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("/data/restaurantList.json")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setData(data);
+  //     });
+  // }, []);
 
   // 목데이터를 이용한 정렬 필터링 부분 데이터 호출
   useEffect(() => {

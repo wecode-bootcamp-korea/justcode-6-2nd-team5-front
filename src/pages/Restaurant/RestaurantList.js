@@ -15,7 +15,7 @@ function RestaurantList({ data }) {
       onClick={() => checkHandler(data.id)}
     >
       <div>
-        <img src={data.img} alt="이미지" className="restaurant-img" />
+        <img src={data.photo} alt="이미지" className="restaurant-img" />
       </div>
       <div className="restaurant-info">
         <h1>{data.name}</h1>

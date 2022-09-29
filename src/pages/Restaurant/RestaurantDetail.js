@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 import RestaurantDetailList from "./RestaurantDetailList";
 import RestaurantInfo from "./RestaurantInfo";
@@ -10,14 +11,15 @@ import "./RestaurantDetail.scss";
 function RestaurantDetail() {
   const [tabIndex, setTabIndex] = useState(1);
   const [data, setData] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
-    fetch("/data/restaurantDetailList.json")
+    fetch(`http://localhost:8000/restaurant/item/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setData(data);
       });
-  }, []);
+  }, [id]);
 
   return (
     <>
