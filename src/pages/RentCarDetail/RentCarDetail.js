@@ -37,6 +37,7 @@ function RentCarDetail() {
   useEffect(() => {
     // 쿼리 변수들 리스트에 담음
     const conditionList = decodeURIComponent(location.search).split("&");
+    console.log(conditionList[0].replace(/^./, "").split("=")[1].split("(")[0]);
 
     // 쿼리변수에서 rentCompanyCarId 값 추출
     const rentCompanyCarId = conditionList.pop().split("=")[1];
@@ -92,8 +93,11 @@ function RentCarDetail() {
           // RentCarSnb props
           setReservedInfo({
             rentcompanycarid: rentCompanyCarId,
-            rentStartDate: conditionList[0].replace(/^./, "").split("=")[1],
-            rentEndDate: conditionList[1].split("=")[1],
+            rentStartDate: conditionList[0]
+              .replace(/^./, "")
+              .split("=")[1]
+              .split("(")[0],
+            rentEndDate: conditionList[1].split("=")[1].split("(")[0],
             rentStartTime: conditionList[2].split("=")[1],
             rentEndTime: conditionList[3].split("=")[1],
             price: data[0].price,
