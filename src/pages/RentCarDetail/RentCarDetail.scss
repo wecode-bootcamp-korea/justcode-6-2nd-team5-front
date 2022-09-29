@@ -1,0 +1,49 @@
+.rentcar-detail-container {
+  padding: 80px 0px;
+  background-color: var(--color-background);
+}
+
+.rentcar-detail-content {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  min-width: 1000px;
+  max-width: 1800px;
+  margin: 0 auto;
+
+  .rentcar-detail-list-wrap {
+    width: 75%;
+  }
+
+  .rentcar-detail-snb-wrap {
+    width: 25%;
+    margin-left: 14px;
+  }
+}
+
+.rentcar-detail-list-wrap {
+  .rule {
+    text-align: end;
+    color: gray;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 14px;
+    margin-right: 20px;
+  }
+}
+
+.restaurant-detail-info {
+  color: #202020;
+  font-weight: 700;
+  line-height: 1.8;
+  padding: 2.5% 0;
+
+  p {
+    display: inline;
+  }
+
+  span {
+    color: #606060;
+    font-weight: 400;
+  }
+}

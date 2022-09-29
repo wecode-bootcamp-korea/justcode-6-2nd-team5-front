@@ -1,0 +1,30 @@
+.restaurant-detail-wrapper {
+  margin: 5% 10%;
+  padding: 2.5%;
+  border: 1px solid gainsboro;
+  border-radius: 16px;
+  background-color: white;
+
+  .restaurant-button-wrapper {
+    display: flex;
+    justify-content: space-between;
+    border: none;
+
+    button {
+      border: none;
+      background-color: inherit;
+      width: 33.3%;
+      border-bottom: 1px solid gainsboro;
+      padding-bottom: 2.5%;
+      margin-bottom: 5%;
+      color: gray;
+      font-weight: 700;
+      font-size: large;
+
+      &:focus {
+        border-bottom: 2px solid black;
+        color: #404040;
+      }
+    }
+  }
+}

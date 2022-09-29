@@ -57,8 +57,8 @@ const Nav = () => {
           <MenuTab>
             <Link to="/preparing">카페패스</Link>
           </MenuTab>
-          <MenuTab className={menu.pathname.includes("/food") && "color"}>
-            <Link to="/food">맛집</Link>
+          <MenuTab className={menu.pathname === "/restaurant" && "color"}>
+            <Link to="/restaurant">맛집</Link>
           </MenuTab>
           <MenuTab className={menu.pathname === "/esg" && "color"}>
             <Link to="/esg">ESG</Link>

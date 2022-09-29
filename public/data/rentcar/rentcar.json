@@ -58,7 +58,7 @@
     "carList": [
       {
         "carName": "올 뉴 모닝",
-        "carPhoto": "/data/rentcar/car.png",
+        "carPhoto": "/images/car.png",
         "ridePeopleNumber": 5,
         "oilType": "휘발유",
         "option": ["블루투스", "후방센서", "후방카메라"],
@@ -72,7 +72,8 @@
             "driverAge": "만 26세",
             "driverExperience": "경력 2년이상",
             "totalReserve": 1930,
-            "price": 12600
+            "price": 12600,
+            "rentCompanyCarId": 133
           },
           {
             "companyName": "제주사랑렌터카",
@@ -83,13 +84,14 @@
             "driverAge": "만 23세",
             "driverExperience": "경력 2년이상",
             "totalReserve": 128,
-            "price": 27400
+            "price": 27400,
+            "rentCompanyCarId": 115
           }
         ]
       },
       {
         "carName": "SM3",
-        "carPhoto": "/data/rentcar/car.png",
+        "carPhoto": "/images/car.png",
         "ridePeopleNumber": 5,
         "oilType": "전기차",
         "option": ["블루투스", "후방카메라", "열선시트", "네비게이션"],
@@ -103,7 +105,8 @@
             "driverAge": "만 23세",
             "driverExperience": "경력 2년이상",
             "totalReserve": 758,
-            "price": 12100
+            "price": 12100,
+            "rentCompanyCarId": 118
           }
         ]
       }

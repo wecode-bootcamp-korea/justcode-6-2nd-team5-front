@@ -1,0 +1,79 @@
+.company-list-wrap {
+  .company-card-on {
+    border: 2px solid var(--color-bright-blue);
+    box-shadow: 0px 5px 15px 1px #b8d5ff;
+  }
+
+  .company-card-off {
+    border: 2px solid rgb(227, 227, 227);
+  }
+
+  .company-card-on,
+  .company-card-off {
+    display: flex;
+    align-items: center;
+    padding: 20px 30px;
+
+    cursor: pointer;
+
+    .text-content {
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+
+      .title {
+        height: auto;
+        margin-bottom: 15px;
+
+        span {
+          margin-right: 8px;
+        }
+
+        .point-icon {
+          display: inline-block;
+          width: 22px;
+          height: 22px;
+          background-image: url("../../../../../assets/images/yellow-star-icon.png");
+          background-size: cover;
+        }
+
+        .total-review {
+          color: var(--color-gray);
+        }
+      }
+
+      .condition {
+        font-size: 14px;
+        color: gray;
+
+        span {
+          margin-right: 10px;
+          padding-right: 10px;
+          border-right: 1px solid rgb(200, 200, 200);
+        }
+      }
+    }
+
+    .price-and-button-content {
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+
+      .price {
+        margin-right: 30px;
+      }
+
+      .button {
+        font-size: var(--font-size-product-content);
+        font-weight: bold;
+        margin-bottom: 0;
+        border: 0;
+        color: var(--color-bright-blue);
+        background-color: var(--color-soft-bright-blue);
+        pointer-events: all;
+        cursor: pointer;
+      }
+    }
+  }
+}

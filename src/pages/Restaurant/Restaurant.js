@@ -1,24 +1,32 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import "./Restaurant.scss";
+
+import RestaurantList from "./RestaurantList";
+import RestaurantTotal from "./RestaurantTotal";
+import RestaurantPaginate from "./RestaurantPaginate";
 import SideFilterBar from "../../components/SideFilterBar/SideFilterBar";
+
+import "./Restaurant.scss";
 
 function Restaurant() {
   const location = useLocation();
   const [data, setData] = useState([]);
+  const [offset, setOffset] = useState(0);
+  const [orderTypes, setOrderTypes] = useState([]);
+  const [filterTypes, setFilterTypes] = useState([]);
+  const [sortQuery, setSortQuery] = useState("정렬=추천순");
 
   useEffect(() => {
-    fetch("/data/restaurantList.json")
+    const url = `http://localhost:8000${location.pathname}${decodeURIComponent(
+      location.search
+    )}&${sortQuery}&offset=${offset}&limit=4`;
+
+    fetch(url)
       .then((res) => res.json())
-      .then((data) => {
-        setData(data.restaurantList);
-      });
-  }, []);
+      .then((data) => setData(data));
+  }, [location, offset]);
 
-  // Side Filter Bar props
-  // Sort Order Bar mockdata
-  const [orderTypes, setOrderTypes] = useState([]);
-
+  // 목데이터를 이용한 정렬 필터링 부분 데이터 호출
   useEffect(() => {
     fetch("/data/rentcar/orderType.json", {
       method: "GET",
@@ -28,30 +36,10 @@ function Restaurant() {
         setOrderTypes(data.orderTypes.restaurant);
       });
   }, []);
-  // sort order bar 쿼리 변수 관리값
-  const [sortQuery, setSortQuery] = useState("order=추천순");
-  // sort order bar 쿼리 변수명 가져오는 함수
-  const getSortOrder = (sortType) => {
-    setSortQuery(`order=${sortType}`);
 
-    const url = `http://localhost:8000${location.pathname}${decodeURIComponent(
-      location.search
-    )}&${`order=${sortType}`}`;
-
-    // fetch(url)
-    //   .then(res => res.json())
-    //   .then(data => console.log(data))
-  };
-
-  // Filter Bar props
-  // Filter Bar mockdata: dep-3
-  const [filterTypes, setFilterTypes] = useState([]);
-
-  const filterTypeUrl =
-    "http://localhost:8000/rentcar/searchList?rentStartDate=2022-09-28&rentEndDate=2022-09-29&rentStartTime=1&rentEndTime=2&insurance=일반자차&age=만 26세이상&experience=1년 미만";
-
+  // 목데이터를 이용한 카테고리 필터 데이터 호출
   useEffect(() => {
-    fetch("/data/rentcar/filterType.json", {
+    fetch("/data/restaurant/restaurantFilterType.json", {
       method: "GET",
     })
       .then((res) => res.json())
@@ -60,42 +48,45 @@ function Restaurant() {
       });
   }, []);
 
+  // 페이지네이션 함수
+  const offsetHandler = (offsetNum) => {
+    setOffset(offsetNum);
+  };
+
+  // sort order bar 쿼리 변수명 가져오는 함수
+  const getSortOrder = (sortType) => {
+    setSortQuery(`정렬=${sortType}`);
+    const url = `http://localhost:8000${location.pathname}${decodeURIComponent(
+      location.search
+    )}&${sortType}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
+
   return (
     <div className="restaurant-container">
-      <div className="restaurant-content">
-        <div className="restaurant-top-content">
-          <SideFilterBar
-            orderTypes={orderTypes}
-            filterTypes={filterTypes}
-            getSortOrder={getSortOrder}
-          />
-        </div>
+      <div className="restaurant-top-content">
+        <SideFilterBar
+          orderTypes={orderTypes}
+          filterTypes={filterTypes}
+          getSortOrder={getSortOrder}
+        />
       </div>
       <div className="restaurant-main-content">
-        <div className="total-restaurant">
-          <p>
-            총 <span>129</span>건
-          </p>
-        </div>
+        {data.length != 0 && <RestaurantTotal totalCount={data.totalCount} />}
         <div className="restaurant-list-wrapper">
-          {data.map((data) => {
-            return (
-              <div className="restaurant-list" key={data.id}>
-                <div className="restaurant-img">
-                  <img src={data.img} alt="이미지" />
-                </div>
-                <div className="restaurant-info">
-                  <h1>{data.name}</h1>
-                  <span className="total-like">{data.totalLike} </span>
-                  <span className="total-review-point">{data.reviewPoint}</span>
-                  <span className="address">{data.address}</span>
-                  <p>{data.intro}</p>
-                  <span>{data.hashTag}</span>
-                </div>
-              </div>
-            );
-          })}
+          {data.length !== 0 &&
+            data.restaurantList.map((data) => {
+              return <RestaurantList data={data} key={data.id} />;
+            })}
         </div>
+        {data.length != 0 && (
+          <RestaurantPaginate
+            offsetHandler={offsetHandler}
+            totalCount={data.totalCount}
+          />
+        )}
       </div>
     </div>
   );
