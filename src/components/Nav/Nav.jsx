@@ -40,8 +40,8 @@ const Nav = () => {
           </Link>
         </div>
         <ul className="menu-box">
-          <MenuTab className={menu.pathname.includes("/rentercar") && "color"}>
-            <Link to="/rentercar">렌터카</Link>
+          <MenuTab className={menu.pathname.includes("/rentcar") && "color"}>
+            <Link to="/rentcar">렌터카</Link>
           </MenuTab>
           <MenuTab className={menu.pathname === "/preparing" && "color"}>
             <Link to="/preparing">항공</Link>

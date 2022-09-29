@@ -34,7 +34,7 @@ function Router() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/esg" element={<Esg />} />
-          <Route path="/rentercar" element={<RenterCar />} />
+          <Route path="/rentcar" element={<RenterCar />} />
           <Route path="/accomodation" element={<Accomodation />} />
           <Route path="/preparing" element={<Preparing />} />
           <Route path="/mypage" element={<Mypage />} />

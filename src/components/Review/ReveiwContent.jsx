@@ -5,7 +5,9 @@ import PhotoModal from "./PhotoModal";
 import { useState } from "react";
 import testPhoto from "../../assets/images/test-photo.jpeg";
 
-const Content = () => {
+const Content = ({ content }) => {
+  console.log(content);
+  const { userName, created_at, review, photo } = content;
   const [photoOpen, setPhotoOpen] = useState(false);
   const handlePhotoOpen = () => {
     setPhotoOpen(true);
@@ -22,23 +24,20 @@ const Content = () => {
             <div className="user-img">
               <FaUserAlt />
             </div>
-            <span className="user-id">{replaceStr("jdc19407")}</span>
+            <span className="user-id">{replaceStr(userName)}</span>
           </div>
           <div className="rate-date">
             <span className="comment-rate">★☆☆☆☆</span>
-            <span className="date">2021-05-29</span>
+            <span className="date">{created_at}</span>
           </div>
-          <p className="content">
-            여기 진짜 비싸요 반면에 구성은 별로임 엄빠 모시고가서 기분
-            대박상해서 나온 경험 ㅂㄷㅂㄷ...
-          </p>
-          <div className="like-btn">
+          <p className="content">{review}</p>
+          {/* <div className="like-btn">
             <FaRegHeart />
             <span className="like-num">0</span>
-          </div>
+          </div> */}
         </div>
         <div className="photo" onClick={handlePhotoOpen}>
-          <img src={testPhoto} />
+          <img src={photo} />
         </div>
       </ReviewContent>
       {photoOpen && <PhotoModal setPhotoOpen={setPhotoOpen} />}
