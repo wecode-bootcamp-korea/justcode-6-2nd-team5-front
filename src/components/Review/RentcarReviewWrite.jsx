@@ -6,11 +6,11 @@ import { RiErrorWarningLine } from "react-icons/ri";
 import { useLocation } from "react-router-dom";
 import { ImStarFull } from "react-icons/im";
 
-const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
+const RentcarReviewWrite = ({ carName, setOpen, setRoad }) => {
   const submitRef = useRef();
   const location = useLocation();
   const url = new URLSearchParams(location.search);
-  const restaurantId = Number(url.get("id"));
+  const rentcarid = Number(url.get("rentCompanyCarId"));
 
   useEffect(() => {
     const $body = document.querySelector("body");
@@ -20,14 +20,15 @@ const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
 
   const handleClose = () => {
     setOpen(false);
-    setRender((current) => !current);
+    setRoad((current) => !current);
   };
 
-  const [tastePoint, setTastePoint] = useState(0);
-  const [moodPoint, setMoodPoint] = useState(0);
-  const [servicePoint, setServicePoint] = useState(0);
+  const starArr = [1, 2, 3, 4, 5];
+
+  const [kindPoint, setKindPoint] = useState(0);
+  const [cleanPoint, setCleanPoint] = useState(0);
+  const [conveniencePoint, setConveniencePoint] = useState(0);
   const [review, setReview] = useState("");
-  const [photo, setPhoto] = useState();
   const [token, setToken] = useState(localStorage.getItem("token"));
 
   const handleInput = (e) => {
@@ -37,24 +38,28 @@ const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    // if (rating === "") {
-    //   alert("Please rate the product.");
-    //   return;
-    // }
+    if (review.length < 15) {
+      alert("리뷰를 15글자 이상 작성해주세요.");
+      return;
+    } else if (kindPoint === 0 || cleanPoint === 0 || conveniencePoint === 0) {
+      alert("별점을 모두 선택해주세요.");
+      return;
+    }
     const body = {
       token,
-      restaurantId,
-      tastePoint,
-      moodPoint,
-      servicePoint,
+      rentcarid,
+      kindPoint,
+      cleanPoint,
+      conveniencePoint,
       review,
+      reviewPhoto: null,
     };
 
     console.log(body);
     setReview("");
     setOpen(false);
 
-    fetch("http://localhost:8000/restaurant/review", {
+    fetch("http://localhost:8000/rentcar/review", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -63,7 +68,8 @@ const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
     })
       .then((res) => res.json())
       .then((json) => {
-        alert("리뷰 작성 완료!");
+        alert("리뷰 작성 완료");
+        setRoad((current) => !current);
       });
   };
 
@@ -81,44 +87,52 @@ const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
             ref={submitRef}
           >
             <div className="title">
-              "{restaurantName}"에서의 <br />
+              "{carName}"에서의 <br />
               경험 어떠셨나요<span style={{ color: "red" }}>?</span>
             </div>
             <div className="select-rate-box">
               <li className="flavor">
-                <span>맛</span>
+                <span>친절</span>
                 <Stars>
-                  {[...Array(5).keys()].map((num) => (
+                  {starArr.map((num) => (
                     <ImStarFull //
                       key={num}
-                      onClick={() => setTastePoint(num)}
-                      className={tastePoint >= num ? "clicked" : ""}
+                      onClick={() => setKindPoint(num)}
+                      className={kindPoint >= num ? "clicked" : ""}
                       size="1.5vw"
                     />
                   ))}
                 </Stars>
               </li>
               <li className="mood">
-                <span>분위기</span>
+                <span>청결</span>
                 <Stars>
-                  {[...Array(5).keys()].map((num) => (
+                  {starArr.map((num) => (
                     <ImStarFull //
                       key={num}
-                      onClick={() => setMoodPoint(num)}
-                      className={moodPoint >= num ? "clicked" : ""}
+                      onClick={() => setCleanPoint(num)}
+                      className={cleanPoint >= num ? "clicked" : ""}
                       size="1.5vw"
                     />
                   ))}
                 </Stars>
               </li>
               <li className="service">
-                <span>서비스</span>
+                <span>편의</span>
                 <Stars>
-                  {[...Array(5).keys()].map((num) => (
+                  {/* {[...Array(5).keys()].map((num) => (
                     <ImStarFull //
                       key={num}
                       onClick={() => setServicePoint(num)}
                       className={servicePoint >= num ? "clicked" : ""}
+                      size="1.5vw"
+                    /
+                  ))} */}
+                  {starArr.map((num) => (
+                    <ImStarFull //
+                      key={num}
+                      onClick={() => setConveniencePoint(num)}
+                      className={conveniencePoint >= num ? "clicked" : ""}
                       size="1.5vw"
                     />
                   ))}
@@ -137,18 +151,6 @@ const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
                 required={true}
                 placeholder="리뷰를 남겨주세요. (15글자 이상)"
               ></textarea>
-            </div>
-            <div className="photo-upload-box">
-              <div className="upload-title">사진 추가 (최대 1장)</div>
-              <label id="upload-btn" htmlFor="btn">
-                +
-              </label>
-              <input
-                className="photo-upload-btn"
-                id="btn"
-                type="file"
-                accept="image/*"
-              />
             </div>
             <div className="write-guide">
               <div className="guide-title">
@@ -384,4 +386,4 @@ const Contents = styled.div`
   }
 `;
 
-export default WriteReviewModal;
+export default RentcarReviewWrite;

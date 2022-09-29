@@ -35,7 +35,7 @@ function RentCarDetail() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         // ImgCard props
         setCarInfo({
           carName: data[0].carName,
