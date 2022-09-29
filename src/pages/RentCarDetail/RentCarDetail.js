@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react";
-import {
-  useLocation,
-  RouteComponentProps,
-  useNavigate,
-} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import AlertModal from "../../components/AlertModal/AlertModal";
 import RentCarHeader from "../../components/Header/RentCarHeader";
 import ImgCard from "../RentCar/RentCarList/RentCarCard/ImgCard/ImgCard";
@@ -26,8 +22,8 @@ function RentCarDetail() {
   // 업체 정보: RentCarInfo props
   const [rentCaompanyInfo, setRentCompanyInfo] = useState({});
 
-  // 가격 정보: RentCarSnb props
-  const [priceInfo, setPriceInfo] = useState(0);
+  // 예약 정보: RentCarSnb props
+  const [reservedInfo, setReservedInfo] = useState({});
 
   // 차량 정보가 없다면?
   const [isNone, setIsNone] = useState(false);
@@ -52,7 +48,7 @@ function RentCarDetail() {
     const url = `http://localhost:8000/rentcar/detail?rentCompanyCarId=${decodeURIComponent(
       rentCompanyCarId
     )}`;
-    fetch("/data/rentcar/rentcarDetail.json", {
+    fetch(url, {
       method: "GET",
     })
       .then((res) => res.json())
@@ -94,7 +90,14 @@ function RentCarDetail() {
           });
 
           // RentCarSnb props
-          setPriceInfo(data[0].price);
+          setReservedInfo({
+            rentcompanycarid: rentCompanyCarId,
+            rentStartDate: conditionList[0].replace(/^./, "").split("=")[1],
+            rentEndDate: conditionList[1].split("=")[1],
+            rentStartTime: conditionList[2].split("=")[1],
+            rentEndTime: conditionList[3].split("=")[1],
+            price: data[0].price,
+          });
         }
       });
   }, [location]);
@@ -103,7 +106,7 @@ function RentCarDetail() {
 
   return (
     <>
-      {isNone ? (
+      {reservedInfo && (
         <div className="rentcar-detail-container">
           <RentCarHeader />
           <div className="rentcar-detail-content">
@@ -126,10 +129,11 @@ function RentCarDetail() {
                 {tabIndex === 4 && <RentCarInfo company={rentCaompanyInfo} />}
               </div>
             </div>
-            <RentCarSnb price={priceInfo} />
+            <RentCarSnb reservedInfo={reservedInfo} />
           </div>
         </div>
-      ) : (
+      )}
+      {!isNone && !reservedInfo && (
         <AlertModal
           closeModal={goPrev}
           alertMessage={["경고", "차량 정보가 없습니다."]}
