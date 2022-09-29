@@ -10,7 +10,7 @@ export const RateContainer = styled.div`
     .star-box {
       align-items: center;
       position: relative;
-      width: 40%;
+      width: ${(props) => (props.rentcar ? "50%" : "40%")};
 
       .rate-star {
         position: absolute;

@@ -6,7 +6,6 @@ import SideFilterBar from "../../components/SideFilterBar/SideFilterBar";
 import TotalBox from "../../components/TotalBox/TotalBox";
 import "./RentCar.scss";
 import RentCarList from "./RentCarList/RentCarList";
-import RentCarHeader from "../../components/Header/RentCarHeader";
 
 function RentCar() {
   const location = useLocation();

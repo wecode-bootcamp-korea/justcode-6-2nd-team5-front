@@ -105,7 +105,6 @@ const RentCarModal = () => {
     }
   };
 
-  const haveQuery = () => {};
 
   const sDate = url.get("rentStartDate");
   const eDate = url.get("rentEndDate");

@@ -7,6 +7,7 @@ import RentCarInfo from "./RentCarInfo/RentCarInfo";
 import RentCarRule from "./RentCarRule/RentCarRule";
 import RentCarSnb from "./RentCarSnb/RentCarSnb";
 import RenterCarInsurance from "./RenterCarInsurance/RenterCarInsurance";
+import RentcarReview from "../../components/Review/RentcarReview";
 
 function RentCarDetail() {
   const location = useLocation();
@@ -29,7 +30,7 @@ function RentCarDetail() {
 
     // 렌트카 정보 API
     const url = `http://localhost:8000/rentcar/detail?rentCompanyCarId=${rentCompanyCarId}`;
-    fetch(url, {
+    fetch("/data/rentcar/rentcarDetail.json", {
       method: "GET",
     })
       .then((res) => res.json())
@@ -90,7 +91,7 @@ function RentCarDetail() {
             </div>
             {tabIndex === 1 && <RentCarRule />}
             {tabIndex === 2 && <RenterCarInsurance insurance={insurance} />}
-            {/* {tabIndex === 3 && <RestaurantReview />} */}
+            {tabIndex === 3 && <RentcarReview />}
             {tabIndex === 4 && <RentCarInfo company={rentCaompanyInfo} />}
           </div>
         </div>

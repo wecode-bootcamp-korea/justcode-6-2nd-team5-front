@@ -4,8 +4,10 @@ import styled from "styled-components";
 import { Overlay } from "../../components/Modal/Modal";
 import { RiErrorWarningLine } from "react-icons/ri";
 import { useLocation } from "react-router-dom";
+import { ImStarFull } from "react-icons/im";
 
 const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
+  
   const submitRef = useRef();
   const location = useLocation();
   const url = new URLSearchParams(location.search);
@@ -22,9 +24,9 @@ const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
     setRender((current) => !current);
   };
 
-  const [tastePoint, setTastePoint] = useState("");
-  const [moodPoint, setMoodPoint] = useState("");
-  const [servicePoint, setServicePoint] = useState("");
+  const [tastePoint, setTastePoint] = useState(0);
+  const [moodPoint, setMoodPoint] = useState(0);
+  const [servicePoint, setServicePoint] = useState(0);
   const [review, setReview] = useState("");
   const [photo, setPhoto] = useState();
   const [token, setToken] = useState(localStorage.getItem("token"));
@@ -43,9 +45,9 @@ const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
     const body = {
       token,
       restaurantId,
-      tastePoint: 3,
-      moodPoint: 4,
-      servicePoint: 5,
+      tastePoint,
+      moodPoint,
+      servicePoint,
       review,
     };
     // console.log(body);
@@ -65,7 +67,6 @@ const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
       .then((res) => res.json())
       .then((json) => {
         alert("Your review has been submitted!");
-        // setRender((current) => !current);
       });
   };
 
@@ -89,15 +90,42 @@ const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
             <div className="select-rate-box">
               <li className="flavor">
                 <span>맛</span>
-                <span className="star">★★★★★</span>
+                <Stars>
+                  {[...Array(5).keys()].map((num) => (
+                    <ImStarFull //
+                      key={num}
+                      onClick={() => setTastePoint(num)}
+                      className={tastePoint >= num ? "clicked" : ""}
+                      size="1.5vw"
+                    />
+                  ))}
+                </Stars>
               </li>
               <li className="mood">
                 <span>분위기</span>
-                <span className="star">★★★★★</span>
+                <Stars>
+                  {[...Array(5).keys()].map((num) => (
+                    <ImStarFull //
+                      key={num}
+                      onClick={() => setMoodPoint(num)}
+                      className={moodPoint >= num ? "clicked" : ""}
+                      size="1.5vw"
+                    />
+                  ))}
+                </Stars>
               </li>
               <li className="service">
                 <span>서비스</span>
-                <span className="star">★★★★★</span>
+                <Stars>
+                  {[...Array(5).keys()].map((num) => (
+                    <ImStarFull //
+                      key={num}
+                      onClick={() => setServicePoint(num)}
+                      className={servicePoint >= num ? "clicked" : ""}
+                      size="1.5vw"
+                    />
+                  ))}
+                </Stars>
               </li>
             </div>
             <div className="write-review-box">
@@ -147,6 +175,23 @@ const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
     </Overlay>
   );
 };
+
+const Stars = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+
+  svg {
+    color: gray;
+    cursor: pointer;
+    margin-bottom: 10px;
+
+    &.clicked {
+      color: #ffbf59;
+    }
+  }
+`;
 
 const ModalWrap = styled.div`
   width: 620px;
