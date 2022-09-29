@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AlertModal from "../../../components/AlertModal/AlertModal";
 import "./RentCarSnb.scss";
 
 function RentCarSnb(props) {
   const { price, setNavActive } = props;
+  const navigate = useNavigate();
 
   // 네브 스크롤시 따라오게 하기
   const [scrollY, setScrollY] = useState(0);
@@ -42,7 +44,7 @@ function RentCarSnb(props) {
   const [isModal, setIsModal] = useState(false);
 
   const closeModal = () => {
-    setIsModal(false);
+    navigate("/mypage");
   };
 
   const openeModal = () => {

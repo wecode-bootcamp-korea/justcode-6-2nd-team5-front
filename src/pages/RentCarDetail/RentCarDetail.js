@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import {
+  useLocation,
+  RouteComponentProps,
+  useNavigate,
+} from "react-router-dom";
+import AlertModal from "../../components/AlertModal/AlertModal";
 import RentCarHeader from "../../components/Header/RentCarHeader";
 import ImgCard from "../RentCar/RentCarList/RentCarCard/ImgCard/ImgCard";
 import "./RentCarDetail.scss";
@@ -10,6 +15,7 @@ import RenterCarInsurance from "./RenterCarInsurance/RenterCarInsurance";
 
 function RentCarDetail() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   // 차량 정보: ImgCard props
   const [carInfo, setCarInfo] = useState({});
@@ -23,80 +29,108 @@ function RentCarDetail() {
   // 가격 정보: RentCarSnb props
   const [priceInfo, setPriceInfo] = useState(0);
 
+  // 차량 정보가 없다면?
+  const [isNone, setIsNone] = useState(false);
+  const [prevUrl, setPrevUrl] = useState("");
+  // 모달창 닫으면 이전페이지로 이동하는 함수
+  const goPrev = () => {
+    const prev = "/rentcar/searchList" + prevUrl;
+    navigate(prev);
+  };
+
   useEffect(() => {
     const conditionList = decodeURIComponent(location.search).split("&");
-    const rentCompanyCarId = conditionList[8].split("=")[1];
+
+    // 쿼리변수에서 rentCompanyCarId 값 추출
+    const rentCompanyCarId = conditionList.pop().split("=")[1];
+
+    setPrevUrl(conditionList.join("&"));
 
     // 렌트카 정보 API
-    const url = `http://localhost:8000/rentcar/detail?rentCompanyCarId=${rentCompanyCarId}`;
-    fetch(url, {
+    const url = `http://localhost:8000/rentcar/detail?rentCompanyCarId=${decodeURIComponent(
+      rentCompanyCarId
+    )}`;
+    fetch("/data/rentcar/rentcarDetail.json", {
       method: "GET",
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        // ImgCard props
-        setCarInfo({
-          carName: data[0].carName,
-          carPhoto: data[0].carPhoto,
-          ridePeopleNumber: data[0].ridePeopleNumber,
-          oilType: data[0].oilType,
-          rentcaryearinfo: data[0].rentcaryearinfo,
-        });
+        if (data === "없는 차량입니다") {
+          // setIsNone(false);
+        } else {
+          // setIsNone(true);
+          // ImgCard props
+          setCarInfo({
+            carName: data[0].carName,
+            carPhoto: data[0].carPhoto,
+            ridePeopleNumber: data[0].ridePeopleNumber,
+            oilType: data[0].oilType,
+            rentcaryearinfo: data[0].rentcaryearinfo,
+          });
 
-        // RentCarInfo props
-        setRentCompanyInfo({
-          name: data[0].rentCarCompany,
-          address: data[0].rentCarCompanyAddress,
-          tel: data[0].rentCarCompanyPhoneNumber,
-          mapAddress: data[0].mapaddress,
-          rentPlace: data[0].rentPlace,
-          shuttlePlace: data[0].shuttlePlace,
-          shuttleSchedule: data[0].shuttleSchedule,
-          shuttleInterval: data[0].shuttleInterval,
-          shuttleRequiredTime: data[0].shuttleRequiredTime,
-        });
+          // RentCarInfo props
+          setRentCompanyInfo({
+            name: data[0].rentCarCompany,
+            address: data[0].rentCarCompanyAddress,
+            tel: data[0].rentCarCompanyPhoneNumber,
+            mapAddress: data[0].mapaddress,
+            rentPlace: data[0].rentPlace,
+            shuttlePlace: data[0].shuttlePlace,
+            shuttleSchedule: data[0].shuttleSchedule,
+            shuttleInterval: data[0].shuttleInterval,
+            shuttleRequiredTime: data[0].shuttleRequiredTime,
+          });
 
-        // RentCarRule props
-        SetInsurance({
-          age: data[0].age,
-          experience: data[0].experience,
-          insurance: data[0].insurance,
-        });
+          // RentCarRule props
+          SetInsurance({
+            age: data[0].age,
+            experience: data[0].experience,
+            insurance: data[0].insurance,
+          });
 
-        // RentCarSnb props
-        setPriceInfo(data[0].price);
+          // RentCarSnb props
+          setPriceInfo(data[0].price);
+        }
       });
   }, [location]);
 
   const [tabIndex, setTabIndex] = useState(1);
 
   return (
-    <div className="rentcar-detail-container">
-      <RentCarHeader />
-      <div className="rentcar-detail-content">
-        <div className="rentcar-detail-list-wrap">
-          <ImgCard carInfo={carInfo} styleChange={true} />
-          <p className="rule">운임규정 및 취소 규정 안내 &gt;</p>
-          <div className="rentcar-detail-info-box">
-            <div className="rentcar-button-wrap">
-              <button onClick={() => setTabIndex(1)}>유의사항</button>
+    <>
+      {isNone ? (
+        <div className="rentcar-detail-container">
+          <RentCarHeader />
+          <div className="rentcar-detail-content">
+            <div className="rentcar-detail-list-wrap">
+              <ImgCard carInfo={carInfo} styleChange={true} />
+              <p className="rule">운임규정 및 취소 규정 안내 &gt;</p>
+              <div className="rentcar-detail-info-box">
+                <div className="rentcar-button-wrap">
+                  <button onClick={() => setTabIndex(1)}>유의사항</button>
 
-              <button onClick={() => setTabIndex(2)}>차량/보험</button>
+                  <button onClick={() => setTabIndex(2)}>차량/보험</button>
 
-              <button onClick={() => setTabIndex(3)}>리뷰</button>
+                  <button onClick={() => setTabIndex(3)}>리뷰</button>
 
-              <button onClick={() => setTabIndex(4)}>업체정보</button>
+                  <button onClick={() => setTabIndex(4)}>업체정보</button>
+                </div>
+                {tabIndex === 1 && <RentCarRule />}
+                {tabIndex === 2 && <RenterCarInsurance insurance={insurance} />}
+                {/* {tabIndex === 3 && <RestaurantReview />} */}
+                {tabIndex === 4 && <RentCarInfo company={rentCaompanyInfo} />}
+              </div>
             </div>
-            {tabIndex === 1 && <RentCarRule />}
-            {tabIndex === 2 && <RenterCarInsurance insurance={insurance} />}
-            {/* {tabIndex === 3 && <RestaurantReview />} */}
-            {tabIndex === 4 && <RentCarInfo company={rentCaompanyInfo} />}
+            <RentCarSnb price={priceInfo} />
           </div>
         </div>
-        <RentCarSnb price={priceInfo} />
-      </div>
-    </div>
+      ) : (
+        <AlertModal
+          closeModal={goPrev}
+          alertMessage={["경고", "차량 정보가 없습니다."]}
+        />
+      )}
+    </>
   );
 }
 
