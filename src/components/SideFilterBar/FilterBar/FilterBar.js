@@ -27,8 +27,10 @@ function FilterBar(props) {
   ];
 
   // Filter Bar disabled 속성 할당: dep-2
-  for (let i = 0; i < filterTypes.length; i++) {
-    filterTypes[i].disabled = filterDep2Disableds[i];
+  if (filterTypes) {
+    for (let i = 0; i < filterTypes.length; i++) {
+      filterTypes[i].disabled = filterDep2Disableds[i];
+    }
   }
 
   // Filter Bar 선택/선택해제 함수: dep-2
@@ -121,7 +123,15 @@ function FilterBar(props) {
       const checkQuery = makeQuery();
 
       if (location.pathname.split("/").includes("rentcar")) {
-        if (squery.length !== 0 || checkQuery.split("&").length > 7) {
+        let carTypeIndex = [];
+        const conditon = decodeURIComponent(location.search).split("&");
+
+        conditon.map((q, index) => {
+          if (q.includes("carType")) carTypeIndex.push(index);
+        });
+
+        const endIndex = carTypeIndex[carTypeIndex.length - 1];
+        if (squery.length !== 0 || checkQuery.split("&").length > endIndex) {
           let url = "";
           let plusUrl = "";
 
@@ -129,7 +139,7 @@ function FilterBar(props) {
           if (squery.length !== 0) plusUrl += `&${squery}`;
           if (pointQuery) plusUrl += `&${pointQuery}`;
 
-          url += location.pathname + plusUrl;
+          url += "/rentcar/filteredList" + plusUrl;
 
           navigate(url);
           setIsDone(false);
@@ -231,65 +241,68 @@ function FilterBar(props) {
         <Dep1 title={"필터"} getValue={getDep1Disabled} />
         {
           <ul className="dep2">
-            {filterTypes.map((filterInfo) => {
-              return (
-                <div key={filterInfo.id}>
-                  <li
-                    className="list"
-                    key={filterInfo.id}
-                    id={filterInfo.id}
-                    onClick={filterSelect}
-                  >
-                    <span
-                      className="dep2-type"
+            {filterTypes &&
+              filterTypes.map((filterInfo) => {
+                return (
+                  <div key={filterInfo.id}>
+                    <li
+                      className="list"
+                      key={filterInfo.id}
                       id={filterInfo.id}
                       onClick={filterSelect}
                     >
-                      {filterInfo.type}
-                    </span>
-                    <div
-                      className={
-                        filterInfo.disabled ? "right-icon-on" : "right-icon-off"
-                      }
-                      id={filterInfo.id}
-                      onClick={filterSelect}
-                    ></div>
-                  </li>
-                  {filterInfo.disabled && filterInfo.checkList && (
-                    <CheckList
-                      filterTypes={filterTypes}
-                      filterTypeId={filterInfo.id}
-                      filterType={filterInfo.type}
-                      checkList={filterInfo.checkList}
-                      isRefresh={isRefresh}
-                      getQueryList={getQueryList}
-                      isDone={isDone}
-                    />
-                  )}
-                  {filterInfo.disabled && filterInfo.slideList && (
-                    <SlideList
-                      filterTypeId={filterInfo.id}
-                      filterType={filterInfo.type}
-                      slideList={filterInfo.slideList}
-                      isRefresh={isRefresh}
-                      getSlideItem={getSlideItem}
-                      isDone={isDone}
-                    />
-                  )}
+                      <span
+                        className="dep2-type"
+                        id={filterInfo.id}
+                        onClick={filterSelect}
+                      >
+                        {filterInfo.type}
+                      </span>
+                      <div
+                        className={
+                          filterInfo.disabled
+                            ? "right-icon-on"
+                            : "right-icon-off"
+                        }
+                        id={filterInfo.id}
+                        onClick={filterSelect}
+                      ></div>
+                    </li>
+                    {filterInfo.disabled && filterInfo.checkList && (
+                      <CheckList
+                        filterTypes={filterTypes}
+                        filterTypeId={filterInfo.id}
+                        filterType={filterInfo.type}
+                        checkList={filterInfo.checkList}
+                        isRefresh={isRefresh}
+                        getQueryList={getQueryList}
+                        isDone={isDone}
+                      />
+                    )}
+                    {filterInfo.disabled && filterInfo.slideList && (
+                      <SlideList
+                        filterTypeId={filterInfo.id}
+                        filterType={filterInfo.type}
+                        slideList={filterInfo.slideList}
+                        isRefresh={isRefresh}
+                        getSlideItem={getSlideItem}
+                        isDone={isDone}
+                      />
+                    )}
 
-                  {filterInfo.disabled && filterInfo.pointList && (
-                    <PointList
-                      filterTypeId={filterInfo.id}
-                      filterType={filterInfo.type}
-                      slideList={filterInfo.slideList}
-                      isRefresh={isRefresh}
-                      getPointItem={getPointItem}
-                      isDone={isDone}
-                    />
-                  )}
-                </div>
-              );
-            })}
+                    {filterInfo.disabled && filterInfo.pointList && (
+                      <PointList
+                        filterTypeId={filterInfo.id}
+                        filterType={filterInfo.type}
+                        slideList={filterInfo.slideList}
+                        isRefresh={isRefresh}
+                        getPointItem={getPointItem}
+                        isDone={isDone}
+                      />
+                    )}
+                  </div>
+                );
+              })}
           </ul>
         }
       </div>

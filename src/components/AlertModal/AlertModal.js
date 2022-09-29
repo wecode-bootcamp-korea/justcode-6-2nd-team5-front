@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./AlertModal.scss";
 
 function AlertModal(props) {
@@ -18,13 +19,19 @@ function AlertModal(props) {
     setOnFocus(e.target.id);
   };
 
+  // 예약 버튼 누를 시, 경고창 띄우고 버튼 다시 한번 누르면 마이페이지로 이동
   const onSubmit = () => {
     isAlert ? setIsDone(true) : setIsAlert(true);
   };
 
   useEffect(() => {
-    if (isDone) closeModal(false);
+    if (isDone && isAlert) closeModal(false);
   }, [isDone]);
+
+  // const navigate = useNavigate();
+  // useEffect(() => {
+  //   if (isAlert) navigate("/mypage");
+  // }, [isAlert]);
 
   return (
     <div className="alert-modal-background">
@@ -61,7 +68,7 @@ function AlertModal(props) {
         )}
         {isAlert && <p className="alert-message">에약이 완료되었습니다.</p>}
         <button className="btn" onClick={onSubmit}>
-          확인
+          {!isAlert ? "예약하기" : "확인"}
         </button>
       </div>
     </div>

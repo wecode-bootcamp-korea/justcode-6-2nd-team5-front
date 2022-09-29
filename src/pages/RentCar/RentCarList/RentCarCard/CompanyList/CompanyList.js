@@ -9,10 +9,12 @@ function CompanyList(props) {
 
   //천단위 , 찍기 위한 함수
   const numberFormat = (num) => {
-    if (num >= 1000) {
-      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    } else {
-      return num.toString();
+    if (num) {
+      if (num >= 1000) {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      } else {
+        return num.toString();
+      }
     }
   };
 
@@ -105,7 +107,7 @@ function CompanyList(props) {
                     <span>{info.rentCarYear}</span>
                     <span>{info.driverAge}</span>
                     <span>{info.driverExperience}</span>
-                    <span>누적예약 {`${numberFormat(info.totalReserve)}`}</span>
+                    <span>누적예약 {`${numberFormat(info.totalReverve)}`}</span>
                   </div>
                 </div>
                 <div className="price-and-button-content">

@@ -28,21 +28,13 @@ function RentCarDetail() {
     const rentCompanyCarId = conditionList[8].split("=")[1];
 
     // 렌트카 정보 API
-    fetch(
-      "/data/rentcar/rentcarDetail.json"
-      // {
-      // method: "POST",
-      // headers: {
-      //   "Content-Type": "application/json",
-      // },
-      // body: JSON.stringify({
-      //   rentCompanyCarId: rentCompanyCarId,
-      // }),
-      // }
-      //
-    )
+    const url = `http://localhost:8000/rentcar/detail?rentCompanyCarId=${rentCompanyCarId}`;
+    fetch(url, {
+      method: "GET",
+    })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         // ImgCard props
         setCarInfo({
           carName: data[0].carName,

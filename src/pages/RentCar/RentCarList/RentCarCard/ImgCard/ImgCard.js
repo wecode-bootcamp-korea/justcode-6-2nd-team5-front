@@ -6,34 +6,25 @@ function ImgCard(props) {
   return (
     <>
       {carInfo && (
-        <div
-          className="car-img-content-wrap product-bar"
-          style={{
-            backgroundColor: styleChange ? "#fff" : "var(--color-white-gray)",
-          }}
-        >
+        <div className="car-img-content-wrap product-bar">
+          <div className="opacity-box"></div>
           <div className="content-wrap">
-            <span className="car-name title">{carInfo.carName}</span>
-            <div
-              className="car-img"
-              style={{
-                backgroundImage: `url("${carInfo.carPhoto}")`,
-              }}
-            ></div>
+            <img className="car-img" src={carInfo.carPhoto} alt="" />
             <div className="car-detail-info">
-              <div className="people-icon icon"></div>
-              <span>{carInfo.ridePeopleNumber}인승</span>
-            </div>
-            <div className="car-detail-info">
-              <div className="oil-icon icon"></div>
-              <span>{carInfo.oilType}</span>
-            </div>
-            {carInfo.rentcaryearinfo && (
-              <div className="car-detail-info">
-                <div className="calendar-icon icon"></div>
-                <span>{carInfo.rentcaryearinfo}</span>
+              <span className="car-name title">{carInfo.carName}</span>
+              <div className="detail">
+                <div className="people-icon icon"></div>
+                <span>{carInfo.ridePeopleNumber}인승</span>
+                <div className="oil-icon icon"></div>
+                <span>{carInfo.oilType}</span>
               </div>
-            )}
+              {carInfo.rentcaryearinfo && (
+                <div className="detail">
+                  <div className="calendar-icon icon"></div>
+                  <span>{carInfo.rentcaryearinfo}</span>
+                </div>
+              )}
+            </div>
           </div>
           {styleChange && (
             <p className="rentcar-detail-p-tag">
