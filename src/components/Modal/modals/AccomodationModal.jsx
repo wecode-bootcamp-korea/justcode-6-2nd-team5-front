@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 
+import { ModalContext } from "../../Context/ModalContext";
 import LocationCondition from "../detailSearch/LocationCondition";
 import { NormalSearchBox } from "../commonStyled";
 
@@ -9,9 +10,11 @@ import { MdOutlineLocationOn } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 
 const AccomodationModal = () => {
+  const { setOpen } = useContext(ModalContext);
   const navigate = useNavigate();
   const goToHotel = () => {
-    navigate("/hotelThema/list?address=서귀포·중문");
+    navigate("/hotelThema?지역검색=제주시내");
+    setOpen(false);
   };
   return (
     <>
