@@ -43,7 +43,7 @@ const StyledDiv = styled.div`
       text-align: center;
       width: 280px;
       border: none;
-      border-radius: 13psx;
+      border-radius: 13px;
       background-color: #e5effe;
       color: #65a1ff;
       font-size: 18px;

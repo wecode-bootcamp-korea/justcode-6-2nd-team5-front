@@ -39,10 +39,7 @@ function RestaurantDetail() {
         {data.length !== 0 && tabIndex === 2 && (
           <RestaurantMenu data={data.menu} />
         )}
-        {/* {data.length !== 0 && tabIndex === 3 && (
-          <RestaurantReview data={data.restaurant} />
-        )} */}
-        { tabIndex === 3 && (
+        {data.length !== 0 && tabIndex === 3 && (
           <RestaurantReview data={data.restaurant} />
         )}
       </div>

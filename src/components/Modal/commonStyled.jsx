@@ -54,8 +54,9 @@ export const MenuBox = styled.div`
   position: relative;
   width: ${(props) => (props.primary ? "1020px" : "80%")};
   margin: 0 auto;
-  padding-right: ${(props) => (props.primary ? "80px" : "100px" )};
+  padding-right: ${(props) => (props.primary ? "80px" : "100px")};
   padding-bottom: 20px;
+  padding-top: ${(props) => (props.primary ? "0px" : "20px")};
 
   .border {
     border: "1px solid #63a1ff";
@@ -139,6 +140,7 @@ export const SearchBtn = styled.button`
 export const NormalSearchBox = styled.div`
   display: flex;
   justify-content: center;
+  padding-top: ${(props) => (props.normal ? "20px" : "0px")};
   padding-bottom: 20px;
   font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
     Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic",

@@ -55,10 +55,10 @@ const Nav = () => {
           <MenuTab className={menu.pathname.includes("/cafepass") && "color"}>
             <Link to="/cafepass">카페패스</Link>
           </MenuTab>
-          <MenuTab className={menu.pathname === "/restaurant" && "color"}>
+          <MenuTab className={menu.pathname.includes("/restaurant") && "color"}>
             <Link to="/restaurant">맛집</Link>
           </MenuTab>
-          <MenuTab className={menu.pathname === "/esg" && "color"}>
+          <MenuTab className={menu.pathname.includes("/esg") && "color"}>
             <Link to="/esg">ESG</Link>
           </MenuTab>
           <span onClick={modalOpen}>

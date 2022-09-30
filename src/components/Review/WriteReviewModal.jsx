@@ -334,7 +334,7 @@ const Contents = styled.div`
       }
 
       .photo-upload-btn {
-        /* display: none; */
+        display: none;
       }
     }
 
