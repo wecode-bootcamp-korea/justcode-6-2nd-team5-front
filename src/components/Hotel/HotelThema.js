@@ -33,16 +33,16 @@ function HotelThema() {
       .then((data) => setData(data.lodgmentList));
   }, [location, offset]);
 
-  // useEffect(() => {
-  //   // fetch("/data/hotel/hotelThema.json", {
-  //   fetch("http://localhost:8000/lodgment/list", {
-  //     method: "GET",
-  //   })
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setData(data.lodgmentList);
-  //     });
-  // }, []);
+  useEffect(() => {
+    // fetch("/data/hotel/hotelThema.json", {
+    fetch("http://localhost:8000/lodgment/list", {
+      method: "GET",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data.lodgmentList);
+      });
+  }, []);
 
   // Side Filter Bar props
   // Sort Order Bar mockdata

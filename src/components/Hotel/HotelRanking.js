@@ -28,7 +28,7 @@ function HotelRanking() {
   }, []);
 
   return (
-    <div className="content-wrapper">
+    <div className="content-wrapper" style={{ padding: "3% 0px" }}>
       <h1 className="title">
         이런 숙소는 어떠세요? <FaHotel />
       </h1>
