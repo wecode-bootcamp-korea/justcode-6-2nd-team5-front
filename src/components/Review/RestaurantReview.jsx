@@ -17,23 +17,32 @@ const RestaurantReview = () => {
   const [reviewData, setReviewData] = useState([]);
   const [isChecked, setChecked] = useState(false);
 
+  console.log(render);
   const handleChecked = (e) => {
     setChecked((current) => !current);
     console.log(isChecked);
   };
 
+  // useEffect(() => {
+  //   isChecked
+  //     ? fetch(`http://localhost:8000/restaurant/review?id=${id}`)
+  //         .then((res) => res.json())
+  //         .then((json) => {
+  //           setReviewData(json);
+  //         })
+  //     : fetch(`http://localhost:8000/restaurant/review?id=${id}&category=photo`)
+  //         .then((res) => res.json())
+  //         .then((json) => {
+  //           setReviewData(json);
+  //         });
+  // }, [render]);
+
   useEffect(() => {
-    isChecked
-      ? fetch(`http://localhost:8000/restaurant/review?id=${id}`)
-          .then((res) => res.json())
-          .then((json) => {
-            setReviewData(json);
-          })
-      : fetch(`http://localhost:8000/restaurant/review?id=${id}&category=photo`)
-          .then((res) => res.json())
-          .then((json) => {
-            setReviewData(json);
-          });
+    fetch(`http://localhost:8000/restaurant/review?id=${id}`)
+      .then((res) => res.json())
+      .then((json) => {
+        setReviewData(json);
+      });
   }, [render]);
 
   const {

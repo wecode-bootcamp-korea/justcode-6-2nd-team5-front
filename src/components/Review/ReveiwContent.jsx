@@ -7,11 +7,21 @@ import testPhoto from "../../assets/images/test-photo.jpeg";
 
 const Content = ({ content }) => {
   // console.log(content);
-  const { userName, created_at, review, photo } = content;
+  const { userName, created_at, review, photo, reviewPoint } = content;
   const [photoOpen, setPhotoOpen] = useState(false);
   const handlePhotoOpen = () => {
     setPhotoOpen(true);
   };
+
+  function starRate(rating) {
+    const number = Math.round(rating);
+    if (number === 5) return "★★★★★";
+    if (number === 4) return "★★★★☆";
+    if (number === 3) return "★★★☆☆";
+    if (number === 2) return "★★☆☆☆";
+    if (number === 1) return "★☆☆☆☆";
+    else return "☆☆☆☆☆";
+  }
 
   // console.log(userName);
   const replaceStr = (e) => {
@@ -29,7 +39,7 @@ const Content = ({ content }) => {
             <span className="user-id">{replaceStr(userName)}</span>
           </div>
           <div className="rate-date">
-            <span className="comment-rate">★☆☆☆☆</span>
+            <span className="comment-rate">{starRate(reviewPoint)}</span>
             <span className="date">{created_at}</span>
           </div>
           <p className="content">{review}</p>

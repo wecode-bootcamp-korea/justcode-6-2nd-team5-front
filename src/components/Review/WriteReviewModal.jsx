@@ -3,15 +3,17 @@ import ReactDOM from "react-dom";
 import styled from "styled-components";
 import { Overlay } from "../../components/Modal/Modal";
 import { RiErrorWarningLine } from "react-icons/ri";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { ImStarFull } from "react-icons/im";
 import salmon from "../../assets/images/salmon.jpg";
 
 const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
   const submitRef = useRef();
-  const location = useLocation();
-  const url = new URLSearchParams(location.search);
-  const restaurantId = Number(url.get("id"));
+  const params = useParams();
+  const restaurantId = params.id;
+  // const url = new URLSearchParams(location.search);
+  // const restaurantId = Number(url.get("id"));
+  console.log(restaurantId);
 
   useEffect(() => {
     const $body = document.querySelector("body");
@@ -21,7 +23,6 @@ const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
 
   const handleClose = () => {
     setOpen(false);
-    setRender((current) => !current);
   };
 
   const [tastePoint, setTastePoint] = useState(0);
@@ -31,15 +32,20 @@ const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
   const [photo, setPhoto] = useState();
   const [token, setToken] = useState(localStorage.getItem("token"));
   const [value, setValue] = useState("");
+  const [photoValue, setPhotoValue] = useState(true);
 
   const starArr = [1, 2, 3, 4, 5];
 
+  console.log(photoValue);
   const handleInput = (e) => {
     const value = e.target.value;
-    if (e.target.id === "review") setReview(value);
+    setReview(value);
   };
 
-  const onClick = (e) => console.log(e);
+  // const handlePhotoValue = () => {
+  //   setPhotoValue("")
+  // }
+
   const onSubmit = (e) => {
     e.preventDefault();
     if (review.length < 15) {
@@ -59,11 +65,6 @@ const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
       photo: "https://i.esdrop.com/d/f/toMKOprgCM/TGdhv0dAQB.jpg",
     };
 
-    console.log(body);
-    setReview("");
-    setValue("");
-    setOpen(false);
-
     fetch("http://localhost:8000/restaurant/review", {
       method: "POST",
       headers: {
@@ -73,8 +74,15 @@ const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
     })
       .then((res) => res.json())
       .then((json) => {
+        setRender((current) => !current);
         alert("리뷰 작성 완료!");
       });
+
+    console.log(body);
+    setReview("");
+    setValue("");
+    setOpen(false);
+    setPhotoValue((current) => !current);
   };
 
   return (
@@ -157,7 +165,10 @@ const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
                 className="photo-upload-btn"
                 id="btn"
                 type="file"
-                value={value}
+                onChange={(e) => {
+                  this.onFileChange(e);
+                  e.target.value = "";
+                }}
               />
             </div>
             <div className="write-guide">

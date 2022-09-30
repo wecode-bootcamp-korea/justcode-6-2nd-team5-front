@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
 import styled from "styled-components";
@@ -9,11 +9,25 @@ import Modal from "../Modal/Modal";
 
 const FixNav = () => {
   const { isOpen, setOpen, setClickedIcon } = useContext(ModalContext);
+  const [token, setToken] = useState(localStorage.getItem("token"));
 
+  const navigate = useNavigate();
+
+  const userLogin = () => {
+    if (token === "") navigate("/login");
+    else if (token) navigate("/signup");
+  };
+
+  const userShop = () => {
+    if (token === "") alert("로그인 후 접근해주세요.");
+    else if (token) {
+      navigate("/mypage");
+    }
+  };
   const modalOpen = () => {
     setOpen(true);
   };
-
+  // console.log(token);
   return (
     <FixNavContainer>
       <ul className="menu-box">
@@ -41,14 +55,12 @@ const FixNav = () => {
         <BiSearch onClick={modalOpen} className="search-icon" />
       </ul>
       <div className="info-box">
-        <Link to="/login">
-          <FixInfoTab>
-            <BiLogIn color="rgba(255, 255, 255, 0.6)" />
-            <span>로그인</span>
-          </FixInfoTab>
-        </Link>
+        <FixInfoTab onClick={userLogin}>
+          <BiLogIn color="rgba(255, 255, 255, 0.6)" />
+          <span>{!token ? "로그인" : "로그아웃"}</span>
+        </FixInfoTab>
         <Link to="/mypage">
-          <FixInfoTab>
+          <FixInfoTab onClick={userShop}>
             <HiOutlineShoppingBag color="rgba(255, 255, 255, 0.6)" />
             <span>주문조회</span>
           </FixInfoTab>
