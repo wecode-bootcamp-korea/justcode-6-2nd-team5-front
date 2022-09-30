@@ -28,8 +28,12 @@ function HotelRanking() {
   }, []);
 
   return (
-    <div className="content-wrapper">
-      <h1 className="title">이런 숙소는 어떠세요?</h1>
+<div className="content-wrapper" style={{ padding: "3% 0px" }}>
+    <div className="content-wrapper ranking-padding">
+      <h1 className="title">
+        이런 숙소는 어떠세요? <FaHotel />
+      </h1>
+
       <Swiper
         spaceBetween={20}
         slidesPerView={3}
