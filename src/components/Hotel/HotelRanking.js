@@ -29,9 +29,7 @@ function HotelRanking() {
 
   return (
     <div className="content-wrapper">
-      <h1 className="title">
-        이런 숙소는 어떠세요? <FaHotel />
-      </h1>
+      <h1 className="title">이런 숙소는 어떠세요?</h1>
       <Swiper
         spaceBetween={20}
         slidesPerView={3}

@@ -5,6 +5,7 @@ import Car from "../../components/Car/Car";
 import Promotion from "../../components/Promotion/Promotion";
 import Lodge from "../../components/Lodge/Lodge";
 import Restaurant from "../../components/Restaurant/Restaurant";
+import HotelRanking from "../../components/Hotel/HotelRanking";
 
 function Main() {
   return (
@@ -13,7 +14,7 @@ function Main() {
       <Banner />
       <Car />
       <Promotion />
-      <Lodge />
+      <HotelRanking />
       <Restaurant />
     </>
   );
