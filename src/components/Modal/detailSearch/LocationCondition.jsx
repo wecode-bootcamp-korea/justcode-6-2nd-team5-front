@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { ConditionSelector, SelectBtn } from "../commonStyled";
+import HotelLocation from "./ common/HotelLocation";
+import { ModalContext } from "../../Context/ModalContext";
+import { GrPowerReset } from "react-icons/gr";
 
 const LocationCondition = () => {
-  const [location, setLocation] = useState("");
+  const { location, setLocation } = useContext(ModalContext);
+  // const [location, setLocation] = useState("");
   const colorChange = (e) => {
     setLocation(Number(e.target.id));
   };
@@ -23,7 +27,13 @@ const LocationCondition = () => {
         <br /> 선택해주세요<span style={{ color: "red" }}> .</span>
       </h2>
       <div className="box">
-        <h5>지역 검색</h5>
+        <h5>
+          지역 검색
+          <GrPowerReset
+            onClick={() => setLocation("")}
+            style={{ paddingTop: "3px", cursor: "pointer" }}
+          />
+        </h5>
         {locationArr.map((item) => {
           return (
             <SelectBtn
@@ -39,6 +49,7 @@ const LocationCondition = () => {
       </div>
       <div className="box">
         <h5>세부 검색</h5>
+        <HotelLocation />
       </div>
     </ConditionSelector>
   );
