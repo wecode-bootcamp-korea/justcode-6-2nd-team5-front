@@ -54,8 +54,8 @@ function Snb() {
 
   const navigate = useNavigate();
 
-  const openMenu = (targetClassName) => {
-    targetClassName = "active";
+  const goToMyPage = () => {
+    navigate("/mypage");
   };
 
   const nothing = () => {
@@ -82,7 +82,9 @@ function Snb() {
 
   return (
     <div className="mypage-snb-wrap">
-      <h2 className="mypage-snb-title">마이페이지</h2>
+      <h2 className="mypage-snb-title" onClick={goToMyPage}>
+        마이페이지
+      </h2>
       <nav className="mypage-snb-list">
         <ul className="mypage-snb-list-dep1">
           {snbList.map((list, index) => {

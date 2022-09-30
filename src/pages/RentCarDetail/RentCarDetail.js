@@ -38,7 +38,6 @@ function RentCarDetail() {
   useEffect(() => {
     // 쿼리 변수들 리스트에 담음
     const conditionList = decodeURIComponent(location.search).split("&");
-    console.log(conditionList[0].replace(/^./, "").split("=")[1].split("(")[0]);
 
     // 쿼리변수에서 rentCompanyCarId 값 추출
     const rentCompanyCarId = conditionList.pop().split("=")[1];
@@ -56,8 +55,10 @@ function RentCarDetail() {
       .then((res) => res.json())
       .then((data) => {
         if (data === "없는 차량입니다") {
+          console.log(data);
           // 차량 없을시 모달창
           setIsNone(false);
+          setReservedInfo(false);
         } else {
           // 차량 있을 시 차량 정보 UI
           setIsNone(true);
@@ -130,22 +131,22 @@ function RentCarDetail() {
                 </div>
                 {tabIndex === 1 && <RentCarRule />}
                 {tabIndex === 2 && <RenterCarInsurance insurance={insurance} />}
-                {/* {tabIndex === 3 && <RestaurantReview />} */}
+                {tabIndex === 3 && <RentcarReview />}
                 {tabIndex === 4 && <RentCarInfo company={rentCaompanyInfo} />}
               </div>
             </div>
             <RentCarSnb reservedInfo={reservedInfo} />
-            {tabIndex === 1 && <RentCarRule />}
-            {tabIndex === 2 && <RenterCarInsurance insurance={insurance} />}
-            {tabIndex === 3 && <RentcarReview />}
-            {tabIndex === 4 && <RentCarInfo company={rentCaompanyInfo} />}
           </div>
         </div>
       )}
       {!isNone && !reservedInfo && (
         <AlertModal
           closeModal={goPrev}
-          alertMessage={["경고", "차량 정보가 없습니다."]}
+          alertMessage={[
+            "경고",
+            "차량 정보가 없습니다.",
+            "이전 페이지로 돌아가기",
+          ]}
         />
       )}
     </>

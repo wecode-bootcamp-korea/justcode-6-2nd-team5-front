@@ -8,7 +8,7 @@ function Plan(props) {
 
   // 나의 예약 내역으로 이동: 렌터카
   const goMyReservation = (e) => {
-    navigate(`/myPage/reservation/rentcar/${e.target.id}`);
+    navigate(`/reservation/rentcar/${e.target.id}`);
   };
 
   return (
