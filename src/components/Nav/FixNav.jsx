@@ -24,7 +24,7 @@ const FixNav = () => {
           <Link to="/preparing">항공</Link>
         </FixMenuTab>
         <FixMenuTab>
-          <Link to="/accomodation">숙박</Link>
+          <Link to="/hotel">숙박</Link>
         </FixMenuTab>
         <FixMenuTab>
           <Link to="/preparing">트립</Link>

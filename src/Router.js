@@ -36,7 +36,6 @@ function Router() {
           <Route path="/esg" element={<Esg />} />
           <Route path="/rentcar" element={<RenterCar />} />
           <Route path="/accomodation" element={<Accomodation />} />
-          <Route path="/preparing" element={<Preparing />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/rentcar/:id" element={<RentCar />} />
           <Route path="/rentcarDetail/:id" element={<RentCarDetail />} />
@@ -52,6 +51,10 @@ function Router() {
           <Route path="/hotel" element={<Hotel />} />
           <Route path="/hotelThema" element={<HotelThema />} />
           <Route path="/hotelDetail" element={<HotelDetail />} />
+
+          <Route path="/flight" element={<Preparing />} />
+          <Route path="/cafepass" element={<Preparing />} />
+          <Route path="/trip" element={<Preparing />} />
         </Routes>
         <FooterTop />
         <FooterBottom />

@@ -5,6 +5,7 @@ import { Overlay } from "../../components/Modal/Modal";
 import { RiErrorWarningLine } from "react-icons/ri";
 import { useLocation } from "react-router-dom";
 import { ImStarFull } from "react-icons/im";
+import salmon from "../../assets/images/salmon.jpg";
 
 const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
   const submitRef = useRef();
@@ -29,18 +30,25 @@ const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
   const [review, setReview] = useState("");
   const [photo, setPhoto] = useState();
   const [token, setToken] = useState(localStorage.getItem("token"));
+  const [value, setValue] = useState("");
+
+  const starArr = [1, 2, 3, 4, 5];
 
   const handleInput = (e) => {
     const value = e.target.value;
     if (e.target.id === "review") setReview(value);
   };
 
+  const onClick = (e) => console.log(e);
   const onSubmit = (e) => {
     e.preventDefault();
-    // if (rating === "") {
-    //   alert("Please rate the product.");
-    //   return;
-    // }
+    if (review.length < 15) {
+      alert("리뷰를 15글자 이상 작성해주세요.");
+      return;
+    } else if (tastePoint === 0 || moodPoint === 0 || servicePoint === 0) {
+      alert("별점을 모두 선택해주세요.");
+      return;
+    }
     const body = {
       token,
       restaurantId,
@@ -48,10 +56,12 @@ const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
       moodPoint,
       servicePoint,
       review,
+      photo: "https://i.esdrop.com/d/f/toMKOprgCM/TGdhv0dAQB.jpg",
     };
 
     console.log(body);
     setReview("");
+    setValue("");
     setOpen(false);
 
     fetch("http://localhost:8000/restaurant/review", {
@@ -88,7 +98,7 @@ const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
               <li className="flavor">
                 <span>맛</span>
                 <Stars>
-                  {[...Array(5).keys()].map((num) => (
+                  {starArr.map((num) => (
                     <ImStarFull //
                       key={num}
                       onClick={() => setTastePoint(num)}
@@ -101,7 +111,7 @@ const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
               <li className="mood">
                 <span>분위기</span>
                 <Stars>
-                  {[...Array(5).keys()].map((num) => (
+                  {starArr.map((num) => (
                     <ImStarFull //
                       key={num}
                       onClick={() => setMoodPoint(num)}
@@ -114,7 +124,7 @@ const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
               <li className="service">
                 <span>서비스</span>
                 <Stars>
-                  {[...Array(5).keys()].map((num) => (
+                  {starArr.map((num) => (
                     <ImStarFull //
                       key={num}
                       onClick={() => setServicePoint(num)}
@@ -147,7 +157,7 @@ const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
                 className="photo-upload-btn"
                 id="btn"
                 type="file"
-                accept="image/*"
+                value={value}
               />
             </div>
             <div className="write-guide">
@@ -324,7 +334,7 @@ const Contents = styled.div`
       }
 
       .photo-upload-btn {
-        display: none;
+        /* display: none; */
       }
     }
 

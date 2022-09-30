@@ -15,13 +15,25 @@ const RestaurantReview = () => {
   const [isOpen, setOpen] = useState(false);
   const [render, setRender] = useState(true);
   const [reviewData, setReviewData] = useState([]);
+  const [isChecked, setChecked] = useState(false);
+
+  const handleChecked = (e) => {
+    setChecked((current) => !current);
+    console.log(isChecked);
+  };
 
   useEffect(() => {
-    fetch(`http://localhost:8000/restaurant/review?id=${id}`)
-      .then((res) => res.json())
-      .then((json) => {
-        setReviewData(json);
-      });
+    isChecked
+      ? fetch(`http://localhost:8000/restaurant/review?id=${id}`)
+          .then((res) => res.json())
+          .then((json) => {
+            setReviewData(json);
+          })
+      : fetch(`http://localhost:8000/restaurant/review?id=${id}&category=photo`)
+          .then((res) => res.json())
+          .then((json) => {
+            setReviewData(json);
+          });
   }, [render]);
 
   const {
@@ -83,7 +95,14 @@ const RestaurantReview = () => {
               포토리뷰(
               {restaurantReview !== undefined && restaurantReview.length})
             </span>
-            <span className="toggle-btn">토글</span>
+            <span className="toggle-btn">
+              <input
+                onClick={handleChecked}
+                type="checkbox"
+                name="photo-review"
+                value="on"
+              />
+            </span>
           </div>
         </div>
         {restaurantReview !== undefined &&
