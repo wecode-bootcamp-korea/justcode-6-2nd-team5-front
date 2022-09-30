@@ -28,33 +28,34 @@ function HotelRanking() {
   }, []);
 
   return (
-<div className="content-wrapper" style={{ padding: "3% 0px" }}>
-    <div className="content-wrapper ranking-padding">
-      <h1 className="title">
-        이런 숙소는 어떠세요? <FaHotel />
-      </h1>
+    <div className="content-wrapper" style={{ padding: "3% 0px" }}>
+      <div className="content-wrapper ranking-padding">
+        <h1 className="title">
+          이런 숙소는 어떠세요? <FaHotel />
+        </h1>
 
-      <Swiper
-        spaceBetween={20}
-        slidesPerView={3}
-        navigation
-        pagination={{ clickable: true }}
-      >
-        {data.map((data) => (
-          <SwiperSlide key={data.id}>
-            <div className="lodge-wrapper" onClick={HotelRankingClick}>
-              <div>
-                <img src={data.img} alt="image" />
+        <Swiper
+          spaceBetween={20}
+          slidesPerView={3}
+          navigation
+          pagination={{ clickable: true }}
+        >
+          {data.map((data) => (
+            <SwiperSlide key={data.id}>
+              <div className="lodge-wrapper" onClick={HotelRankingClick}>
+                <div>
+                  <img src={data.img} alt="image" />
+                </div>
+                <div className="lodge-info-wrapper">
+                  <p>{data.title}</p>
+                  <p>{data.tag}</p>
+                  <p>{data.info}</p>
+                </div>
               </div>
-              <div className="lodge-info-wrapper">
-                <p>{data.title}</p>
-                <p>{data.tag}</p>
-                <p>{data.info}</p>
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </div>
   );
 }
