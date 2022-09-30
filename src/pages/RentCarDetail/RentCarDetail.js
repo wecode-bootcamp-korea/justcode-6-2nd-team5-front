@@ -55,8 +55,10 @@ function RentCarDetail() {
       .then((res) => res.json())
       .then((data) => {
         if (data === "없는 차량입니다") {
+          console.log(data);
           // 차량 없을시 모달창
           setIsNone(false);
+          setReservedInfo(false);
         } else {
           // 차량 있을 시 차량 정보 UI
           setIsNone(true);
