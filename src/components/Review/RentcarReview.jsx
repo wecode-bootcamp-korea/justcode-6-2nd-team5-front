@@ -58,6 +58,8 @@ const RentcarReview = () => {
     reviewList,
   } = reviewData[0];
 
+ 
+
   // console.log(carName);
   const starView = reviewPoint * 36;
 

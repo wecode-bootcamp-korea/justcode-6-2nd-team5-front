@@ -138,6 +138,7 @@ export const SearchBtn = styled.button`
 
 //모달 내부 가짜 검색창 스타일 노멀 버전
 export const NormalSearchBox = styled.div`
+  background-color: #f8f8f8;
   display: flex;
   justify-content: center;
   padding-top: ${(props) => (props.normal ? "20px" : "0px")};

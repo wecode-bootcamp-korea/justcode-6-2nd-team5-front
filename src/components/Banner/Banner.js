@@ -12,7 +12,7 @@ function Banner() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("/data/bannerInfo.json")
+    fetch("/data/common/bannerInfo.json")
       .then((res) => res.json())
       .then((data) => {
         setData(data.bannerInfo);

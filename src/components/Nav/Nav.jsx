@@ -15,12 +15,30 @@ import { ModalContext } from "../Context/ModalContext";
 const Nav = () => {
   const { isOpen, setOpen, setClickedIcon } = useContext(ModalContext);
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [token, setToken] = useState(localStorage.getItem("token"));
+
+  const navigate = useNavigate();
 
   const menu = useLocation();
 
   const modalOpen = () => {
     setOpen(true);
     setClickedIcon(1);
+  };
+
+  const userLogin = () => {
+    if (token === "") navigate("/login");
+    else if (token) {
+      localStorage.removeItem("token");
+      setToken("");
+    }
+  };
+
+  const userShop = () => {
+    if (token === "") alert("로그인 후 접근해주세요.");
+    else if (token) {
+      navigate("/mypage");
+    }
   };
 
   const updateScroll = () => {
@@ -67,12 +85,12 @@ const Nav = () => {
         </ul>
         <div className="info-box">
           <Link to="/login">
-            <InfoTab>
+            <InfoTab onClick={userLogin}>
               <BiLogIn color="gray" />
-              로그인
+              {!token ? "로그인" : "로그아웃"}
             </InfoTab>
           </Link>
-          <InfoTab>
+          <InfoTab onClick={userShop}>
             <HiOutlineShoppingBag color="gray" />
             주문조회
           </InfoTab>
