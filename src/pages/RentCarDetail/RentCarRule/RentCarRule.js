@@ -6,7 +6,7 @@ function RentCarRule() {
       <div className="red-box">
         <p>주의하세요!</p>
         <p>
-          렌트카의 추가 요금 및 대여 불가한 항목에 대해 꼼꼼히 확안하시기
+          렌트카의 추가 요금 및 대여 불가한 항목에 대해 꼼꼼히 확인하시기
           바랍니다.
         </p>
       </div>

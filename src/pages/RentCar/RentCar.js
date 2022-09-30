@@ -54,23 +54,25 @@ function RentCar() {
     })
       .then((res) => res.json())
       .then((data) => {
-        // SideFilterBar props
-        setFilterTypes(data[0].filterTypes);
+        if (!(data == "없는 차량입니다")) {
+          // SideFilterBar props
+          setFilterTypes(data[0].filterTypes);
 
-        // RentCarList props
-        if (data[0].filterTypes.length) {
-          setRentCarTags(data[0].filterTypes[2].checkList);
+          // RentCarList props
+          if (data[0].filterTypes.length) {
+            setRentCarTags(data[0].filterTypes[2].checkList);
+          }
+
+          // RentCarList props
+          setRentCarList(data[0].carList);
+
+          // TotalBox props
+          let count = 0;
+          data[0].carList.map((car) => {
+            count += car.rentCarCompanyList.length;
+          });
+          setTotalAmount(count);
         }
-
-        // RentCarList props
-        setRentCarList(data[0].carList);
-
-        // TotalBox props
-        let count = 0;
-        data[0].carList.map((car) => {
-          count += car.rentCarCompanyList.length;
-        });
-        setTotalAmount(count);
       });
   }, [location]);
 

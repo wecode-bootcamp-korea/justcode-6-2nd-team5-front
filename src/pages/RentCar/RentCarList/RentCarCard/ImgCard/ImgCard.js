@@ -13,10 +13,18 @@ function ImgCard(props) {
             <div className="car-detail-info">
               <span className="car-name title">{carInfo.carName}</span>
               <div className="detail">
-                <div className="people-icon icon"></div>
-                <span>{carInfo.ridePeopleNumber}인승</span>
-                <div className="oil-icon icon"></div>
-                <span>{carInfo.oilType}</span>
+                {carInfo.ridePeopleNumber && (
+                  <>
+                    <div className="people-icon icon"></div>
+                    <span>{carInfo.ridePeopleNumber}인승</span>
+                  </>
+                )}
+                {carInfo.oilType && (
+                  <p>
+                    <div className="oil-icon icon"></div>
+                    <span>{carInfo.oilType}</span>
+                  </p>
+                )}
               </div>
               {carInfo.rentcaryearinfo && (
                 <div className="detail">

@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AlertModal from "../../../components/AlertModal/AlertModal";
 import "./RentCarSnb.scss";
 
 function RentCarSnb(props) {
-  const { price, setNavActive } = props;
+  const { reservedInfo } = props;
+  const navigate = useNavigate();
 
   // 네브 스크롤시 따라오게 하기
   const [scrollY, setScrollY] = useState(0);
@@ -41,8 +43,27 @@ function RentCarSnb(props) {
   // 규칙 및 유의사항 모달창 닫는 함수
   const [isModal, setIsModal] = useState(false);
 
-  const closeModal = () => {
-    setIsModal(false);
+  const closeModal = (isDone) => {
+    if (isDone) {
+      console.log(reservedInfo);
+      // 예약 정보 POST
+      fetch("http://localhost:8000/rentcar/reservation", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          token:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY2NDQ4MDY0MCwiZXhwIjoxNjY0NTY3MDQwfQ.1tC6j_pceSGxijKyGOmAN_I9QXWEhbaEwT9BU3nI9-g",
+        },
+        body: JSON.stringify(reservedInfo),
+      })
+        .then((res) => res.json())
+        .then(() => {
+          // 예약 완료 후 마이페이지로 이동
+          navigate("/mypage");
+        });
+    } else {
+      setIsModal(false);
+    }
   };
 
   const openeModal = () => {
@@ -56,7 +77,9 @@ function RentCarSnb(props) {
           <p className="main-title">선택한 요금제 정보</p>
           <p className="title">
             대여요금(할인가)
-            <span className="small-price">{numberFormat(price)}원</span>
+            <span className="small-price">
+              {/* {numberFormat(reservedInfo.price)}원 */}
+            </span>
           </p>
 
           <p>완전자차 포함</p>
@@ -68,7 +91,9 @@ function RentCarSnb(props) {
         <div className="price-box">
           <p className="title">
             최종 결제금액
-            <span className="big-price">{numberFormat(price)}원</span>
+            <span className="big-price">
+              {/* {numberFormat(reservedInfo.price)}원 */}
+            </span>
           </p>
         </div>
         <div className="point-box">
