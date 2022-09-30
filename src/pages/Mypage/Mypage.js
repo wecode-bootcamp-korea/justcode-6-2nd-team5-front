@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Mypage.scss";
 import GrayBox from "./GrayBox/GrayBox";
 import MyPlan from "./MyPlan/MyPlan";
@@ -9,8 +9,11 @@ import ServiceList from "./ServiceList/ServiceList";
 import bookMarkIcon from "../../assets/images/bookmark-icon.png";
 import reviewIcon from "../../assets/images/review-icon.png";
 import couponIcon from "../../assets/images/coupon-icon.png";
+import { useLocation } from "react-router-dom";
 
 function Mypage() {
+  const location = useLocation();
+
   // GrayBox Component Mockdata
   const GrayBoxContent = [
     {
@@ -24,25 +27,6 @@ function Mypage() {
     {
       iconUrl: couponIcon,
       content: "보유쿠폰",
-    },
-  ];
-
-  // Myplan Component Mockdata
-  const MyplanContent = [
-    {
-      id: 0,
-      title: "렌터카",
-      content: "",
-    },
-    {
-      id: 1,
-      title: "숙박",
-      content: "",
-    },
-    {
-      id: 2,
-      title: "맛집",
-      content: "",
     },
   ];
 
@@ -63,15 +47,38 @@ function Mypage() {
     "결제수단관리",
   ];
 
+  const [userInfo, setUserInfo] = useState({});
+  const [rentCarReserveinfo, setRentCarReserveinfo] = useState([]);
+
+  useEffect(() => {
+    const url = "http://localhost:8000/rentcar/myreservation";
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        token:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY2NDQ4MDY0MCwiZXhwIjoxNjY0NTY3MDQwfQ.1tC6j_pceSGxijKyGOmAN_I9QXWEhbaEwT9BU3nI9-g",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // Profile props
+        setUserInfo(data[0].userinfo);
+
+        // MyPlan props: rentCar
+        setRentCarReserveinfo(data);
+      });
+  }, []);
+
   return (
     <div className="mypage-container">
       <Snb />
       <div className="mypage-content">
-        <Profile />
+        <Profile user={userInfo} />
         <PointBox />
         <GrayBox GrayBoxContent={GrayBoxContent} />
         <p className="mypage-content-title">나의 여행일정</p>
-        <MyPlan myPlan={MyplanContent} />
+        <MyPlan rentCar={rentCarReserveinfo} user={userInfo} />
         <p className="mypage-content-title">서비스 이용안내</p>
         <ServiceList content={"guide"} btns={serviceBtns1} btnwidth={"33.3%"} />
         <p className="mypage-content-title">고객센터</p>

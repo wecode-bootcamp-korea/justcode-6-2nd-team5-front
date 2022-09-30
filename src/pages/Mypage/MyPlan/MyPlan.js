@@ -1,35 +1,58 @@
 import "./MyPlan.scss";
+import NoPlan from "./NoPlan/NoPlan";
+import Plan from "./Plan/Plan";
 
 function MyPlan(props) {
-  const { myPlan } = props;
+  const { user, rentCar, hotel, restaurant } = props;
 
   return (
     <div className="mypage-myplan-wrap">
-      <div className="content">
+      {/* rentCar */}
+      <div className={rentCar ? "content-on" : "content-off"}>
         <ul>
-          {myPlan &&
-            myPlan.map((plan, index) => {
-              return (
-                <li key={index}>
-                  <div className="plan-type">
-                    <p>{plan.title}</p>
-                    <a href="">지난 여행보기 &gt;</a>
-                  </div>
-                  <div className="plan-detail-wrap">
-                    <div className="plan-detail">
-                      <div className="plus-btn">+</div>
-                      <div className="text-wrap">
-                        <p>이보다 저렴한 항공권은 못찾으실걸요?</p>
-                        <p>
-                          왕복 <span>6,000원</span> 할인 + 수수료
-                          <span>2,000원</span> 면제
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-              );
-            })}
+          <li>
+            <div className="plan-type">
+              <p>렌터카</p>
+              <a href="">지난 여행보기 &gt;</a>
+            </div>
+            {rentCar ? (
+              <Plan type={"rentCar"} info={rentCar} />
+            ) : (
+              <NoPlan type={"rentCar"} user={user.username} />
+            )}
+          </li>
+        </ul>
+      </div>
+      {/* hotel */}
+      <div className={hotel ? "content-on" : "content-off"}>
+        <ul>
+          <li>
+            <div className="plan-type">
+              <p>숙박</p>
+              <a href="">지난 여행보기 &gt;</a>
+            </div>
+            {hotel ? (
+              <Plan type={"hotel"} info={hotel} />
+            ) : (
+              <NoPlan type={"hotel"} user={user.username} />
+            )}
+          </li>
+        </ul>
+      </div>
+      {/* restaurant */}
+      <div className={restaurant ? "content-on" : "content-off"}>
+        <ul>
+          <li>
+            <div className="plan-type">
+              <p>맛집</p>
+              <a href="">지난 여행보기 &gt;</a>
+            </div>
+            {restaurant ? (
+              <Plan type={"restaurant"} info={restaurant} />
+            ) : (
+              <NoPlan type={"restaurant"} />
+            )}
+          </li>
         </ul>
       </div>
     </div>
