@@ -1,0 +1,50 @@
+.restaurant-detail-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 5%;
+  padding: 5% 10%;
+  background-color: white;
+
+  img {
+    width: 100%;
+    border-radius: 16px;
+  }
+
+  h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1.4;
+  }
+
+  span {
+    font-weight: 400;
+  }
+
+  .detail-info {
+    margin-top: 10%;
+
+    .hash-tag {
+      font-weight: 700;
+    }
+
+    .intro {
+      margin: 15px 0;
+    }
+
+    p {
+      color: #606060;
+      line-height: 1.4;
+
+      span:nth-child(2) {
+        color: #202020;
+        font-weight: 700;
+        padding-left: 16px;
+      }
+
+      &:last-child {
+        padding-bottom: 24px;
+        border-bottom: 1px solid gainsboro;
+      }
+    }
+  }
+}

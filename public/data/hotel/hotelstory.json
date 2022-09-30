@@ -1,0 +1,39 @@
+{
+  "hotelStory": [
+    {
+      "id": 1,
+      "img": "https://static-file.jejupass.com/download/1032366?width=1280&height=960",
+      "comment": "아늑한 분위기"
+    },
+    {
+      "id": 2,
+      "img": "https://static-file.jejupass.com/download/802996?width=1280&height=960",
+      "comment": "머무는 자 위에 즐기는 자"
+    },
+    {
+      "id": 3,
+      "img": "https://static-file.jejupass.com/download/727281?width=1280&height=960",
+      "comment": "#월령 바당집"
+    },
+    {
+      "id": 4,
+      "img": "https://static-file.jejupass.com/download/727246?width=1280&height=960",
+      "comment": "#두모 옴팡집"
+    },
+    {
+      "id": 5,
+      "img": "https://static-file.jejupass.com/download/691150?width=1280&height=960",
+      "comment": "#하천 바람집"
+    },
+    {
+      "id": 6,
+      "img": "https://static-file.jejupass.com/download/188928?width=1280&height=960",
+      "comment": "#호텔 #테라피 #휴식"
+    },
+    {
+      "id": 7,
+      "img": "https://static-file.jejupass.com/download/188987?width=1280&height=960",
+      "comment": "물 위에 띄운 휴가"
+    }
+  ]
+}

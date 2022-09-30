@@ -4,6 +4,7 @@ import { FcAndroidOs } from "react-icons/fc";
 import { BsApple } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
 import { SiNaver } from "react-icons/si";
+import qrCode from "../../assets/images/QRCodeImg.jpeg";
 
 const FooterTop = () => {
   return (
@@ -28,6 +29,7 @@ const FooterTop = () => {
       </ul>
       <div className="foot-app-down">
         <h6 className="foot-menu">App 다운로드</h6>
+        <img className="qr-code" src={qrCode} />
         <p className="foot-text">
           제주조아 앱 설치하고 <br />더 편리하게 이용하세요.
         </p>

@@ -24,7 +24,7 @@ const FixNav = () => {
           <Link to="/preparing">항공</Link>
         </FixMenuTab>
         <FixMenuTab>
-          <Link to="/accomodation">숙박</Link>
+          <Link to="/hotel">숙박</Link>
         </FixMenuTab>
         <FixMenuTab>
           <Link to="/preparing">트립</Link>
@@ -33,7 +33,7 @@ const FixNav = () => {
           <Link to="/preparing">카페패스</Link>
         </FixMenuTab>
         <FixMenuTab>
-          <Link to="/food">맛집</Link>
+          <Link to="/restaurant">맛집</Link>
         </FixMenuTab>
         <FixMenuTab>
           <Link to="/esg">ESG</Link>
@@ -66,7 +66,7 @@ const FixNavContainer = styled.div`
   z-index: 999;
   justify-content: space-between;
   width: 100vw;
-  padding: 15px 70px;
+  padding: 15px 80px;
   background-color: #1d68dc;
   letter-spacing: -0.5px;
 

@@ -7,18 +7,21 @@ import Main from "./pages/Main/Main";
 import Esg from "./pages/Menu/Esg";
 import RenterCar from "./pages/Menu/RenterCar";
 import Accomodation from "./pages/Menu/Accomodation";
-import Food from "./pages/Menu/Food";
 import Mypage from "./pages/Mypage/Mypage";
 import RentCar from "./pages/RentCar/RentCar";
 import Preparing from "./pages/Menu/Preparing";
+import Hotel from "./pages/Hotel/Hotel";
 import Login from "./pages/login/login";
 import TermsSignup from "./components/signup/termsSignup";
 import Signup from "./pages/signup/signup";
 import SignupFin from "./components/signup/signupFin";
 import FooterTop from "./components/Footer/FooterTop";
 import FooterBottom from "./components/Footer/FooterBottom";
+import HotelThema from "./components/Hotel/HotelThema";
+import HotelDetail from "./components/Hotel/HotelDetail";
 import Restaurant from "./pages/Restaurant/Restaurant";
-import RestaurantDetail from "./pages/Restaurant/RestaurantDetail";
+import RestaurantDetail from "./pages/Restaurant/RestaurantDetail/RestaurantDetail";
+import RestaurantMain from "./pages/Restaurant/RestaurantMain";
 import RentCarDetail from "./pages/RentCarDetail/RentCarDetail";
 import ScrollTop from "./components/ScrollTop/ScrollTop";
 import Reservation from "./pages/Reservation/Reservation";
@@ -32,10 +35,8 @@ function Router() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/esg" element={<Esg />} />
-          <Route path="/rentercar" element={<RenterCar />} />
+          <Route path="/rentcar" element={<RenterCar />} />
           <Route path="/accomodation" element={<Accomodation />} />
-          <Route path="/food/:id" element={<Food />} />
-          <Route path="/preparing" element={<Preparing />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/rentcar/:id" element={<RentCar />} />
           <Route path="/rentcarDetail/:id" element={<RentCarDetail />} />
@@ -45,8 +46,17 @@ function Router() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/signupFin" element={<SignupFin />} />
           <Route path="/preparing" element={<Preparing />} />
-          <Route path="/restaurant" element={<Restaurant />} />
+          <Route path="/restaurant" element={<RestaurantMain />} />
+          <Route path="/restaurant/:id" element={<Restaurant />} />
+          <Route path="/restaurant/detail/:id" element={<RestaurantDetail />} />
           <Route path="/restaurantDetail" element={<RestaurantDetail />} />
+          <Route path="/hotel" element={<Hotel />} />
+          <Route path="/hotelThema" element={<HotelThema />} />
+          <Route path="/hotelDetail" element={<HotelDetail />} />
+
+          <Route path="/flight" element={<Preparing />} />
+          <Route path="/cafepass" element={<Preparing />} />
+          <Route path="/trip" element={<Preparing />} />
         </Routes>
         <FooterTop />
         <FooterBottom />

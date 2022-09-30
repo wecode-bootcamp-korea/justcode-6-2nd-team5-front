@@ -1,105 +1,80 @@
-import React, { useState } from "react";
 import styled from "styled-components";
-import banner from "../../assets/images/made-banner.png";
 
-import { FaRegHeart, FaHeart, FaUserAlt } from "react-icons/fa";
-import NoReview from "../../components/Review/NoReview";
-import WriteReviewModal from "./WriteReviewModal";
-import Content from "./ReveiwContent";
-
-const Review = () => {
-  const [isOpen, setOpen] = useState(false);
-
-  const replaceStr = (e) => {
-    let len = e.length;
-    return `${e.substring(0, len - 2)}*${e[len - 1]}`;
-  };
-
-  return (
-    <>
-      <RateContainer>
-        <div className="rate">
-          <span className="rate-star">★★★★★</span>
-          <div className="rate-number">
-            <span className="rate-number-average">4 </span>
-            <span className="rate-number-max">/ 5</span>
-          </div>
-        </div>
-        <div className="rate-condition">
-          <div className="flavor condition">
-            <span>맛</span>
-            <span className="content">4</span>
-          </div>
-          <div className="mood condition">
-            <span>분위기</span>
-            <span className="content">4</span>
-          </div>
-          <div className="service condition">
-            <span>서비스</span>
-            <span className="content">4</span>
-          </div>
-        </div>
-      </RateContainer>
-      <SubmitContainer>
-        <button onClick={() => setOpen(true)}>리뷰 남기기</button>
-      </SubmitContainer>
-      <ListContainer>
-        <img src={banner} />
-        <div className="select-bar">
-          <div className="photo-select">
-            <span className="photo-review">포토리뷰(0)</span>
-            <span className="toggle-btn">토글</span>
-          </div>
-        </div>
-        <Content />
-        <NoReview />
-        {isOpen && <WriteReviewModal setOpen={setOpen} />}
-      </ListContainer>
-    </>
-  );
-};
-
-const RateContainer = styled.div`
-  /* border-bottom: 1px solid #eaeaea; */
-
+export const RateContainer = styled.div`
   .rate {
     display: flex;
     justify-content: center;
-    margin-bottom: 50px;
+    margin: 30px 0 80px 0;
+    width: 100%;
 
-    .rate-star {
-      padding: 20px;
-      color: #fdbd0a;
-      font-size: 40px;
-    }
+    .star-box {
+      align-items: center;
+      position: relative;
+      width: ${(props) => (props.rentcar ? "50%" : "40%")};
 
-    .rate-number {
-      padding-top: 27px;
-      font-size: 30px;
+      .rate-star {
+        position: absolute;
+        top: 0px;
+        left: 120px;
+        z-index: 998;
+        margin-left: 55px;
+        height: 36px;
+        overflow: hidden;
+        color: #fdbd0a;
 
-      .rate-number-average {
-        font-weight: 900;
-        font-family: "NanumSquareRound", sans-serif;
+        .pointOfStar {
+          z-index: 10;
+          height: 36px;
+          width: 180px;
+        }
       }
-      .rate-number-max {
-        font-weight: 400;
-        font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
-          Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic",
-          "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+      .backgroundStar {
+        position: absolute;
+        top: 0px;
+        left: 120px;
+        margin-left: 55px;
+        width: 180px;
+        height: 36px;
       }
     }
   }
+
+  .rate-number {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    padding-right: 150px;
+    padding-top: 3px;
+
+    .rate-number-average {
+      padding-top: 3px;
+      font-weight: 900;
+      font-family: "NanumSquareRound", sans-serif;
+    }
+
+    .rate-slash {
+      padding: 0 5px 3px 4px;
+    }
+
+    .rate-number-max {
+      font-weight: 400;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+        Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic",
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    }
+  }
+
   .rate-condition {
     display: flex;
     padding: 26px 0;
     margin-bottom: 50px;
     width: 100%;
-
     border-radius: 12px;
     background-color: #f4f9ff;
     font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
       Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic",
       "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    box-shadow: 0 8px 16px 0 rgb(32 32 32 / 8%);
 
     .condition {
       display: flex;
@@ -120,10 +95,11 @@ const RateContainer = styled.div`
   }
 `;
 
-const SubmitContainer = styled.div`
+export const SubmitContainer = styled.div`
   display: flex;
   justify-content: center;
   margin: 30px;
+
   button {
     padding: 16px 40px;
     width: 224px;
@@ -142,7 +118,7 @@ const SubmitContainer = styled.div`
     }
   }
 `;
-const ListContainer = styled.div`
+export const ListContainer = styled.div`
   img {
     width: 100%;
     border-radius: 16px;
@@ -175,7 +151,8 @@ const ListContainer = styled.div`
     }
   }
 `;
-const ReviewContent = styled.div`
+
+export const ReviewContent = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 24px 8px 30px;
@@ -256,5 +233,3 @@ const ReviewContent = styled.div`
     }
   }
 `;
-
-export default Review;

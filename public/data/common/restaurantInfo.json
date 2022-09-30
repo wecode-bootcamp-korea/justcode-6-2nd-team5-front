@@ -1,0 +1,40 @@
+{
+  "restaurantInfo": [
+    {
+      "id": 1,
+      "img": "https://static-file.jejupass.com/download/120247?width=400&height=300",
+      "title": "태성흑돈",
+      "location": "서귀포·중문"
+    },
+    {
+      "id": 2,
+      "img": "https://static-file.jejupass.com/download/32669.webp?width=400&height=300",
+      "title": "동뜬식당",
+      "location": "성산·섭지코지"
+    },
+    {
+      "id": 3,
+      "img": "https://static-file.jejupass.com/download/16680.webp?width=400&height=300",
+      "title": "오로섬",
+      "location": "제주시내"
+    },
+    {
+      "id": 4,
+      "img": "https://static-file.jejupass.com/download/20626.webp?width=400&height=300",
+      "title": "훈남횟집",
+      "location": "조천·함덕"
+    },
+    {
+      "id": 5,
+      "img": "https://static-file.jejupass.com/download/608030.webp?width=400&height=300",
+      "title": "마루나키친",
+      "location": "한경·저지"
+    },
+    {
+      "id": 6,
+      "img": "https://static-file.jejupass.com/download/33496.webp?width=400&height=300",
+      "title": "맛의고수",
+      "location": "애월"
+    }
+  ]
+}
