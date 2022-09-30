@@ -96,9 +96,9 @@ function HotelDetail() {
               <p>
                 <div className="hotel-location">위치</div>
                 <div className="hotel-address">
-                  <span className="hotel-address-list after">
+                  {/* <span className="hotel-address-list after">
                     {hotelData.bigAddress}
-                  </span>
+                  </span> */}
                   <span className="hotel-address-list after">
                     {hotelData.regionAddress}
                   </span>

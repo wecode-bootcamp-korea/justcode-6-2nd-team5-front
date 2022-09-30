@@ -1,10 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 import { Overlay } from "../../components/Modal/Modal";
 import { RiErrorWarningLine } from "react-icons/ri";
+import { useLocation } from "react-router-dom";
 
-const WriteReviewModal = ({ setOpen }) => {
+const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
+  const submitRef = useRef();
+  const location = useLocation();
+  const url = new URLSearchParams(location.search);
+  const restaurantId = Number(url.get("id"));
+
   useEffect(() => {
     const $body = document.querySelector("body");
     $body.style.overflow = "hidden";
@@ -13,6 +19,54 @@ const WriteReviewModal = ({ setOpen }) => {
 
   const handleClose = () => {
     setOpen(false);
+    setRender((current) => !current);
+  };
+
+  const [tastePoint, setTastePoint] = useState("");
+  const [moodPoint, setMoodPoint] = useState("");
+  const [servicePoint, setServicePoint] = useState("");
+  const [review, setReview] = useState("");
+  const [photo, setPhoto] = useState();
+  const [token, setToken] = useState(localStorage.getItem("token"));
+
+  const handleInput = (e) => {
+    const value = e.target.value;
+    if (e.target.id === "review") setReview(value);
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    // if (rating === "") {
+    //   alert("Please rate the product.");
+    //   return;
+    // }
+    const body = {
+      token,
+      restaurantId,
+      tastePoint: 3,
+      moodPoint: 4,
+      servicePoint: 5,
+      review,
+    };
+    // console.log(body);
+    // setName("");
+    // setEmail("");
+    // setClicked([false, false, false, false, false]);
+    console.log(body);
+    setReview("");
+
+    fetch("http://localhost:8000/restaurant/review", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        alert("Your review has been submitted!");
+        // setRender((current) => !current);
+      });
   };
 
   return (
@@ -23,9 +77,13 @@ const WriteReviewModal = ({ setOpen }) => {
           <div className="header">
             <h3>리뷰 남기기</h3>
           </div>
-          <form className="review-container">
+          <form //
+            className="review-container"
+            onSubmit={onSubmit}
+            ref={submitRef}
+          >
             <div className="title">
-              "키치니토키친"에서의 <br />
+              "{restaurantName}"에서의 <br />
               경험 어떠셨나요<span style={{ color: "red" }}>?</span>
             </div>
             <div className="select-rate-box">
@@ -47,12 +105,17 @@ const WriteReviewModal = ({ setOpen }) => {
                 <span>리뷰작성</span>
                 <span className="essential">*필수</span>
               </div>
-              <textarea placeholder="리뷰를 남겨주세요. (15글자 이상)"></textarea>
+              <textarea
+                id="review"
+                onChange={handleInput}
+                value={review}
+                required={true}
+                placeholder="리뷰를 남겨주세요. (15글자 이상)"
+              ></textarea>
             </div>
             <div className="photo-upload-box">
               <div className="upload-title">사진 추가 (최대 1장)</div>
               <label id="upload-btn" htmlFor="btn">
-                {" "}
                 +
               </label>
               <input
@@ -76,8 +139,8 @@ const WriteReviewModal = ({ setOpen }) => {
               </ul>
             </div>
           </form>
-          <div className="submit-btn">
-            <button>완료</button>
+          <div className="submit-btn" onClick={onSubmit}>
+            <span>완료</span>
           </div>
         </Contents>
       </ModalWrap>
@@ -259,17 +322,22 @@ const Contents = styled.div`
     background-color: white;
     border-radius: 16px;
 
-    button {
+    span {
+      display: inline-block;
       margin: 0 20px;
-
-      padding: 16px 40px;
+      padding: 20px 40px;
+      text-align: center;
       width: 94%;
       border: none;
-      border-radius: 16px;
+      border-radius: 13px;
       background-color: #569aff;
       color: white;
       font-size: 18px;
       font-weight: 800;
+
+      &:hover {
+        background-color: #2f7bf2;
+      }
     }
   }
 `;

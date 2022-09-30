@@ -6,11 +6,14 @@ export const ModalContext = createContext({
   isOpen: false,
   setOpen: () => {},
   modalOpen: () => {},
+  condtion: "time",
+  setCondition: () => {},
 });
 
 const ModalProvider = ({ children }) => {
   const [isOpen, setOpen] = useState(false);
   const [clickedIcon, setClickedIcon] = useState(1);
+  const [condition, setCondition] = useState("date");
 
   const modalOpen = () => {
     setOpen(true);
@@ -18,7 +21,7 @@ const ModalProvider = ({ children }) => {
 
   return (
     <ModalContext.Provider
-      value={{ isOpen, setOpen, clickedIcon, setClickedIcon, modalOpen }}
+      value={{ isOpen, setOpen, clickedIcon, setClickedIcon, modalOpen, condition, setCondition }}
     >
       {children}
     </ModalContext.Provider>
