@@ -62,6 +62,7 @@ $border: 1.5px solid #dadada;
   }
 
   .foot-app-down {
+    position: relative;
     padding: 50px 40px;
     border-left: $border;
     border-right: $border;
@@ -80,6 +81,13 @@ $border: 1.5px solid #dadada;
 
     .foot-menu {
       @include foot-menu;
+    }
+
+    .qr-code {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 140px;
     }
 
     .foot-text {

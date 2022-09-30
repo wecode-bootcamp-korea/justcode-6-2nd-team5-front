@@ -1,0 +1,46 @@
+{
+  "lodgeInfo": [
+    {
+      "id": 1,
+      "img": "https://ifh.cc/g/Wy6hhV.jpg",
+      "title": "애펜 스테이",
+      "tag": "#감성숙소",
+      "info": "넓은 마당을 반려동물과 이용 가능"
+    },
+    {
+      "id": 2,
+      "img": "https://ifh.cc/g/wgmPLQ.jpg",
+      "title": "한 조아옥",
+      "tag": "#편안함",
+      "info": "아늑하게 제주의 바람을 느끼는 공간"
+    },
+    {
+      "id": 3,
+      "img": "https://ifh.cc/g/cVHlL5.jpg",
+      "title": "지양운",
+      "tag": "#휴가",
+      "info": "휴양지의 느낌과 매력이 담긴 숙소"
+    },
+    {
+      "id": 4,
+      "img": "https://ifh.cc/g/Hw0dFQ.jpg",
+      "title": "당대",
+      "tag": "#이색적인",
+      "info": "이국적인 스타일의 숙소"
+    },
+    {
+      "id": 5,
+      "img": "https://ifh.cc/g/fSt80d.jpg",
+      "title": "페어리테일",
+      "tag": "#동화",
+      "info": "동화 속 주인공"
+    },
+    {
+      "id": 6,
+      "img": "https://ifh.cc/g/bq2w7B.jpg",
+      "title": "어밤",
+      "tag": "#여행",
+      "info": "제주의 바다와 별빛"
+    }
+  ]
+}

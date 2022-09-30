@@ -1,0 +1,140 @@
+.hotel-thema-container {
+  display: flex;
+  width: 100%;
+  font-family: "Pretendard-Regular";
+  font-weight: 900;
+  background-color: #f8f8f8;
+  padding-top: 2%;
+  padding-bottom: 8%;
+
+  .hotel-thema-keyword {
+    padding: 8px 30px;
+    margin-bottom: 14px;
+    color: black;
+    font-size: 1.2rem;
+    border-radius: 16px;
+    background-color: #fff;
+
+    .thema-keyword-btn {
+      position: relative;
+      width: 9%;
+      height: 45px;
+      margin-left: 20px;
+      color: #71aaff;
+      font-family: "Pretendard-Regular";
+      font-size: 1.1rem;
+      font-weight: 600;
+      border: 1px solid #71aaff;
+      border-radius: 8px;
+      background-color: #f4f9ff;
+      cursor: pointer;
+    }
+  }
+
+  .hotel-thema-content {
+    width: 30%;
+  }
+
+  .hotel-thema-top-content {
+    margin-left: 45%;
+  }
+
+  .hotel-thema-main-content {
+    width: 45%;
+  }
+
+  .hotel-thema-list-wrapper {
+    display: grid;
+    grid-template-columns: 0.7fr 0.7fr;
+    grid-column-gap: 1.5%;
+    border-radius: 16px;
+    background-color: white;
+
+    .hotel-thema-list {
+      margin: 8% 0;
+
+      &:nth-child(odd) {
+        margin-left: 10%;
+      }
+
+      &:nth-child(even) {
+        margin-right: 10%;
+      }
+
+      .hotel-thema-img {
+        img {
+          width: 100%;
+          height: 335px;
+          margin-right: 30px;
+          border-radius: 16px;
+          // float: left;
+        }
+      }
+
+      .hotel-thema-info {
+        margin-top: 2.5%;
+        color: #606060;
+
+        h1 {
+          margin: 3% 0;
+          font-weight: 700;
+          line-height: 1.5;
+          font-size: large;
+          color: black;
+        }
+
+        span {
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+        span:nth-child(-n + 3) {
+          border-right: 1px solid gainsboro;
+        }
+
+        .total-like::before {
+          content: "";
+          display: inline-block;
+          width: 18px;
+          height: 18px;
+          margin: 0 0 -3px 0;
+          background: url("https://static-www.jejupass.com/resource/PC/images/food/ico_like-on.png")
+            no-repeat;
+        }
+
+        .total-review-point::before {
+          content: "";
+          display: inline-block;
+          width: 18px;
+          height: 18px;
+          margin: 0 0 -3px 0;
+          background: url("https://static-www.jejupass.com/resource/PC/images/food/ico_starx18.png")
+            no-repeat;
+        }
+
+        p {
+          margin: 2.5% 0;
+          line-height: 1.4;
+        }
+      }
+    }
+  }
+
+  .total-hotel-thema {
+    padding: 22px 30px;
+    margin-bottom: 14px;
+    color: gray;
+    font-size: 1.2rem;
+    border-radius: 16px;
+    background-color: #fff;
+
+    span {
+      color: #63a1ff;
+      font-weight: 400;
+    }
+  }
+
+  .ranking {
+    width: 100%;
+    background-color: white;
+  }
+}

@@ -41,9 +41,10 @@ const CarCondition = ({ setInsurance, setCarType }) => {
       setSelect(select.filter((num) => num !== 0));
     }
     if (select.length === 7) setSelect([0]);
+    setCarType([...select]);
   }, [select]);
 
-  console.log(select);
+  // console.log(select);
   return (
     <ConditionSelector>
       <h2 className="title">
@@ -80,6 +81,7 @@ const CarCondition = ({ setInsurance, setCarType }) => {
                       if (item.id !== 0) return [...el, item.id];
                       else return [0];
                     });
+                // setCarType(select);
               }}
               className={select.includes(item.id) && "clicked"}
             >

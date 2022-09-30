@@ -40,27 +40,25 @@ const Nav = () => {
           </Link>
         </div>
         <ul className="menu-box">
-          <MenuTab className={menu.pathname.includes("/rentercar") && "color"}>
-            <Link to="/rentercar">렌터카</Link>
+          <MenuTab className={menu.pathname.includes("/rentcar") && "color"}>
+            <Link to="/rentcar">렌터카</Link>
           </MenuTab>
-          <MenuTab className={menu.pathname === "/preparing" && "color"}>
-            <Link to="/preparing">항공</Link>
+          <MenuTab c className={menu.pathname.includes("/flight") && "color"}>
+            <Link to="/flight">항공</Link>
           </MenuTab>
-          <MenuTab
-            className={menu.pathname.includes("/accomodation") && "color"}
-          >
-            <Link to="/accomodation">숙박</Link>
+          <MenuTab className={menu.pathname.includes("/hotel") && "color"}>
+            <Link to="/hotel">숙박</Link>
           </MenuTab>
-          <MenuTab>
-            <Link to="/preparing">트립</Link>
+          <MenuTab className={menu.pathname.includes("/trip") && "color"} v>
+            <Link to="/trip">트립</Link>
           </MenuTab>
-          <MenuTab>
-            <Link to="/preparing">카페패스</Link>
+          <MenuTab className={menu.pathname.includes("/cafepass") && "color"}>
+            <Link to="/cafepass">카페패스</Link>
           </MenuTab>
-          <MenuTab className={menu.pathname.includes("/food") && "color"}>
-            <Link to="/food">맛집</Link>
+          <MenuTab className={menu.pathname.includes("/restaurant") && "color"}>
+            <Link to="/restaurant">맛집</Link>
           </MenuTab>
-          <MenuTab className={menu.pathname === "/esg" && "color"}>
+          <MenuTab className={menu.pathname.includes("/esg") && "color"}>
             <Link to="/esg">ESG</Link>
           </MenuTab>
           <span onClick={modalOpen}>

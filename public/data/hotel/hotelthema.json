@@ -1,0 +1,24 @@
+{
+  "lodgmentList": [
+    {
+      "id": 1,
+      "name": "실험1",
+      "intro": "하나 둘 셋 넷 다~섯 여!섯! 일@곱@ 여#덟 아$홉$ 열",
+      "phoneNumber": "010-1234-5678",
+      "reviewPoint": 3,
+      "totalLike": 3,
+      "starPoint": 4,
+      "price": 100000,
+      "address": "애월",
+      "tag": ["호텔"],
+      "hashTag": ["Wi-Fi"],
+      "facility": ["룸서비스", "바"],
+      "photo": [
+        "https://i.esdrop.com/d/f/ZMy3lUAiyF/gNVkFUI3s7.jpg",
+        "https://i.esdrop.com/d/f/ZMy3lUAiyF/GQ15r1oLVT.jpg"
+      ],
+      "peopleNumber": ["1", "4"]
+    }
+  ],
+  "totalCount": 1
+}

@@ -1,0 +1,16 @@
+.total-restaurant {
+  margin-bottom: 12px;
+  padding: 23px;
+  color: gray;
+  border-radius: 16px;
+  background: white;
+
+  span {
+    margin-right: 0.5%;
+  }
+
+  span:nth-child(2) {
+    color: #63a1ff;
+    font-weight: 400;
+  }
+}

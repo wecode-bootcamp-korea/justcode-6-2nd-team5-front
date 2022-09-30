@@ -77,28 +77,33 @@ function RentCar() {
   }, [location]);
 
   return (
-    <div className="rentcar-container">
-      <RentCarHeader />
-      <div className="rentcar-content">
-        <div className="rentcar-top-content">
-          <SearchTagBox title={"빠른 검색"} tagList={tagList} />
-        </div>
-        <div className="rentcar-main-content">
-          <SideFilterBar orderTypes={orderTypes} filterTypes={filterTypes} />
-          <div className="rentcar-list-wrap">
-            <TotalBox totalAmount={totalAmount} />
-            <RentCarList rentCarList={rentCarList} rentCarTags={rentCarTags} />
-            {totalAmount === 0 && (
-              <div className="product-bar" style={{ height: "33%" }}>
-                <p style={{ textAlign: "center", marginTop: "20px" }}>
-                  조회 내역이 없습니다.
-                </p>
-              </div>
-            )}
+    <>
+      <div className="rentcar-container">
+        <RentCarHeader />
+        <div className="rentcar-content">
+          <div className="rentcar-top-content">
+            <SearchTagBox title={"빠른 검색"} tagList={tagList} />
+          </div>
+          <div className="rentcar-main-content">
+            <SideFilterBar orderTypes={orderTypes} filterTypes={filterTypes} />
+            <div className="rentcar-list-wrap">
+              <TotalBox totalAmount={totalAmount} />
+              <RentCarList
+                rentCarList={rentCarList}
+                rentCarTags={rentCarTags}
+              />
+              {totalAmount === 0 && (
+                <div className="product-bar" style={{ height: "33%" }}>
+                  <p style={{ textAlign: "center", marginTop: "20px" }}>
+                    조회 내역이 없습니다.
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

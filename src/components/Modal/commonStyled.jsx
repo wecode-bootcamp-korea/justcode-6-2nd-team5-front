@@ -52,10 +52,11 @@ export const MenuBox = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
-  width: ${(props) => (props.primary ? "1020px" : "1224px")};
+  width: ${(props) => (props.primary ? "1020px" : "80%")};
   margin: 0 auto;
-  padding-right: 110px;
+  padding-right: ${(props) => (props.primary ? "80px" : "100px")};
   padding-bottom: 20px;
+  padding-top: ${(props) => (props.primary ? "0px" : "20px")};
 
   .border {
     border: "1px solid #63a1ff";
@@ -69,7 +70,7 @@ export const MenuBox = styled.div`
 ///////모달창 내부에서는 primary 속성값을 적용시켜 스타일 변화줌.
 export const Menu = styled.div`
   flex: auto;
-  margin: 7px;
+  margin: 7px 14px 7px 0;
   border: ${(props) =>
     (props.className === "border" || props.className === "border flex") &&
     "1px solid #63a1ff"};
@@ -122,7 +123,7 @@ export const Menu = styled.div`
 export const SearchBtn = styled.button`
   position: absolute;
   right: 0;
-  margin: 7px;
+  margin: 7px 0px;
   width: ${(props) => (props.primary ? "80px" : "95px")};
   height: ${(props) => (props.primary ? "80px" : "95px")};
   border-radius: 16px;
@@ -139,6 +140,7 @@ export const SearchBtn = styled.button`
 export const NormalSearchBox = styled.div`
   display: flex;
   justify-content: center;
+  padding-top: ${(props) => (props.normal ? "20px" : "0px")};
   padding-bottom: 20px;
   font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
     Pretendard, Roboto, "Noto Sans KR", "Segoe UI", "Malgun Gothic",

@@ -1,10 +1,18 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import ReactDOM from "react-dom";
 import styled from "styled-components";
 import { Overlay } from "../../components/Modal/Modal";
 import { RiErrorWarningLine } from "react-icons/ri";
+import { useLocation } from "react-router-dom";
+import { ImStarFull } from "react-icons/im";
+import salmon from "../../assets/images/salmon.jpg";
 
-const WriteReviewModal = ({ setOpen }) => {
+const WriteReviewModal = ({ restaurantName, setOpen, setRender }) => {
+  const submitRef = useRef();
+  const location = useLocation();
+  const url = new URLSearchParams(location.search);
+  const restaurantId = Number(url.get("id"));
+
   useEffect(() => {
     const $body = document.querySelector("body");
     $body.style.overflow = "hidden";
@@ -13,6 +21,60 @@ const WriteReviewModal = ({ setOpen }) => {
 
   const handleClose = () => {
     setOpen(false);
+    setRender((current) => !current);
+  };
+
+  const [tastePoint, setTastePoint] = useState(0);
+  const [moodPoint, setMoodPoint] = useState(0);
+  const [servicePoint, setServicePoint] = useState(0);
+  const [review, setReview] = useState("");
+  const [photo, setPhoto] = useState();
+  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [value, setValue] = useState("");
+
+  const starArr = [1, 2, 3, 4, 5];
+
+  const handleInput = (e) => {
+    const value = e.target.value;
+    if (e.target.id === "review") setReview(value);
+  };
+
+  const onClick = (e) => console.log(e);
+  const onSubmit = (e) => {
+    e.preventDefault();
+    if (review.length < 15) {
+      alert("리뷰를 15글자 이상 작성해주세요.");
+      return;
+    } else if (tastePoint === 0 || moodPoint === 0 || servicePoint === 0) {
+      alert("별점을 모두 선택해주세요.");
+      return;
+    }
+    const body = {
+      token,
+      restaurantId,
+      tastePoint,
+      moodPoint,
+      servicePoint,
+      review,
+      photo: "https://i.esdrop.com/d/f/toMKOprgCM/TGdhv0dAQB.jpg",
+    };
+
+    console.log(body);
+    setReview("");
+    setValue("");
+    setOpen(false);
+
+    fetch("http://localhost:8000/restaurant/review", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        alert("리뷰 작성 완료!");
+      });
   };
 
   return (
@@ -23,23 +85,54 @@ const WriteReviewModal = ({ setOpen }) => {
           <div className="header">
             <h3>리뷰 남기기</h3>
           </div>
-          <form className="review-container">
+          <form //
+            className="review-container"
+            onSubmit={onSubmit}
+            ref={submitRef}
+          >
             <div className="title">
-              "키치니토키친"에서의 <br />
+              "{restaurantName}"에서의 <br />
               경험 어떠셨나요<span style={{ color: "red" }}>?</span>
             </div>
             <div className="select-rate-box">
               <li className="flavor">
                 <span>맛</span>
-                <span className="star">★★★★★</span>
+                <Stars>
+                  {starArr.map((num) => (
+                    <ImStarFull //
+                      key={num}
+                      onClick={() => setTastePoint(num)}
+                      className={tastePoint >= num ? "clicked" : ""}
+                      size="1.5vw"
+                    />
+                  ))}
+                </Stars>
               </li>
               <li className="mood">
                 <span>분위기</span>
-                <span className="star">★★★★★</span>
+                <Stars>
+                  {starArr.map((num) => (
+                    <ImStarFull //
+                      key={num}
+                      onClick={() => setMoodPoint(num)}
+                      className={moodPoint >= num ? "clicked" : ""}
+                      size="1.5vw"
+                    />
+                  ))}
+                </Stars>
               </li>
               <li className="service">
                 <span>서비스</span>
-                <span className="star">★★★★★</span>
+                <Stars>
+                  {starArr.map((num) => (
+                    <ImStarFull //
+                      key={num}
+                      onClick={() => setServicePoint(num)}
+                      className={servicePoint >= num ? "clicked" : ""}
+                      size="1.5vw"
+                    />
+                  ))}
+                </Stars>
               </li>
             </div>
             <div className="write-review-box">
@@ -47,19 +140,24 @@ const WriteReviewModal = ({ setOpen }) => {
                 <span>리뷰작성</span>
                 <span className="essential">*필수</span>
               </div>
-              <textarea placeholder="리뷰를 남겨주세요. (15글자 이상)"></textarea>
+              <textarea
+                id="review"
+                onChange={handleInput}
+                value={review}
+                required={true}
+                placeholder="리뷰를 남겨주세요. (15글자 이상)"
+              ></textarea>
             </div>
             <div className="photo-upload-box">
               <div className="upload-title">사진 추가 (최대 1장)</div>
               <label id="upload-btn" htmlFor="btn">
-                {" "}
                 +
               </label>
               <input
                 className="photo-upload-btn"
                 id="btn"
                 type="file"
-                accept="image/*"
+                value={value}
               />
             </div>
             <div className="write-guide">
@@ -76,14 +174,31 @@ const WriteReviewModal = ({ setOpen }) => {
               </ul>
             </div>
           </form>
-          <div className="submit-btn">
-            <button>완료</button>
+          <div className="submit-btn" onClick={onSubmit}>
+            <span>완료</span>
           </div>
         </Contents>
       </ModalWrap>
     </Overlay>
   );
 };
+
+const Stars = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+
+  svg {
+    color: gray;
+    cursor: pointer;
+    margin-bottom: 10px;
+
+    &.clicked {
+      color: #ffbf59;
+    }
+  }
+`;
 
 const ModalWrap = styled.div`
   width: 620px;
@@ -259,17 +374,22 @@ const Contents = styled.div`
     background-color: white;
     border-radius: 16px;
 
-    button {
+    span {
+      display: inline-block;
       margin: 0 20px;
-
-      padding: 16px 40px;
+      padding: 20px 40px;
+      text-align: center;
       width: 94%;
       border: none;
-      border-radius: 16px;
+      border-radius: 13px;
       background-color: #569aff;
       color: white;
       font-size: 18px;
       font-weight: 800;
+
+      &:hover {
+        background-color: #2f7bf2;
+      }
     }
   }
 `;

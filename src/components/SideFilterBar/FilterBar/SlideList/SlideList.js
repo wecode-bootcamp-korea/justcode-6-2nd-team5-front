@@ -6,6 +6,8 @@ function SlideList(props) {
   const { filterTypeId, filterType, slideList, isRefresh, getSlideItem } =
     props;
 
+  console.log("슬라이드리스트트트" + slideList);
+
   const getPrice = (range) => {
     getSlideItem(filterTypeId, range);
   };

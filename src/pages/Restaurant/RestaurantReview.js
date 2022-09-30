@@ -1,5 +1,6 @@
 import React from "react";
-import Review from "../../components/Review/Review";
+import Review from "../../components/Review/RestaurantReview";
+
 function RestaurantReview() {
   return <Review />;
 }
