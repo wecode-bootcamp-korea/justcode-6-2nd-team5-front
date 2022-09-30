@@ -24,6 +24,7 @@ import RestaurantDetail from "./pages/Restaurant/RestaurantDetail/RestaurantDeta
 import RestaurantMain from "./pages/Restaurant/RestaurantMain";
 import RentCarDetail from "./pages/RentCarDetail/RentCarDetail";
 import ScrollTop from "./components/ScrollTop/ScrollTop";
+import Reservation from "./pages/Reservation/Reservation";
 
 function Router() {
   return (
@@ -39,6 +40,7 @@ function Router() {
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/rentcar/:id" element={<RentCar />} />
           <Route path="/rentcarDetail/:id" element={<RentCarDetail />} />
+          <Route path="/reservation/rentcar/:id" element={<Reservation />} />
           <Route path="/login" element={<Login />} />
           <Route path="/termsSignup" element={<TermsSignup />} />
           <Route path="/signup" element={<Signup />} />
