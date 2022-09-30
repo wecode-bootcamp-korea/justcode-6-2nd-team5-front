@@ -43,30 +43,44 @@ function RentCarSnb(props) {
   // 규칙 및 유의사항 모달창 닫는 함수
   const [isModal, setIsModal] = useState(false);
 
+  // 비로그인 경고 모달
+  const [isLogin, setIsLogin] = useState(false);
+
   const closeModal = (isDone) => {
     if (isDone) {
-      console.log(reservedInfo);
-      // 예약 정보 POST
-      fetch("http://localhost:8000/rentcar/reservation", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          token: localStorage.getItem("token"),
-        },
-        body: JSON.stringify(reservedInfo),
-      })
-        .then((res) => res.json())
-        .then(() => {
-          // 예약 완료 후 마이페이지로 이동
-          navigate("/mypage");
-        });
+      if (localStorage.getItem("token"))
+        // 예약 정보 POST
+        fetch("http://localhost:8000/rentcar/reservation", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            token: localStorage.getItem("token"),
+          },
+          body: JSON.stringify(reservedInfo),
+        })
+          .then((res) => res.json())
+          .then(() => {
+            // 예약 완료 후 마이페이지로 이동
+            navigate("/mypage");
+          });
     } else {
-      setIsModal(false);
+      // 유의사항 확인후 비로그인 상태면 비로그인 경고모달
+      if (!localStorage.getItem("token")) {
+        setIsLogin(true);
+        setIsModal(false);
+        // 닫기 버튼
+      } else {
+        setIsModal(false);
+      }
     }
   };
 
   const openeModal = () => {
     setIsModal(true);
+  };
+
+  const goToLogin = () => {
+    navigate("/login");
   };
 
   return (
@@ -131,6 +145,16 @@ function RentCarSnb(props) {
         예약
       </button>
       {isModal && <AlertModal closeModal={closeModal} />}
+      {isLogin && (
+        <AlertModal
+          closeModal={goToLogin}
+          alertMessage={[
+            "로그인 필수",
+            "로그인 화면으로 이동합니다.",
+            "로그인하러 가기",
+          ]}
+        />
+      )}
     </div>
   );
 }

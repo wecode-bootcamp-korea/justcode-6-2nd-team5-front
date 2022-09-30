@@ -20,6 +20,10 @@ function AlertModal(props) {
 
   // 예약 버튼 누를 시, 경고창 띄우고 버튼 다시 한번 누르면 마이페이지로 이동
   const onSubmit = () => {
+    // 비로그인시 모달 닫음 (예약 막기)
+    if (!localStorage.getItem("token")) {
+      closeModal();
+    }
     // 경고 메시지를 안 받는 경우
     if (!alertMessage) {
       // 모달창 완전 닫기
@@ -94,7 +98,7 @@ function AlertModal(props) {
         <button className="btn" onClick={onSubmit}>
           {!isAlert && !alertMessage && "예약 확정하기"}
           {isAlert && !alertMessage && "확인"}
-          {alertMessage && "이전 페이지로 돌아가기"}
+          {alertMessage && alertMessage[2]}
         </button>
       </div>
     </div>
