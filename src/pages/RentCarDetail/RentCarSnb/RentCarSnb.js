@@ -51,8 +51,7 @@ function RentCarSnb(props) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          token:
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTY2NDQ4MDY0MCwiZXhwIjoxNjY0NTY3MDQwfQ.1tC6j_pceSGxijKyGOmAN_I9QXWEhbaEwT9BU3nI9-g",
+          token: localStorage.getItem("token"),
         },
         body: JSON.stringify(reservedInfo),
       })

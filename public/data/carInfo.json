@@ -2,45 +2,45 @@
   "carInfo": [
     {
       "id": 1,
-      "img": "https://www.jejupass.com/resource/PC/images/rentcar/lowprice/04.png",
+      "img": "https://www.jejupass.com/resource/PC/images/rentcar/lowprice/01.png",
       "title": "운전이 어렵다면 경차 추천",
-      "price": "11,000원~",
-      "date": "2022-09-21 수요일 인수"
+      "price": "13,000원~",
+      "date": "2022-10-07 금요일 인수"
     },
     {
       "id": 2,
-      "img": "https://www.jejupass.com/resource/PC/images/rentcar/lowprice/04.png",
-      "title": "운전이 어렵다면 경차 추천",
-      "price": "11,000원~",
-      "date": "2022-09-21 수요일 인수"
+      "img": "https://www.jejupass.com/resource/PC/images/rentcar/lowprice/02.png",
+      "title": "3인 이상 가족 여행할 때",
+      "price": "14,000원~",
+      "date": "2022-10-07 금요일 인수"
     },
     {
       "id": 3,
-      "img": "https://www.jejupass.com/resource/PC/images/rentcar/lowprice/04.png",
-      "title": "운전이 어렵다면 경차 추천",
-      "price": "11,000원~",
-      "date": "2022-09-21 수요일 인수"
+      "img": "https://www.jejupass.com/resource/PC/images/rentcar/lowprice/03.png",
+      "title": "요즘 준중형은 중형만큼 커요",
+      "price": "14,100원~",
+      "date": "2022-10-03 월요일 인수"
     },
     {
       "id": 4,
       "img": "https://www.jejupass.com/resource/PC/images/rentcar/lowprice/04.png",
-      "title": "운전이 어렵다면 경차 추천",
-      "price": "11,000원~",
-      "date": "2022-09-21 수요일 인수"
+      "title": "고유가 시대, 선택이 아닌 필수",
+      "price": "14,700원~",
+      "date": "2022-10-07 금요일 인수"
     },
     {
       "id": 5,
-      "img": "https://www.jejupass.com/resource/PC/images/rentcar/lowprice/04.png",
-      "title": "운전이 어렵다면 경차 추천",
-      "price": "11,000원~",
-      "date": "2022-09-21 수요일 인수"
+      "img": "https://www.jejupass.com/resource/PC/images/rentcar/lowprice/05.png",
+      "title": "비포장 많은 제주에 딱 좋아",
+      "price": "16,200원~",
+      "date": "2022-10-05 수요일 인수"
     },
     {
       "id": 6,
-      "img": "https://www.jejupass.com/resource/PC/images/rentcar/lowprice/04.png",
-      "title": "운전이 어렵다면 경차 추천",
-      "price": "11,000원~",
-      "date": "2022-09-21 수요일 인수"
+      "img": "https://www.jejupass.com/resource/PC/images/rentcar/lowprice/06.png",
+      "title": "경차보다 조금 더 공간이 필요할 때",
+      "price": "16,400원~",
+      "date": "2022-10-04 화요일 인수"
     }
   ]
 }

@@ -20,10 +20,10 @@ function ImgCard(props) {
                   </>
                 )}
                 {carInfo.oilType && (
-                  <p>
+                  <>
                     <div className="oil-icon icon"></div>
                     <span>{carInfo.oilType}</span>
-                  </p>
+                  </>
                 )}
               </div>
               {carInfo.rentcaryearinfo && (
