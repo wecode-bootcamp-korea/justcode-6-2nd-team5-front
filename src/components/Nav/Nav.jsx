@@ -15,12 +15,30 @@ import { ModalContext } from "../Context/ModalContext";
 const Nav = () => {
   const { isOpen, setOpen, setClickedIcon } = useContext(ModalContext);
   const [scrollPosition, setScrollPosition] = useState(0);
+  const [token, setToken] = useState(localStorage.getItem("token"));
+
+  const navigate = useNavigate();
 
   const menu = useLocation();
 
   const modalOpen = () => {
     setOpen(true);
     setClickedIcon(1);
+  };
+
+  const userLogin = () => {
+    if (token === "") navigate("/login");
+    else if (token) {
+      localStorage.removeItem("token");
+      setToken("");
+    }
+  };
+
+  const userShop = () => {
+    if (token === "") alert("로그인 후 접근해주세요.");
+    else if (token) {
+      navigate("/mypage");
+    }
   };
 
   const updateScroll = () => {
@@ -40,27 +58,25 @@ const Nav = () => {
           </Link>
         </div>
         <ul className="menu-box">
-          <MenuTab className={menu.pathname.includes("/rentercar") && "color"}>
-            <Link to="/rentercar">렌터카</Link>
+          <MenuTab className={menu.pathname.includes("/rentcar") && "color"}>
+            <Link to="/rentcar">렌터카</Link>
           </MenuTab>
-          <MenuTab className={menu.pathname === "/preparing" && "color"}>
-            <Link to="/preparing">항공</Link>
+          <MenuTab c className={menu.pathname.includes("/flight") && "color"}>
+            <Link to="/flight">항공</Link>
           </MenuTab>
-          <MenuTab
-            className={menu.pathname.includes("/accomodation") && "color"}
-          >
-            <Link to="/accomodation">숙박</Link>
+          <MenuTab className={menu.pathname.includes("/hotel") && "color"}>
+            <Link to="/hotel">숙박</Link>
           </MenuTab>
-          <MenuTab>
-            <Link to="/preparing">트립</Link>
+          <MenuTab className={menu.pathname.includes("/trip") && "color"} v>
+            <Link to="/trip">트립</Link>
           </MenuTab>
-          <MenuTab>
-            <Link to="/preparing">카페패스</Link>
+          <MenuTab className={menu.pathname.includes("/cafepass") && "color"}>
+            <Link to="/cafepass">카페패스</Link>
           </MenuTab>
-          <MenuTab className={menu.pathname === "/restaurant" && "color"}>
+          <MenuTab className={menu.pathname.includes("/restaurant") && "color"}>
             <Link to="/restaurant">맛집</Link>
           </MenuTab>
-          <MenuTab className={menu.pathname === "/esg" && "color"}>
+          <MenuTab className={menu.pathname.includes("/esg") && "color"}>
             <Link to="/esg">ESG</Link>
           </MenuTab>
           <span onClick={modalOpen}>
@@ -69,12 +85,12 @@ const Nav = () => {
         </ul>
         <div className="info-box">
           <Link to="/login">
-            <InfoTab>
+            <InfoTab onClick={userLogin}>
               <BiLogIn color="gray" />
-              로그인
+              {!token ? "로그인" : "로그아웃"}
             </InfoTab>
           </Link>
-          <InfoTab>
+          <InfoTab onClick={userShop}>
             <HiOutlineShoppingBag color="gray" />
             주문조회
           </InfoTab>

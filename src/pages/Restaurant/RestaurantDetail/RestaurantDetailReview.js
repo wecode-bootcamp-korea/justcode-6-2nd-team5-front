@@ -1,17 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import Review from "../../../components/Review/RestaurantReview";
 
 function RestaurantReview({ data }) {
-  const [reviewData, setReviewData] = useState([]);
-
-  useEffect(() => {
-    fetch(`http://localhost:8000/restaurant/review?id=${data.id}`)
-      .then((res) => res.json())
-      .then((json) => {
-        setReviewData(json);
-      });
-  }, []);
-
-  return <></>;
+  return (
+    <>
+      <Review />
+    </>
+  );
 }
 
 export default RestaurantReview;

@@ -1,0 +1,60 @@
+.plan-detail-wrap {
+  cursor: pointer;
+  .plan-detail:hover {
+    background-color: rgb(233, 233, 233);
+  }
+  .plan-detail {
+    background-color: var(--color-background);
+    border-radius: 10px;
+    color: black;
+    font-weight: 500;
+    padding: 10px 20px;
+    pointer-events: none;
+
+    .name {
+      font-size: larger;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .margin-right {
+      margin-right: 20px;
+    }
+
+    .gray {
+      color: gray;
+    }
+
+    .tag {
+      color: var(--color-bright-blue);
+      padding: 8px;
+      background-color: white;
+      border-radius: 5px;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+    }
+
+    .main {
+      padding: 10px 0;
+      .time {
+        display: flex;
+        justify-content: space-between;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+
+        .created-at,
+        .period {
+          display: flex;
+          justify-content: space-between;
+          width: 48%;
+        }
+      }
+    }
+  }
+}

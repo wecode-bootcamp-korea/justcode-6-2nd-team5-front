@@ -1,0 +1,66 @@
+[
+  {
+    "userinfo": {
+      "username": "cat",
+      "useremail": "nnn@nnne.com",
+      "userphonenumber": "010-1111-2222"
+    },
+    "reserveinfo": {
+      "price": 12000,
+      "rentdate": "2022-09-26 10:00:00",
+      "created_at": "2022-09-21",
+      "returndate": "2022-09-29 15:30:00"
+    },
+    "carinfo": {
+      "carname": "올 뉴 모닝",
+      "cartype": "경형",
+      "carphoto": "https://images.unsplash.com/photo-1468093630585-ed7f63d96167?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2970&q=80",
+      "driveage": "만 21세",
+      "driveinsurance": "일반자차",
+      "driveexperience": "경력 1년이상"
+    },
+    "companyinfo": {
+      "rentplace": "렌터카 본사",
+      "mapaddress": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3327.128360078009!2d126.47727821534995!3d33.49803738076039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x350cfb9f9ecb0791%3A0x8b548fc8e51f34ae!2z7JSo7JygIOugjO2KuOy5tA!5e0!3m2!1sko!2skr!4v1664372971641!5m2!1sko!2skr",
+      "shuttleplace": "렌트카종합안내센터 [5구역 5번]",
+      "shuttleinterval": "20~30분",
+      "shuttleschedule": "08:00 ~ 20:00",
+      "rentcarcompanyname": "씨유렌터카",
+      "shuttlerequiredtime": "5~6분",
+      "rentcarcompanyaddress": "제주특별자치도 제주시 도두일동 1173-2",
+      "rentcarcompanyphonenumber": "064-742-7900"
+    }
+  },
+  {
+    "userinfo": {
+      "username": "cat",
+      "useremail": "nnn@nnne.com",
+      "userphonenumber": "010-1111-2222"
+    },
+    "reserveinfo": {
+      "price": 100000,
+      "rentdate": "2022-09-20 09:00",
+      "created_at": "2022-09-28",
+      "returndate": "2022-09-30 09:00"
+    },
+    "carinfo": {
+      "carname": "올 뉴 모닝",
+      "cartype": "경형",
+      "carphoto": "https://images.unsplash.com/photo-1468093630585-ed7f63d96167?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2970&q=80",
+      "driveage": "만 21세",
+      "driveinsurance": "일반자차",
+      "driveexperience": "경력 1년이상"
+    },
+    "companyinfo": {
+      "rentplace": "렌터카 본사",
+      "mapaddress": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3327.128360078009!2d126.47727821534995!3d33.49803738076039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x350cfb9f9ecb0791%3A0x8b548fc8e51f34ae!2z7JSo7JygIOugjO2KuOy5tA!5e0!3m2!1sko!2skr!4v1664372971641!5m2!1sko!2skr",
+      "shuttleplace": "렌트카종합안내센터 [5구역 5번]",
+      "shuttleinterval": "20~30분",
+      "shuttleschedule": "08:00 ~ 20:00",
+      "rentcarcompanyname": "씨유렌터카",
+      "shuttlerequiredtime": "5~6분",
+      "rentcarcompanyaddress": "제주특별자치도 제주시 도두일동 1173-2",
+      "rentcarcompanyphonenumber": "064-742-7900"
+    }
+  }
+]

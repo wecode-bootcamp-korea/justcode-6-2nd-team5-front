@@ -54,49 +54,56 @@ function RentCar() {
     })
       .then((res) => res.json())
       .then((data) => {
-        // SideFilterBar props
-        setFilterTypes(data[0].filterTypes);
+        if (!(data == "없는 차량입니다")) {
+          // SideFilterBar props
+          setFilterTypes(data[0].filterTypes);
 
-        // RentCarList props
-        if (data[0].filterTypes.length) {
-          setRentCarTags(data[0].filterTypes[2].checkList);
+          // RentCarList props
+          if (data[0].filterTypes.length) {
+            setRentCarTags(data[0].filterTypes[2].checkList);
+          }
+
+          // RentCarList props
+          setRentCarList(data[0].carList);
+
+          // TotalBox props
+          let count = 0;
+          data[0].carList.map((car) => {
+            count += car.rentCarCompanyList.length;
+          });
+          setTotalAmount(count);
         }
-
-        // RentCarList props
-        setRentCarList(data[0].carList);
-
-        // TotalBox props
-        let count = 0;
-        data[0].carList.map((car) => {
-          count += car.rentCarCompanyList.length;
-        });
-        setTotalAmount(count);
       });
   }, [location]);
 
   return (
-    <div className="rentcar-container">
-      <RentCarHeader />
-      <div className="rentcar-content">
-        <div className="rentcar-top-content">
-          <SearchTagBox title={"빠른 검색"} tagList={tagList} />
-        </div>
-        <div className="rentcar-main-content">
-          <SideFilterBar orderTypes={orderTypes} filterTypes={filterTypes} />
-          <div className="rentcar-list-wrap">
-            <TotalBox totalAmount={totalAmount} />
-            <RentCarList rentCarList={rentCarList} rentCarTags={rentCarTags} />
-            {totalAmount === 0 && (
-              <div className="product-bar" style={{ height: "33%" }}>
-                <p style={{ textAlign: "center", marginTop: "20px" }}>
-                  조회 내역이 없습니다.
-                </p>
-              </div>
-            )}
+    <>
+      <div className="rentcar-container">
+        <RentCarHeader />
+        <div className="rentcar-content">
+          <div className="rentcar-top-content">
+            <SearchTagBox title={"빠른 검색"} tagList={tagList} />
+          </div>
+          <div className="rentcar-main-content">
+            <SideFilterBar orderTypes={orderTypes} filterTypes={filterTypes} />
+            <div className="rentcar-list-wrap">
+              <TotalBox totalAmount={totalAmount} />
+              <RentCarList
+                rentCarList={rentCarList}
+                rentCarTags={rentCarTags}
+              />
+              {totalAmount === 0 && (
+                <div className="product-bar" style={{ height: "33%" }}>
+                  <p style={{ textAlign: "center", marginTop: "20px" }}>
+                    조회 내역이 없습니다.
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -5,6 +5,7 @@ import RestaurantList from "./RestaurantList";
 import RestaurantTotal from "./RestaurantTotal";
 import RestaurantPaginate from "./RestaurantPaginate";
 import SideFilterBar from "../../components/SideFilterBar/SideFilterBar";
+import FoodHeader from "../../components/Header/FoodHeader";
 
 import "./Restaurant.scss";
 
@@ -65,30 +66,33 @@ function Restaurant() {
   };
 
   return (
-    <div className="restaurant-container">
-      <div className="restaurant-top-content">
-        <SideFilterBar
-          orderTypes={orderTypes}
-          filterTypes={filterTypes}
-          getSortOrder={getSortOrder}
-        />
-      </div>
-      <div className="restaurant-main-content">
-        {data.length != 0 && <RestaurantTotal totalCount={data.totalCount} />}
-        <div className="restaurant-list-wrapper">
-          {data.length !== 0 &&
-            data.restaurantList.map((data) => {
-              return <RestaurantList data={data} key={data.id} />;
-            })}
-        </div>
-        {data.length != 0 && (
-          <RestaurantPaginate
-            offsetHandler={offsetHandler}
-            totalCount={data.totalCount}
+    <>
+      <FoodHeader />
+      <div className="restaurant-container">
+        <div className="restaurant-top-content">
+          <SideFilterBar
+            orderTypes={orderTypes}
+            filterTypes={filterTypes}
+            getSortOrder={getSortOrder}
           />
-        )}
+        </div>
+        <div className="restaurant-main-content">
+          {data.length != 0 && <RestaurantTotal totalCount={data.totalCount} />}
+          <div className="restaurant-list-wrapper">
+            {data.length !== 0 &&
+              data.restaurantList.map((data) => {
+                return <RestaurantList data={data} key={data.id} />;
+              })}
+          </div>
+          {data.length != 0 && (
+            <RestaurantPaginate
+              offsetHandler={offsetHandler}
+              totalCount={data.totalCount}
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

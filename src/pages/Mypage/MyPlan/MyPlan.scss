@@ -1,9 +1,15 @@
 .mypage-myplan-wrap {
-  .content {
+  .content-on {
+    color: var(--color-bright-blue);
+  }
+  .content-off {
+    color: gray;
+  }
+  .content-on,
+  .content-off {
     li {
       font-size: var(--font-size-middle);
       font-weight: bold;
-      color: var(--color-bright-blue);
       list-style: disc;
       margin-top: 30px;
       margin-left: 20px;
@@ -17,39 +23,20 @@
         }
       }
 
-      .plan-detail-wrap {
-        display: flex;
+      .plan-detail,
+      .noplan-detail {
         justify-content: center;
-        height: 200px;
+        width: 100%;
+        border-radius: 10px;
+        margin-top: 20px;
+        cursor: pointer;
+      }
+
+      .noplan-detail {
         border: 1px dashed gray;
+        height: 200px;
         border-radius: 10px;
         padding: 20px;
-        margin-top: 20px;
-
-        .plan-detail {
-          cursor: pointer;
-
-          .plus-btn {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-          }
-
-          .text-wrap {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 10px;
-            p {
-              color: gray;
-              margin-top: 10px;
-            }
-
-            span {
-              color: var(--color-bright-blue);
-            }
-          }
-        }
       }
     }
   }

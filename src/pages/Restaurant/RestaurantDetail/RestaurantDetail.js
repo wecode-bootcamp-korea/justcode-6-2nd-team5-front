@@ -20,7 +20,7 @@ function RestaurantDetail() {
         setData(data);
       });
   }, [id]);
-
+  console.log(data);
   return (
     <>
       {data.length !== 0 && <RestaurantDetailList data={data.restaurant} />}

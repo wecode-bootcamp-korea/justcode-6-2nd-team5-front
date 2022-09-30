@@ -24,6 +24,7 @@ import RestaurantDetail from "./pages/Restaurant/RestaurantDetail/RestaurantDeta
 import RestaurantMain from "./pages/Restaurant/RestaurantMain";
 import RentCarDetail from "./pages/RentCarDetail/RentCarDetail";
 import ScrollTop from "./components/ScrollTop/ScrollTop";
+import Reservation from "./pages/Reservation/Reservation";
 
 function Router() {
   return (
@@ -34,12 +35,12 @@ function Router() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/esg" element={<Esg />} />
-          <Route path="/rentercar" element={<RenterCar />} />
+          <Route path="/rentcar" element={<RenterCar />} />
           <Route path="/accomodation" element={<Accomodation />} />
-          <Route path="/preparing" element={<Preparing />} />
           <Route path="/mypage" element={<Mypage />} />
           <Route path="/rentcar/:id" element={<RentCar />} />
           <Route path="/rentcarDetail/:id" element={<RentCarDetail />} />
+          <Route path="/reservation/rentcar/:id" element={<Reservation />} />
           <Route path="/login" element={<Login />} />
           <Route path="/termsSignup" element={<TermsSignup />} />
           <Route path="/signup" element={<Signup />} />
@@ -52,6 +53,10 @@ function Router() {
           <Route path="/hotel" element={<Hotel />} />
           <Route path="/hotelThema" element={<HotelThema />} />
           <Route path="/hotelDetail" element={<HotelDetail />} />
+
+          <Route path="/flight" element={<Preparing />} />
+          <Route path="/cafepass" element={<Preparing />} />
+          <Route path="/trip" element={<Preparing />} />
         </Routes>
         <FooterTop />
         <FooterBottom />

@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { ConditionSelector, HashTagBtn } from "../commonStyled";
 import AreaSearch from "./ common/AreaSearch";
+import { ModalContext } from "../../Context/ModalContext";
 
 const FoodSearch = () => {
+  const navigate = useNavigate();
+  const { setOpen } = useContext(ModalContext);
+
   const foodHashArr = [
     "#추천맛집",
     "#데이트코스",
@@ -16,6 +21,14 @@ const FoodSearch = () => {
     "#제주시맛집",
     "#공항근처",
   ];
+
+  const goToHash = (e) => {
+    const url = e.target.innerText;
+    console.log("요것은 url",url);
+    navigate(`/restaurant/list?&hashTag=${url}`);
+    setOpen(false);
+  };
+
   return (
     <ConditionSelector>
       <h2 className="title">
@@ -25,7 +38,11 @@ const FoodSearch = () => {
       <div className="box">
         <h5>테마로 검색</h5>
         {foodHashArr.map((item, index) => {
-          return <HashTagBtn key={index}>{item}</HashTagBtn>;
+          return (
+            <HashTagBtn onClick={goToHash} key={index}>
+              {item}
+            </HashTagBtn>
+          );
         })}
       </div>
       <div className="box">
