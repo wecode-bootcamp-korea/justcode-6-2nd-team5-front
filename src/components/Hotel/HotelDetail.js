@@ -6,7 +6,7 @@ import Policies from "./Policies";
 import Facilities from "./Facilities";
 import Location from "./Location";
 import HotelRanking from "../../components/Hotel/HotelRanking";
-import Review from "../Review/Review";
+import Review from "../Review/RentcarReview";
 import BookmarkIcon from "../../assets/images/bookmark-icon.png";
 import ShareIcon from "../../assets/images/hotel-share.png";
 

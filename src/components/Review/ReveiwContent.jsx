@@ -6,12 +6,14 @@ import { useState } from "react";
 import testPhoto from "../../assets/images/test-photo.jpeg";
 
 const Content = ({ content }) => {
-  console.log(content);
+  // console.log(content);
   const { userName, created_at, review, photo } = content;
   const [photoOpen, setPhotoOpen] = useState(false);
   const handlePhotoOpen = () => {
     setPhotoOpen(true);
   };
+
+  // console.log(userName);
   const replaceStr = (e) => {
     let len = e.length;
     return `${e.substring(0, len - 2)}*${e[len - 1]}`;

@@ -1,36 +1,41 @@
 import React, { useState, useEffect } from "react";
 import banner from "../../assets/images/made-banner.png";
 
-import NoReview from "../../components/Review/NoReview";
+import NoReview from "./NoReview";
 import WriteReviewModal from "./WriteReviewModal";
 import Content from "./ReveiwContent";
 import { RateContainer, SubmitContainer, ListContainer } from "./ReviewStyled";
 
 import grayStar from "../../assets/images/gray_star.png";
 import yellowStar from "../../assets/images/yellow_star.png";
-import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const Review = () => {
+const RestaurantReview = () => {
+  const { id } = useParams();
   const [isOpen, setOpen] = useState(false);
   const [render, setRender] = useState(true);
-
-  // const replaceStr = (e) => {
-  //   let len = e.length;
-  //   return `${e.substring(0, len - 2)}*${e[len - 1]}`;
-  // };
-
-  //기완님 리뷰탭 클릭했을 때 데이터 받아온 다음 state에 저장해서 props로 넘겨주시면
-  //될 것 같습니다...! props -> reviewData={reviewData} 이렇게 넘겨주세요!
-  //props 사용하게 되면 아래 fetch 코드는 필요없으니까 지워주세용!
   const [reviewData, setReviewData] = useState([]);
+  const [isChecked, setChecked] = useState(false);
+
+  const handleChecked = (e) => {
+    setChecked((current) => !current);
+    console.log(isChecked);
+  };
+
   useEffect(() => {
-    fetch("http://localhost:8000/restaurant/review?id=1")
-      .then((res) => res.json())
-      .then((json) => {
-        setReviewData(json);
-      });
+    isChecked
+      ? fetch(`http://localhost:8000/restaurant/review?id=${id}`)
+          .then((res) => res.json())
+          .then((json) => {
+            setReviewData(json);
+          })
+      : fetch(`http://localhost:8000/restaurant/review?id=${id}&category=photo`)
+          .then((res) => res.json())
+          .then((json) => {
+            setReviewData(json);
+          });
   }, [render]);
-  // console.log(reviewData);
+
   const {
     totalAverage,
     tasteAverage,
@@ -39,7 +44,7 @@ const Review = () => {
     restaurantReview,
     restaurantName,
   } = reviewData;
-  // console.log(restaurantReview);
+
   const starView = totalAverage * 36;
 
   return (
@@ -63,15 +68,19 @@ const Review = () => {
         <div className="rate-condition">
           <div className="flavor condition">
             <span>맛</span>
-            <span className="content">{tasteAverage}</span>
+            <span className="content">
+              {Math.round(tasteAverage * 10) / 10}
+            </span>
           </div>
           <div className="mood condition">
             <span>분위기</span>
-            <span className="content">{moodAverage}</span>
+            <span className="content">{Math.round(moodAverage * 10) / 10}</span>
           </div>
           <div className="service condition">
             <span>서비스</span>
-            <span className="content">{serviceAverage}</span>
+            <span className="content">
+              {Math.round(serviceAverage * 10) / 10}
+            </span>
           </div>
         </div>
       </RateContainer>
@@ -86,7 +95,14 @@ const Review = () => {
               포토리뷰(
               {restaurantReview !== undefined && restaurantReview.length})
             </span>
-            <span className="toggle-btn">토글</span>
+            <span className="toggle-btn">
+              <input
+                onClick={handleChecked}
+                type="checkbox"
+                name="photo-review"
+                value="on"
+              />
+            </span>
           </div>
         </div>
         {restaurantReview !== undefined &&
@@ -97,11 +113,15 @@ const Review = () => {
           <NoReview />
         )}
         {isOpen && (
-          <WriteReviewModal restaurantName={restaurantName} setOpen={setOpen} setRender={setRender} />
+          <WriteReviewModal
+            restaurantName={restaurantName}
+            setOpen={setOpen}
+            setRender={setRender}
+          />
         )}
       </ListContainer>
     </>
   );
 };
 
-export default Review;
+export default RestaurantReview;

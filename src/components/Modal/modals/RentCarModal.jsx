@@ -98,14 +98,13 @@ const RentCarModal = () => {
       alert("조건을 모두 선택해주세요");
       return;
     } else {
-      const url = `rentStartDate=${dateSet.start}&rentEndDate=${dateSet.end}&rentStartTime=${takeSelected}&rentEndTime=${returnSelected}&insurance=${insurance}&age=${driverAge}&experience=${driverCareer}&carType=경형&carType=소&totalTime=${timeGap}`;
+      const url = `rentStartDate=${dateSet.start}&rentEndDate=${dateSet.end}&rentStartTime=${takeSelected}&rentEndTime=${returnSelected}&insurance=${insurance}&age=${driverAge}&experience=${driverCareer}&carType=경형&carType=소형&totalTime=${timeGap}`;
       navigate(`/rentcar/searchList?${url}`);
       setOpen(false);
       console.log(isOpen);
     }
   };
 
-  const haveQuery = () => {};
 
   const sDate = url.get("rentStartDate");
   const eDate = url.get("rentEndDate");

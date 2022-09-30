@@ -1,7 +1,12 @@
 import React from "react";
+import Preparing from "./Preparing";
 
 const Esg = () => {
-  return <div> ESG.</div>;
+  return (
+    <div>
+      <Preparing />
+    </div>
+  );
 };
 
 export default Esg;
