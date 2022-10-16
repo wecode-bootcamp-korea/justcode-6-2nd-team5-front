@@ -12,48 +12,21 @@
 - [백엔드 github 링크] - https://github.com/wecode-bootcamp-korea/justcode-6-2nd-team5-back
 
 
-### 데모 영상
+### 데모 영상 (유튜브 링크)
 
+- https://www.youtube.com/watch?v=f_gkxdlnul8
 
 
 <br>
 
 ## 적용 기술
 
-- FE :
+- FE : React, Styled-components, swiper
 
-- BE :
+- BE : node.js, express, jwt, Bcrypt, My SQL
 
+- Common : RESTful API
 
-## 개인별 구현 사항👇
-
-#### 정예원/FE
-
-
-#### 구현/FE
-
-
-#### 이은지/FE
-
-
-#### 이기완/FE
-
-
-
-<br>
-
-## 팀원 github주소
-
-[정예원/FE]
-<br>
-
-[구현/FE]
-<br>
-
-[이은지/FE]
-<br>
-
-[이기완/FE] - https://github.com/lkw1996
 
 ## Reference
 
